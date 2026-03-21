@@ -9,7 +9,14 @@ from copy import deepcopy
 import os
 from typing import Dict, List
 import time
-from openai import OpenAI
+from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+from config.llm import get_default_model, get_llm_client
 
 # openai.api_key = os.environ["OPENAI_API_KEY"]
 
@@ -98,9 +105,10 @@ def gpt3wrapper(max_repeat=20, **arguments):
     return None
 
 
-def query_openai(prompt, model="gpt-4o-2024-08-06", t=0.7):
+def query_openai(prompt, model=None, t=0.7):
     """Queries the OpenAI API with the given prompt and returns the response."""
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+    client = get_llm_client()
+    model = model or get_default_model("proposer")
     response = client.chat.completions.create(
     messages=[
         {
@@ -115,7 +123,7 @@ def query_openai(prompt, model="gpt-4o-2024-08-06", t=0.7):
     return response
 
 class GPT3_Proposer:
-    def __init__(self, problem, use_default_hypotheses=False, single_max_length=SINGLE_SAMPLE_MAX_LENGTH, model_name='gpt-4o-2024-08-06', temperature=0.7):
+    def __init__(self, problem, use_default_hypotheses=False, single_max_length=SINGLE_SAMPLE_MAX_LENGTH, model_name=None, temperature=0.7):
         print(type(problem))
         if use_default_hypotheses:
             self.example_hypotheses = DEFAULT_HYPOTHESES
@@ -125,7 +133,7 @@ class GPT3_Proposer:
         self.problem = problem
         self.prompt_template = open('stage2_can_we_generate_them/D5/templates/gpt3_proposer.txt', 'r').read()
         self.single_max_length = single_max_length
-        self.model_name = model_name  # Updated for GPT-4o
+        self.model_name = model_name or get_default_model("proposer")
         self.temperature = temperature
 
     def propose_hypotheses(self, X_A: List[str], X_B: List[str]):
@@ -172,7 +180,7 @@ class GPT3_Proposer:
             'n': 1
         }
 
-        result = query_openai(final_prompt, model="gpt-4o-2024-08-06", t=0.7)
+        result = query_openai(final_prompt, model=self.model_name, t=self.temperature)
         returned_text = result.choices[0].message.content.strip()
 
         # Ensure proper hypothesis extraction

@@ -2,8 +2,9 @@ import pandas as pd
 import numpy as np
 import yaml
 from typing import List, Dict, Callable
-from openai import OpenAI
 import os
+from pathlib import Path
+import sys
 from transformers import AutoTokenizer
 import tiktoken
 import matplotlib.pyplot as plt
@@ -11,6 +12,12 @@ import numpy as np
 import matplotlib.colors as mcolors
 import matplotlib.cm as cm
 import math
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+from config.llm import get_default_model, get_llm_client
 
 def calculate_error_metrics(df, group_cols, label_col, mmlu=False):
     """
@@ -104,9 +111,10 @@ def generate_prompt(entry: Dict[str, str], template: str) -> str:
     return template.format(**entry)
 
 
-def query_openai(prompt, model="gpt-4o-2024-08-06", t=0.2):
+def query_openai(prompt, model=None, t=0.2):
     """Queries the OpenAI API with the given prompt and returns the response."""
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+    client = get_llm_client()
+    model = model or get_default_model("default")
     response = client.chat.completions.create(
     messages=[
         {

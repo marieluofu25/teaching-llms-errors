@@ -5,19 +5,26 @@ import json
 import random
 import os
 import openai
-from openai import OpenAI
 from collections import defaultdict
 import numpy as np
 import glob
 import argparse
 import time
 import logging
+from pathlib import Path
+import sys
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-client = OpenAI()  
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+from config.llm import get_default_model, get_llm_client
+
+client = get_llm_client()
 
 system_prompt = '''# Instructions for Evaluating Math Problem Description Similarity to MMLU-Math Topics
 
@@ -121,7 +128,8 @@ def read_json_file(file_path):
     with open(file_path, 'r') as file:
         return json.load(file)
     
-def get_judgement(input_text, model="o3-mini-2025-01-31", max_tokens=2048):
+def get_judgement(input_text, model=None, max_tokens=2048):
+    model = model or get_default_model("judge")
     response = client.chat.completions.create(
         model=model,
         messages=[

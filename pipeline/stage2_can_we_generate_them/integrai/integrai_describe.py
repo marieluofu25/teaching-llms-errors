@@ -2,9 +2,16 @@ import logging
 import os
 import time
 import numpy as np
-import openai
 import torch
 from sklearn.metrics.pairwise import pairwise_distances
+from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+from config.llm import get_default_model, get_llm_client
 
 
 class IntegrAIDescribe:
@@ -73,13 +80,14 @@ class IntegrAIDescribe:
                 else:
                     messages = history
 
-                response = openai.ChatCompletion.create(
-                    # model="gpt-3.5-turbo", messages=messages
-                    model="gpt-4o-2024-08-06", messages=messages
+                client = get_llm_client()
+                response = client.chat.completions.create(
+                    model=get_default_model("integrai"),
+                    messages=messages,
                 )
                 
                 logging.info("Called OPENAI API")
-                return response["choices"][0]["message"]["content"]
+                return response.choices[0].message.content
             except:
                 print("pausing openai api")
                 time.sleep(0.3)
