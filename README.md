@@ -3,6 +3,15 @@
 ## The AI-Integration Teaching Pipeline
 The `pipeline/` folder contains code for running experiments for Stages 1&2 found in the [paper](https://arxiv.org/abs/2512.21422): 
 
+### LLM Provider Configuration (Centralized)
+All model/provider settings are now centralized in `config/`:
+- `config/llm_settings.json` for default provider, base URL, and model names
+- `config/llm.py` for shared client/config loading used by pipeline scripts
+
+Default provider is set to Mistral. Export your key before running:
+
+`export MISTRAL_API_KEY="your_mistral_api_key"`
+
 ### Analyzing existence of failure patterns worth-teaching using meta-labels
 Related code can be found in `stage1_do_errors_exist`
 * `dataset-model-analysis.ipynb` contains code for analyzing the existence of sizable groups of failure patterns represented by meta-labels for MMLU and MathCAMPs.
