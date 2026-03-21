@@ -1,7 +1,5 @@
 # Query OpenAI models to generate descriptions of error groups
 import json
-import openai
-from openai import OpenAI
 from typing import List, Dict, Callable
 import pandas as pd
 import yaml
@@ -27,7 +25,7 @@ from integrai.embedding_funcs import get_text_embeddings_text
 from integrai.utils import *
 
 
-def describe_errors(input_obj, model="gpt-4o-2024-08-06"):
+def describe_errors(input_obj, model=None):
     '''Given an input object, query openai model to generate candidate error descriptions and add to input obj'''
     prompt = input_obj['prompt']
     response = query_openai(prompt, model=model, t=0.7)

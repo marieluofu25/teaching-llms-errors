@@ -1,0 +1,16 @@
+numpy
+pandas
+scipy
+scikit-learn
+scikit-learn-extra
+torch
+transformers
+sentence-transformers
+sentencepiece
+nltk
+tqdm
+openai
+PyYAML
+tiktoken
+matplotlib
+Pillow

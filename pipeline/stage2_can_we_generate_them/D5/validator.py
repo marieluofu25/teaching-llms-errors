@@ -3,9 +3,16 @@ import torch
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 from typing import List, Dict
 from tqdm import trange
-from openai import OpenAI
 import os
 import math
+from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[3]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.append(str(PROJECT_ROOT))
+
+from config.llm import get_default_model, get_llm_client
 
 device = 'cuda' if torch.cuda.is_available() else 'cpu'
 BATCH_SIZE = 32
@@ -36,9 +43,10 @@ def parallelize_across_device(model):
 
 DEFAULT_VALIDATOR_TEMPLATE = open('stage2_can_we_generate_them/D5/templates/t5_validator.txt', 'r').read()
 
-def query_openai(prompt, model="gpt-4o-2024-08-06", t=TEMPERATURE):
+def query_openai(prompt, model=None, t=TEMPERATURE):
     """Queries OpenAI's Chat API and extracts the probability of 'yes' token."""
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+    client = get_llm_client()
+    model = model or get_default_model("validator")
 
     response = client.chat.completions.create(
         messages=[{"role": "user", "content": prompt}],

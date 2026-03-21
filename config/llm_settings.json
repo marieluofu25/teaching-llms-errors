@@ -1,0 +1,12 @@
+{
+  "provider": "mistral",
+  "base_url": "https://api.mistral.ai/v1",
+  "api_key_env": "MISTRAL_API_KEY",
+  "models": {
+    "default": "mistral-small-latest",
+    "judge": "mistral-small-latest",
+    "proposer": "mistral-small-latest",
+    "validator": "mistral-small-latest",
+    "integrai": "mistral-small-latest"
+  }
+}
