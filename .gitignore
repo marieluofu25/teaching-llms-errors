@@ -71,7 +71,8 @@ log/
 # file system
 .nfs*
 
-# large pickle files
-.pkl
+# Large / binary data (GitHub max ~100MB per file; keep local only)
+*.pkl
+pipeline/stage1_do_errors_exist/datasets/mmlu_df_gpt35.pkl
 
 __pycache*
