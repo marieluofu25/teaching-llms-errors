@@ -1,0 +1,79 @@
+# Baseline + additive experiment manifest (do not modify pipeline/ code).
+# Canonical copy: pipeline_2026/config/manifest.yaml (synced to experiments/manifest.yaml at repo root).
+# Paths are relative to the teaching-llms-errors repo root unless absolute.
+
+project: teaching-llms-errors-additive-track
+baseline_frozen: true
+baseline_pipeline_dir: pipeline/
+
+datasets:
+  mmlu_gpt35:
+    type: mmlu_pickle
+    path: pipeline/stage1_do_errors_exist/datasets/mmlu_df_gpt35.pkl
+    sha256: "41c7a89bd0762490365adbaaaba0c123f3d57042c92d2d9af4cf9d8663c44e3e"
+    notes: "GPT-3.5 predictions; columns include questions, ai_correct, metadata"
+  mathcamps_openai:
+    type: mathcamps_json
+    path: pipeline/stage1_do_errors_exist/datasets/mathcamps/model-responses/v1/openai.json
+    notes: "Nested JSON; flatten for per-row question/correct/model"
+
+baseline_stage2_commands:
+  description: "Run from pipeline/ per original README (unchanged)."
+  generate_mathcamps: |
+    cd pipeline && python stage2_can_we_generate_them/describe-landscapes.py \
+      --dataset mathcamps --method direct \
+      --model_to_analyze gpt-3.5-turbo-0125 --num_gold_specified \
+      --path_dir generated_failure_patterns
+  judge_mathcamps: |
+    cd pipeline && python stage2_can_we_generate_them/judge.py \
+      --seed 1 --dataset mathcamps --path "<path-to-direct-response.json>"
+
+smoke_test:
+  command: "bash pipeline_2026/scripts/smoke_test.sh"
+  fixture: pipeline_2026/config/fixtures/tiny_residual.csv
+sae_encode_smoke:
+  command: "bash pipeline_2026/scripts/sae_encode_smoke.sh"
+  notes: "Downloads SAELens checkpoint; requires network + sae-lens installed"
+
+additive_experiment_commands:
+  paper_baseline: |
+    cd pipeline_2026 && PYTHONPATH=. python -m stage1.code.run_paper_baseline \
+      --output-dir stage1/results
+  residual_mmlu: |
+    cd pipeline_2026 && PYTHONPATH=. python -m stage2.s01_residual.code.run_residual_control --dataset mmlu \
+      --output stage2/s01_residual/results/mmlu_gpt35_residuals.csv
+  residual_mathcamps: |
+    cd pipeline_2026 && PYTHONPATH=. python -m stage2.s01_residual.code.run_residual_control --dataset mathcamps \
+      --mathcamps-json ../pipeline/stage1_do_errors_exist/datasets/mathcamps/model-responses/v1/openai.json \
+      --model-filter gpt-3.5-turbo-0125 \
+      --output stage2/s01_residual/results/mathcamps_gpt35_residuals.csv
+  export_hf_activations: |
+    cd pipeline_2026 && PYTHONPATH=. python -m stage2.s02_export.code.export_activations \
+      --residual-csv stage2/s01_residual/results/mmlu_gpt35_residuals.csv \
+      --model gpt2 --layer-index 11 \
+      --output stage2/s02_export/results/mmlu_hf_hidden.npz
+  encode_sae_latents: |
+    cd pipeline_2026 && PYTHONPATH=. python -m stage2.s03_sae_encode.code.encode_sae_latents \
+      --input-npz stage2/s02_export/results/mmlu_hf_hidden.npz \
+      --output-npz stage2/s03_sae_encode/results/mmlu_hf_sae_latents.npz
+    # Optional: EXPORT_MAX_ROWS=500 for a quick subset
+  mmlu_real_end_to_end: |
+    bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-real
+  sae_diffing: |
+    cd pipeline_2026 && PYTHONPATH=. python -m stage2.s04_diff.code.run_sae_diffing \
+      --activations stage2/s03_sae_encode/results/mmlu_hf_sae_latents.npz \
+      --residual-csv stage2/s01_residual/results/mmlu_gpt35_residuals.csv \
+      --output stage2/s04_diff/results/latents_topk.csv
+  evaluate: |
+    cd pipeline_2026 && PYTHONPATH=. python -m stage2.s05_eval.code.evaluate_pattern_sets \
+      --residual-csv stage2/s01_residual/results/mmlu_gpt35_residuals.csv \
+      --output-json stage2/s05_eval/results/residual_metrics.json
+  release_summary: |
+    cd pipeline_2026 && PYTHONPATH=. python -m stage2.s06_report.code.release_summary \
+      --residual-csv stage2/s01_residual/results/mmlu_gpt35_residuals.csv \
+      --metrics-json stage2/s05_eval/results/mmlu_gpt35_train_only_metrics.json \
+      --output stage2/s06_report/results/release_readiness.json
+
+seeds:
+  default: 42
+  sklearn_split_mmlu: 42  # fixed in pipeline Dataset.py

@@ -1,0 +1,14 @@
+# Policy thresholds for a transparent "release readiness" verdict on MMLU residual runs.
+# These are NOT universal production standards — tune per product / course project.
+#
+# Verdict logic (see src/release_summary.py):
+# - fail: any gate below is violated
+# - pass: no violations
+
+gates:
+  # Maximum allowed fraction of incorrect answers (is_error=1) across all rows in this CSV
+  max_error_rate_global: 0.45
+  # Among subjects with at least min_rows_per_subject rows, the worst subject's error rate must not exceed this
+  max_error_rate_worst_subject: 0.70
+  # Subjects with fewer rows are excluded from the "worst subject" gate (still listed in per-subject table)
+  min_rows_per_subject: 20

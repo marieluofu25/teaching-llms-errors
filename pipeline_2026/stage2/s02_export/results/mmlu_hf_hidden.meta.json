@@ -1,0 +1,16 @@
+{
+  "residual_csv": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage1/results/mmlu_gpt35_residuals.csv",
+  "n_rows": 7851,
+  "hidden_dim": 768,
+  "representation_type": "hidden_pooled",
+  "d_in": 768,
+  "model": "gpt2",
+  "layer_index": 11,
+  "pooling": "last",
+  "max_length": 512,
+  "batch_size": 8,
+  "device": "mps",
+  "dtype": "float32",
+  "output_npz": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/results/mmlu_hf_hidden.npz",
+  "note": "Activations are from the specified HF model, not from closed API models. Row order matches residual CSV."
+}

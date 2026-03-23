@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stage 1 — Paper baseline — audit</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1.2rem 1.5rem; line-height: 1.45; max-width: 960px; }
+    .nav { font-size: 0.9rem; margin-bottom: 1rem; padding: 0.5rem; background: #f4f4f4; border-radius: 6px; }
+    .excerpt { background: #f9f9f9; padding: 0.75rem 1rem; border-left: 4px solid #336; margin: 1rem 0; }
+    table.data { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 0.5rem 0; }
+    table.data th, table.data td { border: 1px solid #ccc; padding: 0.25rem 0.4rem; text-align: left; }
+    pre { background: #111; color: #eee; padding: 0.75rem; overflow: auto; font-size: 0.8rem; }
+    .muted { color: #555; }
+    .err { color: #a00; }
+    .callout { background: #e8f4ff; padding: 0.6rem 0.9rem; border-radius: 6px; margin: 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <p class="nav"><strong>pipeline_2026</strong> &mdash; <strong>Stage1 — Paper baseline</strong> &middot; <a href="../../stage2/s01_residual/results/audit.html">Stage2 — s01_residual</a> &middot; <a href="../../stage2/s02_export/results/audit.html">Stage2 — s02_export</a> &middot; <a href="../../stage2/s03_sae_encode/results/audit.html">Stage2 — s03_sae_encode</a> &middot; <a href="../../stage2/s04_diff/results/audit.html">Stage2 — s04_diff</a> &middot; <a href="../../stage2/s05_eval/results/audit.html">Stage2 — s05_eval</a> &middot; <a href="../../stage2/s06_report/results/audit.html">Stage2 — s06_report</a></p>
+  <h1>Stage 1 — Paper baseline</h1>
+  <p class="muted">Audit generated 2026-03-23 04:38:03 UTC</p>
+  <div class="excerpt"># Stage 1 — Paper baseline (arXiv:2512.21422 alignment)<br/>
+**Purpose:** Reproduce the **existence-of-failure-patterns** view from the teaching paper using the **legacy** code under [`../../pipeline/stage1_do_errors_exist`](../../pipeline/stage1_do_errors_exist) (not the additive residual/SAE track).<br/>
+**Runner (pipeline_2026):** `python -m stage1.code.run_paper_baseline --output-dir stage1/results`<br/>
+- Runs [`stage1/code/notebook_paper_figures.py`](code/notebook_paper_figures.py) (this repo). It **only reads** legacy [`Dataset.py`](../../pipeline/stage1_do_errors_exist/Dataset.py), [`utils.py`](../../pipeline/utils.py), and datasets under [`pipeline/stage1_do_errors_exist/datasets/`](../../pipeline/stage1_do_errors_exist/datasets/) (subprocess `cwd` = `pipeline/`).<br/>
+- Writes `paper_baseline_manifest.json` under `results/` (always).<br/>
+- Regenerates **`stage1/results/audit.html`** so previews match whatever files are in `results/` (including all `paper_nb_*.png`). To run figures alone: `python stage1/code/notebook_paper_figures.py --output-dir /abs/path/to/stage1/results` (the script switches to `pipeline/` internally); or use `run_paper_baseline`.<br/>
+- When data is present, writes **`paper_mmlu_summary.json`** (includes `figures_written` / `figures_skipped`) and **11 PNGs** aligned with [`dataset-model-analysis.ipynb`](../../pipeline/stage1_do_errors_exist/dataset-model-analysis.ipynb) (one file per notebook figure).<br/>
+## Notebook cell → PNG filename<br/>
+| Notebook cell | Output file | Description |<br/>
+|---------------|-------------|-------------|<br/>
+| 3 | `paper_nb_cell03_mmlu_math_reg.png` | `plot_metrics`, MMLU math-reg by subject |<br/>
+| 5 | `paper_nb_cell05_mmlu_health_reg.png` | `plot_metrics`, MMLU health-reg by subject |<br/>
+| 7 | `paper_nb_cell07_mmlu_subcat_computer_science.png` | `plot_metrics`, MMLU filtered to subcat *computer science* |<br/>
+| 9 | `paper_nb_cell09_mmlu_all_subjects.png` | `plot_metrics`, full MMLU by subject |<br/>
+| 11 | `paper_nb_cell11_mmlu_by_subcat.png` | `plot_metrics`, by subcat (uses same full MMLU frame as cell 9) |<br/>
+| 13 | `paper_nb_cell13_mmlu_subcats_psych_physics_math.png` | `plot_metrics`, subjects within subcats psychology / physics / math |<br/>
+| 16 | `paper_nb_cell16_mmlu_math_health_vertical.png` | Math + Health stacked + colorbar |<br/>
+| 18 | `paper_nb_cell18_mmlu_math_health_horizontal.png` | Math + Health 1×2 + colorbar |<br/>
+| 19 | `paper_nb_cell19_mmlu_subcats_grid.png` | All MMLU subcats except math &amp; health, 3-column grid |<br/>
+| 24 | `paper_nb_cell24_mathcamps_gpt_claude_sonnet.png` | MathCAMPS: GPT-4o, GPT-3.5-turbo, Claude Sonnet |<br/>
+| 26 | `paper_nb_cell26_mathcamps_claude_family.png` | MathCAMPS: Sonnet, Opus, Haiku |<br/>
+**Data requirements:** `stage1_do_errors_exist/datasets/mmlu_df_gpt35.pkl` for MMLU figures; `stage1_do_errors_exist/datasets/mathcamps/model-responses/v1/openai.json` and `anthropic.json` for MathCAMPS figures. Missing inputs are skipped and recorded under `figures_skipped` in `paper_mmlu_summary.json`.<br/>
+**Manual exploration:** [`dataset-model-analysis.ipynb`](../../pipeline/stage1_do_errors_exist/dataset-model-analysis.ipynb) remains the full interactive counterpart.<br/>
+**Next:** Stage 2 segments under `pipeline_2026/stage2/s01_residual/` … `s06_report/` (residual control, HF export, SAE, diff, metrics, HTML).</div>
+  
+  <h2>Artifacts in <code>stage1/results</code></h2>
+  <h4><code>.gitkeep</code></h4><p class="muted">0 bytes</p>
+<p class="muted">No inline preview for this file type.</p>
+<h4><code>paper_baseline_manifest.json</code></h4><p class="muted">275 bytes</p>
+<pre>{
+  &quot;stage&quot;: &quot;paper_baseline&quot;,
+  &quot;source&quot;: &quot;pipeline_2026/stage1/code/notebook_paper_figures.py&quot;,
+  &quot;legacy_data&quot;: &quot;pipeline/stage1_do_errors_exist + pipeline/utils (read-only)&quot;,
+  &quot;paper_figures_ran&quot;: true,
+  &quot;notebook&quot;: &quot;dataset-model-analysis.ipynb (manual exploration)&quot;
+}</pre>
+<h4><code>paper_mmlu_error_by_subject_top20.png</code></h4><p class="muted">68522 bytes</p>
+<p><img src="paper_mmlu_error_by_subject_top20.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_mmlu_summary.json</code></h4><p class="muted">3042 bytes</p>
+<pre>{
+  &quot;figures_written&quot;: [
+    &quot;paper_nb_cell03_mmlu_math_reg.png&quot;,
+    &quot;paper_nb_cell05_mmlu_health_reg.png&quot;,
+    &quot;paper_nb_cell07_mmlu_subcat_computer_science.png&quot;,
+    &quot;paper_nb_cell09_mmlu_all_subjects.png&quot;,
+    &quot;paper_nb_cell11_mmlu_by_subcat.png&quot;,
+    &quot;paper_nb_cell13_mmlu_subcats_psych_physics_math.png&quot;,
+    &quot;paper_nb_cell16_mmlu_math_health_vertical.png&quot;,
+    &quot;paper_nb_cell18_mmlu_math_health_horizontal.png&quot;,
+    &quot;paper_nb_cell19_mmlu_subcats_grid.png&quot;,
+    &quot;paper_nb_cell24_mathcamps_gpt_claude_sonnet.png&quot;,
+    &quot;paper_nb_cell26_mathcamps_claude_family.png&quot;
+  ],
+  &quot;figures_skipped&quot;: [],
+  &quot;n_rows&quot;: 5495,
+  &quot;error_rate&quot;: 0.304823,
+  &quot;top_subjects_by_error_rate&quot;: [
+    {
+      &quot;subject&quot;: &quot;college_mathematics&quot;,
+      &quot;error_rate&quot;: 0.650794
+    },
+    {
+      &quot;subject&quot;: &quot;machine_learning&quot;,
+      &quot;error_rate&quot;: 0.630137
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_mathematics&quot;,
+      &quot;error_rate&quot;: 0.610619
+    },
+    {
+      &quot;subject&quot;: &quot;abstract_algebra&quot;,
+      &quot;error_rate&quot;: 0.587302
+    },
+    {
+      &quot;subject&quot;: &quot;global_facts&quot;,
+      &quot;error_rate&quot;: 0.585714
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_physics&quot;,
+      &quot;error_rate&quot;: 0.570175
+    },
+    {
+      &quot;subject&quot;: &quot;college_physics&quot;,
+      &quot;error_rate&quot;: 0.565789
+    },
+    {
+      &quot;subject&quot;: &quot;college_chemistry&quot;,
+      &quot;error_rate&quot;: 0.56338
+    },
+    {
+      &quot;subject&quot;: &quot;formal_logic&quot;,
+      &quot;error_rate&quot;: 0.55102
+    },
+    {
+      &quot;subject&quot;: &quot;moral_scenarios&quot;,
+      &quot;error_rate&quot;: 0.53271
+    },
+    {
+      &quot;subject&quot;: &quot;virology&quot;,
+      &quot;error_rate&quot;: 0.519231
+    },
+    {
+      &quot;subject&quot;: &quot;econometrics&quot;,
+      &quot;error_rate&quot;: 0.512195
+    },
+    {
+      &quot;subject&quot;: &quot;college_computer_science&quot;,
+      &quot;error_rate&quot;: 0.486842
+    },
+    {
+      &quot;subject&quot;: &quot;professional_law&quot;,
+      &quot;error_rate&quot;: 0.48
+    },
+    {
+      &quot;subject&quot;: &quot;professional_accounting&quot;,
+      &quot;error_rate&quot;: 0.45045
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_chemistry&quot;,
+      &quot;error_rate&quot;: 0.429907
+    },
+    {
+      &quot;subject&quot;: &quot;conceptual_physics&quot;,
+      &quot;error_rate&quot;: 0.427083
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_statistics&quot;,
+      &quot;error_rate&quot;: 0.425743
+    },
+    {
+      &quot;subject&quot;: &quot;elementary_mathematics&quot;,
+      &quot;error_rate&quot;: 0.386139
+    },
+    {
+      &quot;subject&quot;: &quot;electrical_engineering&quot;,
+      &quot;error_rate&quot;: 0.367347
+    },
+    {
+      &quot;subject&quot;: &quot;anatomy&quot;,
+      &quot;error_rate&quot;: 0.340426
+    },
+    {
+      &quot;subject&quot;: &quot;college_medicine&quot;,
+      &quot;error_rate&quot;: 0.33
+    },
+    {
+      &quot;subject&quot;: &quot;public_relations&quot;,
+      &quot;error_rate&quot;: 0.311688
+    },
+    {
+      &quot;subject&quot;: &quot;human_aging&quot;,
+      &quot;error_rate&quot;: 0.292929
+    },
+    {
+      &quot;subject&quot;: &quot;nutrition&quot;,
+      &quot;error_rate&quot;: 0.280374
+    },
+    {
+      &quot;subject&quot;: &quot;security_studies&quot;,
+      &quot;error_rate&quot;: 0.280374
+    },
+    {
+      &quot;subject&quot;: &quot;business_ethics&quot;,
+      &quot;error_rate&quot;: 0.265625
+    },
+    {
+      &quot;subject&quot;: &quot;prehistory&quot;,
+      &quot;error_rate&quot;: 0.265487
+    },
+    {
+      &quot;subject&quot;: &quot;computer_security&quot;,
+      &quot;error_rate&quot;: 0.262295
+    },
+    {
+      &quot;subject&quot;: &quot;moral_disputes&quot;,
+      &quot;error_rate&quot;: 0.260417
+    }
+  ]
+}</pre>
+<h4><code>paper_nb_cell03_mmlu_math_reg.png</code></h4><p class="muted">108387 bytes</p>
+<p><img src="paper_nb_cell03_mmlu_math_reg.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell05_mmlu_health_reg.png</code></h4><p class="muted">117508 bytes</p>
+<p><img src="paper_nb_cell05_mmlu_health_reg.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell07_mmlu_subcat_computer_science.png</code></h4><p class="muted">86372 bytes</p>
+<p><img src="paper_nb_cell07_mmlu_subcat_computer_science.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell09_mmlu_all_subjects.png</code></h4><p class="muted">584942 bytes</p>
+<p><img src="paper_nb_cell09_mmlu_all_subjects.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell11_mmlu_by_subcat.png</code></h4><p class="muted">153274 bytes</p>
+<p><img src="paper_nb_cell11_mmlu_by_subcat.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell13_mmlu_subcats_psych_physics_math.png</code></h4><p class="muted">138492 bytes</p>
+<p><img src="paper_nb_cell13_mmlu_subcats_psych_physics_math.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell16_mmlu_math_health_vertical.png</code></h4><p class="muted">190316 bytes</p>
+<p><img src="paper_nb_cell16_mmlu_math_health_vertical.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell18_mmlu_math_health_horizontal.png</code></h4><p class="muted">201257 bytes</p>
+<p><img src="paper_nb_cell18_mmlu_math_health_horizontal.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell19_mmlu_subcats_grid.png</code></h4><p class="muted">630343 bytes</p>
+<p><img src="paper_nb_cell19_mmlu_subcats_grid.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell24_mathcamps_gpt_claude_sonnet.png</code></h4><p class="muted">234517 bytes</p>
+<p><img src="paper_nb_cell24_mathcamps_gpt_claude_sonnet.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>paper_nb_cell26_mathcamps_claude_family.png</code></h4><p class="muted">210421 bytes</p>
+<p><img src="paper_nb_cell26_mathcamps_claude_family.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+</body>
+</html>

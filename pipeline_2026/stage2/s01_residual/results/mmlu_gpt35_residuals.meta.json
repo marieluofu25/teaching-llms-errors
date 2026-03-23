@@ -1,0 +1,14 @@
+{
+  "dataset": "mmlu",
+  "n_rows": 7851,
+  "fit_mode": "train_only",
+  "text_col": "questions",
+  "error_col": "is_error",
+  "output": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals.csv",
+  "group_counts": {
+    "neutral": 3794,
+    "Low Residual": 2093,
+    "High Residual": 1964
+  },
+  "mean_is_error": 0.3079862437905999
+}

@@ -1,16 +1,2 @@
-numpy
-pandas
-scipy
-scikit-learn
-scikit-learn-extra
-torch
-transformers
-sentence-transformers
-sentencepiece
-nltk
-tqdm
-openai
-PyYAML
-tiktoken
-matplotlib
-Pillow
+# Additive interpretability stack (staged under pipeline_2026/)
+-r pipeline_2026/requirements.txt

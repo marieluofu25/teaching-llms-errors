@@ -1,0 +1,8 @@
+{
+  "representation_type": "synthetic_demo",
+  "n_rows": 6,
+  "d_in": 16,
+  "model": "random Gaussian (demo only; not HF or SAE)",
+  "residual_csv": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/config/fixtures/tiny_residual.csv",
+  "note": "Smoke/demo vectors; do not cite as neural or SAE features."
+}
