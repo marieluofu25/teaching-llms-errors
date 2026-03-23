@@ -74,5 +74,8 @@ log/
 # Large / binary data (GitHub max ~100MB per file; keep local only)
 *.pkl
 pipeline/stage1_do_errors_exist/datasets/mmlu_df_gpt35.pkl
+*.npz
+pipeline_2026/stage2/s01_residual/results/*.csv
+pipeline_2026/stage2/s03_sae_encode/results/*.npz
 
 __pycache*
