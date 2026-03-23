@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stage 2 — Surrogate activations (HF) — audit</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1.2rem 1.5rem; line-height: 1.45; max-width: 960px; }
+    .nav { font-size: 0.9rem; margin-bottom: 1rem; padding: 0.5rem; background: #f4f4f4; border-radius: 6px; }
+    .excerpt { background: #f9f9f9; padding: 0.75rem 1rem; border-left: 4px solid #336; margin: 1rem 0; }
+    table.data { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 0.5rem 0; }
+    table.data th, table.data td { border: 1px solid #ccc; padding: 0.25rem 0.4rem; text-align: left; }
+    pre { background: #111; color: #eee; padding: 0.75rem; overflow: auto; font-size: 0.8rem; }
+    .muted { color: #555; }
+    .err { color: #a00; }
+    .callout { background: #e8f4ff; padding: 0.6rem 0.9rem; border-radius: 6px; margin: 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../stage1/results/audit.html">stage1</a> &middot; <strong>stage2</strong> &middot; <a href="../stage3/results/audit.html">stage3</a> &middot; <a href="../stage4/results/audit.html">stage4</a> &middot; <a href="../stage5/results/audit.html">stage5</a> &middot; <a href="../stage6/results/audit.html">stage6</a></p>
+  <h1>Stage 2 — Surrogate activations (HF)</h1>
+  <p class="muted">Audit generated 2026-03-22 00:45:03 UTC</p>
+  <div class="excerpt"># Stage 2 — Surrogate neural activations (Hugging Face)<br/>
+**Goal:** Produce **row-aligned** pooled hidden-state vectors `(N, d_in)` for the same questions as the Stage 1 CSV, using an **open** causal LM (default `gpt2`). This is a *surrogate* for interpretability: it is **not** the closed API model’s internal state.<br/>
+**Code:** `stage2/code/export_activations.py` · shared: `lib/io_schema.py`, `lib/repo_paths.py`<br/>
+**Layer index must match** any SAE you use in Stage 3 (see `docs/sae_checkpoints.md`).<br/>
+**Outputs (in `results/`):** `*.npz` with array `activations`, plus `*.meta.json` (`representation_type: hidden_pooled`).<br/>
+**Audit:** `results/audit.html`</div>
+  
+  <h2>Artifacts in <code>stage2/results</code></h2>
+  <h4><code>.gitkeep</code></h4><p class="muted">0 bytes</p>
+<p class="muted">No inline preview for this file type.</p>
+<h4><code>mmlu_hf_hidden.meta.json</code></h4><p class="muted">668 bytes</p>
+<pre>{
+  &quot;residual_csv&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage1/results/mmlu_gpt35_residuals.csv&quot;,
+  &quot;n_rows&quot;: 7851,
+  &quot;hidden_dim&quot;: 768,
+  &quot;representation_type&quot;: &quot;hidden_pooled&quot;,
+  &quot;d_in&quot;: 768,
+  &quot;model&quot;: &quot;gpt2&quot;,
+  &quot;layer_index&quot;: 11,
+  &quot;pooling&quot;: &quot;last&quot;,
+  &quot;max_length&quot;: 512,
+  &quot;batch_size&quot;: 8,
+  &quot;device&quot;: &quot;mps&quot;,
+  &quot;dtype&quot;: &quot;float32&quot;,
+  &quot;output_npz&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/results/mmlu_hf_hidden.npz&quot;,
+  &quot;note&quot;: &quot;Activations are from the specified HF model, not from closed API models. Row order matches residual CSV.&quot;
+}</pre>
+<h4><code>mmlu_hf_hidden.npz</code></h4><p class="muted">24118548 bytes</p>
+<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "stage": "paper_baseline",
+  "source": "pipeline_2026/stage1/code/notebook_paper_figures.py",
+  "legacy_data": "pipeline/stage1_do_errors_exist + pipeline/utils (read-only)",
+  "paper_figures_ran": true,
+  "notebook": "dataset-model-analysis.ipynb (manual exploration)"
+}

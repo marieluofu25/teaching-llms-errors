@@ -1,0 +1,20 @@
+# Install from repo root: pip install -r pipeline_2026/requirements.txt
+# (Same dependency set as parent teaching-llms-errors project.)
+
+numpy
+pandas
+scipy
+scikit-learn
+scikit-learn-extra
+torch
+transformers
+sentence-transformers
+sentencepiece
+nltk
+tqdm
+openai
+PyYAML
+tiktoken
+matplotlib
+Pillow
+sae-lens>=6.0,<7

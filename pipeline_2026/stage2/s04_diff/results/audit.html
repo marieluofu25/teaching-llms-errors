@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stage 4 — Coordinate-wise group comparison — audit</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1.2rem 1.5rem; line-height: 1.45; max-width: 960px; }
+    .nav { font-size: 0.9rem; margin-bottom: 1rem; padding: 0.5rem; background: #f4f4f4; border-radius: 6px; }
+    .excerpt { background: #f9f9f9; padding: 0.75rem 1rem; border-left: 4px solid #336; margin: 1rem 0; }
+    table.data { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 0.5rem 0; }
+    table.data th, table.data td { border: 1px solid #ccc; padding: 0.25rem 0.4rem; text-align: left; }
+    pre { background: #111; color: #eee; padding: 0.75rem; overflow: auto; font-size: 0.8rem; }
+    .muted { color: #555; }
+    .err { color: #a00; }
+    .callout { background: #e8f4ff; padding: 0.6rem 0.9rem; border-radius: 6px; margin: 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../stage1/results/audit.html">stage1</a> &middot; <a href="../stage2/results/audit.html">stage2</a> &middot; <a href="../stage3/results/audit.html">stage3</a> &middot; <strong>stage4</strong> &middot; <a href="../stage5/results/audit.html">stage5</a> &middot; <a href="../stage6/results/audit.html">stage6</a></p>
+  <h1>Stage 4 — Coordinate-wise group comparison</h1>
+  <p class="muted">Audit generated 2026-03-22 00:45:25 UTC</p>
+  <div class="excerpt"># Stage 4 — Coordinate-wise group comparison (“SAE diffing”)<br/>
+**Goal:** Rank columns (raw hidden dims **or** SAE feature indices) where **residual groups** differ in mean activation (Welch tests). Interprets **High vs Low residual** (or other `group` labels), not a causal “error neuron” claim.<br/>
+**Code:** `stage4/code/run_sae_diffing.py`, `stage4/code/sae_diffing.py`, `stage4/code/generate_dummy_activations.py` · shared: `lib/`<br/>
+**Inputs:** Stage 1 residual CSV + Stage 3 `.npz` (or Stage 2 only if SAE encode skipped).<br/>
+**Outputs (in `results/`):** Ranked `*.csv` (`latent_id`, statistics), optional `*.diagnostics.json`.<br/>
+**Audit:** `results/audit.html`</div>
+  
+  <h2>Artifacts in <code>stage4/results</code></h2>
+  <h4><code>.gitkeep</code></h4><p class="muted">0 bytes</p>
+<p class="muted">No inline preview for this file type.</p>
+<h4><code>mmlu_hf_latents.csv</code></h4><p class="muted">241150 bytes</p>
+<table class="data"><thead><tr><th>latent_id</th><th>V_prime</th><th>p_value</th><th>p_adjusted</th></tr></thead><tbody><tr><td>163</td><td>10.3016</td><td>0.012475658136235699</td><td></td></tr><tr><td>1426</td><td>7.697</td><td>0.023068554681302266</td><td></td></tr><tr><td>13413</td><td>6.025</td><td>0.0017792956277272141</td><td></td></tr><tr><td>3181</td><td>4.4297</td><td>0.029692525286963478</td><td></td></tr><tr><td>10725</td><td>3.7703</td><td>0.022712852449648286</td><td></td></tr><tr><td>13419</td><td>2.9086</td><td>0.0022075867024673643</td><td></td></tr><tr><td>18835</td><td>2.5152</td><td>0.016871841971731902</td><td></td></tr><tr><td>7392</td><td>1.7058</td><td>0.045590082922986906</td><td></td></tr><tr><td>3467</td><td>1.5663</td><td>0.015598828837173154</td><td></td></tr><tr><td>15398</td><td>1.4805</td><td>0.0005750668834029004</td><td></td></tr><tr><td>2697</td><td>1.2823</td><td>0.020852674812122798</td><td></td></tr><tr><td>22293</td><td>1.1949</td><td>0.014851958373251904</td><td></td></tr></tbody></table>
+<h4><code>mmlu_hf_latents.diagnostics.json</code></h4><p class="muted">184 bytes</p>
+<pre>{
+  &quot;n_high_residual&quot;: 1964,
+  &quot;n_low_residual&quot;: 2093,
+  &quot;min_group_size&quot;: 30,
+  &quot;skipped_insufficient_n&quot;: false,
+  &quot;n_latents_tested&quot;: 24576,
+  &quot;n_passing&quot;: 6953,
+  &quot;use_fdr&quot;: false
+}</pre>
+<h4><code>smoke_activations.meta.json</code></h4><p class="muted">356 bytes</p>
+<pre>{
+  &quot;representation_type&quot;: &quot;synthetic_demo&quot;,
+  &quot;n_rows&quot;: 6,
+  &quot;d_in&quot;: 16,
+  &quot;model&quot;: &quot;random Gaussian (demo only; not HF or SAE)&quot;,
+  &quot;residual_csv&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/config/fixtures/tiny_residual.csv&quot;,
+  &quot;note&quot;: &quot;Smoke/demo vectors; do not cite as neural or SAE features.&quot;
+}</pre>
+<h4><code>smoke_activations.npz</code></h4><p class="muted">660 bytes</p>
+<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
+<h4><code>smoke_latents.csv</code></h4><p class="muted">128 bytes</p>
+<table class="data"><thead><tr><th>latent_id</th><th>V_prime</th><th>p_value</th><th>p_adjusted</th></tr></thead><tbody><tr><td>1</td><td>10.6903</td><td>0.046080884360921434</td><td></td></tr><tr><td>5</td><td>3.8957</td><td>0.11907171674111633</td><td></td></tr><tr><td>0</td><td>3.4402</td><td>0.1654756347960112</td><td></td></tr></tbody></table>
+<h4><code>smoke_latents.diagnostics.json</code></h4><p class="muted">171 bytes</p>
+<pre>{
+  &quot;n_high_residual&quot;: 3,
+  &quot;n_low_residual&quot;: 2,
+  &quot;min_group_size&quot;: 2,
+  &quot;skipped_insufficient_n&quot;: false,
+  &quot;n_latents_tested&quot;: 16,
+  &quot;n_passing&quot;: 3,
+  &quot;use_fdr&quot;: false
+}</pre>
+</body>
+</html>

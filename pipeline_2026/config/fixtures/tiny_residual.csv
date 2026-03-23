@@ -1,0 +1,7 @@
+questions,ai_correct,is_error,expected_error,residual_error,group
+"short",True,0,0.2,-0.2,Low Residual
+"long text with 12 numbers 1 2 3",False,1,0.4,0.6,High Residual
+"medium question",True,0,0.3,-0.3,Low Residual
+"if and or not because",False,1,0.55,0.45,High Residual
+"ok",True,0,0.25,-0.25,neutral
+"another",False,1,0.5,0.5,High Residual

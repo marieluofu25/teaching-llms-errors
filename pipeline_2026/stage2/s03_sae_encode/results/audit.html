@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stage 3 — SAE latent vectors — audit</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1.2rem 1.5rem; line-height: 1.45; max-width: 960px; }
+    .nav { font-size: 0.9rem; margin-bottom: 1rem; padding: 0.5rem; background: #f4f4f4; border-radius: 6px; }
+    .excerpt { background: #f9f9f9; padding: 0.75rem 1rem; border-left: 4px solid #336; margin: 1rem 0; }
+    table.data { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 0.5rem 0; }
+    table.data th, table.data td { border: 1px solid #ccc; padding: 0.25rem 0.4rem; text-align: left; }
+    pre { background: #111; color: #eee; padding: 0.75rem; overflow: auto; font-size: 0.8rem; }
+    .muted { color: #555; }
+    .err { color: #a00; }
+    .callout { background: #e8f4ff; padding: 0.6rem 0.9rem; border-radius: 6px; margin: 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../stage1/results/audit.html">stage1</a> &middot; <a href="../stage2/results/audit.html">stage2</a> &middot; <strong>stage3</strong> &middot; <a href="../stage4/results/audit.html">stage4</a> &middot; <a href="../stage5/results/audit.html">stage5</a> &middot; <a href="../stage6/results/audit.html">stage6</a></p>
+  <h1>Stage 3 — SAE latent vectors</h1>
+  <p class="muted">Audit generated 2026-03-22 00:45:17 UTC</p>
+  <div class="excerpt"># Stage 3 — SAE encoding (SAELens)<br/>
+**Goal (per project plan):** Map pooled hidden vectors through a **pretrained sparse autoencoder** so coordinates live in an **overcomplete SAE dictionary** (`d_sae` ≫ `d_in`), suitable for “SAE diffing” claims.<br/>
+**Code:** `stage3/code/encode_sae_latents.py` · shared: `lib/`<br/>
+**Dependency:** `sae-lens` (see `requirements.txt`). Checkpoint must match model + hook used in Stage 2.<br/>
+**Outputs (in `results/`):** `*.npz` with `activations` of shape `(N, d_sae)`, plus `*.meta.json` (`representation_type: sae_latent`).<br/>
+**Audit:** `results/audit.html`</div>
+  
+  <h2>Artifacts in <code>stage3/results</code></h2>
+  <h4><code>.gitkeep</code></h4><p class="muted">0 bytes</p>
+<p class="muted">No inline preview for this file type.</p>
+<h4><code>mmlu_hf_sae_latents.meta.json</code></h4><p class="muted">1206 bytes</p>
+<pre>{
+  &quot;representation_type&quot;: &quot;sae_latent&quot;,
+  &quot;n_rows&quot;: 7851,
+  &quot;d_in&quot;: 768,
+  &quot;d_sae&quot;: 24576,
+  &quot;sae_release&quot;: &quot;gpt2-small-res-jb&quot;,
+  &quot;sae_id&quot;: &quot;blocks.11.hook_resid_pre&quot;,
+  &quot;sae_lens_note&quot;: &quot;Columns are SAE feature indices (sparse dictionary), not raw hidden dimensions.&quot;,
+  &quot;source_hidden_npz&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/results/mmlu_hf_hidden.npz&quot;,
+  &quot;source_hidden_meta&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/results/mmlu_hf_hidden.meta.json&quot;,
+  &quot;residual_csv&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage1/results/mmlu_gpt35_residuals.csv&quot;,
+  &quot;base_model&quot;: &quot;gpt2&quot;,
+  &quot;hidden_export_layer_index&quot;: 11,
+  &quot;model&quot;: &quot;gpt2 + SAELens SAE gpt2-small-res-jb/blocks.11.hook_resid_pre (d_in=768, d_sae=24576)&quot;,
+  &quot;output_npz&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage3/results/mmlu_hf_sae_latents.npz&quot;,
+  &quot;batch_size&quot;: 32,
+  &quot;device&quot;: &quot;mps&quot;,
+  &quot;methodology&quot;: &quot;SAE embeddings for group-wise comparison; see Jiang et al., arXiv:2512.10092.&quot;
+}</pre>
+<h4><code>mmlu_hf_sae_latents.npz</code></h4><p class="muted">771784980 bytes</p>
+<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
+</body>
+</html>

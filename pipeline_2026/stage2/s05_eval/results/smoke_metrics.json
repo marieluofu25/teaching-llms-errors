@@ -1,0 +1,18 @@
+{
+  "label": "smoke_fixture",
+  "residual_metrics": {
+    "n_instances": 6,
+    "n_errors": 3,
+    "error_rate": 0.5,
+    "high_residual": {
+      "n": 3,
+      "coverage_of_errors": 1.0,
+      "concentration_in_group": 1.0
+    },
+    "low_residual": {
+      "n": 2,
+      "coverage_of_errors": 0.0,
+      "concentration_in_group": 0.0
+    }
+  }
+}

@@ -40,3 +40,47 @@ Templates for teaching people can be found in the `user_study`directory
 
 Firebase project templates for our user study measuring the effectiveness of the AI-Integration teaching pipeline can be found in the `user_study` directory. 
 `study-S3` contains templates with teaching and `study-S5` contains templates without teaching.
+
+---
+
+## Additive experiment track — **`pipeline_2026/`** (does not modify `pipeline/`)
+
+All Python, configs, **per-stage outputs**, and **per-stage `results/audit.html`** live under **[`pipeline_2026/`](pipeline_2026/README.md)**. This matches the PhD plan in [`../project_plan.md`](../project_plan.md): residual control + SAE latents + set-level metrics + reporting.
+
+| Location | Purpose |
+|----------|---------|
+| `pipeline_2026/README.md` | Map stages → proposal; how to run |
+| `pipeline_2026/stage1/` | Paper baseline: `run_paper_baseline` → `results/` + **`audit.html`** |
+| `pipeline_2026/stage2/s01_…s06_*` | Improvement segments: each has `README.md` + `code/` + `results/` + **`audit.html`** |
+| `pipeline_2026/lib/` | Shared helpers: `repo_paths.py`, `io_schema.py` |
+| `pipeline_2026/config/` | `feature_meanings.yaml`, `release_thresholds.yaml`, `manifest.yaml`, `fixtures/` |
+| `pipeline_2026/docs/` | `experiment_protocol.md`, `sae_checkpoints.md`, reproducibility notes |
+| `scripts/run_additive_track.sh` | Forwards to `pipeline_2026/scripts/run_pipeline_2026.sh` |
+
+### Quickstart
+
+```bash
+pip install -r requirements.txt   # includes pipeline_2026 via -r
+
+# Full staged run (writes stage1/results + stage2/s*/results + audit.html)
+./scripts/run_additive_track.sh mmlu-real
+
+# Open audits: pipeline_2026/stage1/results/audit.html + stage2/s*/results/audit.html
+# Full five-tab report: pipeline_2026/stage2/s06_report/results/mmlu_report.html
+```
+
+Smoke / SAE encode smoke:
+
+```bash
+./scripts/run_additive_track.sh smoke
+bash pipeline_2026/scripts/sae_encode_smoke.sh
+```
+
+Manual CLI (set `PYTHONPATH` to `pipeline_2026`): see `pipeline_2026/config/manifest.yaml` and `pipeline_2026/README.md`.
+
+Baseline paper pipeline (LLM calls; configure `config/llm_settings.json` + key first):
+
+```bash
+export MISTRAL_API_KEY="..."
+./scripts/run_baseline_pipeline_example.sh
+```

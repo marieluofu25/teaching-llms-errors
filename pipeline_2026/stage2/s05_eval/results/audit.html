@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stage 2 — s05_eval — Set-level metrics — audit</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1.2rem 1.5rem; line-height: 1.45; max-width: 960px; }
+    .nav { font-size: 0.9rem; margin-bottom: 1rem; padding: 0.5rem; background: #f4f4f4; border-radius: 6px; }
+    .excerpt { background: #f9f9f9; padding: 0.75rem 1rem; border-left: 4px solid #336; margin: 1rem 0; }
+    table.data { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 0.5rem 0; }
+    table.data th, table.data td { border: 1px solid #ccc; padding: 0.25rem 0.4rem; text-align: left; }
+    pre { background: #111; color: #eee; padding: 0.75rem; overflow: auto; font-size: 0.8rem; }
+    .muted { color: #555; }
+    .err { color: #a00; }
+    .callout { background: #e8f4ff; padding: 0.6rem 0.9rem; border-radius: 6px; margin: 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../../../stage1/results/audit.html">Stage1 — Paper baseline</a> &middot; <a href="../../s01_residual/results/audit.html">s01_residual</a> &middot; <a href="../../s02_export/results/audit.html">s02_export</a> &middot; <a href="../../s03_sae_encode/results/audit.html">s03_sae_encode</a> &middot; <a href="../../s04_diff/results/audit.html">s04_diff</a> &middot; <strong>s05_eval</strong> &middot; <a href="../../s06_report/results/audit.html">s06_report</a><span class="muted"> (segment 5 of 6)</span></p>
+  <h1>Stage 2 — s05_eval — Set-level metrics</h1>
+  <p class="muted">Audit generated 2026-03-22 04:19:08 UTC</p>
+  <div class="excerpt"># Stage 2 — s05_eval — Set-level metrics &amp; plots<br/>
+**Goal (per project plan):** **Coverage** and **concentration** of errors in the High Residual group, plus optional merge of Stage-2 judge JSON; leaderboard row and bar chart for quick comparison across runs.<br/>
+**Code:** `stage2/s05_eval/code/evaluate_pattern_sets.py`, `plot_residual_summary.py` · shared: `lib/`<br/>
+**Outputs (in `results/`):** `*_metrics.json`, `leaderboard.csv`, `*_residual_bar.png`.<br/>
+**Audit:** `results/audit.html`</div>
+  
+  <h2>Artifacts in <code>stage2/s05_eval/results</code></h2>
+  <h4><code>.gitkeep</code></h4><p class="muted">0 bytes</p>
+<p class="muted">No inline preview for this file type.</p>
+<h4><code>leaderboard.csv</code></h4><p class="muted">333 bytes</p>
+<table class="data"><thead><tr><th>label</th><th>n_instances</th><th>n_errors</th><th>high_coverage</th><th>high_concentration</th></tr></thead><tbody><tr><td>smoke_fixture</td><td>6</td><td>3</td><td>1.0</td><td>1.0</td></tr><tr><td>smoke_fixture</td><td>6</td><td>3</td><td>1.0</td><td>1.0</td></tr><tr><td>mmlu_gpt35_sae_latents</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td></tr></tbody></table>
+<h4><code>mmlu_gpt35_sae_latents_metrics.json</code></h4><p class="muted">398 bytes</p>
+<pre>{
+  &quot;label&quot;: &quot;mmlu_gpt35_sae_latents&quot;,
+  &quot;residual_metrics&quot;: {
+    &quot;n_instances&quot;: 7851,
+    &quot;n_errors&quot;: 2418,
+    &quot;error_rate&quot;: 0.3079862437905999,
+    &quot;high_residual&quot;: {
+      &quot;n&quot;: 1964,
+      &quot;coverage_of_errors&quot;: 0.8122415219189413,
+      &quot;concentration_in_group&quot;: 1.0
+    },
+    &quot;low_residual&quot;: {
+      &quot;n&quot;: 2093,
+      &quot;coverage_of_errors&quot;: 0.0,
+      &quot;concentration_in_group&quot;: 0.0
+    }
+  }
+}</pre>
+<h4><code>mmlu_gpt35_sae_latents_residual_bar.png</code></h4><p class="muted">35403 bytes</p>
+<p><img src="mmlu_gpt35_sae_latents_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>mmlu_gpt35_train_only_metrics.json</code></h4><p class="muted">397 bytes</p>
+<pre>{
+  &quot;label&quot;: &quot;mmlu_gpt35_train_only&quot;,
+  &quot;residual_metrics&quot;: {
+    &quot;n_instances&quot;: 7851,
+    &quot;n_errors&quot;: 2418,
+    &quot;error_rate&quot;: 0.3079862437905999,
+    &quot;high_residual&quot;: {
+      &quot;n&quot;: 1964,
+      &quot;coverage_of_errors&quot;: 0.8122415219189413,
+      &quot;concentration_in_group&quot;: 1.0
+    },
+    &quot;low_residual&quot;: {
+      &quot;n&quot;: 2093,
+      &quot;coverage_of_errors&quot;: 0.0,
+      &quot;concentration_in_group&quot;: 0.0
+    }
+  }
+}</pre>
+<h4><code>mmlu_gpt35_train_only_residual_bar.png</code></h4><p class="muted">34810 bytes</p>
+<p><img src="mmlu_gpt35_train_only_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>smoke_metrics.json</code></h4><p class="muted">347 bytes</p>
+<pre>{
+  &quot;label&quot;: &quot;smoke_fixture&quot;,
+  &quot;residual_metrics&quot;: {
+    &quot;n_instances&quot;: 6,
+    &quot;n_errors&quot;: 3,
+    &quot;error_rate&quot;: 0.5,
+    &quot;high_residual&quot;: {
+      &quot;n&quot;: 3,
+      &quot;coverage_of_errors&quot;: 1.0,
+      &quot;concentration_in_group&quot;: 1.0
+    },
+    &quot;low_residual&quot;: {
+      &quot;n&quot;: 2,
+      &quot;coverage_of_errors&quot;: 0.0,
+      &quot;concentration_in_group&quot;: 0.0
+    }
+  }
+}</pre>
+<h4><code>smoke_residual_bar.png</code></h4><p class="muted">33594 bytes</p>
+<p><img src="smoke_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+</body>
+</html>

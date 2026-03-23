@@ -1,0 +1,9 @@
+# Optional second-line interpretations for Tab 4 (column "interpretation (optional YAML)").
+# Tab 4 primary "meaning" from data = MMLU `subject` with strongest mean activation per dimension.
+# latent index = column in activations.npz (0 .. D-1). For HF export, D = hidden size (e.g. 768 for gpt2).
+#
+# Examples (from slide deck):
+latent_meanings:
+  21: "arithmetic carry"
+  45: "negation reasoning"
+  # 88: "multi-step reasoning"

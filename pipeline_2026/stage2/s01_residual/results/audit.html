@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Stage 2 — s01_residual — Residual control — audit</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 1.2rem 1.5rem; line-height: 1.45; max-width: 960px; }
+    .nav { font-size: 0.9rem; margin-bottom: 1rem; padding: 0.5rem; background: #f4f4f4; border-radius: 6px; }
+    .excerpt { background: #f9f9f9; padding: 0.75rem 1rem; border-left: 4px solid #336; margin: 1rem 0; }
+    table.data { border-collapse: collapse; width: 100%; font-size: 0.85rem; margin: 0.5rem 0; }
+    table.data th, table.data td { border: 1px solid #ccc; padding: 0.25rem 0.4rem; text-align: left; }
+    pre { background: #111; color: #eee; padding: 0.75rem; overflow: auto; font-size: 0.8rem; }
+    .muted { color: #555; }
+    .err { color: #a00; }
+    .callout { background: #e8f4ff; padding: 0.6rem 0.9rem; border-radius: 6px; margin: 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../../../stage1/results/audit.html">Stage1 — Paper baseline</a> &middot; <strong>s01_residual</strong> &middot; <a href="../../s02_export/results/audit.html">s02_export</a> &middot; <a href="../../s03_sae_encode/results/audit.html">s03_sae_encode</a> &middot; <a href="../../s04_diff/results/audit.html">s04_diff</a> &middot; <a href="../../s05_eval/results/audit.html">s05_eval</a> &middot; <a href="../../s06_report/results/audit.html">s06_report</a><span class="muted"> (segment 1 of 6)</span></p>
+  <h1>Stage 2 — s01_residual — Residual control</h1>
+  <p class="muted">Audit generated 2026-03-22 04:19:07 UTC</p>
+  <div class="excerpt"># Stage 2 — s01_residual — Residual control &amp; instance table<br/>
+**Goal (per project plan):** Build a per-question table with correctness, a **difficulty proxy** (`expected_error` from surface features), **residual** `is_error − expected_error`, and **groups** (e.g. High / Low residual) so later steps focus on errors not explained by generic difficulty alone.<br/>
+**Code:** `stage2/s01_residual/code/run_residual_control.py`, `difficulty_control.py`, `stage1_profile.py` · shared: `lib/io_schema.py`<br/>
+**Inputs:** MMLU pickle or MathCAMPs JSON under legacy `pipeline/stage1_do_errors_exist/datasets/` (paths resolved via `lib/repo_paths.py`).<br/>
+**Outputs (in `results/`):**<br/>
+- Residual CSV (+ `.meta.json`): per row `questions`, `is_error`, `expected_error`, `residual_error`, `group`, …<br/>
+- **`&lt;stem&gt;_profile.json`** — aggregates: global error rate, group counts, residual quantiles, **by_subject / by_subcat** (MMLU) or **by_standard / by_model** (MathCAMPs).<br/>
+- **`&lt;stem&gt;_error_by_subject.png`** (or `_error_by_standard.png` for MathCAMPs) — bar chart (skip with `--no-profile-plot`).<br/>
+**Audit:** Open `results/audit.html`. CSV preview **hides wide embedding columns** and truncates long text.<br/>
+**CLI:** `python -m stage2.s01_residual.code.run_residual_control …` · `--skip-profile`, `--no-profile-plot`.</div>
+  
+  <h2>Artifacts in <code>stage2/s01_residual/results</code></h2>
+  <h4><code>mmlu_gpt35_residuals.csv</code></h4><p class="muted">107459615 bytes</p>
+<p class="muted">Hiding 8 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
+<table class="data"><thead><tr><th>questions</th><th>answers</th><th>ai_model</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_correct</th><th>is_error</th><th>expected_error</th><th>residual_error</th><th>group</th></tr></thead><tbody><tr><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5851110776838818</td><td>0.4148889223161182</td><td>High Residual</td></tr><tr><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.7985937520417459</td><td>0.20140624795825413</td><td>neutral</td></tr><tr><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5491266563680427</td><td>0.4508733436319573</td><td>High Residual</td></tr><tr><td>Find the generator for the finite field Z_7.</td><td>[&#x27;1&#x27; &#x27;2&#x27; &#x27;3&#x27; &#x27;4&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5031314967832796</td><td>0.4968685032167204</td><td>High Residual</td></tr><tr><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>[&#x27;25&#x27; &#x27;5&#x27; &#x27;6&#x27; &#x27;30&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5466061167295558</td><td>-0.5466061167295558</td><td>Low Residual</td></tr><tr><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>[&#x27;0&#x27; &#x27;2&#x27; &#x27;1&#x27; &#x27;3&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5035554543150964</td><td>-0.5035554543150964</td><td>Low Residual</td></tr><tr><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>[&#x27;6&#x27; &#x27;12&#x27; &#x27;30&#x27; &#x27;105&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5039794067342578</td><td>0.4960205932657422</td><td>High Residual</td></tr><tr><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.4461805530248764</td><td>-0.4461805530248764</td><td>neutral</td></tr><tr><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.6290013828969153</td><td>0.3709986171030847</td><td>neutral</td></tr><tr><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>[&#x27;subgroup&#x27; &#x27;finite abelian group&#x27; &#x27;infinite, non abelian group&#x27;
+ &#x27;ininite, abelian&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.4631215022001374</td><td>-0.4631215022001374</td><td>Low Residual</td></tr><tr><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5625146550241984</td><td>0.4374853449758016</td><td>High Residual</td></tr><tr><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5214812052900479</td><td>0.47851879470995207</td><td>High Residual</td></tr></tbody></table>
+<h4><code>mmlu_gpt35_residuals.meta.json</code></h4><p class="muted">426 bytes</p>
+<pre>{
+  &quot;dataset&quot;: &quot;mmlu&quot;,
+  &quot;n_rows&quot;: 7851,
+  &quot;fit_mode&quot;: &quot;train_only&quot;,
+  &quot;text_col&quot;: &quot;questions&quot;,
+  &quot;error_col&quot;: &quot;is_error&quot;,
+  &quot;output&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals.csv&quot;,
+  &quot;group_counts&quot;: {
+    &quot;neutral&quot;: 3794,
+    &quot;Low Residual&quot;: 2093,
+    &quot;High Residual&quot;: 1964
+  },
+  &quot;mean_is_error&quot;: 0.3079862437905999
+}</pre>
+<h4><code>mmlu_gpt35_residuals_error_by_subject.png</code></h4><p class="muted">78254 bytes</p>
+<p><img src="mmlu_gpt35_residuals_error_by_subject.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>mmlu_gpt35_residuals_profile.json</code></h4><p class="muted">7559 bytes</p>
+<pre>{
+  &quot;dataset&quot;: &quot;mmlu&quot;,
+  &quot;n_rows&quot;: 7851,
+  &quot;columns&quot;: [
+    &quot;data_x&quot;,
+    &quot;expl_embs&quot;,
+    &quot;data_y&quot;,
+    &quot;ai_preds&quot;,
+    &quot;ai_scores&quot;,
+    &quot;ai_expl&quot;,
+    &quot;to_shows&quot;,
+    &quot;questions&quot;,
+    &quot;answers&quot;,
+    &quot;metadata&quot;,
+    &quot;ai_model&quot;,
+    &quot;subject&quot;,
+    &quot;subcat&quot;,
+    &quot;cat&quot;,
+    &quot;ai_correct&quot;,
+    &quot;is_error&quot;,
+    &quot;expected_error&quot;,
+    &quot;residual_error&quot;,
+    &quot;group&quot;
+  ],
+  &quot;error_rate&quot;: 0.307986,
+  &quot;n_errors&quot;: 2418,
+  &quot;group_counts&quot;: {
+    &quot;neutral&quot;: 3794,
+    &quot;Low Residual&quot;: 2093,
+    &quot;High Residual&quot;: 1964
+  },
+  &quot;expected_error_mean&quot;: 0.493837,
+  &quot;residual_error_quantiles&quot;: {
+    &quot;q25&quot;: -0.461857,
+    &quot;q50&quot;: -0.460312,
+    &quot;q75&quot;: 0.41144
+  },
+  &quot;by_subject&quot;: [
+    {
+      &quot;subject&quot;: &quot;high_school_statistics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 62,
+      &quot;error_rate&quot;: 0.4133
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_mathematics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 94,
+      &quot;error_rate&quot;: 0.6267
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_physics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 88,
+      &quot;error_rate&quot;: 0.5867
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_psychology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 18,
+      &quot;error_rate&quot;: 0.12
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_us_history&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 26,
+      &quot;error_rate&quot;: 0.1733
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_world_history&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 22,
+      &quot;error_rate&quot;: 0.1467
+    },
+    {
+      &quot;subject&quot;: &quot;human_aging&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 42,
+      &quot;error_rate&quot;: 0.28
+    },
+    {
+      &quot;subject&quot;: &quot;logical_fallacies&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 33,
+      &quot;error_rate&quot;: 0.22
+    },
+    {
+      &quot;subject&quot;: &quot;marketing&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 12,
+      &quot;error_rate&quot;: 0.08
+    },
+    {
+      &quot;subject&quot;: &quot;miscellaneous&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 17,
+      &quot;error_rate&quot;: 0.1133
+    },
+    {
+      &quot;subject&quot;: &quot;moral_disputes&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 42,
+      &quot;error_rate&quot;: 0.28
+    },
+    {
+      &quot;subject&quot;: &quot;moral_scenarios&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 84,
+      &quot;error_rate&quot;: 0.56
+    },
+    {
+      &quot;subject&quot;: &quot;nutrition&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 44,
+      &quot;error_rate&quot;: 0.2933
+    },
+    {
+      &quot;subject&quot;: &quot;obqa&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 29,
+      &quot;error_rate&quot;: 0.1933
+    },
+    {
+      &quot;subject&quot;: &quot;philosophy&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 36,
+      &quot;error_rate&quot;: 0.24
+    },
+    {
+      &quot;subject&quot;: &quot;prehistory&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 40,
+      &quot;error_rate&quot;: 0.2667
+    },
+    {
+      &quot;subject&quot;: &quot;professional_accounting&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 66,
+      &quot;error_rate&quot;: 0.44
+    },
+    {
+      &quot;subject&quot;: &quot;professional_law&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 76,
+      &quot;error_rate&quot;: 0.5067
+    },
+    {
+      &quot;subject&quot;: &quot;professional_medicine&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 36,
+      &quot;error_rate&quot;: 0.24
+    },
+    {
+      &quot;subject&quot;: &quot;professional_psychology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 39,
+      &quot;error_rate&quot;: 0.26
+    },
+    {
+      &quot;subject&quot;: &quot;security_studies&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 36,
+      &quot;error_rate&quot;: 0.24
+    },
+    {
+      &quot;subject&quot;: &quot;sociology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 23,
+      &quot;error_rate&quot;: 0.1533
+    },
+    {
+      &quot;subject&quot;: &quot;virology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 71,
+      &quot;error_rate&quot;: 0.4733
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_microeconomics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 30,
+      &quot;error_rate&quot;: 0.2
+    },
+    {
+      &quot;subject&quot;: &quot;world_religions&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 29,
+      &quot;error_rate&quot;: 0.1933
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_macroeconomics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 42,
+      &quot;error_rate&quot;: 0.28
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_biology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 23,
+      &quot;error_rate&quot;: 0.1533
+    },
+    {
+      &quot;subject&quot;: &quot;astronomy&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 38,
+      &quot;error_rate&quot;: 0.2533
+    },
+    {
+      &quot;subject&quot;: &quot;clinical_knowledge&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 25,
+      &quot;error_rate&quot;: 0.1667
+    },
+    {
+      &quot;subject&quot;: &quot;college_medicine&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 53,
+      &quot;error_rate&quot;: 0.3533
+    },
+    {
+      &quot;subject&quot;: &quot;conceptual_physics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 62,
+      &quot;error_rate&quot;: 0.4133
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_government_and_politics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 8,
+      &quot;error_rate&quot;: 0.0533
+    },
+    {
+      &quot;subject&quot;: &quot;elementary_mathematics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 60,
+      &quot;error_rate&quot;: 0.4
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_chemistry&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 63,
+      &quot;error_rate&quot;: 0.42
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_european_history&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 31,
+      &quot;error_rate&quot;: 0.2067
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_geography&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 22,
+      &quot;error_rate&quot;: 0.1467
+    },
+    {
+      &quot;subject&quot;: &quot;electrical_engineering&quot;,
+      &quot;n&quot;: 145,
+      &quot;errors&quot;: 59,
+      &quot;error_rate&quot;: 0.4069
+    },
+    {
+      &quot;subject&quot;: &quot;college_biology&quot;,
+      &quot;n&quot;: 144,
+      &quot;errors&quot;: 30,
+      &quot;error_rate&quot;: 0.2083
+    },
+    {
+      &quot;subject&quot;: &quot;anatomy&quot;,
+      &quot;n&quot;: 135,
+      &quot;errors&quot;: 43,
+      &quot;error_rate&quot;: 0.3185
+    },
+    {
+      &quot;subject&quot;: &quot;human_sexuality&quot;,
+      &quot;n&quot;: 131,
+      &quot;errors&quot;: 22,
+      &quot;error_rate&quot;: 0.1679
+    }
+  ],
+  &quot;by_subcat&quot;: [
+    {
+      &quot;subcat&quot;: &quot;health&quot;,
+      &quot;n&quot;: 1135,
+      &quot;errors&quot;: 338,
+      &quot;error_rate&quot;: 0.2978
+    },
+    {
+      &quot;subcat&quot;: &quot;philosophy&quot;,
+      &quot;n&quot;: 876,
+      &quot;errors&quot;: 292,
+      &quot;error_rate&quot;: 0.3333
+    },
+    {
+      &quot;subcat&quot;: &quot;math&quot;,
+      &quot;n&quot;: 650,
+      &quot;errors&quot;: 342,
+      &quot;error_rate&quot;: 0.5262
+    },
+    {
+      &quot;subcat&quot;: &quot;history&quot;,
+      &quot;n&quot;: 600,
+      &quot;errors&quot;: 119,
+      &quot;error_rate&quot;: 0.1983
+    },
+    {
+      &quot;subcat&quot;: &quot;physics&quot;,
+      &quot;n&quot;: 552,
+      &quot;errors&quot;: 246,
+      &quot;error_rate&quot;: 0.4457
+    },
+    {
+      &quot;subcat&quot;: &quot;other&quot;,
+      &quot;n&quot;: 550,
+      &quot;errors&quot;: 170,
+      &quot;error_rate&quot;: 0.3091
+    },
+    {
+      &quot;subcat&quot;: &quot;politics&quot;,
+      &quot;n&quot;: 510,
+      &quot;errors&quot;: 91,
+      &quot;error_rate&quot;: 0.1784
+    },
+    {
+      &quot;subcat&quot;: &quot;economics&quot;,
+      &quot;n&quot;: 414,
+      &quot;errors&quot;: 128,
+      &quot;error_rate&quot;: 0.3092
+    },
+    {
+      &quot;subcat&quot;: &quot;computer science&quot;,
+      &quot;n&quot;: 412,
+      &quot;errors&quot;: 165,
+      &quot;error_rate&quot;: 0.4005
+    },
+    {
+      &quot;subcat&quot;: &quot;law&quot;,
+      &quot;n&quot;: 379,
+      &quot;errors&quot;: 117,
+      &quot;error_rate&quot;: 0.3087
+    },
+    {
+      &quot;subcat&quot;: &quot;business&quot;,
+      &quot;n&quot;: 353,
+      &quot;errors&quot;: 57,
+      &quot;error_rate&quot;: 0.1615
+    },
+    {
+      &quot;subcat&quot;: &quot;psychology&quot;,
+      &quot;n&quot;: 300,
+      &quot;errors&quot;: 57,
+      &quot;error_rate&quot;: 0.19
+    },
+    {
+      &quot;subcat&quot;: &quot;biology&quot;,
+      &quot;n&quot;: 294,
+      &quot;errors&quot;: 53,
+      &quot;error_rate&quot;: 0.1803
+    },
+    {
+      &quot;subcat&quot;: &quot;culture&quot;,
+      &quot;n&quot;: 281,
+      &quot;errors&quot;: 45,
+      &quot;error_rate&quot;: 0.1601
+    },
+    {
+      &quot;subcat&quot;: &quot;chemistry&quot;,
+      &quot;n&quot;: 250,
+      &quot;errors&quot;: 117,
+      &quot;error_rate&quot;: 0.468
+    },
+    {
+      &quot;subcat&quot;: &quot;geography&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 22,
+      &quot;error_rate&quot;: 0.1467
+    },
+    {
+      &quot;subcat&quot;: &quot;engineering&quot;,
+      &quot;n&quot;: 145,
+      &quot;errors&quot;: 59,
+      &quot;error_rate&quot;: 0.4069
+    }
+  ],
+  &quot;by_cat&quot;: [
+    {
+      &quot;cat&quot;: &quot;STEM&quot;,
+      &quot;n&quot;: 2303,
+      &quot;errors&quot;: 982,
+      &quot;error_rate&quot;: 0.4264
+    },
+    {
+      &quot;cat&quot;: &quot;other (business, health, misc.)&quot;,
+      &quot;n&quot;: 1888,
+      &quot;errors&quot;: 536,
+      &quot;error_rate&quot;: 0.2839
+    },
+    {
+      &quot;cat&quot;: &quot;humanities&quot;,
+      &quot;n&quot;: 1855,
+      &quot;errors&quot;: 528,
+      &quot;error_rate&quot;: 0.2846
+    },
+    {
+      &quot;cat&quot;: &quot;social sciences&quot;,
+      &quot;n&quot;: 1655,
+      &quot;errors&quot;: 343,
+      &quot;error_rate&quot;: 0.2073
+    },
+    {
+      &quot;cat&quot;: &quot;other&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 29,
+      &quot;error_rate&quot;: 0.1933
+    }
+  ]
+}</pre>
+</body>
+</html>
