@@ -1,0 +1,26 @@
+{
+  "model_label": "mistral-mmlu",
+  "source_table": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage1/results/mistral_mmlu_predictions.csv",
+  "n_rows": 3,
+  "n_input_rows": 3,
+  "n_dropped_rows": 0,
+  "error_rate": 0.666667,
+  "top_subjects_by_error_rate": [
+    {
+      "subject": "college_mathematics",
+      "error_rate": 1.0
+    },
+    {
+      "subject": "machine_learning",
+      "error_rate": 1.0
+    },
+    {
+      "subject": "high_school_physics",
+      "error_rate": 0.0
+    }
+  ],
+  "figures_written": [
+    "mistral_mmlu_error_by_subject_top20.png"
+  ],
+  "figures_skipped": []
+}
