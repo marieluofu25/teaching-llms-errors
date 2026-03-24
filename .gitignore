@@ -1,3 +1,7 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
 # Logs
 logs
 *.log
@@ -77,5 +81,8 @@ pipeline/stage1_do_errors_exist/datasets/mmlu_df_gpt35.pkl
 *.npz
 pipeline_2026/stage2/s01_residual/results/*.csv
 pipeline_2026/stage2/s03_sae_encode/results/*.npz
+
+# Stage1 scratch / partial runs (full CSVs: commit only if small; regen from scripts)
+pipeline_2026/stage1/results/*.tmp.csv
 
 __pycache*
