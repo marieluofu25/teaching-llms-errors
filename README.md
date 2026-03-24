@@ -78,6 +78,37 @@ bash pipeline_2026/scripts/sae_encode_smoke.sh
 
 Manual CLI (set `PYTHONPATH` to `pipeline_2026`): see `pipeline_2026/config/manifest.yaml` and `pipeline_2026/README.md`.
 
+### Stage 1 update (paper vs Mistral side-by-side)
+
+Stage 1 now supports local MMLU export + full Mistral pass + notebook-aligned comparison figures:
+
+```bash
+cd pipeline_2026
+
+# 1) Export full MMLU to local JSONL
+python -m stage1.code.download_mmlu_dataset --output-dir stage1/data/mmlu_export --split test
+
+# 2) Run Mistral over local JSONL (no HF in eval loop)
+python -m stage1.code.run_mistral_mmlu_full \
+  --jsonl stage1/data/mmlu_export/mmlu_test_all_subjects.jsonl \
+  --out-csv stage1/results/mistral_mmlu_predictions.csv \
+  --resume
+
+# 3) Generate notebook-style MMLU mistral figures
+python -m stage1.code.mistral_notebook_figures \
+  --mistral-csv stage1/results/mistral_mmlu_predictions.csv \
+  --output-dir stage1/results
+
+# 4) Refresh stage1 audit report
+python -m stage2.s06_report.code.generate_stage_audit_html \
+  --stage paper_baseline \
+  --title "Stage 1 — Paper baseline" \
+  --readme stage1/README.md \
+  --results-dir stage1/results
+```
+
+Open: `pipeline_2026/stage1/results/audit.html`
+
 Baseline paper pipeline (LLM calls; configure `config/llm_settings.json` + key first):
 
 ```bash

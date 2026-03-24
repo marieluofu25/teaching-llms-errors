@@ -9,6 +9,31 @@
 - Regenerates **`stage1/results/audit.html`** so previews match whatever files are in `results/` (including all `paper_nb_*.png`). To run figures alone: `python stage1/code/notebook_paper_figures.py --output-dir /abs/path/to/stage1/results` (the script switches to `pipeline/` internally); or use `run_paper_baseline`.
 - When data is present, writes **`paper_mmlu_summary.json`** (includes `figures_written` / `figures_skipped`) and **11 PNGs** aligned with [`dataset-model-analysis.ipynb`](../../pipeline/stage1_do_errors_exist/dataset-model-analysis.ipynb) (one file per notebook figure).
 
+## Mistral-on-MMLU comparison flow (local-first)
+
+Stage 1 now supports side-by-side paper vs Mistral visuals in `results/audit.html`.
+
+1) Download/export full MMLU once:
+
+`python -m stage1.code.download_mmlu_dataset --output-dir stage1/data/mmlu_export --split test`
+
+2) Generate full Mistral predictions from local JSONL:
+
+`python -m stage1.code.run_mistral_mmlu_full --jsonl stage1/data/mmlu_export/mmlu_test_all_subjects.jsonl --out-csv stage1/results/mistral_mmlu_predictions.csv --resume`
+
+3) Build notebook-aligned MMLU Mistral figures:
+
+`python -m stage1.code.mistral_notebook_figures --mistral-csv stage1/results/mistral_mmlu_predictions.csv --output-dir stage1/results`
+
+4) Refresh audit page:
+
+`python -m stage2.s06_report.code.generate_stage_audit_html --stage paper_baseline --title "Stage 1 — Paper baseline" --readme stage1/README.md --results-dir stage1/results`
+
+Notes:
+- MMLU figure counterparts are generated for cells 03/05/07/09/11/13/16/18/19.
+- MathCAMPS cells 24/26 remain paper-only unless a separate MathCAMPS Mistral pipeline is provided.
+- Mistral figures use an orange palette for clear visual separation from paper (blue).
+
 ## Notebook cell → PNG filename
 
 | Notebook cell | Output file | Description |
