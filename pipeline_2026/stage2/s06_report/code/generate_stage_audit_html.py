@@ -75,6 +75,181 @@ def _truncate_cell(text: str, max_chars: int) -> str:
     return t[: max_chars - 1] + "…"
 
 
+def _coerce_bool(v: str) -> bool | None:
+    s = (v or "").strip().lower()
+    if s in {"true", "t", "1", "yes", "y"}:
+        return True
+    if s in {"false", "f", "0", "no", "n"}:
+        return False
+    return None
+
+
+def _stage1_compare_block(results_dir: Path, root: Path) -> str:
+    """Render paper-vs-mistral MMLU comparison for stage1/results."""
+    try:
+        rel = results_dir.resolve().relative_to(root.resolve())
+    except ValueError:
+        return ""
+    if rel.parts[:2] != ("stage1", "results"):
+        return ""
+
+    paper_summary = results_dir / "paper_mmlu_summary.json"
+    mistral_csv = results_dir / "mistral_mmlu_predictions.csv"
+    mistral_summary = results_dir / "mistral_mmlu_summary.json"
+    if not paper_summary.is_file() or not mistral_csv.is_file():
+        return ""
+
+    try:
+        p = json.loads(paper_summary.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return ""
+
+    model_label = "mistral"
+    if mistral_summary.is_file():
+        try:
+            ms = json.loads(mistral_summary.read_text(encoding="utf-8"))
+            model_label = str(ms.get("model_label") or model_label)
+        except (OSError, json.JSONDecodeError):
+            pass
+
+    # Compute mistral metrics directly from CSV so report reflects latest run.
+    n_rows = 0
+    n_wrong = 0
+    by_subject: dict[str, list[bool]] = {}
+    try:
+        with open(mistral_csv, newline="", encoding="utf-8") as f:
+            r = csv.DictReader(f)
+            for row in r:
+                subject = str(row.get("subject") or "").strip()
+                ok = _coerce_bool(str(row.get("ai_correct") or ""))
+                if not subject or ok is None:
+                    continue
+                n_rows += 1
+                if not ok:
+                    n_wrong += 1
+                by_subject.setdefault(subject, []).append(ok)
+    except OSError:
+        return ""
+    if n_rows == 0:
+        return (
+            "<h2>MMLU comparison: Paper vs Mistral</h2>"
+            "<p class=\"muted\">Mistral CSV exists but has no valid rows with columns "
+            "<code>subject</code> and <code>ai_correct</code>.</p>"
+        )
+
+    m_err = n_wrong / float(n_rows)
+    p_err = float(p.get("error_rate", 0.0))
+    m_top = sorted(
+        (
+            (subject, sum(1 for x in vals if not x) / float(len(vals)))
+            for subject, vals in by_subject.items()
+        ),
+        key=lambda x: x[1],
+        reverse=True,
+    )[:10]
+    p_top = [str(x.get("subject", "")) for x in p.get("top_subjects_by_error_rate", [])[:10]]
+    overlap = sorted(set(p_top) & set(s for s, _ in m_top))
+    overlap_txt = ", ".join(overlap[:8]) if overlap else "none"
+
+    tb = ['<table class="data"><thead><tr>']
+    tb.append("<th>model</th><th>n_rows</th><th>error_rate</th><th>delta_vs_paper</th>")
+    tb.append("</tr></thead><tbody>")
+    tb.append(
+        "<tr>"
+        "<td>paper_baseline</td>"
+        f"<td>{html.escape(str(p.get('n_rows', 'n/a')))}</td>"
+        f"<td>{html.escape(str(round(p_err, 6)))}</td>"
+        "<td>0.0</td>"
+        "</tr>"
+    )
+    tb.append(
+        "<tr>"
+        f"<td>{html.escape(model_label)}</td>"
+        f"<td>{html.escape(str(n_rows))}</td>"
+        f"<td>{html.escape(str(round(m_err, 6)))}</td>"
+        f"<td>{html.escape(str(round(m_err - p_err, 6)))}</td>"
+        "</tr>"
+    )
+    tb.append("</tbody></table>")
+
+    # All Stage1 paper figure pairs (paper vs mistral), shown side-by-side.
+    pair_map = [
+        ("paper_mmlu_error_by_subject_top20.png", "mistral_mmlu_error_by_subject_top20.png", "Top20 quick view"),
+        ("paper_nb_cell03_mmlu_math_reg.png", "mistral_nb_cell03_mmlu_math_reg.png", "Cell 03: MMLU math-reg"),
+        ("paper_nb_cell05_mmlu_health_reg.png", "mistral_nb_cell05_mmlu_health_reg.png", "Cell 05: MMLU health-reg"),
+        (
+            "paper_nb_cell07_mmlu_subcat_computer_science.png",
+            "mistral_nb_cell07_mmlu_subcat_computer_science.png",
+            "Cell 07: MMLU subcat computer science",
+        ),
+        ("paper_nb_cell09_mmlu_all_subjects.png", "mistral_nb_cell09_mmlu_all_subjects.png", "Cell 09: all subjects"),
+        ("paper_nb_cell11_mmlu_by_subcat.png", "mistral_nb_cell11_mmlu_by_subcat.png", "Cell 11: by subcat"),
+        (
+            "paper_nb_cell13_mmlu_subcats_psych_physics_math.png",
+            "mistral_nb_cell13_mmlu_subcats_psych_physics_math.png",
+            "Cell 13: psychology/physics/math",
+        ),
+        (
+            "paper_nb_cell16_mmlu_math_health_vertical.png",
+            "mistral_nb_cell16_mmlu_math_health_vertical.png",
+            "Cell 16: math+health vertical",
+        ),
+        (
+            "paper_nb_cell18_mmlu_math_health_horizontal.png",
+            "mistral_nb_cell18_mmlu_math_health_horizontal.png",
+            "Cell 18: math+health horizontal",
+        ),
+        (
+            "paper_nb_cell19_mmlu_subcats_grid.png",
+            "mistral_nb_cell19_mmlu_subcats_grid.png",
+            "Cell 19: subcat grid",
+        ),
+        (
+            "paper_nb_cell24_mathcamps_gpt_claude_sonnet.png",
+            "mistral_nb_cell24_mathcamps_gpt_claude_sonnet.png",
+            "Cell 24: MathCAMPS GPT/Claude",
+        ),
+        (
+            "paper_nb_cell26_mathcamps_claude_family.png",
+            "mistral_nb_cell26_mathcamps_claude_family.png",
+            "Cell 26: MathCAMPS Claude family",
+        ),
+    ]
+    pair_rows = []
+    for paper_name, mistral_name, label in pair_map:
+        p_ok = (results_dir / paper_name).is_file()
+        m_ok = (results_dir / mistral_name).is_file()
+        if not p_ok:
+            continue
+        m_cell = (
+            f'<img src="{html.escape(mistral_name)}" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" />'
+            if m_ok
+            else '<span class="muted">Not available for Mistral in current artifacts.</span>'
+        )
+        pair_rows.append(
+            "<tr>"
+            f"<td>{html.escape(label)}</td>"
+            f'<td><img src="{html.escape(paper_name)}" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></td>'
+            f"<td>{m_cell}</td>"
+            "</tr>"
+        )
+    pair_block = ""
+    if pair_rows:
+        pair_block = (
+            "<h3>Paper figures vs Mistral (side-by-side)</h3>"
+            '<table class="data"><thead><tr><th>figure</th><th>paper</th><th>mistral</th></tr></thead><tbody>'
+            + "".join(pair_rows)
+            + "</tbody></table>"
+        )
+
+    return (
+        "<h2>MMLU comparison: Paper vs Mistral</h2>"
+        + "".join(tb)
+        + f'<p class="muted">Top-10 subject overlap: {html.escape(overlap_txt)}</p>'
+        + pair_block
+    )
+
+
 def _file_block(
     path: Path,
     *,
@@ -190,6 +365,7 @@ def build_audit_html(
                 )
     except ValueError:
         pass
+    compare_block = _stage1_compare_block(results_dir, root)
 
     body_files = ""
     if not files:
@@ -234,6 +410,7 @@ def build_audit_html(
   <h1>{html.escape(title)}</h1>
   <p class="muted">Audit generated {html.escape(utc)}</p>
   <div class="excerpt">{readme_excerpt}</div>
+  {compare_block}
   {report_callout}
   <h2>Artifacts in <code>{html.escape(str(results_dir.relative_to(root)))}</code></h2>
   {body_files}
