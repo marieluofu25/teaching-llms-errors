@@ -20,6 +20,7 @@ DATA_ROOT = teaching_llms_errors_repo_root()
 
 
 def _flatten_mathcamps(obj, model_filter: str | None = None) -> list[dict]:
+    """Flatten nested MathCAMPs JSON into row records for one model (optional)."""
     rows: list[dict] = []
 
     def visit(node):
@@ -50,6 +51,7 @@ def _flatten_mathcamps(obj, model_filter: str | None = None) -> list[dict]:
 
 
 def load_mmlu_dataframe(pickle_path: Path) -> pd.DataFrame:
+    """Load MMLU pickle and derive canonical columns for Stage 2 processing."""
     df = pd.read_pickle(pickle_path)
     df = df.copy()
     df["subject"] = df["metadata"].apply(lambda x: x[0])
@@ -61,6 +63,7 @@ def load_mmlu_dataframe(pickle_path: Path) -> pd.DataFrame:
 
 
 def main() -> None:
+    """CLI entrypoint for residual-control preprocessing and artifact writing."""
     parser = argparse.ArgumentParser(description="Residual-control preprocessing")
     parser.add_argument(
         "--dataset",

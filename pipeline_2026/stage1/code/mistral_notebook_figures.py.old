@@ -12,6 +12,7 @@ from pathlib import Path
 
 
 def _prepare_legacy_pipeline_cwd() -> Path:
+    """Configure cwd/sys.path so legacy ``pipeline/`` imports resolve correctly."""
     here = Path(__file__).resolve()
     pipeline_2026 = here.parents[2]
     repo = pipeline_2026.parent
@@ -43,6 +44,7 @@ MMLU_PICKLE = Path("stage1_do_errors_exist/datasets/mmlu_df_gpt35.pkl")
 
 
 def _coerce_bool(v: object) -> bool | None:
+    """Parse loose truthy/falsey values from CSV cells."""
     if isinstance(v, bool):
         return v
     s = str(v).strip().lower()
@@ -54,6 +56,7 @@ def _coerce_bool(v: object) -> bool | None:
 
 
 def _cmap_oranges():
+    """Return an Oranges colormap compatible with old/new matplotlib APIs."""
     reg = getattr(matplotlib, "colormaps", None)
     if reg is not None:
         return reg["Oranges"]
@@ -61,6 +64,7 @@ def _cmap_oranges():
 
 
 def _plot_metrics_orange(data: dict) -> None:
+    """Draw single-panel horizontal metric bars with coverage color scale."""
     sorted_items = sorted(data.items(), key=lambda x: x[1]["wrongVScorrect"])
     properties = [item[0] for item in sorted_items]
     wrong_vs_correct = np.array([data[p]["wrongVScorrect"] for p in properties])
@@ -89,6 +93,7 @@ def _plot_metrics_fig_orange(
     max_items: int = 10,
     fsize: int = 12,
 ) -> None:
+    """Draw one subplot with top items and orange coverage shading."""
     sorted_items = sorted(data.items(), key=lambda x: x[1]["wrongVScorrect"])
     selected_items = sorted_items[-max_items:]
     properties = [item[0] for item in selected_items]
@@ -105,6 +110,7 @@ def _plot_metrics_fig_orange(
 
 
 def _save_plot_metrics(qm: dict, out: Path, filename: str, written: list[str], skipped: list[dict]) -> None:
+    """Render+save metric bars while tracking skipped figures."""
     try:
         _plot_metrics_orange(qm)
         fig = plt.gcf()
@@ -117,6 +123,7 @@ def _save_plot_metrics(qm: dict, out: Path, filename: str, written: list[str], s
 
 
 def _save_figure(fig, out: Path, filename: str, written: list[str], skipped: list[dict]) -> None:
+    """Persist figure output and close handles in all cases."""
     try:
         fig.savefig(out / filename, dpi=300, bbox_inches="tight", pad_inches=0.05)
         written.append(filename)
@@ -127,6 +134,7 @@ def _save_figure(fig, out: Path, filename: str, written: list[str], skipped: lis
 
 
 def _load_subject_map() -> pd.DataFrame:
+    """Load subject/subcat/cat map from the canonical MMLU pickle."""
     if not MMLU_PICKLE.is_file():
         raise FileNotFoundError(str(MMLU_PICKLE.resolve()))
     df = pd.read_pickle(MMLU_PICKLE)
@@ -159,6 +167,7 @@ def _paper_subcat_order() -> list[str]:
 
 
 def _load_mistral_df(csv_path: Path) -> tuple[pd.DataFrame, int, int]:
+    """Read mistral predictions CSV and return normalized boolean rows."""
     rows: list[dict] = []
     in_rows = 0
     with open(csv_path, newline="", encoding="utf-8") as f:
@@ -175,6 +184,7 @@ def _load_mistral_df(csv_path: Path) -> tuple[pd.DataFrame, int, int]:
 
 
 def main() -> None:
+    """Generate Mistral notebook-style MMLU comparison figures and summary."""
     p = argparse.ArgumentParser()
     p.add_argument("--mistral-csv", type=Path, required=True)
     p.add_argument("--output-dir", type=Path, required=True)

@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 def main() -> None:
+    """Render a compact bar chart for residual proxy metrics."""
     p = argparse.ArgumentParser()
     p.add_argument("--metrics-json", type=Path, required=True)
     p.add_argument("--output", type=Path, required=True, help="PNG path")

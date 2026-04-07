@@ -68,6 +68,7 @@ node_modules/
 
 # dotenv environment variables file
 .env
+pipeline_2026/chpc/env.local.sh
 
 # log files
 log/
@@ -86,3 +87,6 @@ pipeline_2026/stage2/s03_sae_encode/results/*.npz
 pipeline_2026/stage1/results/*.tmp.csv
 
 __pycache*
+
+dummy
+local_only

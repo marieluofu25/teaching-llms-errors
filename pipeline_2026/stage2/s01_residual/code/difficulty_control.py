@@ -20,6 +20,7 @@ def extract_difficulty_features(text: str) -> list:
 
 
 def _build_xy(df: pd.DataFrame, text_col: str, error_col: str):
+    """Create model matrix X and binary label vector y from a residual DataFrame."""
     X = np.array([extract_difficulty_features(t) for t in df[text_col]])
     y = df[error_col].values
     return X, y

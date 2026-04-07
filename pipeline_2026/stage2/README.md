@@ -13,4 +13,8 @@ This stage holds the **residual-controlled + SAE + reporting** pipeline from the
 
 **Run all:** `bash scripts/run_pipeline_2026.sh mmlu-real` (from `pipeline_2026/`).
 
+**Developer reference (every segment file/function I/O):** [STAGE2_DEVELOPER_MAP.md](STAGE2_DEVELOPER_MAP.md).
+
+**CHPC (Slurm):** [chpc/README.md](../chpc/README.md).
+
 **Audits:** open `stage2/<segment>/results/audit.html`. Navigation links to **Stage 1 — Paper baseline** and sibling segments.

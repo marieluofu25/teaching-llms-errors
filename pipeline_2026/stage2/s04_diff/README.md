@@ -6,6 +6,10 @@
 
 **Inputs:** **s01_residual** CSV + **s03_sae_encode** `.npz` (or **s02_export** hidden `.npz` only if SAE encode skipped).
 
-**Outputs (in `results/`):** Ranked `*.csv` (`latent_id`, statistics), optional `*.diagnostics.json`.
+**Outputs (in `results/`):**
+- Ranked `*.csv` (`latent_id`, statistics)
+- `*.diagnostics.json`
+- `*.pattern_membership.csv` (long-form row x pattern membership)
+- `*.pattern_catalog.json` (pattern metadata + thresholds used for membership)
 
 **Audit:** `results/audit.html`

@@ -1,9 +1,13 @@
 # Stage 2 — s05_eval — Set-level metrics & plots
 
-**Goal (per project plan):** **Coverage** and **concentration** of errors in the High Residual group, plus optional merge of Stage-2 judge JSON; leaderboard row and bar chart for quick comparison across runs.
+**Goal (per project plan):** full set-level metrics (**predictive utility, coverage, concentration, redundancy, stability**) from pattern memberships, plus residual-group proxies and optional Stage-2 judge merge.
 
-**Code:** `stage2/s05_eval/code/evaluate_pattern_sets.py`, `plot_residual_summary.py` · shared: `lib/`
+**Code:** `stage2/s05_eval/code/evaluate_pattern_sets.py`, `aggregate_stability.py`, `plot_residual_summary.py` · shared: `lib/`
 
-**Outputs (in `results/`):** `*_metrics.json`, `leaderboard.csv`, `*_residual_bar.png`.
+**Outputs (in `results/`):**
+- `*_metrics.json` (includes `set_level_metrics` + residual proxies)
+- `leaderboard.csv` (columns for all five metrics)
+- `*_residual_bar.png` (proxy visualization)
+- optional stability aggregate JSON from `aggregate_stability.py`
 
 **Audit:** `results/audit.html`

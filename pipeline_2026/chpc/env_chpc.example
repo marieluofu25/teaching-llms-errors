@@ -1,0 +1,29 @@
+# Copy to env.local.sh (gitignored recommended) or paste exports into your Slurm prologue.
+# Repo-root .env.example lists the same credential names for documentation.
+
+# --- Hugging Face (export + SAELens checkpoint download) ---
+export HF_TOKEN=
+# export HUGGING_FACE_HUB_TOKEN=   # alternative name recognized by huggingface_hub
+
+# --- Optional: pin visible GPU on shared nodes ---
+# export CUDA_VISIBLE_DEVICES=0
+
+# --- pipeline_2026/scripts/run_pipeline_2026.sh mmlu-real ---
+export EXPORT_DEVICE=cuda
+export EXPORT_FP16=1
+# export EXPORT_BATCH_SIZE=8
+# export SAE_BATCH_SIZE=32
+# export EXPORT_MAX_ROWS=500
+
+# Default stack is GPT-2 + JB SAE; for Gemma, align layer with SAE hook (see pipeline_2026/docs/sae_checkpoints.md).
+# export EXPORT_MODEL=google/gemma-2-2b
+# export EXPORT_LAYER_INDEX=12
+# export SAE_RELEASE=gemma-scope-2b-pt-res-canonical
+# export SAE_ID=layer_12/width_16k/canonical
+
+# export SAE_ENCODE=0
+
+# --- Legacy pipeline / APIs (not required for Stage 2 HF+SAE) ---
+# export MISTRAL_API_KEY=
+# export OPENAI_API_KEY=
+# export TOGETHER_API_KEY=

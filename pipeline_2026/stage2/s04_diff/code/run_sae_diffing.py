@@ -18,7 +18,52 @@ from lib.io_schema import validate_activations_shape
 from stage2.s04_diff.code.sae_diffing import discover_failure_patterns
 
 
+def _membership_matrix(
+    acts: np.ndarray,
+    latent_ids: list[int],
+    *,
+    quantile: float,
+) -> tuple[np.ndarray, dict[int, float]]:
+    """Build binary membership matrix from latent activations.
+
+    A row is a member of a pattern if the activation for that pattern's latent
+    is above the requested quantile threshold across all rows.
+    """
+    if not latent_ids:
+        return np.zeros((acts.shape[0], 0), dtype=np.int8), {}
+    thresholds: dict[int, float] = {}
+    columns: list[np.ndarray] = []
+    for latent_id in latent_ids:
+        vals = np.asarray(acts[:, latent_id], dtype=float)
+        thr = float(np.quantile(vals, quantile))
+        thresholds[latent_id] = thr
+        columns.append((vals >= thr).astype(np.int8))
+    return np.stack(columns, axis=1), thresholds
+
+
+def _build_membership_frame(
+    membership: np.ndarray,
+    *,
+    row_count: int,
+    latent_ids: list[int],
+) -> pd.DataFrame:
+    """Convert matrix to long-form DataFrame for downstream metrics."""
+    rows: list[dict[str, int]] = []
+    for row_id in range(row_count):
+        for j, latent_id in enumerate(latent_ids):
+            rows.append(
+                {
+                    "row_id": row_id,
+                    "pattern_id": j,
+                    "latent_id": latent_id,
+                    "is_member": int(membership[row_id, j]),
+                }
+            )
+    return pd.DataFrame(rows)
+
+
 def main() -> None:
+    """Run Welch diffing and write ranked latents + optional membership artifacts."""
     parser = argparse.ArgumentParser(description="SAE diffing runner")
     parser.add_argument(
         "--activations",
@@ -38,7 +83,27 @@ def main() -> None:
     parser.add_argument("--fdr", action="store_true")
     parser.add_argument("--output", type=Path, required=True, help="CSV of ranked latents")
     parser.add_argument("--output-diagnostics", type=Path, default=None)
+    parser.add_argument(
+        "--output-membership",
+        type=Path,
+        default=None,
+        help="Optional long CSV (row_id, pattern_id, latent_id, is_member)",
+    )
+    parser.add_argument(
+        "--output-pattern-catalog",
+        type=Path,
+        default=None,
+        help="Optional JSON catalog of discovered patterns and thresholds",
+    )
+    parser.add_argument(
+        "--membership-quantile",
+        type=float,
+        default=0.90,
+        help="Quantile threshold for membership assignment (0, 1)",
+    )
     args = parser.parse_args()
+    if not (0.0 < args.membership_quantile < 1.0):
+        raise ValueError("--membership-quantile must be in (0, 1)")
 
     data = np.load(args.activations, allow_pickle=True)
     if "activations" not in data:
@@ -74,7 +139,43 @@ def main() -> None:
     diag_path = args.output_diagnostics or args.output.with_suffix(".diagnostics.json")
     with open(diag_path, "w", encoding="utf-8") as f:
         json.dump(diagnostics, f, indent=2)
-    print(f"Wrote {args.output} ({len(discovered)} latents), {diag_path}")
+    latent_ids = [int(x["latent_id"]) for x in discovered]
+    membership, thresholds = _membership_matrix(
+        acts, latent_ids, quantile=args.membership_quantile
+    )
+    membership_path = (
+        args.output_membership or args.output.with_suffix(".pattern_membership.csv")
+    )
+    catalog_path = (
+        args.output_pattern_catalog or args.output.with_suffix(".pattern_catalog.json")
+    )
+    membership_df = _build_membership_frame(
+        membership, row_count=acts.shape[0], latent_ids=latent_ids
+    )
+    membership_df.to_csv(membership_path, index=False)
+    catalog = {
+        "n_rows": int(acts.shape[0]),
+        "n_patterns": int(len(latent_ids)),
+        "membership_quantile": float(args.membership_quantile),
+        "patterns": [
+            {
+                "pattern_id": i,
+                "latent_id": latent_id,
+                "threshold": thresholds.get(latent_id),
+                "V_prime": discovered[i]["V_prime"],
+                "p_value": discovered[i]["p_value"],
+                "p_adjusted": discovered[i]["p_adjusted"],
+            }
+            for i, latent_id in enumerate(latent_ids)
+        ],
+    }
+    with open(catalog_path, "w", encoding="utf-8") as f:
+        json.dump(catalog, f, indent=2)
+    print(
+        "Wrote "
+        f"{args.output} ({len(discovered)} latents), {diag_path}, "
+        f"{membership_path}, {catalog_path}"
+    )
 
 
 if __name__ == "__main__":

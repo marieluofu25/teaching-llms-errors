@@ -53,20 +53,28 @@ MODE="${1:-mmlu}"
 run_eval() {
   local label="$1"
   local csv="$2"
-  if [[ -n "${JUDGE_JSON:-}" && -f "${JUDGE_JSON}" ]]; then
-    "${PY}" -m stage2.s05_eval.code.evaluate_pattern_sets \
-      --residual-csv "${csv}" \
-      --label "${label}" \
-      --output-json "${S05}/${label}_metrics.json" \
-      --output-table "${S05}/leaderboard.csv" \
-      --judge-json "${JUDGE_JSON}"
-  else
-    "${PY}" -m stage2.s05_eval.code.evaluate_pattern_sets \
-      --residual-csv "${csv}" \
-      --label "${label}" \
-      --output-json "${S05}/${label}_metrics.json" \
-      --output-table "${S05}/leaderboard.csv"
+  local membership="${3:-}"
+  local catalog="${4:-}"
+  local stability_catalogs="${5:-}"
+  local eval_args=( -m stage2.s05_eval.code.evaluate_pattern_sets
+    --residual-csv "${csv}"
+    --label "${label}"
+    --output-json "${S05}/${label}_metrics.json"
+    --output-table "${S05}/leaderboard.csv"
+  )
+  if [[ -n "${membership}" && -f "${membership}" ]]; then
+    eval_args+=( --pattern-membership "${membership}" )
   fi
+  if [[ -n "${catalog}" && -f "${catalog}" ]]; then
+    eval_args+=( --pattern-catalog "${catalog}" )
+  fi
+  if [[ -n "${stability_catalogs}" ]]; then
+    eval_args+=( --stability-catalogs "${stability_catalogs}" )
+  fi
+  if [[ -n "${JUDGE_JSON:-}" && -f "${JUDGE_JSON}" ]]; then
+    eval_args+=( --judge-json "${JUDGE_JSON}" )
+  fi
+  "${PY}" "${eval_args[@]}"
   "${PY}" -m stage2.s05_eval.code.plot_residual_summary \
     --metrics-json "${S05}/${label}_metrics.json" \
     --output "${S05}/${label}_residual_bar.png"
@@ -258,13 +266,16 @@ case "${MODE}" in
       echo "==> SAE_ENCODE=0: skip s03_sae_encode"
     fi
     echo "==> Stage 2 — s04_diff — Welch diff on coordinates…"
+    MEMBERSHIP_MAIN="${S04}/mmlu_hf_latents.pattern_membership.csv"
+    CATALOG_MAIN="${S04}/mmlu_hf_latents.pattern_catalog.json"
     "${PY}" -m stage2.s04_diff.code.run_sae_diffing \
       --activations "${DIFF_NPZ}" \
       --residual-csv "${RES_WORK}" \
       --min-group-size 30 \
+      --output-membership "${MEMBERSHIP_MAIN}" \
+      --output-pattern-catalog "${CATALOG_MAIN}" \
       --output "${LAT_OUT}" || true
     run_audit "${S04}" "s04_diff" "Stage 2 — s04_diff — Coordinate-wise group comparison" "${P26}/stage2/s04_diff/README.md"
-    echo "==> Stage 2 — s05_eval — Evaluate + plot…"
     EVAL_TAG="mmlu_gpt35_hf_activations"
     if [[ "${SAE_ENCODE}" == "1" ]]; then
       EVAL_TAG="mmlu_gpt35_sae_latents"
@@ -272,7 +283,35 @@ case "${MODE}" in
     if [[ -n "${EXPORT_MAX_ROWS:-}" ]]; then
       EVAL_TAG="${EVAL_TAG}_head_${EXPORT_MAX_ROWS}"
     fi
-    run_eval "${EVAL_TAG}" "${RES_WORK}"
+    STABILITY_CATALOGS=""
+    if [[ -n "${STABILITY_SEEDS:-}" ]]; then
+      echo "==> Stage 2 — stability runs over seeds: ${STABILITY_SEEDS}"
+      IFS=',' read -r -a SEEDS <<< "${STABILITY_SEEDS}"
+      for seed in "${SEEDS[@]}"; do
+        seed="$(echo "${seed}" | xargs)"
+        [[ -z "${seed}" ]] && continue
+        RES_SEED="${S01}/mmlu_gpt35_residuals_seed_${seed}.csv"
+        LAT_SEED="${S04}/mmlu_hf_latents_seed_${seed}.csv"
+        MEM_SEED="${S04}/mmlu_hf_latents_seed_${seed}.pattern_membership.csv"
+        CAT_SEED="${S04}/mmlu_hf_latents_seed_${seed}.pattern_catalog.json"
+        "${PY}" -m stage2.s01_residual.code.run_residual_control \
+          --dataset mmlu \
+          --output "${RES_SEED}" \
+          --fit-mode train_only \
+          --random-state "${seed}"
+        "${PY}" -m stage2.s04_diff.code.run_sae_diffing \
+          --activations "${DIFF_NPZ}" \
+          --residual-csv "${RES_SEED}" \
+          --min-group-size 30 \
+          --output-membership "${MEM_SEED}" \
+          --output-pattern-catalog "${CAT_SEED}" \
+          --output "${LAT_SEED}" || true
+        run_eval "${EVAL_TAG}_seed_${seed}" "${RES_SEED}" "${MEM_SEED}" "${CAT_SEED}"
+        STABILITY_CATALOGS="${STABILITY_CATALOGS}${STABILITY_CATALOGS:+,}${CAT_SEED}"
+      done
+    fi
+    echo "==> Stage 2 — s05_eval — Evaluate + plot…"
+    run_eval "${EVAL_TAG}" "${RES_WORK}" "${MEMBERSHIP_MAIN}" "${CATALOG_MAIN}" "${STABILITY_CATALOGS}"
     run_audit "${S05}" "s05_eval" "Stage 2 — s05_eval — Set-level metrics" "${P26}/stage2/s05_eval/README.md"
     export METRICS_JSON="${S05}/${EVAL_TAG}_metrics.json"
     export ACTIVATIONS_NPZ="${DIFF_NPZ}"

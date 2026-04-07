@@ -166,6 +166,22 @@ def _format_executive_summary_html(release: dict) -> str:
             f"<p class=\"muted\"><strong>From evaluate_pattern_sets:</strong> "
             f"coverage of errors in High Residual group = {hr.get('coverage_of_errors', 0):.3f}.</p>"
         )
+    final_metrics_note = ""
+    if release.get("final_set_level_metrics"):
+        sm = release["final_set_level_metrics"]
+        cc = sm.get("coverage_concentration", {})
+        pu = sm.get("predictive_utility", {})
+        rd = sm.get("redundancy", {})
+        st = sm.get("stability", {})
+        final_metrics_note = (
+            "<p class=\"muted\"><strong>Final set-level metrics:</strong> "
+            f"coverage={cc.get('coverage', 0):.3f}, "
+            f"concentration={cc.get('concentration', 0):.3f}, "
+            f"predictive utility (AUC)={pu.get('auc') if pu.get('auc') is not None else 'NA'}, "
+            f"redundancy (avg Jaccard)={rd.get('avg_pairwise_jaccard', 0):.3f}, "
+            f"stability overlap@k={st.get('overlap_at_k_mean') if st.get('overlap_at_k_mean') is not None else 'NA'}."
+            "</p>"
+        )
 
     return f"""
   <div class="executive-summary {vclass}">
@@ -178,6 +194,7 @@ def _format_executive_summary_html(release: dict) -> str:
       accuracy = <strong>{100 * acc:.2f}%</strong>.
     </p>
     {eval_note}
+    {final_metrics_note}
     <p><strong>Gate verdict:</strong> <span class="verdict-tag">{html.escape(str(verdict).upper())}</span> ({thr_str})</p>
     {viol_html}
     <h3>Performance by MMLU subject</h3>

@@ -18,12 +18,14 @@ ROOT = pipeline_2026_root()
 
 
 def _load_thresholds(path: Path) -> dict:
+    """Load threshold gate settings from YAML."""
     with open(path, "r", encoding="utf-8") as f:
         raw = yaml.safe_load(f) or {}
     return raw.get("gates") or {}
 
 
 def _behavioral_model_info(df: pd.DataFrame) -> dict:
+    """Infer behavioral model metadata from residual CSV columns."""
     if "ai_model" in df.columns:
         vals = df["ai_model"].dropna().astype(str).unique().tolist()
         mode = df["ai_model"].dropna().astype(str).mode()
@@ -40,6 +42,7 @@ def _behavioral_model_info(df: pd.DataFrame) -> dict:
 
 
 def _per_subject_stats(df: pd.DataFrame) -> pd.DataFrame:
+    """Aggregate per-subject error rate table when subject is available."""
     if "subject" not in df.columns:
         return pd.DataFrame()
     g = df.groupby("subject", dropna=False)["is_error"].agg(["count", "mean"])
@@ -54,6 +57,7 @@ def _apply_gates(
     per_subject: pd.DataFrame,
     gates: dict,
 ) -> tuple[str, list[dict]]:
+    """Apply threshold gates and produce pass/fail verdict with violations."""
     violations: list[dict] = []
     max_g = float(gates.get("max_error_rate_global", 1.0))
     max_w = float(gates.get("max_error_rate_worst_subject", 1.0))
@@ -93,6 +97,7 @@ def build_release_summary(
     activations_meta: dict | None,
     thresholds: dict,
 ) -> dict:
+    """Build release summary dictionary for JSON export."""
     df = df.copy()
     if "is_error" not in df.columns:
         raise ValueError("DataFrame must contain is_error")
@@ -127,10 +132,13 @@ def build_release_summary(
     }
     if metrics_json and "residual_metrics" in metrics_json:
         out["residual_metrics_from_eval"] = metrics_json["residual_metrics"]
+    if metrics_json and "set_level_metrics" in metrics_json:
+        out["final_set_level_metrics"] = metrics_json["set_level_metrics"]
     return out
 
 
 def main() -> None:
+    """CLI entrypoint for release summary generation."""
     p = argparse.ArgumentParser(description="Build release_readiness.json from residual CSV")
     p.add_argument("--residual-csv", type=Path, required=True)
     p.add_argument("--metrics-json", type=Path, default=None, help="Output from evaluate_pattern_sets")

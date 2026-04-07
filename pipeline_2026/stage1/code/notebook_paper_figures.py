@@ -59,6 +59,7 @@ MC_ANTHROPIC = Path("stage1_do_errors_exist/datasets/mathcamps/model-responses/v
 
 
 def _cmap_blues():
+    """Return a Blues colormap compatible with old/new matplotlib APIs."""
     reg = getattr(matplotlib, "colormaps", None)
     if reg is not None:
         return reg["Blues"]
@@ -73,6 +74,7 @@ def _save_plot_metrics(
     written: list[str],
     skipped: list[dict],
 ) -> None:
+    """Render a metric chart via utils and write it to disk safely."""
     try:
         plot_metrics(qm)
         fig = plt.gcf()
@@ -86,6 +88,7 @@ def _save_plot_metrics(
 
 
 def _save_figure(fig, out: Path, filename: str, written: list[str], skipped: list[dict]) -> None:
+    """Save an already-built figure and track success/failure."""
     try:
         path = out / filename
         fig.savefig(path, dpi=300, bbox_inches="tight", pad_inches=0.05)
@@ -97,6 +100,7 @@ def _save_figure(fig, out: Path, filename: str, written: list[str], skipped: lis
 
 
 def main() -> None:
+    """Generate notebook-aligned paper baseline figures and summary JSON."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()

@@ -260,7 +260,13 @@ def _file_block(
 ) -> str:
     rel = html.escape(path.name)
     size = path.stat().st_size
-    parts = [f"<h4><code>{rel}</code></h4><p class=\"muted\">{size} bytes</p>"]
+    mtime = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc).strftime(
+        "%Y-%m-%d %H:%M:%S UTC"
+    )
+    parts = [
+        f"<h4><code>{rel}</code></h4>"
+        f"<p class=\"muted\">{size} bytes · modified {html.escape(mtime)}</p>"
+    ]
     suf = path.suffix.lower()
     if suf == ".csv" and max_csv_rows > 0:
         try:
@@ -343,7 +349,11 @@ def build_audit_html(
     if not results_dir.is_dir():
         files: list[Path] = []
     else:
-        files = sorted(results_dir.iterdir(), key=lambda p: p.name.lower())
+        # Newest artifacts first, with deterministic tie-break by filename.
+        files = sorted(
+            results_dir.iterdir(),
+            key=lambda p: (-p.stat().st_mtime, p.name.lower()),
+        )
 
     nav_html = _nav_html(results_dir, root)
     if not nav_html:
@@ -409,6 +419,7 @@ def build_audit_html(
   <p class="nav"><strong>pipeline_2026</strong> &mdash; {nav_html}</p>
   <h1>{html.escape(title)}</h1>
   <p class="muted">Audit generated {html.escape(utc)}</p>
+  <p class="muted">Artifacts are ordered by last-modified timestamp (newest first), then filename.</p>
   <div class="excerpt">{readme_excerpt}</div>
   {compare_block}
   {report_callout}

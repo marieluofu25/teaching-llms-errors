@@ -1,6 +1,6 @@
 # Stage 2 — s06_report — Release summary & HTML reporting
 
-**Goal:** Executive-style JSON (error rates, per-subject table, threshold gates) and the **five-tab HTML** report tying together residual data, activations, and metrics. Main human-readable deliverable for posters / committee review.
+**Goal:** Executive-style JSON (error rates, per-subject table, threshold gates, final set-level metrics) and the **five-tab HTML** report tying together residual data, activations, and metrics. Main human-readable deliverable for posters / committee review.
 
 **Code:** `stage2/s06_report/code/release_summary.py`, `build_html_report.py`, `generate_stage_audit_html.py` · shared: `lib/`
 

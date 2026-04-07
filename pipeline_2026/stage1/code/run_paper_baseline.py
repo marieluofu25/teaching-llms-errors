@@ -13,6 +13,7 @@ from lib.repo_paths import pipeline_2026_root, teaching_llms_errors_repo_root
 
 
 def main() -> None:
+    """Run Stage 1 paper-baseline figure generation and refresh audit metadata."""
     p = argparse.ArgumentParser(description="Paper baseline artifacts for Stage 1")
     p.add_argument(
         "--output-dir",

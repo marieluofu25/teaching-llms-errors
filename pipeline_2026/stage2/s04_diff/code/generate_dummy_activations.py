@@ -13,6 +13,7 @@ from lib.io_schema import validate_activations_shape
 
 
 def main() -> None:
+    """Create synthetic row-aligned activations for smoke/demo diffing runs."""
     p = argparse.ArgumentParser()
     p.add_argument("--residual-csv", type=Path, required=True)
     p.add_argument("--latent-dim", type=int, default=32)
