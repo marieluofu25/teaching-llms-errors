@@ -4,7 +4,7 @@
   "fit_mode": "train_only",
   "text_col": "questions",
   "error_col": "is_error",
-  "output": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals.csv",
+  "output": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals.csv",
   "group_counts": {
     "neutral": 3794,
     "Low Residual": 2093,

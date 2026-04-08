@@ -115,6 +115,11 @@ def main() -> None:
         action="store_true",
         help="Skip *_profile.json and overview plot entirely",
     )
+    parser.add_argument(
+        "--subject-col",
+        default="subject",
+        help="If this column exists (MMLU), use topic codes in difficulty LR; set '' to disable",
+    )
     args = parser.parse_args()
 
     if args.dataset == "mmlu":
@@ -139,12 +144,14 @@ def main() -> None:
         text_col = "question"
         error_col = "is_error"
 
+    subj_arg: str | None = args.subject_col.strip() or None
     out_df = compute_residuals_and_group(
         df,
         text_col,
         error_col,
         fit_mode=args.fit_mode,
         random_state=args.random_state,
+        subject_col=subj_arg,
     )
     validate_residual_output(out_df)
 

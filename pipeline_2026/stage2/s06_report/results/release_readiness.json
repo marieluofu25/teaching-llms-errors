@@ -8,42 +8,30 @@
   },
   "representation_model": {
     "representation_type": "sae_latent",
-    "n_rows": 7851,
+    "n_rows": 200,
     "d_in": 768,
     "d_sae": 24576,
     "sae_release": "gpt2-small-res-jb",
     "sae_id": "blocks.11.hook_resid_pre",
     "sae_lens_note": "Columns are SAE feature indices (sparse dictionary), not raw hidden dimensions.",
-    "source_hidden_npz": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/results/mmlu_hf_hidden.npz",
-    "source_hidden_meta": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage2/results/mmlu_hf_hidden.meta.json",
-    "residual_csv": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage1/results/mmlu_gpt35_residuals.csv",
+    "source_hidden_npz": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_hf_hidden.npz",
+    "source_hidden_meta": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_hf_hidden.meta.json",
+    "residual_csv": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals_export_200.csv",
     "base_model": "gpt2",
     "hidden_export_layer_index": 11,
     "model": "gpt2 + SAELens SAE gpt2-small-res-jb/blocks.11.hook_resid_pre (d_in=768, d_sae=24576)",
-    "output_npz": "/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/stage3/results/mmlu_hf_sae_latents.npz",
+    "output_npz": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s03_sae_encode/results/mmlu_hf_sae_latents.npz",
     "batch_size": 32,
-    "device": "mps",
+    "device": "cuda",
     "methodology": "SAE embeddings for group-wise comparison; see Jiang et al., arXiv:2512.10092."
   },
   "overall": {
-    "n_instances": 7851,
-    "n_errors": 2418,
-    "error_rate": 0.3079862437905999,
-    "accuracy": 0.6920137562094001
+    "n_instances": 200,
+    "n_errors": 95,
+    "error_rate": 0.475,
+    "accuracy": 0.525
   },
   "per_subject": [
-    {
-      "subject": "college_mathematics",
-      "n": 100,
-      "error_rate": 0.64,
-      "accuracy": 0.36
-    },
-    {
-      "subject": "high_school_mathematics",
-      "n": 150,
-      "error_rate": 0.6266666666666667,
-      "accuracy": 0.3733333333333333
-    },
     {
       "subject": "abstract_algebra",
       "n": 100,
@@ -51,458 +39,38 @@
       "accuracy": 0.38
     },
     {
-      "subject": "high_school_physics",
-      "n": 150,
-      "error_rate": 0.5866666666666667,
-      "accuracy": 0.41333333333333333
-    },
-    {
-      "subject": "global_facts",
-      "n": 100,
-      "error_rate": 0.58,
-      "accuracy": 0.42000000000000004
-    },
-    {
-      "subject": "machine_learning",
-      "n": 112,
-      "error_rate": 0.5714285714285714,
-      "accuracy": 0.4285714285714286
-    },
-    {
-      "subject": "college_physics",
-      "n": 102,
-      "error_rate": 0.5686274509803921,
-      "accuracy": 0.43137254901960786
-    },
-    {
-      "subject": "moral_scenarios",
-      "n": 150,
-      "error_rate": 0.56,
-      "accuracy": 0.43999999999999995
-    },
-    {
-      "subject": "college_computer_science",
-      "n": 100,
-      "error_rate": 0.55,
-      "accuracy": 0.44999999999999996
-    },
-    {
-      "subject": "college_chemistry",
-      "n": 100,
-      "error_rate": 0.54,
-      "accuracy": 0.45999999999999996
-    },
-    {
-      "subject": "formal_logic",
-      "n": 126,
-      "error_rate": 0.5396825396825397,
-      "accuracy": 0.46031746031746035
-    },
-    {
-      "subject": "professional_law",
-      "n": 150,
-      "error_rate": 0.5066666666666667,
-      "accuracy": 0.4933333333333333
-    },
-    {
-      "subject": "econometrics",
-      "n": 114,
-      "error_rate": 0.49122807017543857,
-      "accuracy": 0.5087719298245614
-    },
-    {
-      "subject": "virology",
-      "n": 150,
-      "error_rate": 0.47333333333333333,
-      "accuracy": 0.5266666666666666
-    },
-    {
-      "subject": "professional_accounting",
-      "n": 150,
-      "error_rate": 0.44,
-      "accuracy": 0.56
-    },
-    {
-      "subject": "high_school_chemistry",
-      "n": 150,
-      "error_rate": 0.42,
-      "accuracy": 0.5800000000000001
-    },
-    {
-      "subject": "high_school_statistics",
-      "n": 150,
-      "error_rate": 0.41333333333333333,
-      "accuracy": 0.5866666666666667
-    },
-    {
-      "subject": "conceptual_physics",
-      "n": 150,
-      "error_rate": 0.41333333333333333,
-      "accuracy": 0.5866666666666667
-    },
-    {
-      "subject": "electrical_engineering",
-      "n": 145,
-      "error_rate": 0.4068965517241379,
-      "accuracy": 0.5931034482758621
-    },
-    {
-      "subject": "elementary_mathematics",
-      "n": 150,
-      "error_rate": 0.4,
-      "accuracy": 0.6
-    },
-    {
-      "subject": "college_medicine",
-      "n": 150,
-      "error_rate": 0.35333333333333333,
-      "accuracy": 0.6466666666666667
-    },
-    {
       "subject": "anatomy",
-      "n": 135,
-      "error_rate": 0.31851851851851853,
-      "accuracy": 0.6814814814814815
-    },
-    {
-      "subject": "public_relations",
-      "n": 110,
-      "error_rate": 0.3,
-      "accuracy": 0.7
-    },
-    {
-      "subject": "nutrition",
-      "n": 150,
-      "error_rate": 0.29333333333333333,
-      "accuracy": 0.7066666666666667
-    },
-    {
-      "subject": "high_school_macroeconomics",
-      "n": 150,
-      "error_rate": 0.28,
-      "accuracy": 0.72
-    },
-    {
-      "subject": "business_ethics",
       "n": 100,
-      "error_rate": 0.28,
-      "accuracy": 0.72
-    },
-    {
-      "subject": "human_aging",
-      "n": 150,
-      "error_rate": 0.28,
-      "accuracy": 0.72
-    },
-    {
-      "subject": "moral_disputes",
-      "n": 150,
-      "error_rate": 0.28,
-      "accuracy": 0.72
-    },
-    {
-      "subject": "prehistory",
-      "n": 150,
-      "error_rate": 0.26666666666666666,
-      "accuracy": 0.7333333333333334
-    },
-    {
-      "subject": "professional_psychology",
-      "n": 150,
-      "error_rate": 0.26,
-      "accuracy": 0.74
-    },
-    {
-      "subject": "astronomy",
-      "n": 150,
-      "error_rate": 0.25333333333333335,
-      "accuracy": 0.7466666666666666
-    },
-    {
-      "subject": "high_school_computer_science",
-      "n": 100,
-      "error_rate": 0.25,
-      "accuracy": 0.75
-    },
-    {
-      "subject": "security_studies",
-      "n": 150,
-      "error_rate": 0.24,
-      "accuracy": 0.76
-    },
-    {
-      "subject": "medical_genetics",
-      "n": 100,
-      "error_rate": 0.24,
-      "accuracy": 0.76
-    },
-    {
-      "subject": "professional_medicine",
-      "n": 150,
-      "error_rate": 0.24,
-      "accuracy": 0.76
-    },
-    {
-      "subject": "philosophy",
-      "n": 150,
-      "error_rate": 0.24,
-      "accuracy": 0.76
-    },
-    {
-      "subject": "logical_fallacies",
-      "n": 150,
-      "error_rate": 0.22,
-      "accuracy": 0.78
-    },
-    {
-      "subject": "computer_security",
-      "n": 100,
-      "error_rate": 0.21,
-      "accuracy": 0.79
-    },
-    {
-      "subject": "college_biology",
-      "n": 144,
-      "error_rate": 0.20833333333333334,
-      "accuracy": 0.7916666666666666
-    },
-    {
-      "subject": "high_school_european_history",
-      "n": 150,
-      "error_rate": 0.20666666666666667,
-      "accuracy": 0.7933333333333333
-    },
-    {
-      "subject": "high_school_microeconomics",
-      "n": 150,
-      "error_rate": 0.2,
-      "accuracy": 0.8
-    },
-    {
-      "subject": "obqa",
-      "n": 150,
-      "error_rate": 0.19333333333333333,
-      "accuracy": 0.8066666666666666
-    },
-    {
-      "subject": "world_religions",
-      "n": 150,
-      "error_rate": 0.19333333333333333,
-      "accuracy": 0.8066666666666666
-    },
-    {
-      "subject": "jurisprudence",
-      "n": 108,
-      "error_rate": 0.18518518518518517,
-      "accuracy": 0.8148148148148149
-    },
-    {
-      "subject": "international_law",
-      "n": 121,
-      "error_rate": 0.17355371900826447,
-      "accuracy": 0.8264462809917356
-    },
-    {
-      "subject": "high_school_us_history",
-      "n": 150,
-      "error_rate": 0.17333333333333334,
-      "accuracy": 0.8266666666666667
-    },
-    {
-      "subject": "human_sexuality",
-      "n": 131,
-      "error_rate": 0.16793893129770993,
-      "accuracy": 0.83206106870229
-    },
-    {
-      "subject": "clinical_knowledge",
-      "n": 150,
-      "error_rate": 0.16666666666666666,
-      "accuracy": 0.8333333333333334
-    },
-    {
-      "subject": "management",
-      "n": 103,
-      "error_rate": 0.1650485436893204,
-      "accuracy": 0.8349514563106796
-    },
-    {
-      "subject": "high_school_biology",
-      "n": 150,
-      "error_rate": 0.15333333333333332,
-      "accuracy": 0.8466666666666667
-    },
-    {
-      "subject": "sociology",
-      "n": 150,
-      "error_rate": 0.15333333333333332,
-      "accuracy": 0.8466666666666667
-    },
-    {
-      "subject": "high_school_geography",
-      "n": 150,
-      "error_rate": 0.14666666666666667,
-      "accuracy": 0.8533333333333333
-    },
-    {
-      "subject": "high_school_world_history",
-      "n": 150,
-      "error_rate": 0.14666666666666667,
-      "accuracy": 0.8533333333333333
-    },
-    {
-      "subject": "us_foreign_policy",
-      "n": 100,
-      "error_rate": 0.14,
-      "accuracy": 0.86
-    },
-    {
-      "subject": "high_school_psychology",
-      "n": 150,
-      "error_rate": 0.12,
-      "accuracy": 0.88
-    },
-    {
-      "subject": "miscellaneous",
-      "n": 150,
-      "error_rate": 0.11333333333333333,
-      "accuracy": 0.8866666666666667
-    },
-    {
-      "subject": "marketing",
-      "n": 150,
-      "error_rate": 0.08,
-      "accuracy": 0.92
-    },
-    {
-      "subject": "high_school_government_and_politics",
-      "n": 150,
-      "error_rate": 0.05333333333333334,
-      "accuracy": 0.9466666666666667
+      "error_rate": 0.33,
+      "accuracy": 0.6699999999999999
     }
   ],
   "worst_subjects": [
     {
-      "subject": "college_mathematics",
-      "n": 100,
-      "error_rate": 0.64,
-      "accuracy": 0.36
-    },
-    {
-      "subject": "high_school_mathematics",
-      "n": 150,
-      "error_rate": 0.6266666666666667,
-      "accuracy": 0.3733333333333333
-    },
-    {
       "subject": "abstract_algebra",
       "n": 100,
       "error_rate": 0.62,
       "accuracy": 0.38
     },
     {
-      "subject": "high_school_physics",
-      "n": 150,
-      "error_rate": 0.5866666666666667,
-      "accuracy": 0.41333333333333333
-    },
-    {
-      "subject": "global_facts",
+      "subject": "anatomy",
       "n": 100,
-      "error_rate": 0.58,
-      "accuracy": 0.42000000000000004
-    },
-    {
-      "subject": "machine_learning",
-      "n": 112,
-      "error_rate": 0.5714285714285714,
-      "accuracy": 0.4285714285714286
-    },
-    {
-      "subject": "college_physics",
-      "n": 102,
-      "error_rate": 0.5686274509803921,
-      "accuracy": 0.43137254901960786
-    },
-    {
-      "subject": "moral_scenarios",
-      "n": 150,
-      "error_rate": 0.56,
-      "accuracy": 0.43999999999999995
-    },
-    {
-      "subject": "college_computer_science",
-      "n": 100,
-      "error_rate": 0.55,
-      "accuracy": 0.44999999999999996
-    },
-    {
-      "subject": "college_chemistry",
-      "n": 100,
-      "error_rate": 0.54,
-      "accuracy": 0.45999999999999996
+      "error_rate": 0.33,
+      "accuracy": 0.6699999999999999
     }
   ],
   "best_subjects": [
     {
-      "subject": "high_school_government_and_politics",
-      "n": 150,
-      "error_rate": 0.05333333333333334,
-      "accuracy": 0.9466666666666667
-    },
-    {
-      "subject": "marketing",
-      "n": 150,
-      "error_rate": 0.08,
-      "accuracy": 0.92
-    },
-    {
-      "subject": "miscellaneous",
-      "n": 150,
-      "error_rate": 0.11333333333333333,
-      "accuracy": 0.8866666666666667
-    },
-    {
-      "subject": "high_school_psychology",
-      "n": 150,
-      "error_rate": 0.12,
-      "accuracy": 0.88
-    },
-    {
-      "subject": "us_foreign_policy",
+      "subject": "anatomy",
       "n": 100,
-      "error_rate": 0.14,
-      "accuracy": 0.86
+      "error_rate": 0.33,
+      "accuracy": 0.6699999999999999
     },
     {
-      "subject": "high_school_world_history",
-      "n": 150,
-      "error_rate": 0.14666666666666667,
-      "accuracy": 0.8533333333333333
-    },
-    {
-      "subject": "high_school_geography",
-      "n": 150,
-      "error_rate": 0.14666666666666667,
-      "accuracy": 0.8533333333333333
-    },
-    {
-      "subject": "sociology",
-      "n": 150,
-      "error_rate": 0.15333333333333332,
-      "accuracy": 0.8466666666666667
-    },
-    {
-      "subject": "high_school_biology",
-      "n": 150,
-      "error_rate": 0.15333333333333332,
-      "accuracy": 0.8466666666666667
-    },
-    {
-      "subject": "management",
-      "n": 103,
-      "error_rate": 0.1650485436893204,
-      "accuracy": 0.8349514563106796
+      "subject": "abstract_algebra",
+      "n": 100,
+      "error_rate": 0.62,
+      "accuracy": 0.38
     }
   ],
   "gates": {
@@ -511,22 +79,55 @@
       "max_error_rate_worst_subject": 0.7,
       "min_rows_per_subject": 20
     },
-    "verdict": "pass",
-    "violations": []
+    "verdict": "fail",
+    "violations": [
+      {
+        "gate": "max_error_rate_global",
+        "detail": "overall error_rate 0.4750 > 0.45"
+      }
+    ]
   },
   "residual_metrics_from_eval": {
-    "n_instances": 7851,
-    "n_errors": 2418,
-    "error_rate": 0.3079862437905999,
+    "n_instances": 200,
+    "n_errors": 95,
+    "error_rate": 0.475,
     "high_residual": {
-      "n": 1964,
-      "coverage_of_errors": 0.8122415219189413,
+      "n": 72,
+      "coverage_of_errors": 0.7578947368421053,
       "concentration_in_group": 1.0
     },
     "low_residual": {
-      "n": 2093,
+      "n": 63,
       "coverage_of_errors": 0.0,
       "concentration_in_group": 0.0
     }
+  },
+  "final_set_level_metrics": {
+    "coverage_concentration": {
+      "n_errors": 95,
+      "n_covered_instances": 200,
+      "n_covered_errors": 95,
+      "coverage": 1.0,
+      "concentration": 0.475
+    },
+    "predictive_utility": {
+      "split_seed": 42,
+      "n_features": 334,
+      "auc": 0.5870535714285714,
+      "f1": 0.5283018867924528
+    },
+    "redundancy": {
+      "n_patterns": 334,
+      "avg_pairwise_jaccard": 0.23515450139777153,
+      "max_pairwise_jaccard": 1.0
+    },
+    "stability": {
+      "top_k": 25,
+      "pairs_evaluated": 0,
+      "overlap_at_k_mean": null
+    },
+    "n_patterns": 334,
+    "pattern_membership_source": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_hf_latents.pattern_membership.csv",
+    "pattern_catalog_source": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_hf_latents.pattern_catalog.json"
   }
 }

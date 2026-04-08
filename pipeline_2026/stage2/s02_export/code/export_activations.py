@@ -148,6 +148,24 @@ def main() -> None:
         help="Only first N rows (sanity check); default = all rows",
     )
     p.add_argument(
+        "--row-start",
+        type=int,
+        default=None,
+        help="Inclusive start row index into residual CSV (after max-rows slice, if any)",
+    )
+    p.add_argument(
+        "--row-end",
+        type=int,
+        default=None,
+        help="Exclusive end row index into residual CSV",
+    )
+    p.add_argument(
+        "--meta-relative-to",
+        type=Path,
+        default=None,
+        help="If set, write residual_csv paths in meta as relative to this directory",
+    )
+    p.add_argument(
         "--device",
         type=str,
         default=None,
@@ -165,6 +183,10 @@ def main() -> None:
     tcol = _text_column(df)
     if args.max_rows is not None:
         df = df.iloc[: args.max_rows].copy()
+    if args.row_start is not None or args.row_end is not None:
+        rs = int(args.row_start or 0)
+        re_ = int(args.row_end) if args.row_end is not None else len(df)
+        df = df.iloc[rs:re_].copy()
     texts = df[tcol].fillna("").astype(str).tolist()
 
     if args.device:
@@ -193,8 +215,16 @@ def main() -> None:
     args.output.parent.mkdir(parents=True, exist_ok=True)
     np.savez(args.output, activations=acts)
 
+    def _relp(p: Path) -> str:
+        if args.meta_relative_to is None:
+            return str(p.resolve())
+        try:
+            return str(p.resolve().relative_to(args.meta_relative_to.resolve()))
+        except ValueError:
+            return str(p.resolve())
+
     meta = {
-        "residual_csv": str(args.residual_csv.resolve()),
+        "residual_csv": _relp(args.residual_csv),
         "n_rows": int(acts.shape[0]),
         "hidden_dim": int(acts.shape[1]),
         "representation_type": "hidden_pooled",
@@ -206,7 +236,9 @@ def main() -> None:
         "batch_size": args.batch_size,
         "device": str(device),
         "dtype": "float16" if use_fp16 else "float32",
-        "output_npz": str(args.output.resolve()),
+        "output_npz": _relp(args.output),
+        "row_start": args.row_start,
+        "row_end": args.row_end,
         "note": (
             "Activations are from the specified HF model, not from closed API models. "
             "Row order matches residual CSV."

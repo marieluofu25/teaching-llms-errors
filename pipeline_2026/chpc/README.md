@@ -36,6 +36,13 @@ export REPO_ROOT=/path/to/teaching-llms-errors
 sbatch pipeline_2026/chpc/job_mmlu_real.slurm
 ```
 
+### Gemma-2-9B unified full MMLU
+
+1. **Inference (array):** edit `#SBATCH --array=...` in [`job_gemma_mmlu_infer_array.slurm`](job_gemma_mmlu_infer_array.slurm), set `SLURM_ARRAY_TASK_COUNT` to match the array width, then `sbatch`. Each task writes a shard CSV under `GEMMA_PRED_OUT_DIR`.
+2. **Merge shards:**
+   `python -m stage2.s01_residual.code.merge_mmlu_prediction_shards --shards shard0.csv shard1.csv ... --output stage2/s01_residual/results/mmlu_gemma_predictions_merged.csv`
+3. **Downstream:** `sbatch pipeline_2026/chpc/job_mmlu_gemma_full.slurm` (expects merged predictions; runs `mmlu-gemma-full`). See [`docs/sae_checkpoints.md`](../docs/sae_checkpoints.md) for `EXPORT_LAYER_INDEX` vs `SAE_ID`, and [`docs/mmlu_canonical_frame.md`](../docs/mmlu_canonical_frame.md) for row counts.
+
 ## Environment variables (orchestrator)
 
 [`scripts/run_pipeline_2026.sh`](../scripts/run_pipeline_2026.sh) mode `mmlu-real` respects:

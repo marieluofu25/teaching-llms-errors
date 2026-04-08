@@ -51,6 +51,7 @@ pipeline_2026/
 ```bash
 pip install -r pipeline_2026/requirements.txt
 bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-real   # full chain
+bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-gemma-full   # Gemma predictions → full residual + SAE track
 bash pipeline_2026/scripts/run_pipeline_2026.sh smoke       # tiny fixture
 ```
 

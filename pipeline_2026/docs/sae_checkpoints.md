@@ -33,6 +33,22 @@ Gemma is a strong choice when you want **public pretrained SAEs** aligned with o
 
 **Gemma 4:** newer Gemma releases may not yet appear in the [SAELens pretrained index](https://decoderesearch.github.io/SAELens/latest/). Before committing to a model, confirm a matching `release` / `sae_id` exists; otherwise use **Gemma 2** or **Gemma 3** entries that are listed for your chosen HF checkpoint.
 
+### Unified stack (Gemma 2 **9B** base + Gemma Scope residual SAEs)
+
+This is the **recommended triple** for the CHPC “unified model” track (same `google/gemma-2-9b` weights for **behavioral labels** and **HF export**). SAEs come from [google/gemma-scope-9b-pt-res](https://huggingface.co/google/gemma-scope-9b-pt-res) and load in SAELens as release **`gemma-scope-9b-pt-res-canonical`** (see that repo README).
+
+| Setting | Starting value (verify against your `sae-lens` version + `SAE.from_pretrained`) |
+|--------|----------------------------------------------------------------------------------|
+| `EXPORT_MODEL` | `google/gemma-2-9b` |
+| `SAE_RELEASE` | `gemma-scope-9b-pt-res-canonical` |
+| `SAE_ID` | e.g. `layer_20/width_16k/canonical` (browse the HF repo for other layers / widths) |
+| `EXPORT_LAYER_INDEX` | Must match the **residual position** implied by `SAE_ID` (often **block depth + 1** if `hidden_states[0]` is embeddings—**run `encode_sae_latents` once**: if `d_in` mismatches, adjust the layer index). |
+
+**Notes:**
+
+- `d_sae` follows the chosen width (`width_16k` → 16k features, etc.), not GPT-2’s 24k JB dictionary.
+- Gemma-2-9B is **gated** on Hugging Face: set `HF_TOKEN` / `HUGGING_FACE_HUB_TOKEN` on CHPC (see `chpc/README.md`).
+
 ### Example triple (Gemma 2 2B, residual-stream SAE)
 
 Values below are illustrative; always confirm against the current SAELens docs / `pretrained_saes.yaml` for your installed `sae-lens` version.

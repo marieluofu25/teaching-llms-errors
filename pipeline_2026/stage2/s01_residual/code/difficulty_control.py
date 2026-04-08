@@ -19,9 +19,22 @@ def extract_difficulty_features(text: str) -> list:
     return [length, num_numbers, num_logical_ops]
 
 
-def _build_xy(df: pd.DataFrame, text_col: str, error_col: str):
+def _build_xy(
+    df: pd.DataFrame,
+    text_col: str,
+    error_col: str,
+    *,
+    subject_col: str | None = None,
+) -> tuple[np.ndarray, np.ndarray]:
     """Create model matrix X and binary label vector y from a residual DataFrame."""
-    X = np.array([extract_difficulty_features(t) for t in df[text_col]])
+    base = np.array(
+        [extract_difficulty_features(t) for t in df[text_col]], dtype=np.float64
+    )
+    if subject_col and subject_col in df.columns:
+        codes, _ = pd.factorize(df[subject_col].astype(str), sort=True)
+        X = np.column_stack([base, codes.astype(np.float64)])
+    else:
+        X = base
     y = df[error_col].values
     return X, y
 
@@ -36,6 +49,7 @@ def compute_residuals_and_group(
     random_state: int = 42,
     high_q: float = 0.75,
     low_q: float = 0.25,
+    subject_col: str | None = "subject",
 ) -> pd.DataFrame:
     """
     Train a logistic regression to predict expected error, compute residuals,
@@ -52,15 +66,23 @@ def compute_residuals_and_group(
         - train_only: fit on (1-test_size) fraction, apply predict_proba to all rows.
     high_q, low_q : float
         Quantiles for High / Low residual buckets on residual_error.
+    subject_col : str | None
+        If set and present on ``df``, MMLU **subject** (topic) is included as a categorical
+        feature via integer codes (topic-aware difficulty control).
     """
     if fit_mode not in ("full", "train_only"):
         raise ValueError("fit_mode must be 'full' or 'train_only'")
 
     out = df.copy()
-    X, y = _build_xy(out, text_col, error_col)
+    use_subj = (
+        subject_col
+        if (subject_col and subject_col in out.columns)
+        else None
+    )
+    X, y = _build_xy(out, text_col, error_col, subject_col=use_subj)
 
     if fit_mode == "full":
-        lr = LogisticRegression(class_weight="balanced", max_iter=1000)
+        lr = LogisticRegression(class_weight="balanced", max_iter=2000)
         lr.fit(X, y)
         expected_error_prob = lr.predict_proba(X)[:, 1]
     else:
@@ -68,7 +90,7 @@ def compute_residuals_and_group(
         tr_idx, _ = train_test_split(
             idx, test_size=test_size, random_state=random_state, stratify=y
         )
-        lr = LogisticRegression(class_weight="balanced", max_iter=1000)
+        lr = LogisticRegression(class_weight="balanced", max_iter=2000)
         lr.fit(X[tr_idx], y[tr_idx])
         expected_error_prob = lr.predict_proba(X)[:, 1]
 
@@ -85,12 +107,24 @@ def compute_residuals_and_group(
     return out
 
 
+def _series_to_bool(s: pd.Series) -> pd.Series:
+    """Coerce CSV / pickle truthiness to boolean."""
+
+    if s.dtype == bool:
+        return s
+    if pd.api.types.is_numeric_dtype(s):
+        return s.astype(int) != 0
+    sl = s.astype(str).str.strip().str.lower()
+    return sl.isin(("1", "true", "t", "yes", "y"))
+
+
 def add_is_error_from_ai_correct(df: pd.DataFrame) -> pd.DataFrame:
     """MMLU-style: ai_correct True -> is_error 0."""
     out = df.copy()
     if "ai_correct" not in out.columns:
         raise ValueError("Expected column 'ai_correct'")
-    out["is_error"] = (~out["ai_correct"].astype(bool)).astype(int)
+    correct = _series_to_bool(out["ai_correct"])
+    out["is_error"] = (~correct).astype(int)
     return out
 
 

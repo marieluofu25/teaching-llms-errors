@@ -1,5 +1,6 @@
 # Policy thresholds for a transparent "release readiness" verdict on MMLU residual runs.
 # These are NOT universal production standards — tune per product / course project.
+# Unified Gemma full runs: consider release_thresholds_gemma_full.yaml (see RELEASE_THRESHOLDS_YAML).
 #
 # Verdict logic (see src/release_summary.py):
 # - fail: any gate below is violated

@@ -2,7 +2,7 @@
 # Staged pipeline (2026): Stage 1 = paper baseline; Stage 2 = numbered segments (s01–s06).
 # Run from anywhere:  bash pipeline_2026/scripts/run_pipeline_2026.sh [mode]
 #
-# Modes: mmlu | mathcamps | mmlu-demo | mmlu-real | mmlu-report | smoke
+# Modes: mmlu | mathcamps | mmlu-demo | mmlu-real | mmlu-gemma-full | mmlu-report | smoke
 # Env: PYTHON, JUDGE_JSON, BUILD_HTML, BUILD_RELEASE_SUMMARY, TAB4_TOP_QUESTIONS,
 #      EXPORT_*, SAE_*, RESIDUAL_CSV, ACTIVATIONS_NPZ, LATENTS_CSV, HTML_OUT, RELEASE_JSON
 
@@ -56,10 +56,11 @@ run_eval() {
   local membership="${3:-}"
   local catalog="${4:-}"
   local stability_catalogs="${5:-}"
+  local out_json="${EVAL_METRICS_JSON:-${S05}/${label}_metrics.json}"
   local eval_args=( -m stage2.s05_eval.code.evaluate_pattern_sets
     --residual-csv "${csv}"
     --label "${label}"
-    --output-json "${S05}/${label}_metrics.json"
+    --output-json "${out_json}"
     --output-table "${S05}/leaderboard.csv"
   )
   if [[ -n "${membership}" && -f "${membership}" ]]; then
@@ -76,7 +77,7 @@ run_eval() {
   fi
   "${PY}" "${eval_args[@]}"
   "${PY}" -m stage2.s05_eval.code.plot_residual_summary \
-    --metrics-json "${S05}/${label}_metrics.json" \
+    --metrics-json "${out_json}" \
     --output "${S05}/${label}_residual_bar.png"
 }
 
@@ -123,6 +124,9 @@ run_release_summary() {
     if [[ -f "${meta}" ]]; then
       rs_args+=( --activations-meta "${meta}" )
     fi
+  fi
+  if [[ -n "${RELEASE_THRESHOLDS_YAML:-}" && -f "${RELEASE_THRESHOLDS_YAML}" ]]; then
+    rs_args+=( --thresholds-yaml "${RELEASE_THRESHOLDS_YAML}" )
   fi
   "${PY}" "${rs_args[@]}"
 }
@@ -324,9 +328,95 @@ case "${MODE}" in
     run_audit "${S06}" "s06_report" "Stage 2 — s06_report — Reporting" "${P26}/stage2/s06_report/README.md"
     echo "Done (mmlu-real). Open stage1/results/ and stage2/s*/results/audit.html; full report: ${S06}/mmlu_report.html"
     ;;
+  mmlu-gemma-full)
+    # Unified Gemma-2-9B track: full pickle rows, no EXPORT_MAX_ROWS unless explicitly set.
+    # Prereq: merged predictions CSV (run_gemma_mmlu_inference + merge_mmlu_prediction_shards on CHPC).
+    run_paper_baseline
+    PRED="${GEMMA_PREDICTIONS_CSV:-${S01}/mmlu_gemma_predictions_merged.csv}"
+    RES_FULL="${MMLU_FULL_RESIDUAL_CSV:-${S01}/mmlu_full_residuals.csv}"
+    if [[ ! -f "${PRED}" ]]; then
+      echo "mmlu-gemma-full: missing predictions CSV: ${PRED}" >&2
+      echo "  Set GEMMA_PREDICTIONS_CSV or merge shards into ${PRED}" >&2
+      exit 1
+    fi
+    echo "==> Stage 2 — s01_residual — Full residuals from Gemma predictions…"
+    "${PY}" -m stage2.s01_residual.code.run_mmlu_full_residuals \
+      --predictions-csv "${PRED}" \
+      --output-csv "${RES_FULL}" \
+      --fit-mode train_only
+    run_audit "${S01}" "s01_residual" "Stage 2 — s01_residual — Residual control (Gemma unified)" "${P26}/stage2/s01_residual/README.md"
+    RES_WORK="${RES_FULL}"
+    if [[ -n "${EXPORT_MAX_ROWS:-}" ]]; then
+      RES_WORK="${S01}/mmlu_full_residuals_export_${EXPORT_MAX_ROWS}.csv"
+      echo "==> Subset residual CSV → ${RES_WORK}"
+      "${PY}" -c "import pandas as pd; df=pd.read_csv('${RES_FULL}'); df.iloc[:int(${EXPORT_MAX_ROWS})].to_csv('${RES_WORK}', index=False)"
+      run_audit "${S01}" "s01_residual" "Stage 2 — s01_residual — Residual control" "${P26}/stage2/s01_residual/README.md"
+    fi
+    HIDDEN_NPZ="${HIDDEN_NPZ:-${S02}/mmlu_full_hidden.npz}"
+    SAE_NPZ="${SAE_NPZ:-${S03}/mmlu_full_sae_latents.npz}"
+    LAT_OUT="${LAT_OUT:-${S04}/mmlu_full_latents.csv}"
+    SAE_ENCODE="${SAE_ENCODE:-1}"
+    if [[ "${SAE_ENCODE}" == "1" && -z "${EXPORT_LAYER_INDEX:-}" ]]; then
+      echo "WARNING: set EXPORT_LAYER_INDEX to match SAE_ID (see docs/sae_checkpoints.md Gemma-2-9B)" >&2
+    fi
+    echo "==> Stage 2 — s02_export — Export HF hidden → ${HIDDEN_NPZ}"
+    EXP=( -m stage2.s02_export.code.export_activations --residual-csv "${RES_WORK}" --output "${HIDDEN_NPZ}" )
+    if [[ -n "${EXPORT_MODEL:-}" ]]; then EXP+=( --model "${EXPORT_MODEL}" ); fi
+    if [[ -n "${EXPORT_LAYER_INDEX:-}" ]]; then EXP+=( --layer-index "${EXPORT_LAYER_INDEX}" ); fi
+    if [[ -n "${EXPORT_BATCH_SIZE:-}" ]]; then EXP+=( --batch-size "${EXPORT_BATCH_SIZE}" ); fi
+    if [[ -n "${EXPORT_DEVICE:-}" ]]; then EXP+=( --device "${EXPORT_DEVICE}" ); fi
+    if [[ "${EXPORT_FP16:-}" == "1" ]]; then EXP+=( --fp16 ); fi
+    if [[ -n "${EXPORT_META_RELATIVE_TO:-}" ]]; then EXP+=( --meta-relative-to "${EXPORT_META_RELATIVE_TO}" ); fi
+    "${PY}" "${EXP[@]}"
+    run_audit "${S02}" "s02_export" "Stage 2 — s02_export — Surrogate activations (HF)" "${P26}/stage2/s02_export/README.md"
+    DIFF_NPZ="${HIDDEN_NPZ}"
+    if [[ "${SAE_ENCODE}" == "1" ]]; then
+      echo "==> Stage 2 — s03_sae_encode — SAELens encode → ${SAE_NPZ}"
+      ENC=( -m stage2.s03_sae_encode.code.encode_sae_latents --input-npz "${HIDDEN_NPZ}" --output-npz "${SAE_NPZ}" )
+      if [[ -n "${SAE_RELEASE:-}" ]]; then ENC+=( --sae-release "${SAE_RELEASE}" ); fi
+      if [[ -n "${SAE_ID:-}" ]]; then ENC+=( --sae-id "${SAE_ID}" ); fi
+      if [[ -n "${SAE_BATCH_SIZE:-}" ]]; then ENC+=( --batch-size "${SAE_BATCH_SIZE}" ); fi
+      if [[ -n "${EXPORT_DEVICE:-}" ]]; then ENC+=( --device "${EXPORT_DEVICE}" ); fi
+      "${PY}" "${ENC[@]}"
+      DIFF_NPZ="${SAE_NPZ}"
+      run_audit "${S03}" "s03_sae_encode" "Stage 2 — s03_sae_encode — SAE latent vectors" "${P26}/stage2/s03_sae_encode/README.md"
+    else
+      echo "==> SAE_ENCODE=0: skip s03_sae_encode"
+    fi
+    MEMBERSHIP_MAIN="${PATTERN_MEMBERSHIP:-${S04}/mmlu_full_latents.pattern_membership.csv}"
+    CATALOG_MAIN="${PATTERN_CATALOG:-${S04}/mmlu_full_latents.pattern_catalog.json}"
+    DIFF_ARGS=( -m stage2.s04_diff.code.run_sae_diffing
+      --activations "${DIFF_NPZ}"
+      --residual-csv "${RES_WORK}"
+      --min-group-size 30
+      --output-membership "${MEMBERSHIP_MAIN}"
+      --output-pattern-catalog "${CATALOG_MAIN}"
+      --output "${LAT_OUT}"
+    )
+    if [[ "${USE_SAE_FDR:-}" == "1" ]]; then DIFF_ARGS+=( --fdr ); fi
+    echo "==> Stage 2 — s04_diff — Welch diff…"
+    "${PY}" "${DIFF_ARGS[@]}" || true
+    run_audit "${S04}" "s04_diff" "Stage 2 — s04_diff — Coordinate-wise group comparison" "${P26}/stage2/s04_diff/README.md"
+    EVAL_TAG="${EVAL_LABEL:-mmlu_gemma_unified_sae}"
+    export EVAL_METRICS_JSON="${FINAL_METRICS_JSON:-${S05}/mmlu_final_metrics.json}"
+    echo "==> Stage 2 — s05_eval — Evaluate + plot (${EVAL_METRICS_JSON})…"
+    run_eval "${EVAL_TAG}" "${RES_WORK}" "${MEMBERSHIP_MAIN}" "${CATALOG_MAIN}" ""
+    unset EVAL_METRICS_JSON
+    run_audit "${S05}" "s05_eval" "Stage 2 — s05_eval — Set-level metrics" "${P26}/stage2/s05_eval/README.md"
+    export METRICS_JSON="${FINAL_METRICS_JSON:-${S05}/mmlu_final_metrics.json}"
+    export ACTIVATIONS_NPZ="${DIFF_NPZ}"
+    RELEASE_JSON="${S06}/release_readiness.json"
+    run_release_summary "${RES_WORK}"
+    RESIDUAL_CSV="${RES_WORK}"
+    LATENTS_CSV="${LAT_OUT}"
+    HTML_OUT="${S06}/mmlu_report.html"
+    run_build_html
+    run_audit "${S06}" "s06_report" "Stage 2 — s06_report — Reporting" "${P26}/stage2/s06_report/README.md"
+    echo "Done (mmlu-gemma-full). Final metrics: ${S05}/mmlu_final_metrics.json"
+    ;;
   *)
     echo "Unknown mode: ${MODE}" >&2
-    echo "Use: $0 [mmlu|mathcamps|mmlu-demo|mmlu-real|mmlu-report|smoke]" >&2
+    echo "Use: $0 [mmlu|mathcamps|mmlu-demo|mmlu-real|mmlu-gemma-full|mmlu-report|smoke]" >&2
     exit 1
     ;;
 esac

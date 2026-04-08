@@ -1,9 +1,9 @@
 {
-  "n_high_residual": 1964,
-  "n_low_residual": 2093,
+  "n_high_residual": 72,
+  "n_low_residual": 63,
   "min_group_size": 30,
   "skipped_insufficient_n": false,
   "n_latents_tested": 24576,
-  "n_passing": 6953,
+  "n_passing": 334,
   "use_fdr": false
 }

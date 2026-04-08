@@ -13,6 +13,7 @@ import pandas as pd
 import yaml
 
 from lib.repo_paths import pipeline_2026_root
+from stage2.s01_residual.code.difficulty_control import add_is_error_from_ai_correct
 
 ROOT = pipeline_2026_root()
 
@@ -162,7 +163,7 @@ def main() -> None:
 
     df = pd.read_csv(args.residual_csv)
     if "is_error" not in df.columns and "ai_correct" in df.columns:
-        df["is_error"] = (~df["ai_correct"].astype(bool)).astype(int)
+        df = add_is_error_from_ai_correct(df)
     if "is_error" not in df.columns:
         raise ValueError("Need is_error or ai_correct in CSV")
 

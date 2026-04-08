@@ -1,0 +1,7 @@
+# Relaxed gates for full-dataset unified Gemma runs (error rate often higher than legacy ChatGPT pickle).
+# Use:  RELEASE_THRESHOLDS_YAML=pipeline_2026/config/release_thresholds_gemma_full.yaml run_release_summary ...
+
+gates:
+  max_error_rate_global: 0.60
+  max_error_rate_worst_subject: 0.85
+  min_rows_per_subject: 20

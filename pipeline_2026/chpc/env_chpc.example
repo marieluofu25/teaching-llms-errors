@@ -21,6 +21,17 @@ export EXPORT_FP16=1
 # export SAE_RELEASE=gemma-scope-2b-pt-res-canonical
 # export SAE_ID=layer_12/width_16k/canonical
 
+# --- Unified Gemma-2-9B full MMLU (mmlu-gemma-full) ---
+# export EXPORT_MODEL=google/gemma-2-9b
+# export EXPORT_LAYER_INDEX=   # REQUIRED: match SAE_ID / residual hook (verify with encode_sae_latents d_in check)
+# export SAE_RELEASE=gemma-scope-9b-pt-res-canonical
+# export SAE_ID=layer_20/width_16k/canonical
+# export GEMMA_PREDICTIONS_CSV=$REPO_ROOT/pipeline_2026/stage2/s01_residual/results/mmlu_gemma_predictions_merged.csv
+# export RELEASE_THRESHOLDS_YAML=$REPO_ROOT/pipeline_2026/config/release_thresholds_gemma_full.yaml
+# export EXPORT_META_RELATIVE_TO=$REPO_ROOT
+# export USE_SAE_FDR=1
+# export FINAL_METRICS_JSON=$REPO_ROOT/pipeline_2026/stage2/s05_eval/results/mmlu_final_metrics.json
+
 # export SAE_ENCODE=0
 
 # --- Legacy pipeline / APIs (not required for Stage 2 HF+SAE) ---

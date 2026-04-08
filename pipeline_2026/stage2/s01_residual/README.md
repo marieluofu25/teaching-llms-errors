@@ -15,3 +15,11 @@
 **Audit:** Open `results/audit.html`. CSV preview **hides wide embedding columns** and truncates long text.
 
 **CLI:** `python -m stage2.s01_residual.code.run_residual_control …` · `--skip-profile`, `--no-profile-plot`.
+
+**Unified Gemma / full pickle (CHPC):**
+
+- `python -m stage2.s01_residual.code.run_gemma_mmlu_inference --output-csv …` — HF MMLU MC inference (default `google/gemma-2-9b`); `--row-start` / `--row-end` for shards; `--resume` for single-writer resume.
+- `python -m stage2.s01_residual.code.merge_mmlu_prediction_shards --shards … --output …` — merge array outputs.
+- `python -m stage2.s01_residual.code.run_mmlu_full_residuals --predictions-csv … --output-csv …` — topic-aware residuals + profile next to output CSV.
+
+Orchestrator: `bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-gemma-full` (requires merged predictions path; see `chpc/README.md`).
