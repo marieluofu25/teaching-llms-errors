@@ -22,4 +22,4 @@
 - `python -m stage2.s01_residual.code.merge_mmlu_prediction_shards --shards … --output …` — merge array outputs.
 - `python -m stage2.s01_residual.code.run_mmlu_full_residuals --predictions-csv … --output-csv …` — topic-aware residuals + profile next to output CSV.
 
-Orchestrator: `bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-gemma-full` (requires merged predictions path; see `chpc/README.md`).
+Orchestrator: `bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-gemma-full` (requires merged predictions path). On CHPC, prefer **`pipeline_2026/chpc/job_mmlu_gemma_pipeline.slurm`** (infer + pipeline in one `sbatch`); see `chpc/README.md`.

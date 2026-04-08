@@ -8,7 +8,8 @@ export HF_TOKEN=
 # --- Optional: pin visible GPU on shared nodes ---
 # export CUDA_VISIBLE_DEVICES=0
 
-# --- pipeline_2026/scripts/run_pipeline_2026.sh mmlu-real ---
+# --- CHPC: primary Slurm entry is pipeline_2026/chpc/job_mmlu_gemma_pipeline.slurm ---
+# --- pipeline_2026/scripts/run_pipeline_2026.sh mmlu-real (interactive / no Slurm template) ---
 export EXPORT_DEVICE=cuda
 export EXPORT_FP16=1
 # export EXPORT_BATCH_SIZE=8

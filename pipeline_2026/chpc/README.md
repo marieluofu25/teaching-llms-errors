@@ -25,43 +25,48 @@ pip install -r pipeline_2026/requirements.txt
 - Set `HF_TOKEN` (or `HUGGING_FACE_HUB_TOKEN`) for gated models and reliable downloads (`huggingface-cli login` also works).
 - First run may be slow while caches populate under `~/.cache/huggingface`.
 
-## Submitting a job
+## Unified Gemma-2-9B pipeline (one `sbatch`)
 
-1. Edit `job_mmlu_real.slurm`: set `#SBATCH` account/partition/GPU lines to match [CHPC Slurm](https://www.chpc.utah.edu/documentation/software/slurm.php) guidance.
-2. Set `REPO_ROOT` in the script to your clone path (or export it before `sbatch`).
-3. Optionally `source` a file derived from `env_chpc.example` to set `EXPORT_MODEL`, `SAE_RELEASE`, `SAE_ID`, etc.
+[`job_mmlu_gemma_pipeline.slurm`](job_mmlu_gemma_pipeline.slurm) runs **in one allocation**:
+
+1. **Inference** — default `N_SHARDS=1` (full MMLU in one pass). If `N_SHARDS>1`, shards run **sequentially** on the same GPU (same row math as the old array script), then shards are merged.
+2. **`mmlu-gemma-full`** — runs **Stage 1 paper baseline** (`run_paper_baseline`) then **all of Stage 2** in order: unified residuals → HF export → SAE encode → diff → eval → release summary → five-tab HTML report (through `s06_report`), as long as the job does not hit OOM, missing `EXPORT_LAYER_INDEX`, or HF auth errors.
+
+Edit the script’s `#SBATCH` lines (account, partition, QoS, `--time` — 72h is a starting point for infer + full stack). Set `REPO_ROOT` inside the script or export before `sbatch`:
 
 ```bash
 export REPO_ROOT=/path/to/teaching-llms-errors
-sbatch pipeline_2026/chpc/job_mmlu_real.slurm
+sbatch --account=YOUR_ACCOUNT --partition=YOUR_GPU_PART --qos=YOUR_QOS \
+  pipeline_2026/chpc/job_mmlu_gemma_pipeline.slurm
 ```
 
-### Gemma-2-9B unified full MMLU
+The script uses `set -u`; it sets defaults for `SLURM_ARRAY_JOB_ID` / `SLURM_ARRAY_TASK_ID` when you submit a **non-array** job so `env.local.sh` (or copied snippets from array jobs) does not hit “unbound variable”.
 
-1. **Inference (array):** edit `#SBATCH --array=...` in [`job_gemma_mmlu_infer_array.slurm`](job_gemma_mmlu_infer_array.slurm), set `SLURM_ARRAY_TASK_COUNT` to match the array width, then `sbatch`. Each task writes a shard CSV under `GEMMA_PRED_OUT_DIR`.
-2. **Merge shards:**
-   `python -m stage2.s01_residual.code.merge_mmlu_prediction_shards --shards shard0.csv shard1.csv ... --output stage2/s01_residual/results/mmlu_gemma_predictions_merged.csv`
-3. **Downstream:** `sbatch pipeline_2026/chpc/job_mmlu_gemma_full.slurm` (expects merged predictions; runs `mmlu-gemma-full`). See [`docs/sae_checkpoints.md`](../docs/sae_checkpoints.md) for `EXPORT_LAYER_INDEX` vs `SAE_ID`, and [`docs/mmlu_canonical_frame.md`](../docs/mmlu_canonical_frame.md) for row counts.
-
-## Environment variables (orchestrator)
-
-[`scripts/run_pipeline_2026.sh`](../scripts/run_pipeline_2026.sh) mode `mmlu-real` respects:
+Optional environment (also via `env.local.sh` derived from [`env_chpc.example`](env_chpc.example)):
 
 | Variable | Role |
 |----------|------|
-| `EXPORT_DEVICE` | Passed through to export/encode (e.g. `cuda`) |
-| `EXPORT_MODEL` | HF model id for `export_activations` |
-| `EXPORT_LAYER_INDEX` | Must align with chosen SAE hook (see `docs/sae_checkpoints.md`) |
-| `EXPORT_BATCH_SIZE`, `SAE_BATCH_SIZE` | Throughput tuning |
-| `EXPORT_FP16` | `1` to enable `--fp16` on CUDA export |
-| `SAE_RELEASE`, `SAE_ID` | SAELens pretrained SAE |
-| `EXPORT_MAX_ROWS` | Truncate rows for quick tests |
-| `SAE_ENCODE` | `0` to skip SAE encode (diff on raw hidden `.npz`) |
+| `SKIP_INFER=1` | Skip Phase A; require existing `GEMMA_PREDICTIONS_CSV` (merged path). |
+| `N_SHARDS` | `1` = one inference run; `>1` = sequential shards then merge (walltime sums; use for memory/time splits, not multi-node parallelism). |
+| `TOTAL_MMLU_ROWS` | Default `7851`; must match pickle size if you change data. |
+| `GEMMA_PREDICTIONS_CSV` | Merged predictions output path (default under `stage2/s01_residual/results/`). |
+| `EXPORT_LAYER_INDEX` | **Required** to match `SAE_ID` / hook (see [`docs/sae_checkpoints.md`](../docs/sae_checkpoints.md)). |
+| `EXPORT_MODEL`, `SAE_RELEASE`, `SAE_ID` | Gemma-2-9B + Gemma Scope defaults are set in the Slurm script; override as needed. |
 
-Interactive debugging on a GPU node: same exports, then:
+Row-count context: [`docs/mmlu_canonical_frame.md`](../docs/mmlu_canonical_frame.md).
+
+**Parallel inference across nodes** is not in this single job; for that, run shard jobs yourself, merge with `merge_mmlu_prediction_shards`, then `SKIP_INFER=1` and this script (or only `bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-gemma-full`).
+
+## Legacy GPT-2 / `mmlu-real` Slurm
+
+There is **no** CHPC template for the old GPT-2 + JB SAE stack. To run that mode interactively on a GPU node:
 
 ```bash
 cd "$REPO_ROOT"
 export PYTHONPATH="$REPO_ROOT/pipeline_2026${PYTHONPATH:+:$PYTHONPATH}"
 bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-real
 ```
+
+## Environment variables (orchestrator reference)
+
+[`scripts/run_pipeline_2026.sh`](../scripts/run_pipeline_2026.sh) modes **`mmlu-real`** and **`mmlu-gemma-full`** respect the exports documented in [`env_chpc.example`](env_chpc.example): `EXPORT_DEVICE`, `EXPORT_MODEL`, `EXPORT_LAYER_INDEX`, `EXPORT_BATCH_SIZE`, `SAE_BATCH_SIZE`, `EXPORT_FP16`, `SAE_RELEASE`, `SAE_ID`, `EXPORT_MAX_ROWS`, `SAE_ENCODE`, etc.
