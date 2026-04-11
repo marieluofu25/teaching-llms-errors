@@ -1,11 +1,13 @@
 """Residual-based difficulty control (surface features + logistic regression)."""
 from __future__ import annotations
 
+import re
+import warnings
+
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import train_test_split
-import re
 
 
 def extract_difficulty_features(text: str) -> list:
@@ -60,7 +62,9 @@ def compute_residuals_and_group(
     df : DataFrame
         Must contain text_col and error_col.
     error_col : str
-        Binary 1 = error (incorrect), 0 = correct.
+        Binary 1 = error (incorrect), 0 = correct. If this column is constant,
+        logistic regression is skipped and ``expected_error`` is set to the
+        empirical error rate for every row (a warning is emitted).
     fit_mode : {"full", "train_only"}
         - full: fit on all rows (legacy; can leak signal into expected_error).
         - train_only: fit on (1-test_size) fraction, apply predict_proba to all rows.
@@ -80,19 +84,39 @@ def compute_residuals_and_group(
         else None
     )
     X, y = _build_xy(out, text_col, error_col, subject_col=use_subj)
+    n = len(out)
 
-    if fit_mode == "full":
+    if np.unique(y).size < 2:
+        warnings.warn(
+            f"{error_col!r} has a single class in the data; skipping LogisticRegression "
+            f"and using constant expected_error={float(np.mean(y)):.6g} for all rows.",
+            UserWarning,
+            stacklevel=2,
+        )
+        expected_error_prob = np.full(n, float(np.mean(y)), dtype=np.float64)
+    elif fit_mode == "full":
         lr = LogisticRegression(class_weight="balanced", max_iter=2000)
         lr.fit(X, y)
         expected_error_prob = lr.predict_proba(X)[:, 1]
     else:
-        idx = np.arange(len(out))
+        idx = np.arange(n)
         tr_idx, _ = train_test_split(
             idx, test_size=test_size, random_state=random_state, stratify=y
         )
-        lr = LogisticRegression(class_weight="balanced", max_iter=2000)
-        lr.fit(X[tr_idx], y[tr_idx])
-        expected_error_prob = lr.predict_proba(X)[:, 1]
+        y_train = y[tr_idx]
+        if np.unique(y_train).size < 2:
+            warnings.warn(
+                f"{error_col!r} has a single class in the training split; skipping "
+                f"LogisticRegression and using constant expected_error="
+                f"{float(np.mean(y_train)):.6g} for all rows.",
+                UserWarning,
+                stacklevel=2,
+            )
+            expected_error_prob = np.full(n, float(np.mean(y_train)), dtype=np.float64)
+        else:
+            lr = LogisticRegression(class_weight="balanced", max_iter=2000)
+            lr.fit(X[tr_idx], y_train)
+            expected_error_prob = lr.predict_proba(X)[:, 1]
 
     out["expected_error"] = expected_error_prob
     out["residual_error"] = out[error_col].astype(float).values - out["expected_error"]
