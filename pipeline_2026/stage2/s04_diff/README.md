@@ -9,7 +9,7 @@
 **Outputs (in `results/`):**
 - Ranked `*.csv` (`latent_id`, statistics)
 - `*.diagnostics.json`
-- `*.pattern_membership.csv` (long-form row x pattern membership)
+- `*.pattern_membership.csv` (long-form row x pattern membership). If Welch finds no significant latents, this file is still valid **header-only** (no data rows), not a broken empty file.
 - `*.pattern_catalog.json` (pattern metadata + thresholds used for membership)
 
 **Audit:** `results/audit.html`

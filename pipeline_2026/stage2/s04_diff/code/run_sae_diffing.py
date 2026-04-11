@@ -17,6 +17,8 @@ import pandas as pd
 from lib.io_schema import validate_activations_shape
 from stage2.s04_diff.code.sae_diffing import discover_failure_patterns
 
+_MEMBERSHIP_COLS = ("row_id", "pattern_id", "latent_id", "is_member")
+
 
 def _membership_matrix(
     acts: np.ndarray,
@@ -152,6 +154,13 @@ def main() -> None:
     membership_df = _build_membership_frame(
         membership, row_count=acts.shape[0], latent_ids=latent_ids
     )
+    if membership_df.empty:
+        membership_df = pd.DataFrame(columns=list(_MEMBERSHIP_COLS))
+        print(
+            "run_sae_diffing: 0 patterns passed thresholds; "
+            f"wrote header-only membership CSV → {membership_path}",
+            flush=True,
+        )
     membership_df.to_csv(membership_path, index=False)
     catalog = {
         "n_rows": int(acts.shape[0]),

@@ -4,7 +4,8 @@
 #
 # Modes: mmlu | mathcamps | mmlu-demo | mmlu-real | mmlu-gemma-full | mmlu-report | smoke
 # Env: PYTHON, JUDGE_JSON, BUILD_HTML, BUILD_RELEASE_SUMMARY, TAB4_TOP_QUESTIONS,
-#      EXPORT_*, SAE_*, RESIDUAL_CSV, ACTIVATIONS_NPZ, LATENTS_CSV, HTML_OUT, RELEASE_JSON
+#      EXPORT_*, SAE_*, RESIDUAL_CSV, ACTIVATIONS_NPZ, LATENTS_CSV, HTML_OUT, RELEASE_JSON,
+#      S04_ALLOW_FAIL=1 (optional: continue pipeline if run_sae_diffing fails; default strict)
 
 set -euo pipefail
 
@@ -63,7 +64,7 @@ run_eval() {
     --output-json "${out_json}"
     --output-table "${S05}/leaderboard.csv"
   )
-  if [[ -n "${membership}" && -f "${membership}" ]]; then
+  if [[ -n "${membership}" && -s "${membership}" ]]; then
     eval_args+=( --pattern-membership "${membership}" )
   fi
   if [[ -n "${catalog}" && -f "${catalog}" ]]; then
@@ -79,6 +80,18 @@ run_eval() {
   "${PY}" -m stage2.s05_eval.code.plot_residual_summary \
     --metrics-json "${out_json}" \
     --output "${S05}/${label}_residual_bar.png"
+}
+
+# run_sae_diffing: fail by default; set S04_ALLOW_FAIL=1 to continue on error (debug only).
+run_sae_diffing_cmd() {
+  if [[ "${S04_ALLOW_FAIL:-0}" == "1" ]]; then
+    "$@" || {
+      echo "WARNING: run_sae_diffing failed (S04_ALLOW_FAIL=1); continuing." >&2
+      return 0
+    }
+  else
+    "$@"
+  fi
 }
 
 run_build_html() {
@@ -194,11 +207,11 @@ case "${MODE}" in
       --residual-csv "${S01}/mmlu_gpt35_residuals.csv" \
       --latent-dim 64 \
       --output "${S04}/mmlu_dummy_activations.npz"
-    "${PY}" -m stage2.s04_diff.code.run_sae_diffing \
+    run_sae_diffing_cmd "${PY}" -m stage2.s04_diff.code.run_sae_diffing \
       --activations "${S04}/mmlu_dummy_activations.npz" \
       --residual-csv "${S01}/mmlu_gpt35_residuals.csv" \
       --min-group-size 30 \
-      --output "${S04}/mmlu_dummy_latents.csv" || true
+      --output "${S04}/mmlu_dummy_latents.csv"
     run_audit "${S04}" "s04_diff" "Stage 2 — s04_diff — Coordinate-wise group comparison" "${P26}/stage2/s04_diff/README.md"
     echo "==> Stage 2 — s05_eval — Evaluate + plot…"
     run_eval "mmlu_gpt35_demo" "${S01}/mmlu_gpt35_residuals.csv"
@@ -272,13 +285,13 @@ case "${MODE}" in
     echo "==> Stage 2 — s04_diff — Welch diff on coordinates…"
     MEMBERSHIP_MAIN="${S04}/mmlu_hf_latents.pattern_membership.csv"
     CATALOG_MAIN="${S04}/mmlu_hf_latents.pattern_catalog.json"
-    "${PY}" -m stage2.s04_diff.code.run_sae_diffing \
+    run_sae_diffing_cmd "${PY}" -m stage2.s04_diff.code.run_sae_diffing \
       --activations "${DIFF_NPZ}" \
       --residual-csv "${RES_WORK}" \
       --min-group-size 30 \
       --output-membership "${MEMBERSHIP_MAIN}" \
       --output-pattern-catalog "${CATALOG_MAIN}" \
-      --output "${LAT_OUT}" || true
+      --output "${LAT_OUT}"
     run_audit "${S04}" "s04_diff" "Stage 2 — s04_diff — Coordinate-wise group comparison" "${P26}/stage2/s04_diff/README.md"
     EVAL_TAG="mmlu_gpt35_hf_activations"
     if [[ "${SAE_ENCODE}" == "1" ]]; then
@@ -303,13 +316,13 @@ case "${MODE}" in
           --output "${RES_SEED}" \
           --fit-mode train_only \
           --random-state "${seed}"
-        "${PY}" -m stage2.s04_diff.code.run_sae_diffing \
+        run_sae_diffing_cmd "${PY}" -m stage2.s04_diff.code.run_sae_diffing \
           --activations "${DIFF_NPZ}" \
           --residual-csv "${RES_SEED}" \
           --min-group-size 30 \
           --output-membership "${MEM_SEED}" \
           --output-pattern-catalog "${CAT_SEED}" \
-          --output "${LAT_SEED}" || true
+          --output "${LAT_SEED}"
         run_eval "${EVAL_TAG}_seed_${seed}" "${RES_SEED}" "${MEM_SEED}" "${CAT_SEED}"
         STABILITY_CATALOGS="${STABILITY_CATALOGS}${STABILITY_CATALOGS:+,}${CAT_SEED}"
       done
@@ -395,7 +408,7 @@ case "${MODE}" in
     )
     if [[ "${USE_SAE_FDR:-}" == "1" ]]; then DIFF_ARGS+=( --fdr ); fi
     echo "==> Stage 2 — s04_diff — Welch diff…"
-    "${PY}" "${DIFF_ARGS[@]}" || true
+    run_sae_diffing_cmd "${PY}" "${DIFF_ARGS[@]}"
     run_audit "${S04}" "s04_diff" "Stage 2 — s04_diff — Coordinate-wise group comparison" "${P26}/stage2/s04_diff/README.md"
     EVAL_TAG="${EVAL_LABEL:-mmlu_gemma_unified_sae}"
     export EVAL_METRICS_JSON="${FINAL_METRICS_JSON:-${S05}/mmlu_final_metrics.json}"

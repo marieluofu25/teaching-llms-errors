@@ -4,10 +4,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import warnings
 from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from pandas.errors import EmptyDataError
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
@@ -51,22 +53,28 @@ def residual_proxy_metrics(df: pd.DataFrame) -> dict:
     }
 
 
-def _load_membership_matrix(path: Path) -> tuple[np.ndarray, list[int]]:
+def _load_membership_matrix(path: Path, n_rows: int) -> tuple[np.ndarray, list[int]]:
     """Load long-form pattern membership CSV into a dense 2D matrix.
 
-    Returns:
-        tuple[np.ndarray, list[int]]: Matrix ``(N, P)`` with 0/1 values and
-        ordered pattern ids.
+    Header-only files, 0-byte files, and ``EmptyDataError`` map to shape
+    ``(n_rows, 0)`` (no discovered patterns). Non-empty long-form data must
+    align with residual row count ``n_rows`` (caller validates).
     """
-    mdf = pd.read_csv(path)
+    try:
+        if path.stat().st_size == 0:
+            return np.zeros((n_rows, 0), dtype=np.int8), []
+        mdf = pd.read_csv(path)
+    except EmptyDataError:
+        return np.zeros((n_rows, 0), dtype=np.int8), []
+
     assert_columns(
         mdf, ["row_id", "pattern_id", "is_member"], name="pattern membership"
     )
     if mdf.empty:
-        return np.zeros((0, 0), dtype=np.int8), []
+        return np.zeros((n_rows, 0), dtype=np.int8), []
     pattern_ids = sorted(int(x) for x in mdf["pattern_id"].dropna().unique().tolist())
-    n_rows = int(mdf["row_id"].max()) + 1
-    out = np.zeros((n_rows, len(pattern_ids)), dtype=np.int8)
+    n_mat_rows = int(mdf["row_id"].max()) + 1
+    out = np.zeros((n_mat_rows, len(pattern_ids)), dtype=np.int8)
     pidx = {p: i for i, p in enumerate(pattern_ids)}
     for row in mdf.itertuples(index=False):
         out[int(row.row_id), pidx[int(row.pattern_id)]] = int(row.is_member)
@@ -246,10 +254,19 @@ def main() -> None:
         "residual_metrics": residual_proxy_metrics(df),
     }
     if args.pattern_membership is not None and args.pattern_membership.is_file():
-        x, pattern_ids = _load_membership_matrix(args.pattern_membership)
+        x, pattern_ids = _load_membership_matrix(
+            args.pattern_membership, n_rows=len(df)
+        )
         if x.shape[0] != len(df):
             raise ValueError(
                 f"pattern membership rows {x.shape[0]} != residual rows {len(df)}"
+            )
+        if len(pattern_ids) == 0:
+            warnings.warn(
+                "Pattern membership has zero columns (no discovered patterns). "
+                "set_level_metrics use baseline notes; see s04 diagnostics.",
+                UserWarning,
+                stacklevel=2,
             )
         metrics["set_level_metrics"] = {
             "coverage_concentration": _coverage_concentration(y, x),
