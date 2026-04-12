@@ -18,7 +18,7 @@
 
 **Unified Gemma / full pickle (CHPC):**
 
-- `python -m stage2.s01_residual.code.run_gemma_mmlu_inference --output-csv …` — HF MMLU MC inference (default `google/gemma-2-9b`); `--row-start` / `--row-end` for shards; `--resume` for single-writer resume.
+- `python -m stage2.s01_residual.code.run_gemma_mmlu_inference --output-csv …` — HF MMLU MC inference (default `google/gemma-2-9b`); `--row-start` / `--row-end` for shards; `--resume` for single-writer resume. Gold `data_y` may be **1–4** (choice index) or **A–D**; the runner maps 1→A, …, 4→D when scoring `ai_correct`. After any fix to gold mapping or prompts, **re-run inference**, merge shards, **`run_mmlu_full_residuals`**, then **s04/s05** (old predictions CSVs are not comparable).
 - `python -m stage2.s01_residual.code.merge_mmlu_prediction_shards --shards … --output …` — merge array outputs.
 - `python -m stage2.s01_residual.code.run_mmlu_full_residuals --predictions-csv … --output-csv …` — topic-aware residuals + profile next to output CSV.
 

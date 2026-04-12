@@ -2,8 +2,9 @@
 """MMLU inference with a Hugging Face causal LM (default: Gemma-2-9B) — unified-model Phase 1.
 
 Loads the full legacy pickle, runs batched generation, writes a predictions CSV with
-``ai_preds`` / ``ai_correct`` aligned to ``data_y`` (gold letter). Supports resume and
-row ranges for Slurm array tasks (use **one output file per array task**, then merge).
+``ai_preds`` / ``ai_correct`` aligned to ``data_y``. Gold may be **letters A–D** or
+**numeric indices 1–4** (MMLU convention: 1=A, …, 4=D). Supports resume and row
+ranges for Slurm array tasks (use **one output file per array task**, then merge).
 """
 from __future__ import annotations
 
@@ -18,6 +19,7 @@ from tqdm import tqdm
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 from lib.repo_paths import teaching_llms_errors_repo_root
+from stage2.s01_residual.code.mmlu_gold_utils import mmlu_gold_letter as _mmlu_gold_letter
 from stage2.s01_residual.code.run_residual_control import load_mmlu_dataframe
 
 
@@ -129,6 +131,9 @@ def main() -> None:
 
     mbs = max(1, args.micro_batch_size)
     out_buffer: list[dict] = []
+    n_correct = 0
+    n_parsed_empty = 0
+    n_gold_unrecognized = 0
 
     def flush() -> None:
         nonlocal first_write
@@ -173,8 +178,14 @@ def main() -> None:
             new_tokens = gen[j, n_in:]
             decoded = tok.decode(new_tokens, skip_special_tokens=True)
             letter = _parse_choice(decoded) or ""
-            gold = str(row["data_y"]).strip().upper()[:1]
+            if not letter:
+                n_parsed_empty += 1
+            gold = _mmlu_gold_letter(row["data_y"])
+            if gold is None:
+                n_gold_unrecognized += 1
             correct = bool(letter and gold and letter == gold)
+            if correct:
+                n_correct += 1
             out_buffer.append(
                 {
                     "row_id": int(row["row_id"]),
@@ -193,9 +204,14 @@ def main() -> None:
 
     flush()
 
+    acc = float(n_correct / n) if n else None
     meta = {
         "model": args.model,
         "n_rows_written": int(n),
+        "n_correct": int(n_correct),
+        "accuracy": acc,
+        "n_parsed_empty": int(n_parsed_empty),
+        "n_gold_unrecognized": int(n_gold_unrecognized),
         "output_csv": str(args.output_csv),
         "row_start": args.row_start,
         "row_end": args.row_end,
@@ -205,6 +221,16 @@ def main() -> None:
     with open(meta_path, "w", encoding="utf-8") as f:
         json.dump(meta, f, indent=2)
     print(f"Wrote {args.output_csv} (+ {meta_path})")
+    if acc is not None and acc == 0.0 and n > 0:
+        print(
+            "WARNING: accuracy is 0.0 — verify data_y (1–4 vs A–D), parsing, and model output.",
+            flush=True,
+        )
+    if n > 0 and n_gold_unrecognized > max(10, n // 100):
+        print(
+            f"WARNING: n_gold_unrecognized={n_gold_unrecognized}/{n} — many rows lack a valid gold letter.",
+            flush=True,
+        )
 
 
 if __name__ == "__main__":
