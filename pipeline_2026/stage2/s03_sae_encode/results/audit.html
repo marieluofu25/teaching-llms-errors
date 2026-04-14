@@ -18,7 +18,7 @@
 <body>
   <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../../../stage1/results/audit.html">Stage1 — Paper baseline</a> &middot; <a href="../../s01_residual/results/audit.html">s01_residual</a> &middot; <a href="../../s02_export/results/audit.html">s02_export</a> &middot; <strong>s03_sae_encode</strong> &middot; <a href="../../s04_diff/results/audit.html">s04_diff</a> &middot; <a href="../../s05_eval/results/audit.html">s05_eval</a> &middot; <a href="../../s06_report/results/audit.html">s06_report</a><span class="muted"> (segment 3 of 6)</span></p>
   <h1>Stage 2 — s03_sae_encode — SAE latent vectors</h1>
-  <p class="muted">Audit generated 2026-04-07 21:58:27 UTC</p>
+  <p class="muted">Audit generated 2026-04-12 06:25:20 UTC</p>
   <p class="muted">Artifacts are ordered by last-modified timestamp (newest first), then filename.</p>
   <div class="excerpt"><h3>How to read this report</h3><ul><li><strong>What this page is:</strong> an artifact inventory with quick previews, not a full analysis notebook.</li><li><strong>Order:</strong> artifacts are listed newest-first to highlight latest outputs.</li><li><strong>Repro:</strong> rerun the stage command in the stage README to regenerate these files.</li></ul><p><strong>s03 focus:</strong> SAE latent encoding from exported activations.</p><ul><li><code>*.npz</code> stores latent vectors; <code>*.meta.json</code> captures SAE config and sizes.</li><li>Validate latent counts and dimensions here before running coordinate diffing.</li></ul></div>
   <div class="excerpt"># Stage 2 — s03_sae_encode — SAE encoding (SAELens)<br/>
@@ -29,7 +29,29 @@
 **Audit:** `results/audit.html`</div>
   
   <h2>Artifacts in <code>stage2/s03_sae_encode/results</code></h2>
-  <h4><code>mmlu_hf_sae_latents.meta.json</code></h4><p class="muted">1319 bytes · modified 2026-04-07 20:59:37 UTC</p>
+  <h4><code>mmlu_full_sae_latents.meta.json</code></h4><p class="muted">1281 bytes · modified 2026-04-12 06:25:19 UTC</p>
+<pre>{
+  &quot;representation_type&quot;: &quot;sae_latent&quot;,
+  &quot;n_rows&quot;: 7851,
+  &quot;d_in&quot;: 3584,
+  &quot;d_sae&quot;: 16384,
+  &quot;sae_release&quot;: &quot;gemma-scope-9b-pt-res-canonical&quot;,
+  &quot;sae_id&quot;: &quot;layer_20/width_16k/canonical&quot;,
+  &quot;sae_lens_note&quot;: &quot;Columns are SAE feature indices (sparse dictionary), not raw hidden dimensions.&quot;,
+  &quot;source_hidden_npz&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_full_hidden.npz&quot;,
+  &quot;source_hidden_meta&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_full_hidden.meta.json&quot;,
+  &quot;residual_csv&quot;: &quot;pipeline_2026/stage2/s01_residual/results/mmlu_full_residuals.csv&quot;,
+  &quot;base_model&quot;: &quot;google/gemma-2-9b&quot;,
+  &quot;hidden_export_layer_index&quot;: -1,
+  &quot;model&quot;: &quot;google/gemma-2-9b + SAELens SAE gemma-scope-9b-pt-res-canonical/layer_20/width_16k/canonical (d_in=3584, d_sae=16384)&quot;,
+  &quot;output_npz&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s03_sae_encode/results/mmlu_full_sae_latents.npz&quot;,
+  &quot;batch_size&quot;: 32,
+  &quot;device&quot;: &quot;cuda&quot;,
+  &quot;methodology&quot;: &quot;SAE embeddings for group-wise comparison; see Jiang et al., arXiv:2512.10092.&quot;
+}</pre>
+<h4><code>mmlu_full_sae_latents.npz</code></h4><p class="muted">514523412 bytes · modified 2026-04-12 06:25:19 UTC</p>
+<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
+<h4><code>mmlu_hf_sae_latents.meta.json</code></h4><p class="muted">1319 bytes · modified 2026-04-08 00:09:30 UTC</p>
 <pre>{
   &quot;representation_type&quot;: &quot;sae_latent&quot;,
   &quot;n_rows&quot;: 200,

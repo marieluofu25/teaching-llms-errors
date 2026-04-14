@@ -1,0 +1,411 @@
+{
+  "dataset": "mmlu",
+  "n_rows": 7851,
+  "columns": [
+    "row_id",
+    "questions",
+    "data_y",
+    "ai_preds",
+    "ai_correct",
+    "subject",
+    "subcat",
+    "cat",
+    "ai_model",
+    "model_raw_tail",
+    "is_error",
+    "expected_error",
+    "residual_error",
+    "group"
+  ],
+  "error_rate": 0.767036,
+  "n_errors": 6022,
+  "group_counts": {
+    "neutral": 3924,
+    "High Residual": 1964,
+    "Low Residual": 1963
+  },
+  "expected_error_mean": 0.501189,
+  "residual_error_quantiles": {
+    "q25": 0.417437,
+    "q50": 0.504582,
+    "q75": 0.505677
+  },
+  "by_subject": [
+    {
+      "subject": "clinical_knowledge",
+      "n": 150,
+      "errors": 111,
+      "error_rate": 0.74
+    },
+    {
+      "subject": "astronomy",
+      "n": 150,
+      "errors": 124,
+      "error_rate": 0.8267
+    },
+    {
+      "subject": "college_medicine",
+      "n": 150,
+      "errors": 120,
+      "error_rate": 0.8
+    },
+    {
+      "subject": "high_school_chemistry",
+      "n": 150,
+      "errors": 125,
+      "error_rate": 0.8333
+    },
+    {
+      "subject": "high_school_european_history",
+      "n": 150,
+      "errors": 116,
+      "error_rate": 0.7733
+    },
+    {
+      "subject": "high_school_geography",
+      "n": 150,
+      "errors": 116,
+      "error_rate": 0.7733
+    },
+    {
+      "subject": "high_school_macroeconomics",
+      "n": 150,
+      "errors": 123,
+      "error_rate": 0.82
+    },
+    {
+      "subject": "high_school_government_and_politics",
+      "n": 150,
+      "errors": 118,
+      "error_rate": 0.7867
+    },
+    {
+      "subject": "elementary_mathematics",
+      "n": 150,
+      "errors": 118,
+      "error_rate": 0.7867
+    },
+    {
+      "subject": "conceptual_physics",
+      "n": 150,
+      "errors": 109,
+      "error_rate": 0.7267
+    },
+    {
+      "subject": "high_school_mathematics",
+      "n": 150,
+      "errors": 117,
+      "error_rate": 0.78
+    },
+    {
+      "subject": "high_school_biology",
+      "n": 150,
+      "errors": 124,
+      "error_rate": 0.8267
+    },
+    {
+      "subject": "nutrition",
+      "n": 150,
+      "errors": 124,
+      "error_rate": 0.8267
+    },
+    {
+      "subject": "obqa",
+      "n": 150,
+      "errors": 103,
+      "error_rate": 0.6867
+    },
+    {
+      "subject": "philosophy",
+      "n": 150,
+      "errors": 123,
+      "error_rate": 0.82
+    },
+    {
+      "subject": "prehistory",
+      "n": 150,
+      "errors": 121,
+      "error_rate": 0.8067
+    },
+    {
+      "subject": "marketing",
+      "n": 150,
+      "errors": 100,
+      "error_rate": 0.6667
+    },
+    {
+      "subject": "miscellaneous",
+      "n": 150,
+      "errors": 114,
+      "error_rate": 0.76
+    },
+    {
+      "subject": "logical_fallacies",
+      "n": 150,
+      "errors": 118,
+      "error_rate": 0.7867
+    },
+    {
+      "subject": "human_aging",
+      "n": 150,
+      "errors": 105,
+      "error_rate": 0.7
+    },
+    {
+      "subject": "high_school_world_history",
+      "n": 150,
+      "errors": 99,
+      "error_rate": 0.66
+    },
+    {
+      "subject": "high_school_us_history",
+      "n": 150,
+      "errors": 116,
+      "error_rate": 0.7733
+    },
+    {
+      "subject": "high_school_statistics",
+      "n": 150,
+      "errors": 121,
+      "error_rate": 0.8067
+    },
+    {
+      "subject": "high_school_psychology",
+      "n": 150,
+      "errors": 122,
+      "error_rate": 0.8133
+    },
+    {
+      "subject": "high_school_physics",
+      "n": 150,
+      "errors": 121,
+      "error_rate": 0.8067
+    },
+    {
+      "subject": "high_school_microeconomics",
+      "n": 150,
+      "errors": 122,
+      "error_rate": 0.8133
+    },
+    {
+      "subject": "professional_medicine",
+      "n": 150,
+      "errors": 121,
+      "error_rate": 0.8067
+    },
+    {
+      "subject": "professional_psychology",
+      "n": 150,
+      "errors": 123,
+      "error_rate": 0.82
+    },
+    {
+      "subject": "security_studies",
+      "n": 150,
+      "errors": 122,
+      "error_rate": 0.8133
+    },
+    {
+      "subject": "sociology",
+      "n": 150,
+      "errors": 117,
+      "error_rate": 0.78
+    },
+    {
+      "subject": "world_religions",
+      "n": 150,
+      "errors": 103,
+      "error_rate": 0.6867
+    },
+    {
+      "subject": "virology",
+      "n": 150,
+      "errors": 106,
+      "error_rate": 0.7067
+    },
+    {
+      "subject": "professional_accounting",
+      "n": 150,
+      "errors": 117,
+      "error_rate": 0.78
+    },
+    {
+      "subject": "professional_law",
+      "n": 150,
+      "errors": 116,
+      "error_rate": 0.7733
+    },
+    {
+      "subject": "moral_scenarios",
+      "n": 150,
+      "errors": 118,
+      "error_rate": 0.7867
+    },
+    {
+      "subject": "moral_disputes",
+      "n": 150,
+      "errors": 110,
+      "error_rate": 0.7333
+    },
+    {
+      "subject": "electrical_engineering",
+      "n": 145,
+      "errors": 109,
+      "error_rate": 0.7517
+    },
+    {
+      "subject": "college_biology",
+      "n": 144,
+      "errors": 106,
+      "error_rate": 0.7361
+    },
+    {
+      "subject": "anatomy",
+      "n": 135,
+      "errors": 110,
+      "error_rate": 0.8148
+    },
+    {
+      "subject": "human_sexuality",
+      "n": 131,
+      "errors": 96,
+      "error_rate": 0.7328
+    }
+  ],
+  "by_subcat": [
+    {
+      "subcat": "health",
+      "n": 1135,
+      "errors": 869,
+      "error_rate": 0.7656
+    },
+    {
+      "subcat": "philosophy",
+      "n": 876,
+      "errors": 663,
+      "error_rate": 0.7568
+    },
+    {
+      "subcat": "math",
+      "n": 650,
+      "errors": 513,
+      "error_rate": 0.7892
+    },
+    {
+      "subcat": "history",
+      "n": 600,
+      "errors": 452,
+      "error_rate": 0.7533
+    },
+    {
+      "subcat": "physics",
+      "n": 552,
+      "errors": 433,
+      "error_rate": 0.7844
+    },
+    {
+      "subcat": "other",
+      "n": 550,
+      "errors": 414,
+      "error_rate": 0.7527
+    },
+    {
+      "subcat": "politics",
+      "n": 510,
+      "errors": 395,
+      "error_rate": 0.7745
+    },
+    {
+      "subcat": "economics",
+      "n": 414,
+      "errors": 330,
+      "error_rate": 0.7971
+    },
+    {
+      "subcat": "computer science",
+      "n": 412,
+      "errors": 296,
+      "error_rate": 0.7184
+    },
+    {
+      "subcat": "law",
+      "n": 379,
+      "errors": 289,
+      "error_rate": 0.7625
+    },
+    {
+      "subcat": "business",
+      "n": 353,
+      "errors": 251,
+      "error_rate": 0.711
+    },
+    {
+      "subcat": "psychology",
+      "n": 300,
+      "errors": 245,
+      "error_rate": 0.8167
+    },
+    {
+      "subcat": "biology",
+      "n": 294,
+      "errors": 230,
+      "error_rate": 0.7823
+    },
+    {
+      "subcat": "culture",
+      "n": 281,
+      "errors": 213,
+      "error_rate": 0.758
+    },
+    {
+      "subcat": "chemistry",
+      "n": 250,
+      "errors": 204,
+      "error_rate": 0.816
+    },
+    {
+      "subcat": "geography",
+      "n": 150,
+      "errors": 116,
+      "error_rate": 0.7733
+    },
+    {
+      "subcat": "engineering",
+      "n": 145,
+      "errors": 109,
+      "error_rate": 0.7517
+    }
+  ],
+  "by_cat": [
+    {
+      "cat": "STEM",
+      "n": 2303,
+      "errors": 1785,
+      "error_rate": 0.7751
+    },
+    {
+      "cat": "other (business, health, misc.)",
+      "n": 1888,
+      "errors": 1431,
+      "error_rate": 0.7579
+    },
+    {
+      "cat": "humanities",
+      "n": 1855,
+      "errors": 1404,
+      "error_rate": 0.7569
+    },
+    {
+      "cat": "social sciences",
+      "n": 1655,
+      "errors": 1299,
+      "error_rate": 0.7849
+    },
+    {
+      "cat": "other",
+      "n": 150,
+      "errors": 103,
+      "error_rate": 0.6867
+    }
+  ]
+}

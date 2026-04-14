@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink, useLocation } from 'react-router-dom'
 import { MaterialIcon } from './MaterialIcon'
 
 export function TopHeader({
@@ -8,6 +8,8 @@ export function TopHeader({
   title?: string
   subtitle?: string
 }) {
+  const location = useLocation()
+  const onStageRoute = location.pathname.startsWith('/stage/')
   return (
     <header className="sticky top-0 z-30 bg-surface flex justify-between items-center w-full px-8 py-3">
       <div className="flex items-center gap-8">
@@ -15,15 +17,15 @@ export function TopHeader({
           {title}
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm">
-          <Link className="text-primary font-semibold border-b-2 border-primary py-1" to="/">
-            Run selection
-          </Link>
-          <Link
-            className="text-on-surface/60 hover:text-on-surface py-1"
+          <NavLink className={({ isActive }) => `${isActive && !onStageRoute ? 'text-primary font-semibold border-b-2 border-primary' : 'text-on-surface/60 hover:text-on-surface'} py-1`} to="/">
+            Project narrative
+          </NavLink>
+          <NavLink
+            className={({ isActive }) => `${isActive || onStageRoute ? 'text-primary font-semibold border-b-2 border-primary' : 'text-on-surface/60 hover:text-on-surface'} py-1`}
             to="/stage/residual"
           >
-            Explorer
-          </Link>
+            Stage explorer
+          </NavLink>
           <a
             className="text-on-surface/60 hover:text-on-surface py-1"
             href={import.meta.env.DEV ? '/pipeline_2026/stage2/s06_report/results/mmlu_report.html' : '#'}

@@ -1,0 +1,6239 @@
+{
+  "n_rows": 7851,
+  "n_patterns": 779,
+  "membership_quantile": 0.9,
+  "patterns": [
+    {
+      "pattern_id": 0,
+      "latent_id": 8110,
+      "threshold": 0.0,
+      "V_prime": 0.3159,
+      "p_value": 0.0017914253142230583,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 1,
+      "latent_id": 5888,
+      "threshold": 0.0,
+      "V_prime": 0.2473,
+      "p_value": 4.517662027438054e-11,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 2,
+      "latent_id": 7928,
+      "threshold": 0.0,
+      "V_prime": 0.2123,
+      "p_value": 0.00545371852185866,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 3,
+      "latent_id": 9544,
+      "threshold": 0.0,
+      "V_prime": 0.2053,
+      "p_value": 0.010215530917106266,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 4,
+      "latent_id": 13768,
+      "threshold": 7.089828014373779,
+      "V_prime": 0.1989,
+      "p_value": 2.5094640496914296e-09,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 5,
+      "latent_id": 3303,
+      "threshold": 0.0,
+      "V_prime": 0.198,
+      "p_value": 4.3685836658184484e-07,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 6,
+      "latent_id": 3899,
+      "threshold": 0.0,
+      "V_prime": 0.197,
+      "p_value": 4.282779718903354e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 7,
+      "latent_id": 9159,
+      "threshold": 6.567199230194092,
+      "V_prime": 0.1965,
+      "p_value": 4.6384543732288884e-09,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 8,
+      "latent_id": 8770,
+      "threshold": 0.0,
+      "V_prime": 0.1958,
+      "p_value": 1.9762307712879706e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 9,
+      "latent_id": 6335,
+      "threshold": 0.0,
+      "V_prime": 0.1947,
+      "p_value": 0.01688071214924321,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 10,
+      "latent_id": 14984,
+      "threshold": 5.458354949951172,
+      "V_prime": 0.1944,
+      "p_value": 4.8144015446129916e-08,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 11,
+      "latent_id": 7211,
+      "threshold": 0.0,
+      "V_prime": 0.1935,
+      "p_value": 7.922287311152002e-07,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 12,
+      "latent_id": 15040,
+      "threshold": 5.463953018188477,
+      "V_prime": 0.1885,
+      "p_value": 1.2434077693618888e-07,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 13,
+      "latent_id": 6445,
+      "threshold": 0.0,
+      "V_prime": 0.1873,
+      "p_value": 0.0087441428000422,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 14,
+      "latent_id": 7077,
+      "threshold": 0.0,
+      "V_prime": 0.1865,
+      "p_value": 1.279519481836261e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 15,
+      "latent_id": 16182,
+      "threshold": 7.228341579437256,
+      "V_prime": 0.1862,
+      "p_value": 4.612991469454541e-08,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 16,
+      "latent_id": 5486,
+      "threshold": 0.0,
+      "V_prime": 0.1855,
+      "p_value": 0.0005180852577711391,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 17,
+      "latent_id": 10489,
+      "threshold": 9.23483943939209,
+      "V_prime": 0.1837,
+      "p_value": 3.461172549789926e-08,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 18,
+      "latent_id": 10330,
+      "threshold": 0.0,
+      "V_prime": 0.1787,
+      "p_value": 4.509266643251387e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 19,
+      "latent_id": 1471,
+      "threshold": 5.761472225189209,
+      "V_prime": 0.1784,
+      "p_value": 5.105690387109895e-07,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 20,
+      "latent_id": 14841,
+      "threshold": 0.0,
+      "V_prime": 0.1771,
+      "p_value": 6.73249390408376e-07,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 21,
+      "latent_id": 9899,
+      "threshold": 0.0,
+      "V_prime": 0.1761,
+      "p_value": 1.6515635368668796e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 22,
+      "latent_id": 8543,
+      "threshold": 11.60942268371582,
+      "V_prime": 0.1759,
+      "p_value": 5.5538432276178834e-08,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 23,
+      "latent_id": 3060,
+      "threshold": 8.699256896972656,
+      "V_prime": 0.1758,
+      "p_value": 6.506686772957504e-08,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 24,
+      "latent_id": 4303,
+      "threshold": 0.0,
+      "V_prime": 0.1751,
+      "p_value": 1.4509384978337538e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 25,
+      "latent_id": 7337,
+      "threshold": 0.0,
+      "V_prime": 0.1727,
+      "p_value": 0.0031549183142311307,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 26,
+      "latent_id": 8996,
+      "threshold": 0.0,
+      "V_prime": 0.1709,
+      "p_value": 0.00042519530155945694,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 27,
+      "latent_id": 12558,
+      "threshold": 0.0,
+      "V_prime": 0.1701,
+      "p_value": 2.0040839150992625e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 28,
+      "latent_id": 11180,
+      "threshold": 137.18453979492188,
+      "V_prime": 0.1691,
+      "p_value": 8.189983564396969e-09,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 29,
+      "latent_id": 1721,
+      "threshold": 5.856144428253174,
+      "V_prime": 0.1686,
+      "p_value": 1.861766410135892e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 30,
+      "latent_id": 6394,
+      "threshold": 5.440667152404785,
+      "V_prime": 0.1659,
+      "p_value": 2.2656830153810955e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 31,
+      "latent_id": 10721,
+      "threshold": 0.0,
+      "V_prime": 0.1659,
+      "p_value": 7.178690323961659e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 32,
+      "latent_id": 11981,
+      "threshold": 5.014934539794922,
+      "V_prime": 0.163,
+      "p_value": 4.466063607936485e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 33,
+      "latent_id": 11952,
+      "threshold": 0.0,
+      "V_prime": 0.1608,
+      "p_value": 0.010358091789818058,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 34,
+      "latent_id": 12999,
+      "threshold": 0.0,
+      "V_prime": 0.1593,
+      "p_value": 2.1182992058776787e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 35,
+      "latent_id": 5248,
+      "threshold": 6.0672807693481445,
+      "V_prime": 0.1592,
+      "p_value": 2.1615088961264227e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 36,
+      "latent_id": 263,
+      "threshold": 0.0,
+      "V_prime": 0.1581,
+      "p_value": 0.000527596045686497,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 37,
+      "latent_id": 6885,
+      "threshold": 6.455090045928955,
+      "V_prime": 0.1581,
+      "p_value": 4.19025201272586e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 38,
+      "latent_id": 8615,
+      "threshold": 5.911624431610107,
+      "V_prime": 0.1572,
+      "p_value": 7.237267212981645e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 39,
+      "latent_id": 9588,
+      "threshold": 11.321392059326172,
+      "V_prime": 0.157,
+      "p_value": 1.5356328172067077e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 40,
+      "latent_id": 14079,
+      "threshold": 0.0,
+      "V_prime": 0.1568,
+      "p_value": 0.006615444449006621,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 41,
+      "latent_id": 3957,
+      "threshold": 0.0,
+      "V_prime": 0.1562,
+      "p_value": 0.028777465693142452,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 42,
+      "latent_id": 12694,
+      "threshold": 5.778345108032227,
+      "V_prime": 0.1562,
+      "p_value": 6.0006296076938124e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 43,
+      "latent_id": 14792,
+      "threshold": 8.095200538635254,
+      "V_prime": 0.1562,
+      "p_value": 2.632636151105197e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 44,
+      "latent_id": 12479,
+      "threshold": 5.72175407409668,
+      "V_prime": 0.156,
+      "p_value": 5.852055082015042e-06,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 45,
+      "latent_id": 9912,
+      "threshold": 0.0,
+      "V_prime": 0.1554,
+      "p_value": 0.029472187100581332,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 46,
+      "latent_id": 567,
+      "threshold": 5.053529262542725,
+      "V_prime": 0.1542,
+      "p_value": 1.4712511458059906e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 47,
+      "latent_id": 5507,
+      "threshold": 0.0,
+      "V_prime": 0.1533,
+      "p_value": 2.5042323127040728e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 48,
+      "latent_id": 13174,
+      "threshold": 0.0,
+      "V_prime": 0.1532,
+      "p_value": 0.006430269206071326,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 49,
+      "latent_id": 16206,
+      "threshold": 0.0,
+      "V_prime": 0.152,
+      "p_value": 0.02976006428062033,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 50,
+      "latent_id": 4640,
+      "threshold": 0.0,
+      "V_prime": 0.1518,
+      "p_value": 2.7691561193861736e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 51,
+      "latent_id": 13524,
+      "threshold": 0.0,
+      "V_prime": 0.1518,
+      "p_value": 2.1054699009195435e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 52,
+      "latent_id": 8068,
+      "threshold": 0.0,
+      "V_prime": 0.1494,
+      "p_value": 2.2378206529469076e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 53,
+      "latent_id": 1012,
+      "threshold": 0.0,
+      "V_prime": 0.1492,
+      "p_value": 8.985099753631722e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 54,
+      "latent_id": 9205,
+      "threshold": 6.785238742828369,
+      "V_prime": 0.1492,
+      "p_value": 1.2245505219863997e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 55,
+      "latent_id": 2995,
+      "threshold": 0.0,
+      "V_prime": 0.1488,
+      "p_value": 5.770050464644248e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 56,
+      "latent_id": 2127,
+      "threshold": 0.0,
+      "V_prime": 0.1484,
+      "p_value": 0.0004404740732356552,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 57,
+      "latent_id": 10577,
+      "threshold": 0.0,
+      "V_prime": 0.1484,
+      "p_value": 0.00040479107912289584,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 58,
+      "latent_id": 13024,
+      "threshold": 0.0,
+      "V_prime": 0.1483,
+      "p_value": 0.015771902356297485,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 59,
+      "latent_id": 8736,
+      "threshold": 0.0,
+      "V_prime": 0.1479,
+      "p_value": 3.731872067742363e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 60,
+      "latent_id": 12154,
+      "threshold": 0.0,
+      "V_prime": 0.1462,
+      "p_value": 6.873856968786072e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 61,
+      "latent_id": 9975,
+      "threshold": 8.321915626525879,
+      "V_prime": 0.1455,
+      "p_value": 1.852984471044357e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 62,
+      "latent_id": 4600,
+      "threshold": 0.0,
+      "V_prime": 0.145,
+      "p_value": 0.00038316913444682264,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 63,
+      "latent_id": 7148,
+      "threshold": 0.0,
+      "V_prime": 0.1449,
+      "p_value": 0.00012893914384146847,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 64,
+      "latent_id": 8691,
+      "threshold": 6.215857028961182,
+      "V_prime": 0.1449,
+      "p_value": 1.7622605361831394e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 65,
+      "latent_id": 12337,
+      "threshold": 7.975390911102295,
+      "V_prime": 0.1441,
+      "p_value": 1.2067607046028408e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 66,
+      "latent_id": 5427,
+      "threshold": 0.0,
+      "V_prime": 0.1433,
+      "p_value": 4.7553147330558835e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 67,
+      "latent_id": 14729,
+      "threshold": 0.0,
+      "V_prime": 0.1431,
+      "p_value": 0.0010602249398838114,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 68,
+      "latent_id": 12941,
+      "threshold": 0.0,
+      "V_prime": 0.1428,
+      "p_value": 0.0464939034420578,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 69,
+      "latent_id": 2273,
+      "threshold": 0.0,
+      "V_prime": 0.1424,
+      "p_value": 0.03223286417784582,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 70,
+      "latent_id": 14689,
+      "threshold": 0.0,
+      "V_prime": 0.1424,
+      "p_value": 0.033387312751495535,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 71,
+      "latent_id": 610,
+      "threshold": 0.0,
+      "V_prime": 0.1422,
+      "p_value": 0.00010649412603276722,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 72,
+      "latent_id": 1133,
+      "threshold": 0.0,
+      "V_prime": 0.1422,
+      "p_value": 0.00014813917991828582,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 73,
+      "latent_id": 1301,
+      "threshold": 0.0,
+      "V_prime": 0.1414,
+      "p_value": 0.00032370683281514583,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 74,
+      "latent_id": 8259,
+      "threshold": 0.0,
+      "V_prime": 0.1408,
+      "p_value": 0.010550669521046161,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 75,
+      "latent_id": 10646,
+      "threshold": 0.0,
+      "V_prime": 0.1404,
+      "p_value": 0.0007179115107725244,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 76,
+      "latent_id": 9452,
+      "threshold": 6.181798458099365,
+      "V_prime": 0.1403,
+      "p_value": 5.513713711881947e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 77,
+      "latent_id": 14692,
+      "threshold": 7.050915241241455,
+      "V_prime": 0.1403,
+      "p_value": 2.4483652133524162e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 78,
+      "latent_id": 13286,
+      "threshold": 0.0,
+      "V_prime": 0.139,
+      "p_value": 8.404706057505967e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 79,
+      "latent_id": 10636,
+      "threshold": 0.0,
+      "V_prime": 0.1389,
+      "p_value": 0.00014726974462999872,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 80,
+      "latent_id": 1179,
+      "threshold": 0.0,
+      "V_prime": 0.138,
+      "p_value": 0.00496047075147967,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 81,
+      "latent_id": 10695,
+      "threshold": 0.0,
+      "V_prime": 0.1379,
+      "p_value": 0.0001697041830742837,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 82,
+      "latent_id": 14048,
+      "threshold": 5.463824272155762,
+      "V_prime": 0.1379,
+      "p_value": 6.807921080747659e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 83,
+      "latent_id": 1403,
+      "threshold": 0.0,
+      "V_prime": 0.1372,
+      "p_value": 0.01607466601609441,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 84,
+      "latent_id": 4175,
+      "threshold": 6.240108489990234,
+      "V_prime": 0.1372,
+      "p_value": 4.5597189277179126e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 85,
+      "latent_id": 4967,
+      "threshold": 9.886232376098633,
+      "V_prime": 0.1369,
+      "p_value": 2.1620616959044877e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 86,
+      "latent_id": 11230,
+      "threshold": 0.0,
+      "V_prime": 0.1369,
+      "p_value": 0.03436365799393211,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 87,
+      "latent_id": 10479,
+      "threshold": 0.0,
+      "V_prime": 0.1366,
+      "p_value": 0.00013487385586041006,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 88,
+      "latent_id": 2334,
+      "threshold": 0.0,
+      "V_prime": 0.1365,
+      "p_value": 0.00012539329543508418,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 89,
+      "latent_id": 4038,
+      "threshold": 0.0,
+      "V_prime": 0.1365,
+      "p_value": 0.015262233957697761,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 90,
+      "latent_id": 332,
+      "threshold": 0.0,
+      "V_prime": 0.1364,
+      "p_value": 0.000126465555355236,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 91,
+      "latent_id": 13604,
+      "threshold": 0.0,
+      "V_prime": 0.1364,
+      "p_value": 0.0340780668159423,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 92,
+      "latent_id": 5745,
+      "threshold": 5.5903801918029785,
+      "V_prime": 0.1359,
+      "p_value": 8.060359965608481e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 93,
+      "latent_id": 12093,
+      "threshold": 0.0,
+      "V_prime": 0.1357,
+      "p_value": 0.00012889635884540698,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 94,
+      "latent_id": 1355,
+      "threshold": 0.0,
+      "V_prime": 0.1356,
+      "p_value": 0.0001496497368729902,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 95,
+      "latent_id": 9112,
+      "threshold": 0.0,
+      "V_prime": 0.1355,
+      "p_value": 0.00014029702387252812,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 96,
+      "latent_id": 232,
+      "threshold": 5.311058044433594,
+      "V_prime": 0.1354,
+      "p_value": 8.498443201926005e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 97,
+      "latent_id": 2008,
+      "threshold": 0.0,
+      "V_prime": 0.1351,
+      "p_value": 0.001625044207102583,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 98,
+      "latent_id": 11324,
+      "threshold": 7.308085918426514,
+      "V_prime": 0.135,
+      "p_value": 5.601424047018314e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 99,
+      "latent_id": 9515,
+      "threshold": 0.0,
+      "V_prime": 0.1349,
+      "p_value": 0.03657380358763503,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 100,
+      "latent_id": 1535,
+      "threshold": 0.0,
+      "V_prime": 0.1342,
+      "p_value": 0.0006915922099800765,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 101,
+      "latent_id": 12719,
+      "threshold": 6.015856742858887,
+      "V_prime": 0.1342,
+      "p_value": 6.570532115506437e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 102,
+      "latent_id": 8261,
+      "threshold": 0.0,
+      "V_prime": 0.1339,
+      "p_value": 0.01602705807820131,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 103,
+      "latent_id": 9104,
+      "threshold": 6.112979412078857,
+      "V_prime": 0.1338,
+      "p_value": 8.199650808217576e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 104,
+      "latent_id": 12225,
+      "threshold": 5.2800092697143555,
+      "V_prime": 0.1338,
+      "p_value": 0.00010510905027875177,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 105,
+      "latent_id": 11692,
+      "threshold": 0.0,
+      "V_prime": 0.1336,
+      "p_value": 0.0003773333149085947,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 106,
+      "latent_id": 992,
+      "threshold": 0.0,
+      "V_prime": 0.1334,
+      "p_value": 0.0001418000642892369,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 107,
+      "latent_id": 8622,
+      "threshold": 6.127806663513184,
+      "V_prime": 0.133,
+      "p_value": 8.459045486221021e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 108,
+      "latent_id": 587,
+      "threshold": 0.0,
+      "V_prime": 0.1326,
+      "p_value": 0.00017196286742108324,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 109,
+      "latent_id": 4772,
+      "threshold": 0.0,
+      "V_prime": 0.1325,
+      "p_value": 0.0002559863410883951,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 110,
+      "latent_id": 5190,
+      "threshold": 0.0,
+      "V_prime": 0.1325,
+      "p_value": 0.00038938147992683775,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 111,
+      "latent_id": 4801,
+      "threshold": 0.0,
+      "V_prime": 0.1322,
+      "p_value": 0.0014251565277297563,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 112,
+      "latent_id": 15108,
+      "threshold": 0.0,
+      "V_prime": 0.132,
+      "p_value": 0.008669515732815282,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 113,
+      "latent_id": 5249,
+      "threshold": 0.0,
+      "V_prime": 0.1316,
+      "p_value": 0.0005413471247548296,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 114,
+      "latent_id": 2661,
+      "threshold": 0.0,
+      "V_prime": 0.1315,
+      "p_value": 0.001462890205209635,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 115,
+      "latent_id": 9971,
+      "threshold": 0.0,
+      "V_prime": 0.1314,
+      "p_value": 0.0003533842942245947,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 116,
+      "latent_id": 12344,
+      "threshold": 8.130668640136719,
+      "V_prime": 0.1311,
+      "p_value": 5.6553491130546685e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 117,
+      "latent_id": 4869,
+      "threshold": 0.0,
+      "V_prime": 0.131,
+      "p_value": 0.0003747968651097778,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 118,
+      "latent_id": 5169,
+      "threshold": 0.0,
+      "V_prime": 0.1307,
+      "p_value": 0.0003394073764949612,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 119,
+      "latent_id": 601,
+      "threshold": 0.0,
+      "V_prime": 0.1299,
+      "p_value": 0.0007977140872654323,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 120,
+      "latent_id": 13297,
+      "threshold": 0.0,
+      "V_prime": 0.1298,
+      "p_value": 0.00037532828666600037,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 121,
+      "latent_id": 1188,
+      "threshold": 0.0,
+      "V_prime": 0.1297,
+      "p_value": 0.010589233092456952,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 122,
+      "latent_id": 1715,
+      "threshold": 5.335707664489746,
+      "V_prime": 0.1297,
+      "p_value": 0.00018756276834872384,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 123,
+      "latent_id": 14456,
+      "threshold": 0.0,
+      "V_prime": 0.1294,
+      "p_value": 0.00031394216391841183,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 124,
+      "latent_id": 3908,
+      "threshold": 5.126961708068848,
+      "V_prime": 0.1293,
+      "p_value": 0.00024138889571438037,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 125,
+      "latent_id": 11365,
+      "threshold": 5.680384635925293,
+      "V_prime": 0.1293,
+      "p_value": 0.00013539709734568126,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 126,
+      "latent_id": 2980,
+      "threshold": 0.0,
+      "V_prime": 0.1287,
+      "p_value": 0.0002821528495927392,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 127,
+      "latent_id": 11363,
+      "threshold": 0.0,
+      "V_prime": 0.1285,
+      "p_value": 0.00023997108571492513,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 128,
+      "latent_id": 13794,
+      "threshold": 7.053617477416992,
+      "V_prime": 0.1283,
+      "p_value": 9.224268610955929e-05,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 129,
+      "latent_id": 16203,
+      "threshold": 0.0,
+      "V_prime": 0.1281,
+      "p_value": 0.0008645467024065987,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 130,
+      "latent_id": 7916,
+      "threshold": 0.0,
+      "V_prime": 0.1279,
+      "p_value": 0.0003847581682116695,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 131,
+      "latent_id": 14881,
+      "threshold": 0.0,
+      "V_prime": 0.1278,
+      "p_value": 0.002871256739392288,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 132,
+      "latent_id": 5242,
+      "threshold": 0.0,
+      "V_prime": 0.1277,
+      "p_value": 0.00043603143979551974,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 133,
+      "latent_id": 9598,
+      "threshold": 0.0,
+      "V_prime": 0.1276,
+      "p_value": 0.021103538913945882,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 134,
+      "latent_id": 6898,
+      "threshold": 5.211450099945068,
+      "V_prime": 0.1273,
+      "p_value": 0.0002240236687869994,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 135,
+      "latent_id": 5149,
+      "threshold": 0.0,
+      "V_prime": 0.1266,
+      "p_value": 0.00042885686414394615,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 136,
+      "latent_id": 85,
+      "threshold": 5.373600482940674,
+      "V_prime": 0.1265,
+      "p_value": 0.00021691025250363314,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 137,
+      "latent_id": 496,
+      "threshold": 6.642393589019775,
+      "V_prime": 0.1265,
+      "p_value": 0.00014269735920482613,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 138,
+      "latent_id": 8339,
+      "threshold": 0.0,
+      "V_prime": 0.1265,
+      "p_value": 0.007831671787780532,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 139,
+      "latent_id": 9994,
+      "threshold": 0.0,
+      "V_prime": 0.1264,
+      "p_value": 0.0005490253593581311,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 140,
+      "latent_id": 12818,
+      "threshold": 0.0,
+      "V_prime": 0.1263,
+      "p_value": 0.0004695697071413769,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 141,
+      "latent_id": 1327,
+      "threshold": 6.596104621887207,
+      "V_prime": 0.1262,
+      "p_value": 0.00012947301516880535,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 142,
+      "latent_id": 9816,
+      "threshold": 0.0,
+      "V_prime": 0.1262,
+      "p_value": 0.00035450191778986436,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 143,
+      "latent_id": 3316,
+      "threshold": 6.77146053314209,
+      "V_prime": 0.1256,
+      "p_value": 0.00011661350148429502,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 144,
+      "latent_id": 7146,
+      "threshold": 0.0,
+      "V_prime": 0.1255,
+      "p_value": 0.0007594426416415278,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 145,
+      "latent_id": 14760,
+      "threshold": 0.0,
+      "V_prime": 0.1251,
+      "p_value": 0.004037745779335236,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 146,
+      "latent_id": 9852,
+      "threshold": 5.836160182952881,
+      "V_prime": 0.1244,
+      "p_value": 0.00022587374618354288,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 147,
+      "latent_id": 11550,
+      "threshold": 7.068811416625977,
+      "V_prime": 0.1239,
+      "p_value": 0.00018920116487683496,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 148,
+      "latent_id": 8221,
+      "threshold": 0.0,
+      "V_prime": 0.1235,
+      "p_value": 0.001901286038238443,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 149,
+      "latent_id": 2728,
+      "threshold": 0.0,
+      "V_prime": 0.123,
+      "p_value": 0.007419157392817641,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 150,
+      "latent_id": 12355,
+      "threshold": 0.0,
+      "V_prime": 0.1224,
+      "p_value": 0.0006204707735565883,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 151,
+      "latent_id": 11051,
+      "threshold": 0.0,
+      "V_prime": 0.1218,
+      "p_value": 0.006541674057345042,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 152,
+      "latent_id": 8140,
+      "threshold": 8.026838302612305,
+      "V_prime": 0.1217,
+      "p_value": 0.00016759511257275533,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 153,
+      "latent_id": 4331,
+      "threshold": 5.770501136779785,
+      "V_prime": 0.1213,
+      "p_value": 0.0003819318718257015,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 154,
+      "latent_id": 16081,
+      "threshold": 5.830582141876221,
+      "V_prime": 0.1212,
+      "p_value": 0.00035691283609750674,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 155,
+      "latent_id": 3721,
+      "threshold": 0.0,
+      "V_prime": 0.1211,
+      "p_value": 0.0005884716388013013,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 156,
+      "latent_id": 5789,
+      "threshold": 6.781793594360352,
+      "V_prime": 0.1209,
+      "p_value": 0.00024780090230566075,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 157,
+      "latent_id": 9480,
+      "threshold": 0.0,
+      "V_prime": 0.1209,
+      "p_value": 0.00119529657754174,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 158,
+      "latent_id": 5289,
+      "threshold": 0.0,
+      "V_prime": 0.1205,
+      "p_value": 0.0032480834732749437,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 159,
+      "latent_id": 3121,
+      "threshold": 0.0,
+      "V_prime": 0.1201,
+      "p_value": 0.001425350233329526,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 160,
+      "latent_id": 13193,
+      "threshold": 0.0,
+      "V_prime": 0.1198,
+      "p_value": 0.0006777389818799781,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 161,
+      "latent_id": 925,
+      "threshold": 0.0,
+      "V_prime": 0.1197,
+      "p_value": 0.0009566961908463768,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 162,
+      "latent_id": 1092,
+      "threshold": 0.0,
+      "V_prime": 0.1197,
+      "p_value": 0.0014696089418006007,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 163,
+      "latent_id": 10863,
+      "threshold": 0.0,
+      "V_prime": 0.1196,
+      "p_value": 0.0008347441446591979,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 164,
+      "latent_id": 8063,
+      "threshold": 0.0,
+      "V_prime": 0.1195,
+      "p_value": 0.0008259280110972301,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 165,
+      "latent_id": 390,
+      "threshold": 0.0,
+      "V_prime": 0.1194,
+      "p_value": 0.0053024141851077625,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 166,
+      "latent_id": 10096,
+      "threshold": 0.0,
+      "V_prime": 0.1193,
+      "p_value": 0.000527722297335308,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 167,
+      "latent_id": 10814,
+      "threshold": 0.0,
+      "V_prime": 0.1193,
+      "p_value": 0.0007760235795149237,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 168,
+      "latent_id": 16017,
+      "threshold": 6.779685020446777,
+      "V_prime": 0.1192,
+      "p_value": 0.0002671025833066388,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 169,
+      "latent_id": 13938,
+      "threshold": 5.735158920288086,
+      "V_prime": 0.1189,
+      "p_value": 0.0004944818944933562,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 170,
+      "latent_id": 9181,
+      "threshold": 0.0,
+      "V_prime": 0.1186,
+      "p_value": 0.0010263813216281905,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 171,
+      "latent_id": 5192,
+      "threshold": 0.0,
+      "V_prime": 0.1184,
+      "p_value": 0.0015106197663036333,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 172,
+      "latent_id": 414,
+      "threshold": 5.349374294281006,
+      "V_prime": 0.1183,
+      "p_value": 0.0005848594072152638,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 173,
+      "latent_id": 13844,
+      "threshold": 0.0,
+      "V_prime": 0.1181,
+      "p_value": 0.03140427458403397,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 174,
+      "latent_id": 419,
+      "threshold": 0.0,
+      "V_prime": 0.1179,
+      "p_value": 0.0051697173775976,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 175,
+      "latent_id": 4177,
+      "threshold": 0.0,
+      "V_prime": 0.1173,
+      "p_value": 0.021258508217519206,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 176,
+      "latent_id": 12137,
+      "threshold": 5.076817989349365,
+      "V_prime": 0.1173,
+      "p_value": 0.0006375656599723694,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 177,
+      "latent_id": 12206,
+      "threshold": 0.0,
+      "V_prime": 0.1171,
+      "p_value": 0.046906885819572565,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 178,
+      "latent_id": 5929,
+      "threshold": 0.0,
+      "V_prime": 0.1169,
+      "p_value": 0.0014290013118065188,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 179,
+      "latent_id": 7059,
+      "threshold": 0.0,
+      "V_prime": 0.1168,
+      "p_value": 0.0020019903011532004,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 180,
+      "latent_id": 6298,
+      "threshold": 0.0,
+      "V_prime": 0.1167,
+      "p_value": 0.0009098877767188952,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 181,
+      "latent_id": 12219,
+      "threshold": 0.0,
+      "V_prime": 0.1164,
+      "p_value": 0.001118555162109043,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 182,
+      "latent_id": 10893,
+      "threshold": 0.0,
+      "V_prime": 0.1159,
+      "p_value": 0.000979818734585629,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 183,
+      "latent_id": 12433,
+      "threshold": 0.0,
+      "V_prime": 0.1159,
+      "p_value": 0.0032977353305145905,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 184,
+      "latent_id": 6800,
+      "threshold": 0.0,
+      "V_prime": 0.1158,
+      "p_value": 0.0012574021395733916,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 185,
+      "latent_id": 13093,
+      "threshold": 0.0,
+      "V_prime": 0.1154,
+      "p_value": 0.006063171613874477,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 186,
+      "latent_id": 1883,
+      "threshold": 0.0,
+      "V_prime": 0.1152,
+      "p_value": 0.004531744101593757,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 187,
+      "latent_id": 4400,
+      "threshold": 5.336386680603027,
+      "V_prime": 0.1152,
+      "p_value": 0.0007036777679540844,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 188,
+      "latent_id": 14938,
+      "threshold": 5.649101734161377,
+      "V_prime": 0.1149,
+      "p_value": 0.0006958240093112309,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 189,
+      "latent_id": 12747,
+      "threshold": 0.0,
+      "V_prime": 0.1145,
+      "p_value": 0.0013312228793960568,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 190,
+      "latent_id": 11772,
+      "threshold": 6.598195552825928,
+      "V_prime": 0.1143,
+      "p_value": 0.0005041347737695027,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 191,
+      "latent_id": 15637,
+      "threshold": 5.165375709533691,
+      "V_prime": 0.1143,
+      "p_value": 0.0008718405766346637,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 192,
+      "latent_id": 2528,
+      "threshold": 0.0,
+      "V_prime": 0.1141,
+      "p_value": 0.0015246333763928165,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 193,
+      "latent_id": 11312,
+      "threshold": 0.0,
+      "V_prime": 0.1141,
+      "p_value": 0.00247993723846426,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 194,
+      "latent_id": 12227,
+      "threshold": 0.0,
+      "V_prime": 0.1141,
+      "p_value": 0.0009954113497661725,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 195,
+      "latent_id": 5658,
+      "threshold": 0.0,
+      "V_prime": 0.114,
+      "p_value": 0.0034121952342279506,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 196,
+      "latent_id": 9111,
+      "threshold": 0.0,
+      "V_prime": 0.114,
+      "p_value": 0.0018005621937153243,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 197,
+      "latent_id": 6320,
+      "threshold": 6.138921737670898,
+      "V_prime": 0.1139,
+      "p_value": 0.000672769999744805,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 198,
+      "latent_id": 8337,
+      "threshold": 0.0,
+      "V_prime": 0.1139,
+      "p_value": 0.0024348023802323935,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 199,
+      "latent_id": 1621,
+      "threshold": 0.0,
+      "V_prime": 0.1138,
+      "p_value": 0.0009470556108881538,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 200,
+      "latent_id": 4608,
+      "threshold": 0.0,
+      "V_prime": 0.1138,
+      "p_value": 0.0017252563276429096,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 201,
+      "latent_id": 6281,
+      "threshold": 6.119800090789795,
+      "V_prime": 0.1137,
+      "p_value": 0.0008534534325113291,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 202,
+      "latent_id": 12523,
+      "threshold": 5.542322635650635,
+      "V_prime": 0.1136,
+      "p_value": 0.0007191163466391921,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 203,
+      "latent_id": 6636,
+      "threshold": 14.388657569885254,
+      "V_prime": 0.1132,
+      "p_value": 0.00030116398509327574,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 204,
+      "latent_id": 3260,
+      "threshold": 0.0,
+      "V_prime": 0.1131,
+      "p_value": 0.0049729098149146654,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 205,
+      "latent_id": 12095,
+      "threshold": 0.0,
+      "V_prime": 0.113,
+      "p_value": 0.0020283393046826017,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 206,
+      "latent_id": 16326,
+      "threshold": 0.0,
+      "V_prime": 0.1124,
+      "p_value": 0.04547563818805794,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 207,
+      "latent_id": 4651,
+      "threshold": 0.0,
+      "V_prime": 0.112,
+      "p_value": 0.01421218702941302,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 208,
+      "latent_id": 3348,
+      "threshold": 0.0,
+      "V_prime": 0.1117,
+      "p_value": 0.001317027211319388,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 209,
+      "latent_id": 15943,
+      "threshold": 0.0,
+      "V_prime": 0.1117,
+      "p_value": 0.021542184619140186,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 210,
+      "latent_id": 984,
+      "threshold": 0.0,
+      "V_prime": 0.1116,
+      "p_value": 0.02037477959730688,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 211,
+      "latent_id": 3219,
+      "threshold": 0.0,
+      "V_prime": 0.1115,
+      "p_value": 0.02976198301376354,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 212,
+      "latent_id": 3713,
+      "threshold": 5.5152764320373535,
+      "V_prime": 0.1115,
+      "p_value": 0.0009314976962568338,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 213,
+      "latent_id": 4247,
+      "threshold": 0.0,
+      "V_prime": 0.1113,
+      "p_value": 0.02806693804258664,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 214,
+      "latent_id": 226,
+      "threshold": 0.0,
+      "V_prime": 0.1111,
+      "p_value": 0.011735805924152541,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 215,
+      "latent_id": 4893,
+      "threshold": 0.0,
+      "V_prime": 0.111,
+      "p_value": 0.001996449267191306,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 216,
+      "latent_id": 10324,
+      "threshold": 0.0,
+      "V_prime": 0.111,
+      "p_value": 0.0023394175660217797,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 217,
+      "latent_id": 8027,
+      "threshold": 0.0,
+      "V_prime": 0.1109,
+      "p_value": 0.002270722991675686,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 218,
+      "latent_id": 3701,
+      "threshold": 0.0,
+      "V_prime": 0.1107,
+      "p_value": 0.0016876920599561411,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 219,
+      "latent_id": 15625,
+      "threshold": 0.0,
+      "V_prime": 0.1107,
+      "p_value": 0.012053213592702564,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 220,
+      "latent_id": 12073,
+      "threshold": 21.58859634399414,
+      "V_prime": 0.1103,
+      "p_value": 0.0004261969592810516,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 221,
+      "latent_id": 9905,
+      "threshold": 0.0,
+      "V_prime": 0.1102,
+      "p_value": 0.001325671063076746,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 222,
+      "latent_id": 14285,
+      "threshold": 0.0,
+      "V_prime": 0.11,
+      "p_value": 0.002137006381690657,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 223,
+      "latent_id": 4667,
+      "threshold": 7.509443283081055,
+      "V_prime": 0.1099,
+      "p_value": 0.0008181068645901207,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 224,
+      "latent_id": 11552,
+      "threshold": 6.3273138999938965,
+      "V_prime": 0.1099,
+      "p_value": 0.0008425550500173524,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 225,
+      "latent_id": 8381,
+      "threshold": 6.151571750640869,
+      "V_prime": 0.1098,
+      "p_value": 0.0010835954533986668,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 226,
+      "latent_id": 6264,
+      "threshold": 0.0,
+      "V_prime": 0.1097,
+      "p_value": 0.03632397559463225,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 227,
+      "latent_id": 9372,
+      "threshold": 5.949960231781006,
+      "V_prime": 0.1097,
+      "p_value": 0.0010291243814856202,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 228,
+      "latent_id": 14747,
+      "threshold": 0.0,
+      "V_prime": 0.1097,
+      "p_value": 0.0030273694082340675,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 229,
+      "latent_id": 10348,
+      "threshold": 0.0,
+      "V_prime": 0.1093,
+      "p_value": 0.007063726405699237,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 230,
+      "latent_id": 11488,
+      "threshold": 0.0,
+      "V_prime": 0.1092,
+      "p_value": 0.0027682341405406725,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 231,
+      "latent_id": 3507,
+      "threshold": 5.326315402984619,
+      "V_prime": 0.109,
+      "p_value": 0.001401300653508728,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 232,
+      "latent_id": 2002,
+      "threshold": 5.143259525299072,
+      "V_prime": 0.1086,
+      "p_value": 0.0014839558961007608,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 233,
+      "latent_id": 293,
+      "threshold": 0.0,
+      "V_prime": 0.1085,
+      "p_value": 0.003711431078925819,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 234,
+      "latent_id": 6164,
+      "threshold": 0.0,
+      "V_prime": 0.1085,
+      "p_value": 0.004391159392584197,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 235,
+      "latent_id": 8421,
+      "threshold": 0.0,
+      "V_prime": 0.1084,
+      "p_value": 0.002127203273352576,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 236,
+      "latent_id": 5548,
+      "threshold": 0.0,
+      "V_prime": 0.1083,
+      "p_value": 0.00909559385391293,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 237,
+      "latent_id": 3158,
+      "threshold": 9.124853134155273,
+      "V_prime": 0.1078,
+      "p_value": 0.0007256907908179654,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 238,
+      "latent_id": 139,
+      "threshold": 0.0,
+      "V_prime": 0.1077,
+      "p_value": 0.027897040321014553,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 239,
+      "latent_id": 7034,
+      "threshold": 0.0,
+      "V_prime": 0.1077,
+      "p_value": 0.0018275445955611347,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 240,
+      "latent_id": 8350,
+      "threshold": 0.0,
+      "V_prime": 0.1077,
+      "p_value": 0.009577806568695927,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 241,
+      "latent_id": 2166,
+      "threshold": 0.0,
+      "V_prime": 0.1076,
+      "p_value": 0.0031727827166863846,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 242,
+      "latent_id": 10100,
+      "threshold": 0.0,
+      "V_prime": 0.1076,
+      "p_value": 0.0029863087610803004,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 243,
+      "latent_id": 6827,
+      "threshold": 0.0,
+      "V_prime": 0.1074,
+      "p_value": 0.0026175508244754664,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 244,
+      "latent_id": 12737,
+      "threshold": 0.0,
+      "V_prime": 0.1074,
+      "p_value": 0.04805503547987929,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 245,
+      "latent_id": 15300,
+      "threshold": 0.0,
+      "V_prime": 0.1074,
+      "p_value": 0.002204079695096793,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 246,
+      "latent_id": 9873,
+      "threshold": 0.0,
+      "V_prime": 0.1073,
+      "p_value": 0.002287630148247606,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 247,
+      "latent_id": 5366,
+      "threshold": 5.445554733276367,
+      "V_prime": 0.1069,
+      "p_value": 0.0014166808559897166,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 248,
+      "latent_id": 11345,
+      "threshold": 5.383118629455566,
+      "V_prime": 0.1069,
+      "p_value": 0.0020572826315646002,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 249,
+      "latent_id": 13858,
+      "threshold": 0.0,
+      "V_prime": 0.1069,
+      "p_value": 0.01080994946832057,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 250,
+      "latent_id": 16174,
+      "threshold": 0.0,
+      "V_prime": 0.1069,
+      "p_value": 0.006704662625056307,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 251,
+      "latent_id": 1929,
+      "threshold": 4.978950023651123,
+      "V_prime": 0.1068,
+      "p_value": 0.0015700827705741349,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 252,
+      "latent_id": 9211,
+      "threshold": 0.0,
+      "V_prime": 0.1066,
+      "p_value": 0.021764214998009512,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 253,
+      "latent_id": 13689,
+      "threshold": 0.0,
+      "V_prime": 0.1066,
+      "p_value": 0.009055069298303216,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 254,
+      "latent_id": 3603,
+      "threshold": 5.139070510864258,
+      "V_prime": 0.1064,
+      "p_value": 0.0015374994141625945,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 255,
+      "latent_id": 3272,
+      "threshold": 0.0,
+      "V_prime": 0.1063,
+      "p_value": 0.0020973295405626,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 256,
+      "latent_id": 14884,
+      "threshold": 9.029949188232422,
+      "V_prime": 0.1063,
+      "p_value": 0.000697494454396659,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 257,
+      "latent_id": 4544,
+      "threshold": 0.0,
+      "V_prime": 0.1062,
+      "p_value": 0.0019905638911907482,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 258,
+      "latent_id": 11969,
+      "threshold": 0.0,
+      "V_prime": 0.1062,
+      "p_value": 0.003430067040427741,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 259,
+      "latent_id": 16364,
+      "threshold": 0.0,
+      "V_prime": 0.1061,
+      "p_value": 0.00528046501948589,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 260,
+      "latent_id": 14067,
+      "threshold": 0.0,
+      "V_prime": 0.1059,
+      "p_value": 0.003119220077429079,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 261,
+      "latent_id": 7245,
+      "threshold": 0.0,
+      "V_prime": 0.1058,
+      "p_value": 0.0021716377442995796,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 262,
+      "latent_id": 11500,
+      "threshold": 5.0190629959106445,
+      "V_prime": 0.1057,
+      "p_value": 0.00182903152169138,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 263,
+      "latent_id": 7745,
+      "threshold": 0.0,
+      "V_prime": 0.1056,
+      "p_value": 0.002430948021978623,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 264,
+      "latent_id": 10204,
+      "threshold": 0.0,
+      "V_prime": 0.1055,
+      "p_value": 0.009073366228043453,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 265,
+      "latent_id": 6757,
+      "threshold": 0.0,
+      "V_prime": 0.1052,
+      "p_value": 0.0050009099406616315,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 266,
+      "latent_id": 10059,
+      "threshold": 0.0,
+      "V_prime": 0.1052,
+      "p_value": 0.01790561077661606,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 267,
+      "latent_id": 8824,
+      "threshold": 0.0,
+      "V_prime": 0.1051,
+      "p_value": 0.02809516056174776,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 268,
+      "latent_id": 15,
+      "threshold": 6.109447002410889,
+      "V_prime": 0.1049,
+      "p_value": 0.0015048736861079416,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 269,
+      "latent_id": 1449,
+      "threshold": 0.0,
+      "V_prime": 0.1049,
+      "p_value": 0.0026711884247532253,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 270,
+      "latent_id": 7246,
+      "threshold": 8.042627334594727,
+      "V_prime": 0.1049,
+      "p_value": 0.0010825471939308428,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 271,
+      "latent_id": 2712,
+      "threshold": 0.0,
+      "V_prime": 0.1043,
+      "p_value": 0.004624585788408492,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 272,
+      "latent_id": 2713,
+      "threshold": 0.0,
+      "V_prime": 0.1043,
+      "p_value": 0.009651024634446653,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 273,
+      "latent_id": 3427,
+      "threshold": 0.0,
+      "V_prime": 0.1041,
+      "p_value": 0.002515442796301531,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 274,
+      "latent_id": 6257,
+      "threshold": 0.0,
+      "V_prime": 0.1038,
+      "p_value": 0.007796776531666529,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 275,
+      "latent_id": 9590,
+      "threshold": 0.0,
+      "V_prime": 0.1037,
+      "p_value": 0.033443168851838206,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 276,
+      "latent_id": 4654,
+      "threshold": 0.0,
+      "V_prime": 0.1036,
+      "p_value": 0.009308418103271753,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 277,
+      "latent_id": 6688,
+      "threshold": 0.0,
+      "V_prime": 0.1035,
+      "p_value": 0.014707226332652285,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 278,
+      "latent_id": 13510,
+      "threshold": 0.0,
+      "V_prime": 0.1034,
+      "p_value": 0.0032563697419702303,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 279,
+      "latent_id": 6634,
+      "threshold": 0.0,
+      "V_prime": 0.1033,
+      "p_value": 0.011776568025074903,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 280,
+      "latent_id": 2243,
+      "threshold": 6.081643104553223,
+      "V_prime": 0.1032,
+      "p_value": 0.0019547783456106624,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 281,
+      "latent_id": 5797,
+      "threshold": 0.0,
+      "V_prime": 0.1031,
+      "p_value": 0.0035004565628673307,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 282,
+      "latent_id": 12248,
+      "threshold": 0.0,
+      "V_prime": 0.1029,
+      "p_value": 0.006193171867685079,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 283,
+      "latent_id": 4408,
+      "threshold": 5.349400520324707,
+      "V_prime": 0.1027,
+      "p_value": 0.0025212877689159375,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 284,
+      "latent_id": 12078,
+      "threshold": 0.0,
+      "V_prime": 0.1027,
+      "p_value": 0.004840482074746927,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 285,
+      "latent_id": 6691,
+      "threshold": 0.0,
+      "V_prime": 0.1026,
+      "p_value": 0.008474049194789043,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 286,
+      "latent_id": 7185,
+      "threshold": 0.0,
+      "V_prime": 0.1026,
+      "p_value": 0.037483255466653514,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 287,
+      "latent_id": 3065,
+      "threshold": 0.0,
+      "V_prime": 0.1025,
+      "p_value": 0.0036320555082787406,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 288,
+      "latent_id": 4677,
+      "threshold": 0.0,
+      "V_prime": 0.1025,
+      "p_value": 0.0062299386516734175,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 289,
+      "latent_id": 6417,
+      "threshold": 0.0,
+      "V_prime": 0.1025,
+      "p_value": 0.003120851705169965,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 290,
+      "latent_id": 12805,
+      "threshold": 0.0,
+      "V_prime": 0.1024,
+      "p_value": 0.003876054498166585,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 291,
+      "latent_id": 5736,
+      "threshold": 0.0,
+      "V_prime": 0.1022,
+      "p_value": 0.0025950012426730154,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 292,
+      "latent_id": 13390,
+      "threshold": 0.0,
+      "V_prime": 0.1022,
+      "p_value": 0.03580417877271655,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 293,
+      "latent_id": 3556,
+      "threshold": 0.0,
+      "V_prime": 0.1021,
+      "p_value": 0.01335853088276786,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 294,
+      "latent_id": 8055,
+      "threshold": 0.0,
+      "V_prime": 0.1021,
+      "p_value": 0.006050625699846005,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 295,
+      "latent_id": 8232,
+      "threshold": 0.0,
+      "V_prime": 0.1021,
+      "p_value": 0.012030695450080623,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 296,
+      "latent_id": 8564,
+      "threshold": 0.0,
+      "V_prime": 0.1021,
+      "p_value": 0.003939163609889384,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 297,
+      "latent_id": 1149,
+      "threshold": 0.0,
+      "V_prime": 0.102,
+      "p_value": 0.013557597264810928,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 298,
+      "latent_id": 2106,
+      "threshold": 0.0,
+      "V_prime": 0.102,
+      "p_value": 0.004587778597875906,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 299,
+      "latent_id": 13875,
+      "threshold": 0.0,
+      "V_prime": 0.102,
+      "p_value": 0.008667666965084003,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 300,
+      "latent_id": 2688,
+      "threshold": 5.376087188720703,
+      "V_prime": 0.1019,
+      "p_value": 0.0028887740994868673,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 301,
+      "latent_id": 16101,
+      "threshold": 0.0,
+      "V_prime": 0.1019,
+      "p_value": 0.0029803839796858126,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 302,
+      "latent_id": 2197,
+      "threshold": 0.0,
+      "V_prime": 0.1016,
+      "p_value": 0.017210864023670773,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 303,
+      "latent_id": 9020,
+      "threshold": 5.8729987144470215,
+      "V_prime": 0.1016,
+      "p_value": 0.002332967420554166,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 304,
+      "latent_id": 6527,
+      "threshold": 0.0,
+      "V_prime": 0.1015,
+      "p_value": 0.026028722938839913,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 305,
+      "latent_id": 8219,
+      "threshold": 0.0,
+      "V_prime": 0.1013,
+      "p_value": 0.0031183299502358765,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 306,
+      "latent_id": 4020,
+      "threshold": 0.0,
+      "V_prime": 0.1011,
+      "p_value": 0.004896191888308567,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 307,
+      "latent_id": 5050,
+      "threshold": 0.0,
+      "V_prime": 0.1011,
+      "p_value": 0.009321524837395078,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 308,
+      "latent_id": 12255,
+      "threshold": 0.0,
+      "V_prime": 0.1011,
+      "p_value": 0.04401635002881941,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 309,
+      "latent_id": 12688,
+      "threshold": 5.868383407592773,
+      "V_prime": 0.1011,
+      "p_value": 0.0022970637595117957,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 310,
+      "latent_id": 5370,
+      "threshold": 6.601834297180176,
+      "V_prime": 0.101,
+      "p_value": 0.002124367713054672,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 311,
+      "latent_id": 5766,
+      "threshold": 0.0,
+      "V_prime": 0.1009,
+      "p_value": 0.01044944362733223,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 312,
+      "latent_id": 2451,
+      "threshold": 6.167727947235107,
+      "V_prime": 0.1006,
+      "p_value": 0.0028577979945633323,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 313,
+      "latent_id": 9838,
+      "threshold": 0.0,
+      "V_prime": 0.1005,
+      "p_value": 0.003929306206285888,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 314,
+      "latent_id": 10272,
+      "threshold": 0.0,
+      "V_prime": 0.1005,
+      "p_value": 0.003974812482656993,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 315,
+      "latent_id": 14635,
+      "threshold": 0.0,
+      "V_prime": 0.1005,
+      "p_value": 0.004511557182066473,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 316,
+      "latent_id": 283,
+      "threshold": 0.0,
+      "V_prime": 0.1003,
+      "p_value": 0.026803474564780952,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 317,
+      "latent_id": 4815,
+      "threshold": 0.0,
+      "V_prime": 0.1003,
+      "p_value": 0.03817333516473954,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 318,
+      "latent_id": 14001,
+      "threshold": 6.4463114738464355,
+      "V_prime": 0.1003,
+      "p_value": 0.002561046419344915,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 319,
+      "latent_id": 14553,
+      "threshold": 5.638930320739746,
+      "V_prime": 0.1003,
+      "p_value": 0.0027885199911108745,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 320,
+      "latent_id": 15627,
+      "threshold": 0.0,
+      "V_prime": 0.1002,
+      "p_value": 0.007778824059179121,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 321,
+      "latent_id": 4107,
+      "threshold": 0.0,
+      "V_prime": 0.1001,
+      "p_value": 0.00708588525474184,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 322,
+      "latent_id": 12097,
+      "threshold": 0.0,
+      "V_prime": 0.1001,
+      "p_value": 0.00435365863921248,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 323,
+      "latent_id": 12945,
+      "threshold": 0.0,
+      "V_prime": 0.1001,
+      "p_value": 0.01270243049472406,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 324,
+      "latent_id": 4280,
+      "threshold": 0.0,
+      "V_prime": 0.1,
+      "p_value": 0.018670333126314692,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 325,
+      "latent_id": 16180,
+      "threshold": 10.102587699890137,
+      "V_prime": 0.1,
+      "p_value": 0.00169746132153956,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 326,
+      "latent_id": 11839,
+      "threshold": 0.0,
+      "V_prime": 0.0998,
+      "p_value": 0.005410666228814535,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 327,
+      "latent_id": 14330,
+      "threshold": 11.146055221557617,
+      "V_prime": 0.0998,
+      "p_value": 0.001984872681869574,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 328,
+      "latent_id": 7645,
+      "threshold": 0.0,
+      "V_prime": 0.0997,
+      "p_value": 0.015679835488402214,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 329,
+      "latent_id": 14580,
+      "threshold": 0.0,
+      "V_prime": 0.0997,
+      "p_value": 0.016506948355577176,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 330,
+      "latent_id": 15251,
+      "threshold": 0.0,
+      "V_prime": 0.0996,
+      "p_value": 0.01228245651674233,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 331,
+      "latent_id": 432,
+      "threshold": 0.0,
+      "V_prime": 0.0995,
+      "p_value": 0.006884986143546535,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 332,
+      "latent_id": 3818,
+      "threshold": 0.0,
+      "V_prime": 0.0994,
+      "p_value": 0.013754128068714741,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 333,
+      "latent_id": 297,
+      "threshold": 0.0,
+      "V_prime": 0.0993,
+      "p_value": 0.018736377425841628,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 334,
+      "latent_id": 5278,
+      "threshold": 0.0,
+      "V_prime": 0.0993,
+      "p_value": 0.004121429468156567,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 335,
+      "latent_id": 9657,
+      "threshold": 0.0,
+      "V_prime": 0.0993,
+      "p_value": 0.01232124371607735,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 336,
+      "latent_id": 12088,
+      "threshold": 0.0,
+      "V_prime": 0.0993,
+      "p_value": 0.010238714881603403,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 337,
+      "latent_id": 833,
+      "threshold": 0.0,
+      "V_prime": 0.0992,
+      "p_value": 0.011504028450287314,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 338,
+      "latent_id": 3639,
+      "threshold": 0.0,
+      "V_prime": 0.0992,
+      "p_value": 0.011623610207270454,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 339,
+      "latent_id": 13581,
+      "threshold": 0.0,
+      "V_prime": 0.0991,
+      "p_value": 0.0363779882618929,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 340,
+      "latent_id": 2977,
+      "threshold": 0.0,
+      "V_prime": 0.099,
+      "p_value": 0.01039218569927895,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 341,
+      "latent_id": 15332,
+      "threshold": 5.389906883239746,
+      "V_prime": 0.0989,
+      "p_value": 0.0033808912605248517,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 342,
+      "latent_id": 3974,
+      "threshold": 5.588685512542725,
+      "V_prime": 0.0986,
+      "p_value": 0.0031649487286482076,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 343,
+      "latent_id": 6680,
+      "threshold": 5.263290882110596,
+      "V_prime": 0.0986,
+      "p_value": 0.0036295584185705152,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 344,
+      "latent_id": 3096,
+      "threshold": 6.283594131469727,
+      "V_prime": 0.0984,
+      "p_value": 0.0030981534715082623,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 345,
+      "latent_id": 11407,
+      "threshold": 0.0,
+      "V_prime": 0.0982,
+      "p_value": 0.015858581895533706,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 346,
+      "latent_id": 1890,
+      "threshold": 6.684192657470703,
+      "V_prime": 0.098,
+      "p_value": 0.002836377055573357,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 347,
+      "latent_id": 11604,
+      "threshold": 0.0,
+      "V_prime": 0.0978,
+      "p_value": 0.04935504364453264,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 348,
+      "latent_id": 13983,
+      "threshold": 0.0,
+      "V_prime": 0.0977,
+      "p_value": 0.008419195498508156,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 349,
+      "latent_id": 2493,
+      "threshold": 0.0,
+      "V_prime": 0.0973,
+      "p_value": 0.004371891434877443,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 350,
+      "latent_id": 15304,
+      "threshold": 0.0,
+      "V_prime": 0.0973,
+      "p_value": 0.028666581760044385,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 351,
+      "latent_id": 10256,
+      "threshold": 5.463382720947266,
+      "V_prime": 0.0972,
+      "p_value": 0.004158388085992611,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 352,
+      "latent_id": 8480,
+      "threshold": 5.165938854217529,
+      "V_prime": 0.0971,
+      "p_value": 0.0040751472917361,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 353,
+      "latent_id": 981,
+      "threshold": 0.0,
+      "V_prime": 0.0969,
+      "p_value": 0.006617795818097169,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 354,
+      "latent_id": 9232,
+      "threshold": 7.69767951965332,
+      "V_prime": 0.0967,
+      "p_value": 0.0029750388028309976,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 355,
+      "latent_id": 1265,
+      "threshold": 0.0,
+      "V_prime": 0.0966,
+      "p_value": 0.04129525463170967,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 356,
+      "latent_id": 5006,
+      "threshold": 6.555676460266113,
+      "V_prime": 0.0965,
+      "p_value": 0.0032429425761942485,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 357,
+      "latent_id": 16121,
+      "threshold": 5.938911437988281,
+      "V_prime": 0.0965,
+      "p_value": 0.0036161174120730097,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 358,
+      "latent_id": 969,
+      "threshold": 0.0,
+      "V_prime": 0.0964,
+      "p_value": 0.004718304998520366,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 359,
+      "latent_id": 3572,
+      "threshold": 0.0,
+      "V_prime": 0.0964,
+      "p_value": 0.008490940717033494,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 360,
+      "latent_id": 14417,
+      "threshold": 6.3207106590271,
+      "V_prime": 0.0964,
+      "p_value": 0.0034076385009991998,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 361,
+      "latent_id": 15308,
+      "threshold": 0.0,
+      "V_prime": 0.0964,
+      "p_value": 0.006004825172667921,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 362,
+      "latent_id": 14414,
+      "threshold": 8.574289321899414,
+      "V_prime": 0.0963,
+      "p_value": 0.0029996748092314,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 363,
+      "latent_id": 3055,
+      "threshold": 6.08538293838501,
+      "V_prime": 0.0962,
+      "p_value": 0.0038248757856373253,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 364,
+      "latent_id": 11195,
+      "threshold": 0.0,
+      "V_prime": 0.0962,
+      "p_value": 0.03356828697347948,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 365,
+      "latent_id": 11222,
+      "threshold": 0.0,
+      "V_prime": 0.0962,
+      "p_value": 0.004472994466647659,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 366,
+      "latent_id": 1167,
+      "threshold": 0.0,
+      "V_prime": 0.0961,
+      "p_value": 0.007163447178618342,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 367,
+      "latent_id": 6480,
+      "threshold": 0.0,
+      "V_prime": 0.096,
+      "p_value": 0.022630059788019984,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 368,
+      "latent_id": 6766,
+      "threshold": 8.63626480102539,
+      "V_prime": 0.096,
+      "p_value": 0.0027385468224608994,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 369,
+      "latent_id": 9609,
+      "threshold": 0.0,
+      "V_prime": 0.096,
+      "p_value": 0.007602176099000373,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 370,
+      "latent_id": 10119,
+      "threshold": 9.155621528625488,
+      "V_prime": 0.096,
+      "p_value": 0.002574391948645009,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 371,
+      "latent_id": 10558,
+      "threshold": 0.0,
+      "V_prime": 0.0957,
+      "p_value": 0.041153437751283925,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 372,
+      "latent_id": 1013,
+      "threshold": 0.0,
+      "V_prime": 0.0956,
+      "p_value": 0.03552701639369184,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 373,
+      "latent_id": 5487,
+      "threshold": 0.0,
+      "V_prime": 0.0956,
+      "p_value": 0.004897468802452031,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 374,
+      "latent_id": 9809,
+      "threshold": 0.0,
+      "V_prime": 0.0956,
+      "p_value": 0.03569339564297436,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 375,
+      "latent_id": 14591,
+      "threshold": 7.2384538650512695,
+      "V_prime": 0.0956,
+      "p_value": 0.0036270742147156087,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 376,
+      "latent_id": 15033,
+      "threshold": 0.0,
+      "V_prime": 0.0955,
+      "p_value": 0.012550244216709906,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 377,
+      "latent_id": 13100,
+      "threshold": 0.0,
+      "V_prime": 0.0952,
+      "p_value": 0.01806299854974849,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 378,
+      "latent_id": 7472,
+      "threshold": 0.0,
+      "V_prime": 0.0951,
+      "p_value": 0.006806012377662949,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 379,
+      "latent_id": 8240,
+      "threshold": 0.0,
+      "V_prime": 0.095,
+      "p_value": 0.0064195487610898844,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 380,
+      "latent_id": 374,
+      "threshold": 0.0,
+      "V_prime": 0.0949,
+      "p_value": 0.009102397901627523,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 381,
+      "latent_id": 6852,
+      "threshold": 0.0,
+      "V_prime": 0.0946,
+      "p_value": 0.008540417304235737,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 382,
+      "latent_id": 7792,
+      "threshold": 0.0,
+      "V_prime": 0.0943,
+      "p_value": 0.0058175403744155,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 383,
+      "latent_id": 9928,
+      "threshold": 0.0,
+      "V_prime": 0.0942,
+      "p_value": 0.04942340877174848,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 384,
+      "latent_id": 7759,
+      "threshold": 0.0,
+      "V_prime": 0.0941,
+      "p_value": 0.010258438256557829,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 385,
+      "latent_id": 2835,
+      "threshold": 0.0,
+      "V_prime": 0.0939,
+      "p_value": 0.024841130346122085,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 386,
+      "latent_id": 6979,
+      "threshold": 0.0,
+      "V_prime": 0.0936,
+      "p_value": 0.008724857614976114,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 387,
+      "latent_id": 8659,
+      "threshold": 0.0,
+      "V_prime": 0.0936,
+      "p_value": 0.012610550849655046,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 388,
+      "latent_id": 12514,
+      "threshold": 0.0,
+      "V_prime": 0.0936,
+      "p_value": 0.022546549671557507,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 389,
+      "latent_id": 8613,
+      "threshold": 0.0,
+      "V_prime": 0.0935,
+      "p_value": 0.021548473632620878,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 390,
+      "latent_id": 3203,
+      "threshold": 0.0,
+      "V_prime": 0.0932,
+      "p_value": 0.006009974022149241,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 391,
+      "latent_id": 7356,
+      "threshold": 0.0,
+      "V_prime": 0.0931,
+      "p_value": 0.008890237307183812,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 392,
+      "latent_id": 13899,
+      "threshold": 0.0,
+      "V_prime": 0.0931,
+      "p_value": 0.007144298942029099,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 393,
+      "latent_id": 4735,
+      "threshold": 0.0,
+      "V_prime": 0.0927,
+      "p_value": 0.009062249328167873,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 394,
+      "latent_id": 4949,
+      "threshold": 0.0,
+      "V_prime": 0.0927,
+      "p_value": 0.007509882810235424,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 395,
+      "latent_id": 8137,
+      "threshold": 5.525968074798584,
+      "V_prime": 0.0926,
+      "p_value": 0.005741778924660147,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 396,
+      "latent_id": 8934,
+      "threshold": 0.0,
+      "V_prime": 0.0926,
+      "p_value": 0.009977920904942959,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 397,
+      "latent_id": 11387,
+      "threshold": 0.0,
+      "V_prime": 0.0926,
+      "p_value": 0.007380238626874321,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 398,
+      "latent_id": 14777,
+      "threshold": 0.0,
+      "V_prime": 0.0924,
+      "p_value": 0.01960618405713318,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 399,
+      "latent_id": 12602,
+      "threshold": 0.0,
+      "V_prime": 0.0922,
+      "p_value": 0.009779473438542147,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 400,
+      "latent_id": 10298,
+      "threshold": 0.0,
+      "V_prime": 0.092,
+      "p_value": 0.008925682570571348,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 401,
+      "latent_id": 9882,
+      "threshold": 0.0,
+      "V_prime": 0.0918,
+      "p_value": 0.011623855431144322,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 402,
+      "latent_id": 10053,
+      "threshold": 0.0,
+      "V_prime": 0.0918,
+      "p_value": 0.008943067115046865,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 403,
+      "latent_id": 12319,
+      "threshold": 0.0,
+      "V_prime": 0.0918,
+      "p_value": 0.025858674659184424,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 404,
+      "latent_id": 13422,
+      "threshold": 0.0,
+      "V_prime": 0.0917,
+      "p_value": 0.029310029398056808,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 405,
+      "latent_id": 14065,
+      "threshold": 5.5808000564575195,
+      "V_prime": 0.0917,
+      "p_value": 0.006212525367480439,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 406,
+      "latent_id": 2615,
+      "threshold": 6.100462436676025,
+      "V_prime": 0.0915,
+      "p_value": 0.006148522741836244,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 407,
+      "latent_id": 2837,
+      "threshold": 0.0,
+      "V_prime": 0.0913,
+      "p_value": 0.012456799540780598,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 408,
+      "latent_id": 8293,
+      "threshold": 0.0,
+      "V_prime": 0.0913,
+      "p_value": 0.02137427158598244,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 409,
+      "latent_id": 9913,
+      "threshold": 0.0,
+      "V_prime": 0.0913,
+      "p_value": 0.007324865820080873,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 410,
+      "latent_id": 11327,
+      "threshold": 0.0,
+      "V_prime": 0.0913,
+      "p_value": 0.043006638317026634,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 411,
+      "latent_id": 11029,
+      "threshold": 0.0,
+      "V_prime": 0.0912,
+      "p_value": 0.015692865036867537,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 412,
+      "latent_id": 4623,
+      "threshold": 0.0,
+      "V_prime": 0.091,
+      "p_value": 0.04543570319329449,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 413,
+      "latent_id": 5158,
+      "threshold": 0.0,
+      "V_prime": 0.091,
+      "p_value": 0.02122963780283643,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 414,
+      "latent_id": 7772,
+      "threshold": 6.022956848144531,
+      "V_prime": 0.091,
+      "p_value": 0.005918691504371135,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 415,
+      "latent_id": 12071,
+      "threshold": 5.551349639892578,
+      "V_prime": 0.091,
+      "p_value": 0.006965466815342604,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 416,
+      "latent_id": 4713,
+      "threshold": 6.223655700683594,
+      "V_prime": 0.0908,
+      "p_value": 0.006581155849420499,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 417,
+      "latent_id": 8171,
+      "threshold": 0.0,
+      "V_prime": 0.0907,
+      "p_value": 0.042098143978097094,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 418,
+      "latent_id": 15619,
+      "threshold": 6.083317279815674,
+      "V_prime": 0.0907,
+      "p_value": 0.006328179707274817,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 419,
+      "latent_id": 736,
+      "threshold": 0.0,
+      "V_prime": 0.0905,
+      "p_value": 0.014966643444341985,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 420,
+      "latent_id": 8619,
+      "threshold": 0.0,
+      "V_prime": 0.0905,
+      "p_value": 0.012863914930152038,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 421,
+      "latent_id": 1760,
+      "threshold": 0.0,
+      "V_prime": 0.0903,
+      "p_value": 0.00879998946323727,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 422,
+      "latent_id": 7816,
+      "threshold": 0.0,
+      "V_prime": 0.0903,
+      "p_value": 0.00834002963688341,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 423,
+      "latent_id": 9918,
+      "threshold": 0.0,
+      "V_prime": 0.0903,
+      "p_value": 0.01889561053011173,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 424,
+      "latent_id": 6246,
+      "threshold": 5.481640338897705,
+      "V_prime": 0.0902,
+      "p_value": 0.007031651294525325,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 425,
+      "latent_id": 1036,
+      "threshold": 5.251173973083496,
+      "V_prime": 0.09,
+      "p_value": 0.007022038660012364,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 426,
+      "latent_id": 1134,
+      "threshold": 0.0,
+      "V_prime": 0.09,
+      "p_value": 0.013797010255500685,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 427,
+      "latent_id": 16319,
+      "threshold": 0.0,
+      "V_prime": 0.09,
+      "p_value": 0.00955337993069872,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 428,
+      "latent_id": 2689,
+      "threshold": 0.0,
+      "V_prime": 0.0899,
+      "p_value": 0.017682861056174615,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 429,
+      "latent_id": 9924,
+      "threshold": 5.3683624267578125,
+      "V_prime": 0.0898,
+      "p_value": 0.007832258309710632,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 430,
+      "latent_id": 13462,
+      "threshold": 0.0,
+      "V_prime": 0.0897,
+      "p_value": 0.03511327304457124,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 431,
+      "latent_id": 1670,
+      "threshold": 6.387099266052246,
+      "V_prime": 0.0896,
+      "p_value": 0.007265155408051666,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 432,
+      "latent_id": 3775,
+      "threshold": 0.0,
+      "V_prime": 0.0896,
+      "p_value": 0.017895021316042266,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 433,
+      "latent_id": 8798,
+      "threshold": 0.0,
+      "V_prime": 0.0896,
+      "p_value": 0.009364465188466682,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 434,
+      "latent_id": 1446,
+      "threshold": 6.42257833480835,
+      "V_prime": 0.0894,
+      "p_value": 0.007369861861058817,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 435,
+      "latent_id": 3705,
+      "threshold": 5.233640193939209,
+      "V_prime": 0.0894,
+      "p_value": 0.0075168341053520275,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 436,
+      "latent_id": 15388,
+      "threshold": 0.0,
+      "V_prime": 0.0893,
+      "p_value": 0.00895173938186959,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 437,
+      "latent_id": 7373,
+      "threshold": 0.0,
+      "V_prime": 0.0892,
+      "p_value": 0.02571069148220593,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 438,
+      "latent_id": 5007,
+      "threshold": 0.0,
+      "V_prime": 0.0891,
+      "p_value": 0.01841153077409596,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 439,
+      "latent_id": 8847,
+      "threshold": 0.0,
+      "V_prime": 0.0891,
+      "p_value": 0.017396749150995,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 440,
+      "latent_id": 5073,
+      "threshold": 0.0,
+      "V_prime": 0.0889,
+      "p_value": 0.008112264286466372,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 441,
+      "latent_id": 13751,
+      "threshold": 6.165678977966309,
+      "V_prime": 0.0889,
+      "p_value": 0.008826287419027364,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 442,
+      "latent_id": 995,
+      "threshold": 0.0,
+      "V_prime": 0.0888,
+      "p_value": 0.009961319709516369,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 443,
+      "latent_id": 7013,
+      "threshold": 0.0,
+      "V_prime": 0.0888,
+      "p_value": 0.02053538771012649,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 444,
+      "latent_id": 13106,
+      "threshold": 0.0,
+      "V_prime": 0.0888,
+      "p_value": 0.043090908761187006,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 445,
+      "latent_id": 3421,
+      "threshold": 0.0,
+      "V_prime": 0.0886,
+      "p_value": 0.010801439591906093,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 446,
+      "latent_id": 4569,
+      "threshold": 0.0,
+      "V_prime": 0.0886,
+      "p_value": 0.025712559717445314,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 447,
+      "latent_id": 13503,
+      "threshold": 0.0,
+      "V_prime": 0.0886,
+      "p_value": 0.011496467836393154,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 448,
+      "latent_id": 6608,
+      "threshold": 0.0,
+      "V_prime": 0.0882,
+      "p_value": 0.015648461551502246,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 449,
+      "latent_id": 8993,
+      "threshold": 0.0,
+      "V_prime": 0.0881,
+      "p_value": 0.03184614764618045,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 450,
+      "latent_id": 15498,
+      "threshold": 7.837577819824219,
+      "V_prime": 0.088,
+      "p_value": 0.0062664281459663225,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 451,
+      "latent_id": 10667,
+      "threshold": 0.0,
+      "V_prime": 0.0879,
+      "p_value": 0.03440739083584603,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 452,
+      "latent_id": 6907,
+      "threshold": 0.0,
+      "V_prime": 0.0878,
+      "p_value": 0.011451924636390774,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 453,
+      "latent_id": 5901,
+      "threshold": 0.0,
+      "V_prime": 0.0876,
+      "p_value": 0.010970968545325015,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 454,
+      "latent_id": 4322,
+      "threshold": 0.0,
+      "V_prime": 0.0875,
+      "p_value": 0.011017532230981043,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 455,
+      "latent_id": 7140,
+      "threshold": 0.0,
+      "V_prime": 0.0875,
+      "p_value": 0.017311279798454607,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 456,
+      "latent_id": 7550,
+      "threshold": 0.0,
+      "V_prime": 0.0875,
+      "p_value": 0.011211264981839721,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 457,
+      "latent_id": 14187,
+      "threshold": 0.0,
+      "V_prime": 0.0875,
+      "p_value": 0.036033379124574584,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 458,
+      "latent_id": 2210,
+      "threshold": 0.0,
+      "V_prime": 0.0874,
+      "p_value": 0.017340654334678737,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 459,
+      "latent_id": 377,
+      "threshold": 0.0,
+      "V_prime": 0.0873,
+      "p_value": 0.02377885948988589,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 460,
+      "latent_id": 1781,
+      "threshold": 0.0,
+      "V_prime": 0.0873,
+      "p_value": 0.020028318227843744,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 461,
+      "latent_id": 6501,
+      "threshold": 6.870948791503906,
+      "V_prime": 0.087,
+      "p_value": 0.007694006614811531,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 462,
+      "latent_id": 8157,
+      "threshold": 0.0,
+      "V_prime": 0.087,
+      "p_value": 0.026758993022738042,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 463,
+      "latent_id": 10742,
+      "threshold": 0.0,
+      "V_prime": 0.087,
+      "p_value": 0.015170932643789903,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 464,
+      "latent_id": 6783,
+      "threshold": 0.0,
+      "V_prime": 0.0869,
+      "p_value": 0.029898761476259705,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 465,
+      "latent_id": 11277,
+      "threshold": 5.771636962890625,
+      "V_prime": 0.0869,
+      "p_value": 0.007778978605189803,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 466,
+      "latent_id": 14183,
+      "threshold": 5.96956205368042,
+      "V_prime": 0.0867,
+      "p_value": 0.008944388984252155,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 467,
+      "latent_id": 4494,
+      "threshold": 0.0,
+      "V_prime": 0.0866,
+      "p_value": 0.009574986484110872,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 468,
+      "latent_id": 9170,
+      "threshold": 0.0,
+      "V_prime": 0.0865,
+      "p_value": 0.03076644058252666,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 469,
+      "latent_id": 3396,
+      "threshold": 0.0,
+      "V_prime": 0.0864,
+      "p_value": 0.021285169024967417,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 470,
+      "latent_id": 3569,
+      "threshold": 0.0,
+      "V_prime": 0.0863,
+      "p_value": 0.0119917208762847,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 471,
+      "latent_id": 15074,
+      "threshold": 0.0,
+      "V_prime": 0.0863,
+      "p_value": 0.012117794426655846,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 472,
+      "latent_id": 4781,
+      "threshold": 0.0,
+      "V_prime": 0.0862,
+      "p_value": 0.03569373985378727,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 473,
+      "latent_id": 9178,
+      "threshold": 0.0,
+      "V_prime": 0.0862,
+      "p_value": 0.014737150449179124,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 474,
+      "latent_id": 10334,
+      "threshold": 6.297636032104492,
+      "V_prime": 0.0862,
+      "p_value": 0.009096395412168046,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 475,
+      "latent_id": 4196,
+      "threshold": 5.259946823120117,
+      "V_prime": 0.0861,
+      "p_value": 0.010144734939474306,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 476,
+      "latent_id": 5040,
+      "threshold": 0.0,
+      "V_prime": 0.0861,
+      "p_value": 0.011349249211439587,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 477,
+      "latent_id": 13429,
+      "threshold": 5.6310272216796875,
+      "V_prime": 0.0861,
+      "p_value": 0.009995457035716146,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 478,
+      "latent_id": 2261,
+      "threshold": 0.0,
+      "V_prime": 0.086,
+      "p_value": 0.014945206745546809,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 479,
+      "latent_id": 9786,
+      "threshold": 0.0,
+      "V_prime": 0.0859,
+      "p_value": 0.01164456082780957,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 480,
+      "latent_id": 1055,
+      "threshold": 0.0,
+      "V_prime": 0.0858,
+      "p_value": 0.03325350231721702,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 481,
+      "latent_id": 13514,
+      "threshold": 0.0,
+      "V_prime": 0.0858,
+      "p_value": 0.011637794597126182,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 482,
+      "latent_id": 7822,
+      "threshold": 6.201362133026123,
+      "V_prime": 0.0857,
+      "p_value": 0.010405659599086807,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 483,
+      "latent_id": 552,
+      "threshold": 0.0,
+      "V_prime": 0.0855,
+      "p_value": 0.016008008267362366,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 484,
+      "latent_id": 10865,
+      "threshold": 0.0,
+      "V_prime": 0.0855,
+      "p_value": 0.022893958210338544,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 485,
+      "latent_id": 5831,
+      "threshold": 7.099575042724609,
+      "V_prime": 0.0853,
+      "p_value": 0.009438250188626334,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 486,
+      "latent_id": 14762,
+      "threshold": 0.0,
+      "V_prime": 0.0853,
+      "p_value": 0.014557940136901315,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 487,
+      "latent_id": 5375,
+      "threshold": 5.453049659729004,
+      "V_prime": 0.0851,
+      "p_value": 0.011044162877704914,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 488,
+      "latent_id": 3877,
+      "threshold": 0.0,
+      "V_prime": 0.085,
+      "p_value": 0.035032313754170076,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 489,
+      "latent_id": 1552,
+      "threshold": 6.286151885986328,
+      "V_prime": 0.0849,
+      "p_value": 0.009961389901896546,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 490,
+      "latent_id": 6004,
+      "threshold": 0.0,
+      "V_prime": 0.0848,
+      "p_value": 0.024178596330946447,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 491,
+      "latent_id": 12089,
+      "threshold": 0.0,
+      "V_prime": 0.0848,
+      "p_value": 0.036174799621125915,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 492,
+      "latent_id": 8875,
+      "threshold": 6.752229690551758,
+      "V_prime": 0.0847,
+      "p_value": 0.008885453141309615,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 493,
+      "latent_id": 10363,
+      "threshold": 0.0,
+      "V_prime": 0.0846,
+      "p_value": 0.02368029742145984,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 494,
+      "latent_id": 14020,
+      "threshold": 0.0,
+      "V_prime": 0.0845,
+      "p_value": 0.027101604869957267,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 495,
+      "latent_id": 5809,
+      "threshold": 0.0,
+      "V_prime": 0.0844,
+      "p_value": 0.01273674052272858,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 496,
+      "latent_id": 6069,
+      "threshold": 0.0,
+      "V_prime": 0.0844,
+      "p_value": 0.04372310867271323,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 497,
+      "latent_id": 23,
+      "threshold": 0.0,
+      "V_prime": 0.0843,
+      "p_value": 0.013890639097229962,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 498,
+      "latent_id": 2573,
+      "threshold": 0.0,
+      "V_prime": 0.0843,
+      "p_value": 0.015439846488115375,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 499,
+      "latent_id": 5437,
+      "threshold": 0.0,
+      "V_prime": 0.0842,
+      "p_value": 0.025287717053567867,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 500,
+      "latent_id": 8684,
+      "threshold": 0.0,
+      "V_prime": 0.0842,
+      "p_value": 0.01924311847999534,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 501,
+      "latent_id": 14175,
+      "threshold": 0.0,
+      "V_prime": 0.0842,
+      "p_value": 0.01326598894645781,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 502,
+      "latent_id": 7529,
+      "threshold": 0.0,
+      "V_prime": 0.0841,
+      "p_value": 0.02210194098778388,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 503,
+      "latent_id": 7846,
+      "threshold": 0.0,
+      "V_prime": 0.0841,
+      "p_value": 0.01915416468078475,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 504,
+      "latent_id": 11299,
+      "threshold": 0.0,
+      "V_prime": 0.0841,
+      "p_value": 0.012650721150853193,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 505,
+      "latent_id": 14464,
+      "threshold": 0.0,
+      "V_prime": 0.084,
+      "p_value": 0.016431831365637257,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 506,
+      "latent_id": 6071,
+      "threshold": 0.0,
+      "V_prime": 0.0839,
+      "p_value": 0.01551420819574042,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 507,
+      "latent_id": 5652,
+      "threshold": 0.0,
+      "V_prime": 0.0837,
+      "p_value": 0.019665564110061956,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 508,
+      "latent_id": 8842,
+      "threshold": 0.0,
+      "V_prime": 0.0837,
+      "p_value": 0.016302455562532087,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 509,
+      "latent_id": 7428,
+      "threshold": 0.0,
+      "V_prime": 0.0834,
+      "p_value": 0.029439301491216117,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 510,
+      "latent_id": 7274,
+      "threshold": 0.0,
+      "V_prime": 0.0833,
+      "p_value": 0.028171880736317774,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 511,
+      "latent_id": 8300,
+      "threshold": 0.0,
+      "V_prime": 0.0833,
+      "p_value": 0.04717239356328595,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 512,
+      "latent_id": 12510,
+      "threshold": 0.0,
+      "V_prime": 0.0833,
+      "p_value": 0.04353061946482607,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 513,
+      "latent_id": 10034,
+      "threshold": 0.0,
+      "V_prime": 0.0832,
+      "p_value": 0.018803967909742796,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 514,
+      "latent_id": 13638,
+      "threshold": 0.0,
+      "V_prime": 0.0832,
+      "p_value": 0.0239680401949033,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 515,
+      "latent_id": 10134,
+      "threshold": 0.0,
+      "V_prime": 0.083,
+      "p_value": 0.02392578134428343,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 516,
+      "latent_id": 10534,
+      "threshold": 0.0,
+      "V_prime": 0.083,
+      "p_value": 0.04080309920908644,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 517,
+      "latent_id": 1020,
+      "threshold": 0.0,
+      "V_prime": 0.0829,
+      "p_value": 0.019583666483838805,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 518,
+      "latent_id": 6974,
+      "threshold": 6.095849514007568,
+      "V_prime": 0.0829,
+      "p_value": 0.011755308563098343,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 519,
+      "latent_id": 13331,
+      "threshold": 0.0,
+      "V_prime": 0.0829,
+      "p_value": 0.01940944123388632,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 520,
+      "latent_id": 16283,
+      "threshold": 0.0,
+      "V_prime": 0.0829,
+      "p_value": 0.015277032165473924,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 521,
+      "latent_id": 13744,
+      "threshold": 0.0,
+      "V_prime": 0.0828,
+      "p_value": 0.04706396185271776,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 522,
+      "latent_id": 14715,
+      "threshold": 0.0,
+      "V_prime": 0.0828,
+      "p_value": 0.04267543748584356,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 523,
+      "latent_id": 1457,
+      "threshold": 0.0,
+      "V_prime": 0.0827,
+      "p_value": 0.016639276967212263,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 524,
+      "latent_id": 12208,
+      "threshold": 0.0,
+      "V_prime": 0.0827,
+      "p_value": 0.018361505031846304,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 525,
+      "latent_id": 2915,
+      "threshold": 0.0,
+      "V_prime": 0.0826,
+      "p_value": 0.015550043786950183,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 526,
+      "latent_id": 4232,
+      "threshold": 0.0,
+      "V_prime": 0.0826,
+      "p_value": 0.020719396005149934,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 527,
+      "latent_id": 11862,
+      "threshold": 0.0,
+      "V_prime": 0.0826,
+      "p_value": 0.024152530299736942,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 528,
+      "latent_id": 12077,
+      "threshold": 0.0,
+      "V_prime": 0.0826,
+      "p_value": 0.016085601837365068,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 529,
+      "latent_id": 50,
+      "threshold": 0.0,
+      "V_prime": 0.0825,
+      "p_value": 0.03037494221319099,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 530,
+      "latent_id": 2012,
+      "threshold": 0.0,
+      "V_prime": 0.0825,
+      "p_value": 0.027064780811308805,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 531,
+      "latent_id": 7161,
+      "threshold": 0.0,
+      "V_prime": 0.0825,
+      "p_value": 0.016138141870949328,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 532,
+      "latent_id": 16365,
+      "threshold": 0.0,
+      "V_prime": 0.0825,
+      "p_value": 0.01721937498615593,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 533,
+      "latent_id": 959,
+      "threshold": 0.0,
+      "V_prime": 0.0824,
+      "p_value": 0.04266729323345628,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 534,
+      "latent_id": 10377,
+      "threshold": 0.0,
+      "V_prime": 0.0824,
+      "p_value": 0.034176810172234104,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 535,
+      "latent_id": 4366,
+      "threshold": 0.0,
+      "V_prime": 0.0823,
+      "p_value": 0.013840669735032347,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 536,
+      "latent_id": 15438,
+      "threshold": 0.0,
+      "V_prime": 0.0822,
+      "p_value": 0.014876858381559251,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 537,
+      "latent_id": 1283,
+      "threshold": 0.0,
+      "V_prime": 0.0821,
+      "p_value": 0.04366534201415841,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 538,
+      "latent_id": 8935,
+      "threshold": 8.175630569458008,
+      "V_prime": 0.0821,
+      "p_value": 0.010913003539543824,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 539,
+      "latent_id": 14600,
+      "threshold": 0.0,
+      "V_prime": 0.082,
+      "p_value": 0.027958923241186755,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 540,
+      "latent_id": 16103,
+      "threshold": 0.0,
+      "V_prime": 0.0819,
+      "p_value": 0.014869221211971722,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 541,
+      "latent_id": 747,
+      "threshold": 0.0,
+      "V_prime": 0.0818,
+      "p_value": 0.01859569944551828,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 542,
+      "latent_id": 9874,
+      "threshold": 0.0,
+      "V_prime": 0.0818,
+      "p_value": 0.01990428676660554,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 543,
+      "latent_id": 16156,
+      "threshold": 5.4489922523498535,
+      "V_prime": 0.0818,
+      "p_value": 0.014382637697590598,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 544,
+      "latent_id": 9067,
+      "threshold": 0.0,
+      "V_prime": 0.0816,
+      "p_value": 0.019612887584063026,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 545,
+      "latent_id": 9603,
+      "threshold": 0.0,
+      "V_prime": 0.0816,
+      "p_value": 0.0240025525449897,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 546,
+      "latent_id": 15261,
+      "threshold": 6.06340217590332,
+      "V_prime": 0.0815,
+      "p_value": 0.013044959342992452,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 547,
+      "latent_id": 14983,
+      "threshold": 6.671605587005615,
+      "V_prime": 0.0813,
+      "p_value": 0.011829806491266406,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 548,
+      "latent_id": 4851,
+      "threshold": 0.0,
+      "V_prime": 0.0812,
+      "p_value": 0.04810448637208758,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 549,
+      "latent_id": 14784,
+      "threshold": 0.0,
+      "V_prime": 0.0812,
+      "p_value": 0.02599222536526474,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 550,
+      "latent_id": 3968,
+      "threshold": 0.0,
+      "V_prime": 0.0811,
+      "p_value": 0.03305748115759334,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 551,
+      "latent_id": 8628,
+      "threshold": 5.683422565460205,
+      "V_prime": 0.0811,
+      "p_value": 0.013850321565653387,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 552,
+      "latent_id": 2971,
+      "threshold": 0.0,
+      "V_prime": 0.0809,
+      "p_value": 0.04093240198398044,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 553,
+      "latent_id": 3159,
+      "threshold": 0.0,
+      "V_prime": 0.0809,
+      "p_value": 0.02703628319784276,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 554,
+      "latent_id": 4138,
+      "threshold": 0.0,
+      "V_prime": 0.0808,
+      "p_value": 0.017324363871420636,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 555,
+      "latent_id": 7317,
+      "threshold": 0.0,
+      "V_prime": 0.0808,
+      "p_value": 0.03523507797575924,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 556,
+      "latent_id": 11574,
+      "threshold": 0.0,
+      "V_prime": 0.0808,
+      "p_value": 0.039060268142528304,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 557,
+      "latent_id": 15752,
+      "threshold": 0.0,
+      "V_prime": 0.0808,
+      "p_value": 0.039499011337417705,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 558,
+      "latent_id": 16270,
+      "threshold": 6.734354019165039,
+      "V_prime": 0.0808,
+      "p_value": 0.013774361134398404,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 559,
+      "latent_id": 4669,
+      "threshold": 0.0,
+      "V_prime": 0.0807,
+      "p_value": 0.02772435918937747,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 560,
+      "latent_id": 15914,
+      "threshold": 0.0,
+      "V_prime": 0.0807,
+      "p_value": 0.018100719630201663,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 561,
+      "latent_id": 7383,
+      "threshold": 0.0,
+      "V_prime": 0.0805,
+      "p_value": 0.04647441355520987,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 562,
+      "latent_id": 3479,
+      "threshold": 0.0,
+      "V_prime": 0.0804,
+      "p_value": 0.02257342339711677,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 563,
+      "latent_id": 5581,
+      "threshold": 5.174310207366943,
+      "V_prime": 0.0804,
+      "p_value": 0.015624601604189698,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 564,
+      "latent_id": 5881,
+      "threshold": 0.0,
+      "V_prime": 0.0804,
+      "p_value": 0.023614516626576935,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 565,
+      "latent_id": 10393,
+      "threshold": 0.0,
+      "V_prime": 0.0804,
+      "p_value": 0.01713452543214216,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 566,
+      "latent_id": 6204,
+      "threshold": 0.0,
+      "V_prime": 0.0803,
+      "p_value": 0.04187817248970559,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 567,
+      "latent_id": 7961,
+      "threshold": 0.0,
+      "V_prime": 0.0803,
+      "p_value": 0.023934964116138283,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 568,
+      "latent_id": 9091,
+      "threshold": 0.0,
+      "V_prime": 0.0803,
+      "p_value": 0.029139658642640894,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 569,
+      "latent_id": 14172,
+      "threshold": 0.0,
+      "V_prime": 0.0803,
+      "p_value": 0.029146879516961738,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 570,
+      "latent_id": 2337,
+      "threshold": 0.0,
+      "V_prime": 0.0802,
+      "p_value": 0.03023659267203394,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 571,
+      "latent_id": 8918,
+      "threshold": 0.0,
+      "V_prime": 0.0802,
+      "p_value": 0.019772207361444437,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 572,
+      "latent_id": 7440,
+      "threshold": 0.0,
+      "V_prime": 0.0801,
+      "p_value": 0.018467681131185673,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 573,
+      "latent_id": 13710,
+      "threshold": 0.0,
+      "V_prime": 0.0801,
+      "p_value": 0.023585949676820855,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 574,
+      "latent_id": 14455,
+      "threshold": 0.0,
+      "V_prime": 0.0801,
+      "p_value": 0.01910806260776405,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 575,
+      "latent_id": 2775,
+      "threshold": 0.0,
+      "V_prime": 0.08,
+      "p_value": 0.024125322901944243,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 576,
+      "latent_id": 4610,
+      "threshold": 0.0,
+      "V_prime": 0.08,
+      "p_value": 0.04242911750039776,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 577,
+      "latent_id": 10050,
+      "threshold": 5.741791248321533,
+      "V_prime": 0.0799,
+      "p_value": 0.015636660444877538,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 578,
+      "latent_id": 12989,
+      "threshold": 0.0,
+      "V_prime": 0.0799,
+      "p_value": 0.02915803609376618,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 579,
+      "latent_id": 8086,
+      "threshold": 0.0,
+      "V_prime": 0.0798,
+      "p_value": 0.02849459126449655,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 580,
+      "latent_id": 3223,
+      "threshold": 0.0,
+      "V_prime": 0.0797,
+      "p_value": 0.01989188872313004,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 581,
+      "latent_id": 2855,
+      "threshold": 0.0,
+      "V_prime": 0.0796,
+      "p_value": 0.02386886136403571,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 582,
+      "latent_id": 9595,
+      "threshold": 0.0,
+      "V_prime": 0.0796,
+      "p_value": 0.033448740374171775,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 583,
+      "latent_id": 10424,
+      "threshold": 0.0,
+      "V_prime": 0.0795,
+      "p_value": 0.029345113786945376,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 584,
+      "latent_id": 13618,
+      "threshold": 0.0,
+      "V_prime": 0.0795,
+      "p_value": 0.037020133662090275,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 585,
+      "latent_id": 9574,
+      "threshold": 0.0,
+      "V_prime": 0.0794,
+      "p_value": 0.01931929683453866,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 586,
+      "latent_id": 7832,
+      "threshold": 0.0,
+      "V_prime": 0.0793,
+      "p_value": 0.03234467144343304,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 587,
+      "latent_id": 16338,
+      "threshold": 0.0,
+      "V_prime": 0.0792,
+      "p_value": 0.023554119541194737,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 588,
+      "latent_id": 3256,
+      "threshold": 0.0,
+      "V_prime": 0.079,
+      "p_value": 0.020719554808963574,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 589,
+      "latent_id": 13522,
+      "threshold": 8.006500244140625,
+      "V_prime": 0.079,
+      "p_value": 0.013944371591245421,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 590,
+      "latent_id": 717,
+      "threshold": 0.0,
+      "V_prime": 0.0789,
+      "p_value": 0.0362544751800013,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 591,
+      "latent_id": 4336,
+      "threshold": 0.0,
+      "V_prime": 0.0789,
+      "p_value": 0.02427804081231655,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 592,
+      "latent_id": 6746,
+      "threshold": 0.0,
+      "V_prime": 0.0789,
+      "p_value": 0.03755560812951396,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 593,
+      "latent_id": 1488,
+      "threshold": 0.0,
+      "V_prime": 0.0787,
+      "p_value": 0.02410340471717901,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 594,
+      "latent_id": 5782,
+      "threshold": 0.0,
+      "V_prime": 0.0787,
+      "p_value": 0.02906656333339119,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 595,
+      "latent_id": 1494,
+      "threshold": 5.694639205932617,
+      "V_prime": 0.0786,
+      "p_value": 0.01846513171881949,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 596,
+      "latent_id": 4454,
+      "threshold": 0.0,
+      "V_prime": 0.0786,
+      "p_value": 0.020745737201597603,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 597,
+      "latent_id": 3859,
+      "threshold": 0.0,
+      "V_prime": 0.0785,
+      "p_value": 0.04070401059440806,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 598,
+      "latent_id": 568,
+      "threshold": 0.0,
+      "V_prime": 0.0784,
+      "p_value": 0.03685303825077783,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 599,
+      "latent_id": 6585,
+      "threshold": 0.0,
+      "V_prime": 0.0784,
+      "p_value": 0.03203735818638599,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 600,
+      "latent_id": 9999,
+      "threshold": 0.0,
+      "V_prime": 0.0784,
+      "p_value": 0.04608746622436845,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 601,
+      "latent_id": 7905,
+      "threshold": 0.0,
+      "V_prime": 0.0783,
+      "p_value": 0.02547334373117092,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 602,
+      "latent_id": 12851,
+      "threshold": 0.0,
+      "V_prime": 0.0783,
+      "p_value": 0.03851846706983847,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 603,
+      "latent_id": 14078,
+      "threshold": 5.300239086151123,
+      "V_prime": 0.0783,
+      "p_value": 0.020103104444330083,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 604,
+      "latent_id": 15859,
+      "threshold": 6.2306365966796875,
+      "V_prime": 0.0783,
+      "p_value": 0.017976981173160555,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 605,
+      "latent_id": 1054,
+      "threshold": 0.0,
+      "V_prime": 0.0782,
+      "p_value": 0.03355431983866638,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 606,
+      "latent_id": 6610,
+      "threshold": 0.0,
+      "V_prime": 0.0782,
+      "p_value": 0.02298389893790831,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 607,
+      "latent_id": 5645,
+      "threshold": 0.0,
+      "V_prime": 0.0781,
+      "p_value": 0.0270161511495603,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 608,
+      "latent_id": 13771,
+      "threshold": 0.0,
+      "V_prime": 0.0781,
+      "p_value": 0.020920454100978262,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 609,
+      "latent_id": 3496,
+      "threshold": 0.0,
+      "V_prime": 0.078,
+      "p_value": 0.02675514244087957,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 610,
+      "latent_id": 10492,
+      "threshold": 0.0,
+      "V_prime": 0.078,
+      "p_value": 0.02216463462363386,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 611,
+      "latent_id": 2768,
+      "threshold": 0.0,
+      "V_prime": 0.0777,
+      "p_value": 0.041059865633613996,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 612,
+      "latent_id": 7417,
+      "threshold": 0.0,
+      "V_prime": 0.0777,
+      "p_value": 0.027928764586561454,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 613,
+      "latent_id": 13147,
+      "threshold": 0.0,
+      "V_prime": 0.0777,
+      "p_value": 0.03161168699666409,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 614,
+      "latent_id": 14328,
+      "threshold": 5.461723804473877,
+      "V_prime": 0.0777,
+      "p_value": 0.01981040403420403,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 615,
+      "latent_id": 9196,
+      "threshold": 5.142831802368164,
+      "V_prime": 0.0776,
+      "p_value": 0.01953055925432241,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 616,
+      "latent_id": 14494,
+      "threshold": 13.931753158569336,
+      "V_prime": 0.0776,
+      "p_value": 0.011742286033610312,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 617,
+      "latent_id": 2164,
+      "threshold": 0.0,
+      "V_prime": 0.0774,
+      "p_value": 0.0327063123604237,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 618,
+      "latent_id": 2618,
+      "threshold": 0.0,
+      "V_prime": 0.0774,
+      "p_value": 0.02813763081558108,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 619,
+      "latent_id": 13555,
+      "threshold": 0.0,
+      "V_prime": 0.0774,
+      "p_value": 0.032140445218184266,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 620,
+      "latent_id": 2392,
+      "threshold": 0.0,
+      "V_prime": 0.0773,
+      "p_value": 0.03139807477297779,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 621,
+      "latent_id": 5915,
+      "threshold": 0.0,
+      "V_prime": 0.0773,
+      "p_value": 0.020986817227478062,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 622,
+      "latent_id": 7581,
+      "threshold": 0.0,
+      "V_prime": 0.0773,
+      "p_value": 0.04249047939537879,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 623,
+      "latent_id": 11680,
+      "threshold": 6.016062259674072,
+      "V_prime": 0.0773,
+      "p_value": 0.021165643892646746,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 624,
+      "latent_id": 14327,
+      "threshold": 0.0,
+      "V_prime": 0.0773,
+      "p_value": 0.02893801050293973,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 625,
+      "latent_id": 9686,
+      "threshold": 0.0,
+      "V_prime": 0.0772,
+      "p_value": 0.035150957183989265,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 626,
+      "latent_id": 13686,
+      "threshold": 0.0,
+      "V_prime": 0.0772,
+      "p_value": 0.026818950713373223,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 627,
+      "latent_id": 15746,
+      "threshold": 0.0,
+      "V_prime": 0.0772,
+      "p_value": 0.03676922579688766,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 628,
+      "latent_id": 8502,
+      "threshold": 5.13399600982666,
+      "V_prime": 0.0771,
+      "p_value": 0.02028082781271533,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 629,
+      "latent_id": 10161,
+      "threshold": 5.008205890655518,
+      "V_prime": 0.077,
+      "p_value": 0.024828807074716196,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 630,
+      "latent_id": 10307,
+      "threshold": 0.0,
+      "V_prime": 0.077,
+      "p_value": 0.02817329112626187,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 631,
+      "latent_id": 13283,
+      "threshold": 0.0,
+      "V_prime": 0.077,
+      "p_value": 0.025707580798595756,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 632,
+      "latent_id": 792,
+      "threshold": 0.0,
+      "V_prime": 0.0769,
+      "p_value": 0.03620502073174387,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 633,
+      "latent_id": 1951,
+      "threshold": 0.0,
+      "V_prime": 0.0769,
+      "p_value": 0.03485488975878541,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 634,
+      "latent_id": 8092,
+      "threshold": 0.0,
+      "V_prime": 0.0768,
+      "p_value": 0.024768819139256826,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 635,
+      "latent_id": 10833,
+      "threshold": 0.0,
+      "V_prime": 0.0767,
+      "p_value": 0.034382935579031854,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 636,
+      "latent_id": 14008,
+      "threshold": 0.0,
+      "V_prime": 0.0766,
+      "p_value": 0.02792651692192576,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 637,
+      "latent_id": 3249,
+      "threshold": 5.177093029022217,
+      "V_prime": 0.0765,
+      "p_value": 0.022038885950873353,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 638,
+      "latent_id": 13247,
+      "threshold": 0.0,
+      "V_prime": 0.0765,
+      "p_value": 0.025156337913710188,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 639,
+      "latent_id": 15372,
+      "threshold": 0.0,
+      "V_prime": 0.0765,
+      "p_value": 0.029060751752677708,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 640,
+      "latent_id": 2044,
+      "threshold": 0.0,
+      "V_prime": 0.0762,
+      "p_value": 0.0425912487772886,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 641,
+      "latent_id": 2386,
+      "threshold": 0.0,
+      "V_prime": 0.0762,
+      "p_value": 0.02959651153912974,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 642,
+      "latent_id": 14030,
+      "threshold": 0.0,
+      "V_prime": 0.0762,
+      "p_value": 0.03031160911361707,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 643,
+      "latent_id": 8729,
+      "threshold": 0.0,
+      "V_prime": 0.0761,
+      "p_value": 0.045756487033989324,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 644,
+      "latent_id": 7480,
+      "threshold": 0.0,
+      "V_prime": 0.076,
+      "p_value": 0.048774880960827924,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 645,
+      "latent_id": 9608,
+      "threshold": 0.0,
+      "V_prime": 0.076,
+      "p_value": 0.03830602829206211,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 646,
+      "latent_id": 11618,
+      "threshold": 6.874995231628418,
+      "V_prime": 0.0759,
+      "p_value": 0.019946695119646023,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 647,
+      "latent_id": 16246,
+      "threshold": 0.0,
+      "V_prime": 0.0759,
+      "p_value": 0.030299847801502994,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 648,
+      "latent_id": 5676,
+      "threshold": 0.0,
+      "V_prime": 0.0758,
+      "p_value": 0.024995301945094046,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 649,
+      "latent_id": 8332,
+      "threshold": 0.0,
+      "V_prime": 0.0757,
+      "p_value": 0.033452842890363856,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 650,
+      "latent_id": 14758,
+      "threshold": 0.0,
+      "V_prime": 0.0757,
+      "p_value": 0.040196277721329374,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 651,
+      "latent_id": 1728,
+      "threshold": 0.0,
+      "V_prime": 0.0755,
+      "p_value": 0.02425017512793149,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 652,
+      "latent_id": 6000,
+      "threshold": 0.0,
+      "V_prime": 0.0755,
+      "p_value": 0.03399015103912054,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 653,
+      "latent_id": 4522,
+      "threshold": 5.467679023742676,
+      "V_prime": 0.0754,
+      "p_value": 0.023775940277082283,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 654,
+      "latent_id": 3768,
+      "threshold": 0.0,
+      "V_prime": 0.0753,
+      "p_value": 0.04267551669184797,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 655,
+      "latent_id": 4178,
+      "threshold": 0.0,
+      "V_prime": 0.0753,
+      "p_value": 0.036594488070728,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 656,
+      "latent_id": 12875,
+      "threshold": 0.0,
+      "V_prime": 0.0753,
+      "p_value": 0.036716461450895646,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 657,
+      "latent_id": 14024,
+      "threshold": 0.0,
+      "V_prime": 0.0753,
+      "p_value": 0.04033742664156043,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 658,
+      "latent_id": 15969,
+      "threshold": 0.0,
+      "V_prime": 0.0753,
+      "p_value": 0.03858734046835878,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 659,
+      "latent_id": 14608,
+      "threshold": 5.43972635269165,
+      "V_prime": 0.0752,
+      "p_value": 0.024001572677587405,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 660,
+      "latent_id": 5517,
+      "threshold": 0.0,
+      "V_prime": 0.0751,
+      "p_value": 0.025451237045087984,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 661,
+      "latent_id": 6472,
+      "threshold": 0.0,
+      "V_prime": 0.075,
+      "p_value": 0.04059597580987872,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 662,
+      "latent_id": 8360,
+      "threshold": 5.2481207847595215,
+      "V_prime": 0.075,
+      "p_value": 0.022893923988303498,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 663,
+      "latent_id": 12177,
+      "threshold": 0.0,
+      "V_prime": 0.075,
+      "p_value": 0.02727562450654177,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 664,
+      "latent_id": 3101,
+      "threshold": 0.0,
+      "V_prime": 0.0749,
+      "p_value": 0.04414631611928578,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 665,
+      "latent_id": 5884,
+      "threshold": 0.0,
+      "V_prime": 0.0748,
+      "p_value": 0.0476437932794038,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 666,
+      "latent_id": 12263,
+      "threshold": 9.287534713745117,
+      "V_prime": 0.0748,
+      "p_value": 0.018593845767975514,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 667,
+      "latent_id": 15450,
+      "threshold": 0.0,
+      "V_prime": 0.0748,
+      "p_value": 0.03565045790342404,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 668,
+      "latent_id": 1247,
+      "threshold": 6.04563570022583,
+      "V_prime": 0.0747,
+      "p_value": 0.023787630140290034,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 669,
+      "latent_id": 5790,
+      "threshold": 5.866028308868408,
+      "V_prime": 0.0746,
+      "p_value": 0.023484712601573372,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 670,
+      "latent_id": 871,
+      "threshold": 0.0,
+      "V_prime": 0.0744,
+      "p_value": 0.025969222502007217,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 671,
+      "latent_id": 2874,
+      "threshold": 5.228549480438232,
+      "V_prime": 0.0744,
+      "p_value": 0.024853838547689508,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 672,
+      "latent_id": 16209,
+      "threshold": 6.052285194396973,
+      "V_prime": 0.0744,
+      "p_value": 0.02674681476170509,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 673,
+      "latent_id": 3448,
+      "threshold": 5.1289777755737305,
+      "V_prime": 0.0743,
+      "p_value": 0.0254821684108681,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 674,
+      "latent_id": 10199,
+      "threshold": 0.0,
+      "V_prime": 0.0743,
+      "p_value": 0.036603391129929844,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 675,
+      "latent_id": 326,
+      "threshold": 5.064844608306885,
+      "V_prime": 0.0741,
+      "p_value": 0.025788351297369887,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 676,
+      "latent_id": 15661,
+      "threshold": 0.0,
+      "V_prime": 0.0741,
+      "p_value": 0.02883928149024142,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 677,
+      "latent_id": 15935,
+      "threshold": 0.0,
+      "V_prime": 0.0741,
+      "p_value": 0.030505344529869582,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 678,
+      "latent_id": 6713,
+      "threshold": 0.0,
+      "V_prime": 0.074,
+      "p_value": 0.027161329441120527,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 679,
+      "latent_id": 10565,
+      "threshold": 0.0,
+      "V_prime": 0.074,
+      "p_value": 0.028171719177087582,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 680,
+      "latent_id": 6747,
+      "threshold": 0.0,
+      "V_prime": 0.0736,
+      "p_value": 0.03277517695193621,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 681,
+      "latent_id": 2913,
+      "threshold": 0.0,
+      "V_prime": 0.0735,
+      "p_value": 0.03986397174614511,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 682,
+      "latent_id": 8467,
+      "threshold": 0.0,
+      "V_prime": 0.0733,
+      "p_value": 0.04199070366664068,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 683,
+      "latent_id": 10733,
+      "threshold": 0.0,
+      "V_prime": 0.0733,
+      "p_value": 0.03144810829497918,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 684,
+      "latent_id": 3774,
+      "threshold": 0.0,
+      "V_prime": 0.0732,
+      "p_value": 0.036689923669838316,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 685,
+      "latent_id": 148,
+      "threshold": 0.0,
+      "V_prime": 0.0731,
+      "p_value": 0.04334260744618995,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 686,
+      "latent_id": 10504,
+      "threshold": 0.0,
+      "V_prime": 0.0731,
+      "p_value": 0.044847916526465366,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 687,
+      "latent_id": 5965,
+      "threshold": 6.108336448669434,
+      "V_prime": 0.073,
+      "p_value": 0.027657044468432916,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 688,
+      "latent_id": 8731,
+      "threshold": 0.0,
+      "V_prime": 0.073,
+      "p_value": 0.0341182948297789,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 689,
+      "latent_id": 11714,
+      "threshold": 5.615891456604004,
+      "V_prime": 0.073,
+      "p_value": 0.02734898504363147,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 690,
+      "latent_id": 542,
+      "threshold": 0.0,
+      "V_prime": 0.0728,
+      "p_value": 0.04103571883305392,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 691,
+      "latent_id": 881,
+      "threshold": 0.0,
+      "V_prime": 0.0728,
+      "p_value": 0.035173615606404536,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 692,
+      "latent_id": 2316,
+      "threshold": 6.019639015197754,
+      "V_prime": 0.0728,
+      "p_value": 0.024984357677671182,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 693,
+      "latent_id": 2723,
+      "threshold": 5.320313930511475,
+      "V_prime": 0.0728,
+      "p_value": 0.030960820558923244,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 694,
+      "latent_id": 476,
+      "threshold": 0.0,
+      "V_prime": 0.0727,
+      "p_value": 0.04296498930120427,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 695,
+      "latent_id": 11653,
+      "threshold": 6.230278015136719,
+      "V_prime": 0.0727,
+      "p_value": 0.028009845470298472,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 696,
+      "latent_id": 4059,
+      "threshold": 0.0,
+      "V_prime": 0.0726,
+      "p_value": 0.04541072043533621,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 697,
+      "latent_id": 8343,
+      "threshold": 5.817809104919434,
+      "V_prime": 0.0726,
+      "p_value": 0.029087546023662165,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 698,
+      "latent_id": 1861,
+      "threshold": 0.0,
+      "V_prime": 0.0725,
+      "p_value": 0.03672814863282741,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 699,
+      "latent_id": 3271,
+      "threshold": 0.0,
+      "V_prime": 0.0725,
+      "p_value": 0.04655044842234183,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 700,
+      "latent_id": 4405,
+      "threshold": 6.590396404266357,
+      "V_prime": 0.0725,
+      "p_value": 0.02558305786151419,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 701,
+      "latent_id": 12301,
+      "threshold": 5.591876029968262,
+      "V_prime": 0.0725,
+      "p_value": 0.02933544834675994,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 702,
+      "latent_id": 13159,
+      "threshold": 0.0,
+      "V_prime": 0.0725,
+      "p_value": 0.03458886775688552,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 703,
+      "latent_id": 7222,
+      "threshold": 0.0,
+      "V_prime": 0.0724,
+      "p_value": 0.039297568045868814,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 704,
+      "latent_id": 8830,
+      "threshold": 0.0,
+      "V_prime": 0.0724,
+      "p_value": 0.036027218622380106,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 705,
+      "latent_id": 6113,
+      "threshold": 5.270444869995117,
+      "V_prime": 0.0723,
+      "p_value": 0.03126443261652093,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 706,
+      "latent_id": 11855,
+      "threshold": 0.0,
+      "V_prime": 0.0723,
+      "p_value": 0.029061396147959974,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 707,
+      "latent_id": 12700,
+      "threshold": 0.0,
+      "V_prime": 0.0723,
+      "p_value": 0.044987396149816,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 708,
+      "latent_id": 9127,
+      "threshold": 0.0,
+      "V_prime": 0.0722,
+      "p_value": 0.048719348695424075,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 709,
+      "latent_id": 922,
+      "threshold": 0.0,
+      "V_prime": 0.0721,
+      "p_value": 0.04447144793045403,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 710,
+      "latent_id": 10210,
+      "threshold": 0.0,
+      "V_prime": 0.072,
+      "p_value": 0.03523136165720175,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 711,
+      "latent_id": 4561,
+      "threshold": 0.0,
+      "V_prime": 0.0719,
+      "p_value": 0.04435033290902153,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 712,
+      "latent_id": 2075,
+      "threshold": 0.0,
+      "V_prime": 0.0718,
+      "p_value": 0.038344093175006054,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 713,
+      "latent_id": 10573,
+      "threshold": 0.0,
+      "V_prime": 0.0718,
+      "p_value": 0.0460754520591998,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 714,
+      "latent_id": 13980,
+      "threshold": 0.0,
+      "V_prime": 0.0718,
+      "p_value": 0.03410405376551444,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 715,
+      "latent_id": 7237,
+      "threshold": 0.0,
+      "V_prime": 0.0717,
+      "p_value": 0.030745844538231534,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 716,
+      "latent_id": 2327,
+      "threshold": 0.0,
+      "V_prime": 0.0716,
+      "p_value": 0.043640283826557505,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 717,
+      "latent_id": 666,
+      "threshold": 8.692785263061523,
+      "V_prime": 0.0714,
+      "p_value": 0.024313560306730483,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 718,
+      "latent_id": 3652,
+      "threshold": 5.371968746185303,
+      "V_prime": 0.0714,
+      "p_value": 0.031657389993196415,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 719,
+      "latent_id": 12793,
+      "threshold": 0.0,
+      "V_prime": 0.0714,
+      "p_value": 0.047738335520745176,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 720,
+      "latent_id": 16010,
+      "threshold": 0.0,
+      "V_prime": 0.0714,
+      "p_value": 0.03743485722440049,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 721,
+      "latent_id": 6582,
+      "threshold": 0.0,
+      "V_prime": 0.0712,
+      "p_value": 0.03454252427061866,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 722,
+      "latent_id": 7898,
+      "threshold": 5.384165287017822,
+      "V_prime": 0.0712,
+      "p_value": 0.030375347534871543,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 723,
+      "latent_id": 7095,
+      "threshold": 0.0,
+      "V_prime": 0.071,
+      "p_value": 0.045205551078154056,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 724,
+      "latent_id": 7109,
+      "threshold": 0.0,
+      "V_prime": 0.0708,
+      "p_value": 0.04414377625060576,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 725,
+      "latent_id": 13478,
+      "threshold": 0.0,
+      "V_prime": 0.0708,
+      "p_value": 0.03699823363823297,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 726,
+      "latent_id": 575,
+      "threshold": 0.0,
+      "V_prime": 0.0707,
+      "p_value": 0.04414639832662353,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 727,
+      "latent_id": 11348,
+      "threshold": 0.0,
+      "V_prime": 0.0707,
+      "p_value": 0.03875211842782174,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 728,
+      "latent_id": 16115,
+      "threshold": 0.0,
+      "V_prime": 0.0707,
+      "p_value": 0.03847625985713473,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 729,
+      "latent_id": 5368,
+      "threshold": 0.0,
+      "V_prime": 0.0706,
+      "p_value": 0.047069701412175445,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 730,
+      "latent_id": 13561,
+      "threshold": 0.0,
+      "V_prime": 0.0704,
+      "p_value": 0.04192053728300861,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 731,
+      "latent_id": 13872,
+      "threshold": 0.0,
+      "V_prime": 0.0704,
+      "p_value": 0.04401260720165544,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 732,
+      "latent_id": 7158,
+      "threshold": 0.0,
+      "V_prime": 0.0703,
+      "p_value": 0.03785384266093522,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 733,
+      "latent_id": 1353,
+      "threshold": 0.0,
+      "V_prime": 0.0702,
+      "p_value": 0.049124085323602795,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 734,
+      "latent_id": 74,
+      "threshold": 0.0,
+      "V_prime": 0.0701,
+      "p_value": 0.03691458184557901,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 735,
+      "latent_id": 9839,
+      "threshold": 5.167830944061279,
+      "V_prime": 0.0701,
+      "p_value": 0.03543313708548048,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 736,
+      "latent_id": 14690,
+      "threshold": 0.0,
+      "V_prime": 0.0701,
+      "p_value": 0.0418924288687378,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 737,
+      "latent_id": 6500,
+      "threshold": 0.0,
+      "V_prime": 0.07,
+      "p_value": 0.038931050485270444,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 738,
+      "latent_id": 3938,
+      "threshold": 0.0,
+      "V_prime": 0.0699,
+      "p_value": 0.03853579089003308,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 739,
+      "latent_id": 2975,
+      "threshold": 10.509592056274414,
+      "V_prime": 0.0698,
+      "p_value": 0.026789490848934755,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 740,
+      "latent_id": 4013,
+      "threshold": 0.0,
+      "V_prime": 0.0698,
+      "p_value": 0.043885814074033386,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 741,
+      "latent_id": 7485,
+      "threshold": 0.0,
+      "V_prime": 0.0697,
+      "p_value": 0.04300987315521476,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 742,
+      "latent_id": 9307,
+      "threshold": 7.042970180511475,
+      "V_prime": 0.0697,
+      "p_value": 0.03148720557350238,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 743,
+      "latent_id": 6244,
+      "threshold": 5.746507167816162,
+      "V_prime": 0.0696,
+      "p_value": 0.036563177070590654,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 744,
+      "latent_id": 7891,
+      "threshold": 0.0,
+      "V_prime": 0.0696,
+      "p_value": 0.04257450146312409,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 745,
+      "latent_id": 8099,
+      "threshold": 0.0,
+      "V_prime": 0.0696,
+      "p_value": 0.03864491518216661,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 746,
+      "latent_id": 9556,
+      "threshold": 0.0,
+      "V_prime": 0.0696,
+      "p_value": 0.04652358695489265,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 747,
+      "latent_id": 5621,
+      "threshold": 0.0,
+      "V_prime": 0.0695,
+      "p_value": 0.04360493039831796,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 748,
+      "latent_id": 11040,
+      "threshold": 0.0,
+      "V_prime": 0.0695,
+      "p_value": 0.038940089576307214,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 749,
+      "latent_id": 16067,
+      "threshold": 11.663783073425293,
+      "V_prime": 0.0694,
+      "p_value": 0.026330803167885667,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 750,
+      "latent_id": 16372,
+      "threshold": 5.548244476318359,
+      "V_prime": 0.0692,
+      "p_value": 0.03830387993721953,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 751,
+      "latent_id": 12152,
+      "threshold": 0.0,
+      "V_prime": 0.0691,
+      "p_value": 0.04669697701076974,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 752,
+      "latent_id": 16126,
+      "threshold": 9.109189987182617,
+      "V_prime": 0.0691,
+      "p_value": 0.036446432436172085,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 753,
+      "latent_id": 13894,
+      "threshold": 0.0,
+      "V_prime": 0.0689,
+      "p_value": 0.043439883054376245,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 754,
+      "latent_id": 5496,
+      "threshold": 8.883912086486816,
+      "V_prime": 0.0687,
+      "p_value": 0.03123709759576428,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 755,
+      "latent_id": 5962,
+      "threshold": 0.0,
+      "V_prime": 0.0687,
+      "p_value": 0.04946982491644548,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 756,
+      "latent_id": 4531,
+      "threshold": 5.88593053817749,
+      "V_prime": 0.0686,
+      "p_value": 0.0394819797615364,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 757,
+      "latent_id": 13406,
+      "threshold": 0.0,
+      "V_prime": 0.0686,
+      "p_value": 0.047220544978218267,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 758,
+      "latent_id": 14040,
+      "threshold": 0.0,
+      "V_prime": 0.0685,
+      "p_value": 0.04731273273085262,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 759,
+      "latent_id": 9673,
+      "threshold": 5.626944541931152,
+      "V_prime": 0.0684,
+      "p_value": 0.036674805580218524,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 760,
+      "latent_id": 10674,
+      "threshold": 9.485013008117676,
+      "V_prime": 0.0684,
+      "p_value": 0.03117145042644208,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 761,
+      "latent_id": 10250,
+      "threshold": 0.0,
+      "V_prime": 0.0683,
+      "p_value": 0.04393016774164254,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 762,
+      "latent_id": 6706,
+      "threshold": 5.821171283721924,
+      "V_prime": 0.0681,
+      "p_value": 0.0403631371497188,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 763,
+      "latent_id": 11076,
+      "threshold": 0.0,
+      "V_prime": 0.0681,
+      "p_value": 0.049155112434839075,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 764,
+      "latent_id": 11019,
+      "threshold": 0.0,
+      "V_prime": 0.068,
+      "p_value": 0.047922638966164575,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 765,
+      "latent_id": 2671,
+      "threshold": 0.0,
+      "V_prime": 0.0677,
+      "p_value": 0.0471890326181774,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 766,
+      "latent_id": 11014,
+      "threshold": 0.0,
+      "V_prime": 0.0677,
+      "p_value": 0.048838521306312915,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 767,
+      "latent_id": 2703,
+      "threshold": 5.4631428718566895,
+      "V_prime": 0.0676,
+      "p_value": 0.03955601229760005,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 768,
+      "latent_id": 14674,
+      "threshold": 6.369858741760254,
+      "V_prime": 0.0675,
+      "p_value": 0.03849362933869791,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 769,
+      "latent_id": 10511,
+      "threshold": 7.20250129699707,
+      "V_prime": 0.0672,
+      "p_value": 0.038583780176929344,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 770,
+      "latent_id": 14615,
+      "threshold": 5.273933410644531,
+      "V_prime": 0.0671,
+      "p_value": 0.04315139749521436,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 771,
+      "latent_id": 2523,
+      "threshold": 0.0,
+      "V_prime": 0.0666,
+      "p_value": 0.048529016870630014,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 772,
+      "latent_id": 12833,
+      "threshold": 0.0,
+      "V_prime": 0.0666,
+      "p_value": 0.04839155101692678,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 773,
+      "latent_id": 1328,
+      "threshold": 0.0,
+      "V_prime": 0.0663,
+      "p_value": 0.04677151096140877,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 774,
+      "latent_id": 11418,
+      "threshold": 6.850595951080322,
+      "V_prime": 0.0662,
+      "p_value": 0.04124973398292486,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 775,
+      "latent_id": 2060,
+      "threshold": 0.0,
+      "V_prime": 0.0658,
+      "p_value": 0.04903707214223593,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 776,
+      "latent_id": 12402,
+      "threshold": 8.412068367004395,
+      "V_prime": 0.0658,
+      "p_value": 0.04131397571485996,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 777,
+      "latent_id": 2089,
+      "threshold": 7.05379056930542,
+      "V_prime": 0.0654,
+      "p_value": 0.04611837857453384,
+      "p_adjusted": null
+    },
+    {
+      "pattern_id": 778,
+      "latent_id": 5103,
+      "threshold": 10.631997108459473,
+      "V_prime": 0.0654,
+      "p_value": 0.04202507859871529,
+      "p_adjusted": null
+    }
+  ]
+}

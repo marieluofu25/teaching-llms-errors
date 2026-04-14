@@ -1,0 +1,18 @@
+{
+  "residual_csv": "pipeline_2026/stage2/s01_residual/results/mmlu_full_residuals.csv",
+  "n_rows": 7851,
+  "hidden_dim": 3584,
+  "representation_type": "hidden_pooled",
+  "d_in": 3584,
+  "model": "google/gemma-2-9b",
+  "layer_index": -1,
+  "pooling": "last",
+  "max_length": 512,
+  "batch_size": 2,
+  "device": "cuda",
+  "dtype": "float16",
+  "output_npz": "pipeline_2026/stage2/s02_export/results/mmlu_full_hidden.npz",
+  "row_start": null,
+  "row_end": null,
+  "note": "Activations are from the specified HF model, not from closed API models. Row order matches residual CSV."
+}

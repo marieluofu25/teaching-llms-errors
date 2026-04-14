@@ -1,0 +1,46 @@
+{
+  "label": "mmlu_gemma_unified_sae",
+  "residual_metrics": {
+    "n_instances": 7851,
+    "n_errors": 6022,
+    "error_rate": 0.7670360463635205,
+    "high_residual": {
+      "n": 1964,
+      "coverage_of_errors": 0.3261374958485553,
+      "concentration_in_group": 1.0
+    },
+    "low_residual": {
+      "n": 1963,
+      "coverage_of_errors": 0.02225174360677516,
+      "concentration_in_group": 0.06826286296484972
+    }
+  },
+  "set_level_metrics": {
+    "coverage_concentration": {
+      "n_errors": 6022,
+      "n_covered_instances": 7851,
+      "n_covered_errors": 6022,
+      "coverage": 1.0,
+      "concentration": 0.7670360463635205
+    },
+    "predictive_utility": {
+      "split_seed": 42,
+      "n_features": 779,
+      "auc": 0.4979486776278851,
+      "f1": 0.5749913404918601
+    },
+    "redundancy": {
+      "n_patterns": 779,
+      "avg_pairwise_jaccard": 0.600072357591698,
+      "max_pairwise_jaccard": 1.0
+    },
+    "stability": {
+      "top_k": 25,
+      "pairs_evaluated": 0,
+      "overlap_at_k_mean": null
+    },
+    "n_patterns": 779,
+    "pattern_membership_source": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_full_latents.pattern_membership.csv",
+    "pattern_catalog_source": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_full_latents.pattern_catalog.json"
+  }
+}

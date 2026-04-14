@@ -18,7 +18,7 @@
 <body>
   <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../../../stage1/results/audit.html">Stage1 — Paper baseline</a> &middot; <a href="../../s01_residual/results/audit.html">s01_residual</a> &middot; <a href="../../s02_export/results/audit.html">s02_export</a> &middot; <a href="../../s03_sae_encode/results/audit.html">s03_sae_encode</a> &middot; <a href="../../s04_diff/results/audit.html">s04_diff</a> &middot; <strong>s05_eval</strong> &middot; <a href="../../s06_report/results/audit.html">s06_report</a><span class="muted"> (segment 5 of 6)</span></p>
   <h1>Stage 2 — s05_eval — Set-level metrics</h1>
-  <p class="muted">Audit generated 2026-04-07 21:58:28 UTC</p>
+  <p class="muted">Audit generated 2026-04-12 06:26:04 UTC</p>
   <p class="muted">Artifacts are ordered by last-modified timestamp (newest first), then filename.</p>
   <div class="excerpt"><h3>How to read this report</h3><ul><li><strong>What this page is:</strong> an artifact inventory with quick previews, not a full analysis notebook.</li><li><strong>Order:</strong> artifacts are listed newest-first to highlight latest outputs.</li><li><strong>Repro:</strong> rerun the stage command in the stage README to regenerate these files.</li></ul><p><strong>s05 focus:</strong> set-level scoring and leaderboard views.</p><ul><li>Read <code>*_metrics.json</code> for per-set metrics and aggregated quality checks.</li><li>Use <code>leaderboard.csv</code> and residual bar plots for quick model/set comparisons.</li></ul></div>
   <div class="excerpt"># Stage 2 — s05_eval — Set-level metrics &amp; plots<br/>
@@ -32,11 +32,60 @@
 **Audit:** `results/audit.html`</div>
   
   <h2>Artifacts in <code>stage2/s05_eval/results</code></h2>
-  <h4><code>mmlu_gpt35_sae_latents_head_200_residual_bar.png</code></h4><p class="muted">43319 bytes · modified 2026-04-07 20:59:48 UTC</p>
+  <h4><code>mmlu_gemma_unified_sae_residual_bar.png</code></h4><p class="muted">41036 bytes · modified 2026-04-12 06:26:03 UTC</p>
+<p><img src="mmlu_gemma_unified_sae_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>leaderboard.csv</code></h4><p class="muted">808 bytes · modified 2026-04-12 06:26:03 UTC</p>
+<table class="data"><thead><tr><th>label</th><th>n_instances</th><th>n_errors</th><th>high_coverage</th><th>high_concentration</th><th>coverage</th><th>concentration</th><th>predictive_utility_auc</th><th>predictive_utility_f1</th><th>redundancy_avg_jaccard</th><th>stability_overlap_at_k</th></tr></thead><tbody><tr><td>smoke_fixture</td><td>6</td><td>3</td><td>1.0</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>smoke_fixture</td><td>6</td><td>3</td><td>1.0</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_sae_latents</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_sae_latents_head_200</td><td>200</td><td>95</td><td>0.7578947368421053</td><td>1.0</td><td>1.0</td><td>0.475</td><td>0.5870535714285714</td><td>0.5283018867924528</td><td>0.2351545013977715</td><td></td></tr><tr><td>mmlu_gemma_unified_sae</td><td>7851</td><td>7851</td><td>0.0</td><td>0.0</td><td>0.0</td><td>0.0</td><td></td><td></td><td>0.0</td><td>0.0</td></tr><tr><td>mmlu_gemma_unified_sae</td><td>7851</td><td>6022</td><td>0.3261374958485553</td><td>1.0</td><td>1.0</td><td>0.7670360463635205</td><td>0.4979486776278851</td><td>0.5749913404918601</td><td>0.600072357591698</td><td></td></tr></tbody></table>
+<h4><code>mmlu_final_metrics.json</code></h4><p class="muted">1484 bytes · modified 2026-04-12 06:26:03 UTC</p>
+<pre>{
+  &quot;label&quot;: &quot;mmlu_gemma_unified_sae&quot;,
+  &quot;residual_metrics&quot;: {
+    &quot;n_instances&quot;: 7851,
+    &quot;n_errors&quot;: 6022,
+    &quot;error_rate&quot;: 0.7670360463635205,
+    &quot;high_residual&quot;: {
+      &quot;n&quot;: 1964,
+      &quot;coverage_of_errors&quot;: 0.3261374958485553,
+      &quot;concentration_in_group&quot;: 1.0
+    },
+    &quot;low_residual&quot;: {
+      &quot;n&quot;: 1963,
+      &quot;coverage_of_errors&quot;: 0.02225174360677516,
+      &quot;concentration_in_group&quot;: 0.06826286296484972
+    }
+  },
+  &quot;set_level_metrics&quot;: {
+    &quot;coverage_concentration&quot;: {
+      &quot;n_errors&quot;: 6022,
+      &quot;n_covered_instances&quot;: 7851,
+      &quot;n_covered_errors&quot;: 6022,
+      &quot;coverage&quot;: 1.0,
+      &quot;concentration&quot;: 0.7670360463635205
+    },
+    &quot;predictive_utility&quot;: {
+      &quot;split_seed&quot;: 42,
+      &quot;n_features&quot;: 779,
+      &quot;auc&quot;: 0.4979486776278851,
+      &quot;f1&quot;: 0.5749913404918601
+    },
+    &quot;redundancy&quot;: {
+      &quot;n_patterns&quot;: 779,
+      &quot;avg_pairwise_jaccard&quot;: 0.600072357591698,
+      &quot;max_pairwise_jaccard&quot;: 1.0
+    },
+    &quot;stability&quot;: {
+      &quot;top_k&quot;: 25,
+      &quot;pairs_evaluated&quot;: 0,
+      &quot;overlap_at_k_mean&quot;: null
+    },
+    &quot;n_patterns&quot;: 779,
+    &quot;pattern_membership_source&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_full_latents.pattern_membership.csv&quot;,
+    &quot;pattern_catalog_source&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_full_latents.pattern_catalog.json&quot;
+  }
+}</pre>
+<h4><code>mmlu_gpt35_sae_latents_head_200_residual_bar.png</code></h4><p class="muted">43319 bytes · modified 2026-04-08 00:09:30 UTC</p>
 <p><img src="mmlu_gpt35_sae_latents_head_200_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
-<h4><code>leaderboard.csv</code></h4><p class="muted">614 bytes · modified 2026-04-07 20:59:47 UTC</p>
-<table class="data"><thead><tr><th>label</th><th>n_instances</th><th>n_errors</th><th>high_coverage</th><th>high_concentration</th><th>coverage</th><th>concentration</th><th>predictive_utility_auc</th><th>predictive_utility_f1</th><th>redundancy_avg_jaccard</th><th>stability_overlap_at_k</th></tr></thead><tbody><tr><td>smoke_fixture</td><td>6</td><td>3</td><td>1.0</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>smoke_fixture</td><td>6</td><td>3</td><td>1.0</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_sae_latents</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_train_only</td><td>7851</td><td>2418</td><td>0.8122415219189413</td><td>1.0</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>mmlu_gpt35_sae_latents_head_200</td><td>200</td><td>95</td><td>0.7578947368421053</td><td>1.0</td><td>1.0</td><td>0.475</td><td>0.5870535714285714</td><td>0.5283018867924528</td><td>0.23515450139777153</td><td></td></tr></tbody></table>
-<h4><code>mmlu_gpt35_sae_latents_head_200_metrics.json</code></h4><p class="muted">1421 bytes · modified 2026-04-07 20:59:47 UTC</p>
+<h4><code>mmlu_gpt35_sae_latents_head_200_metrics.json</code></h4><p class="muted">1421 bytes · modified 2026-04-08 00:09:30 UTC</p>
 <pre>{
   &quot;label&quot;: &quot;mmlu_gpt35_sae_latents_head_200&quot;,
   &quot;residual_metrics&quot;: {
@@ -83,50 +132,8 @@
     &quot;pattern_catalog_source&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_hf_latents.pattern_catalog.json&quot;
   }
 }</pre>
-<h4><code>.gitkeep</code></h4><p class="muted">0 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<p class="muted">No inline preview for this file type.</p>
-<h4><code>mmlu_gpt35_sae_latents_metrics.json</code></h4><p class="muted">398 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<pre>{
-  &quot;label&quot;: &quot;mmlu_gpt35_sae_latents&quot;,
-  &quot;residual_metrics&quot;: {
-    &quot;n_instances&quot;: 7851,
-    &quot;n_errors&quot;: 2418,
-    &quot;error_rate&quot;: 0.3079862437905999,
-    &quot;high_residual&quot;: {
-      &quot;n&quot;: 1964,
-      &quot;coverage_of_errors&quot;: 0.8122415219189413,
-      &quot;concentration_in_group&quot;: 1.0
-    },
-    &quot;low_residual&quot;: {
-      &quot;n&quot;: 2093,
-      &quot;coverage_of_errors&quot;: 0.0,
-      &quot;concentration_in_group&quot;: 0.0
-    }
-  }
-}</pre>
-<h4><code>mmlu_gpt35_sae_latents_residual_bar.png</code></h4><p class="muted">35403 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<p><img src="mmlu_gpt35_sae_latents_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
-<h4><code>mmlu_gpt35_train_only_metrics.json</code></h4><p class="muted">397 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<pre>{
-  &quot;label&quot;: &quot;mmlu_gpt35_train_only&quot;,
-  &quot;residual_metrics&quot;: {
-    &quot;n_instances&quot;: 7851,
-    &quot;n_errors&quot;: 2418,
-    &quot;error_rate&quot;: 0.3079862437905999,
-    &quot;high_residual&quot;: {
-      &quot;n&quot;: 1964,
-      &quot;coverage_of_errors&quot;: 0.8122415219189413,
-      &quot;concentration_in_group&quot;: 1.0
-    },
-    &quot;low_residual&quot;: {
-      &quot;n&quot;: 2093,
-      &quot;coverage_of_errors&quot;: 0.0,
-      &quot;concentration_in_group&quot;: 0.0
-    }
-  }
-}</pre>
-<h4><code>mmlu_gpt35_train_only_residual_bar.png</code></h4><p class="muted">34810 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<p><img src="mmlu_gpt35_train_only_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>smoke_residual_bar.png</code></h4><p class="muted">33594 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<p><img src="smoke_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
 <h4><code>smoke_metrics.json</code></h4><p class="muted">347 bytes · modified 2026-04-07 19:51:50 UTC</p>
 <pre>{
   &quot;label&quot;: &quot;smoke_fixture&quot;,
@@ -146,7 +153,49 @@
     }
   }
 }</pre>
-<h4><code>smoke_residual_bar.png</code></h4><p class="muted">33594 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<p><img src="smoke_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>mmlu_gpt35_train_only_residual_bar.png</code></h4><p class="muted">34810 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<p><img src="mmlu_gpt35_train_only_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>mmlu_gpt35_train_only_metrics.json</code></h4><p class="muted">397 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<pre>{
+  &quot;label&quot;: &quot;mmlu_gpt35_train_only&quot;,
+  &quot;residual_metrics&quot;: {
+    &quot;n_instances&quot;: 7851,
+    &quot;n_errors&quot;: 2418,
+    &quot;error_rate&quot;: 0.3079862437905999,
+    &quot;high_residual&quot;: {
+      &quot;n&quot;: 1964,
+      &quot;coverage_of_errors&quot;: 0.8122415219189413,
+      &quot;concentration_in_group&quot;: 1.0
+    },
+    &quot;low_residual&quot;: {
+      &quot;n&quot;: 2093,
+      &quot;coverage_of_errors&quot;: 0.0,
+      &quot;concentration_in_group&quot;: 0.0
+    }
+  }
+}</pre>
+<h4><code>mmlu_gpt35_sae_latents_residual_bar.png</code></h4><p class="muted">35403 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<p><img src="mmlu_gpt35_sae_latents_residual_bar.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>mmlu_gpt35_sae_latents_metrics.json</code></h4><p class="muted">398 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<pre>{
+  &quot;label&quot;: &quot;mmlu_gpt35_sae_latents&quot;,
+  &quot;residual_metrics&quot;: {
+    &quot;n_instances&quot;: 7851,
+    &quot;n_errors&quot;: 2418,
+    &quot;error_rate&quot;: 0.3079862437905999,
+    &quot;high_residual&quot;: {
+      &quot;n&quot;: 1964,
+      &quot;coverage_of_errors&quot;: 0.8122415219189413,
+      &quot;concentration_in_group&quot;: 1.0
+    },
+    &quot;low_residual&quot;: {
+      &quot;n&quot;: 2093,
+      &quot;coverage_of_errors&quot;: 0.0,
+      &quot;concentration_in_group&quot;: 0.0
+    }
+  }
+}</pre>
+<h4><code>.gitkeep</code></h4><p class="muted">0 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<p class="muted">No inline preview for this file type.</p>
 </body>
 </html>

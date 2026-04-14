@@ -12,7 +12,9 @@
 #SBATCH --error=slurm-mmlu-gemma-pipe-%j.err
 
 set -euo pipefail
-: "${REPO_ROOT:?Set REPO_ROOT to your clone path (or export before sbatch)}"
+# Slurm often does not forward the submit shell's env; SLURM_SUBMIT_DIR is the cwd when sbatch ran.
+: "${REPO_ROOT:=${SLURM_SUBMIT_DIR:-}}"
+: "${REPO_ROOT:?Set REPO_ROOT or run sbatch from the repository root (cd teaching-llms-errors first)}"
 
 # Non-array Slurm jobs do not set SLURM_ARRAY_*; `env.local.sh` or other snippets
 # that reference them under `set -u` would otherwise abort (e.g. unbound SLURM_ARRAY_JOB_ID).
@@ -21,8 +23,38 @@ export SLURM_ARRAY_JOB_ID="${SLURM_ARRAY_JOB_ID:-${SLURM_JOB_ID}}"
 export SLURM_ARRAY_TASK_ID="${SLURM_ARRAY_TASK_ID:-0}"
 
 cd "${REPO_ROOT}"
+
+# GH200 / Grace nodes are aarch64; a venv built on Granite (x86_64 login) cannot run here
+# ("cannot execute binary file: Exec format error"). Drop that venv from PATH if sbatch exported it.
+_drop_path_entry() {
+  local drop="$1" p cleaned="" first=1
+  local -a parts=()
+  IFS=':' read -r -a parts <<< "${PATH:-}"
+  for p in "${parts[@]}"; do
+    [[ -z "$p" || "$p" == "$drop" ]] && continue
+    if (( first )); then cleaned="$p"; first=0; else cleaned+=":$p"; fi
+  done
+  PATH="$cleaned"
+  export PATH
+}
+if [[ "$(uname -m)" == aarch64 ]]; then
+  _drop_path_entry "${HOME}/venvs/teaching-llms-errors/bin"
+  if [[ "${VIRTUAL_ENV:-}" == "${HOME}/venvs/teaching-llms-errors" ]]; then
+    unset VIRTUAL_ENV
+  fi
+fi
+unset -f _drop_path_entry
+
 # shellcheck source=/dev/null
 [[ -f "${REPO_ROOT}/pipeline_2026/chpc/env.local.sh" ]] && source "${REPO_ROOT}/pipeline_2026/chpc/env.local.sh"
+
+# Optional: export TLL_SLURM_MODULES="cuda/12.x python/3.12.4" in env.local.sh (space-separated).
+if [[ -n "${TLL_SLURM_MODULES:-}" ]] && command -v module &>/dev/null; then
+  read -r -a _tl_mods <<< "${TLL_SLURM_MODULES}"
+  module load "${_tl_mods[@]}"
+  unset _tl_mods
+fi
+hash -r
 
 export PYTHONPATH="${REPO_ROOT}/pipeline_2026${PYTHONPATH:+:$PYTHONPATH}"
 

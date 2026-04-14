@@ -1,0 +1,19 @@
+{
+  "representation_type": "sae_latent",
+  "n_rows": 7851,
+  "d_in": 3584,
+  "d_sae": 16384,
+  "sae_release": "gemma-scope-9b-pt-res-canonical",
+  "sae_id": "layer_20/width_16k/canonical",
+  "sae_lens_note": "Columns are SAE feature indices (sparse dictionary), not raw hidden dimensions.",
+  "source_hidden_npz": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_full_hidden.npz",
+  "source_hidden_meta": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_full_hidden.meta.json",
+  "residual_csv": "pipeline_2026/stage2/s01_residual/results/mmlu_full_residuals.csv",
+  "base_model": "google/gemma-2-9b",
+  "hidden_export_layer_index": -1,
+  "model": "google/gemma-2-9b + SAELens SAE gemma-scope-9b-pt-res-canonical/layer_20/width_16k/canonical (d_in=3584, d_sae=16384)",
+  "output_npz": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s03_sae_encode/results/mmlu_full_sae_latents.npz",
+  "batch_size": 32,
+  "device": "cuda",
+  "methodology": "SAE embeddings for group-wise comparison; see Jiang et al., arXiv:2512.10092."
+}

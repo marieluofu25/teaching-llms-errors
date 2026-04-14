@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Stage 2 — s01_residual — Residual control — audit</title>
+  <title>Stage 2 — s01_residual — Residual control (Gemma unified) — audit</title>
   <style>
     body { font-family: system-ui, sans-serif; margin: 1.2rem 1.5rem; line-height: 1.45; max-width: 960px; }
     .nav { font-size: 0.9rem; margin-bottom: 1rem; padding: 0.5rem; background: #f4f4f4; border-radius: 6px; }
@@ -17,8 +17,8 @@
 </head>
 <body>
   <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../../../stage1/results/audit.html">Stage1 — Paper baseline</a> &middot; <strong>s01_residual</strong> &middot; <a href="../../s02_export/results/audit.html">s02_export</a> &middot; <a href="../../s03_sae_encode/results/audit.html">s03_sae_encode</a> &middot; <a href="../../s04_diff/results/audit.html">s04_diff</a> &middot; <a href="../../s05_eval/results/audit.html">s05_eval</a> &middot; <a href="../../s06_report/results/audit.html">s06_report</a><span class="muted"> (segment 1 of 6)</span></p>
-  <h1>Stage 2 — s01_residual — Residual control</h1>
-  <p class="muted">Audit generated 2026-04-07 21:58:27 UTC</p>
+  <h1>Stage 2 — s01_residual — Residual control (Gemma unified)</h1>
+  <p class="muted">Audit generated 2026-04-12 06:20:13 UTC</p>
   <p class="muted">Artifacts are ordered by last-modified timestamp (newest first), then filename.</p>
   <div class="excerpt"><h3>How to read this report</h3><ul><li><strong>What this page is:</strong> an artifact inventory with quick previews, not a full analysis notebook.</li><li><strong>Order:</strong> artifacts are listed newest-first to highlight latest outputs.</li><li><strong>Repro:</strong> rerun the stage command in the stage README to regenerate these files.</li></ul><p><strong>s01 focus:</strong> residual-control labels and base error profiling.</p><ul><li>Primary table: residual CSV. Label semantics are documented in the stage README.</li><li>Quick diagnostics: <code>*_profile.json</code> and <code>*_error_by_subject.png</code>.</li></ul></div>
   <div class="excerpt"># Stage 2 — s01_residual — Residual control &amp; instance table<br/>
@@ -30,35 +30,466 @@
 - **`&lt;stem&gt;_profile.json`** — aggregates: global error rate, group counts, residual quantiles, **by_subject / by_subcat** (MMLU) or **by_standard / by_model** (MathCAMPs).<br/>
 - **`&lt;stem&gt;_error_by_subject.png`** (or `_error_by_standard.png` for MathCAMPs) — bar chart (skip with `--no-profile-plot`).<br/>
 **Audit:** Open `results/audit.html`. CSV preview **hides wide embedding columns** and truncates long text.<br/>
-**CLI:** `python -m stage2.s01_residual.code.run_residual_control …` · `--skip-profile`, `--no-profile-plot`.</div>
+**CLI:** `python -m stage2.s01_residual.code.run_residual_control …` · `--skip-profile`, `--no-profile-plot`.<br/>
+**Unified Gemma / full pickle (CHPC):**<br/>
+- `python -m stage2.s01_residual.code.run_gemma_mmlu_inference --output-csv …` — HF MMLU MC inference (default `google/gemma-2-9b`); `--row-start` / `--row-end` for shards; `--resume` for single-writer resume. Gold `data_y` may be **1–4** (choice index) or **A–D**; the runner maps 1→A, …, 4→D when scoring `ai_correct`. After any fix to gold mapping or prompts, **re-run inference**, merge shards, **`run_mmlu_full_residuals`**, then **s04/s05** (old predictions CSVs are not comparable).<br/>
+- `python -m stage2.s01_residual.code.merge_mmlu_prediction_shards --shards … --output …` — merge array outputs.<br/>
+- `python -m stage2.s01_residual.code.run_mmlu_full_residuals --predictions-csv … --output-csv …` — topic-aware residuals + profile next to output CSV.<br/>
+Orchestrator: `bash pipeline_2026/scripts/run_pipeline_2026.sh mmlu-gemma-full` (requires merged predictions path). On CHPC, prefer **`pipeline_2026/chpc/job_mmlu_gemma_pipeline.slurm`** (infer + pipeline in one `sbatch`); see `chpc/README.md`.</div>
   
   <h2>Artifacts in <code>stage2/s01_residual/results</code></h2>
-  <h4><code>mmlu_gpt35_residuals_export_200.csv</code></h4><p class="muted">2662348 bytes · modified 2026-04-07 20:59:11 UTC</p>
-<p class="muted">Hiding 8 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
-<table class="data"><thead><tr><th>questions</th><th>answers</th><th>ai_model</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_correct</th><th>is_error</th><th>expected_error</th><th>residual_error</th><th>group</th></tr></thead><tbody><tr><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5851110776837845</td><td>0.4148889223162155</td><td>High Residual</td></tr><tr><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.7985937520415127</td><td>0.2014062479584872</td><td>neutral</td></tr><tr><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5491266563679281</td><td>0.4508733436320719</td><td>High Residual</td></tr><tr><td>Find the generator for the finite field Z_7.</td><td>[&#x27;1&#x27; &#x27;2&#x27; &#x27;3&#x27; &#x27;4&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5031314967831894</td><td>0.4968685032168106</td><td>High Residual</td></tr><tr><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>[&#x27;25&#x27; &#x27;5&#x27; &#x27;6&#x27; &#x27;30&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5466061167294349</td><td>-0.5466061167294349</td><td>Low Residual</td></tr><tr><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>[&#x27;0&#x27; &#x27;2&#x27; &#x27;1&#x27; &#x27;3&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5035554543150073</td><td>-0.5035554543150073</td><td>Low Residual</td></tr><tr><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>[&#x27;6&#x27; &#x27;12&#x27; &#x27;30&#x27; &#x27;105&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5039794067341696</td><td>0.4960205932658303</td><td>High Residual</td></tr><tr><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.4461805530249526</td><td>-0.4461805530249526</td><td>neutral</td></tr><tr><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.6290013828967379</td><td>0.3709986171032621</td><td>neutral</td></tr><tr><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>[&#x27;subgroup&#x27; &#x27;finite abelian group&#x27; &#x27;infinite, non abelian group&#x27;
- &#x27;ininite, abelian&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.4631215022000877</td><td>-0.4631215022000877</td><td>Low Residual</td></tr><tr><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5625146550241005</td><td>0.4374853449758995</td><td>High Residual</td></tr><tr><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5214812052899859</td><td>0.4785187947100141</td><td>High Residual</td></tr></tbody></table>
-<h4><code>mmlu_gpt35_residuals.csv</code></h4><p class="muted">107459805 bytes · modified 2026-04-07 20:59:09 UTC</p>
-<p class="muted">Hiding 8 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
-<table class="data"><thead><tr><th>questions</th><th>answers</th><th>ai_model</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_correct</th><th>is_error</th><th>expected_error</th><th>residual_error</th><th>group</th></tr></thead><tbody><tr><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5851110776837845</td><td>0.41488892231621555</td><td>High Residual</td></tr><tr><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.7985937520415127</td><td>0.20140624795848727</td><td>neutral</td></tr><tr><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5491266563679281</td><td>0.4508733436320719</td><td>High Residual</td></tr><tr><td>Find the generator for the finite field Z_7.</td><td>[&#x27;1&#x27; &#x27;2&#x27; &#x27;3&#x27; &#x27;4&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5031314967831894</td><td>0.49686850321681064</td><td>High Residual</td></tr><tr><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>[&#x27;25&#x27; &#x27;5&#x27; &#x27;6&#x27; &#x27;30&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5466061167294349</td><td>-0.5466061167294349</td><td>Low Residual</td></tr><tr><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>[&#x27;0&#x27; &#x27;2&#x27; &#x27;1&#x27; &#x27;3&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5035554543150073</td><td>-0.5035554543150073</td><td>Low Residual</td></tr><tr><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>[&#x27;6&#x27; &#x27;12&#x27; &#x27;30&#x27; &#x27;105&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5039794067341696</td><td>0.49602059326583037</td><td>High Residual</td></tr><tr><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.44618055302495263</td><td>-0.44618055302495263</td><td>neutral</td></tr><tr><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.6290013828967379</td><td>0.3709986171032621</td><td>neutral</td></tr><tr><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>[&#x27;subgroup&#x27; &#x27;finite abelian group&#x27; &#x27;infinite, non abelian group&#x27;
- &#x27;ininite, abelian&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.4631215022000877</td><td>-0.4631215022000877</td><td>Low Residual</td></tr><tr><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5625146550241005</td><td>0.4374853449758995</td><td>High Residual</td></tr><tr><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5214812052899859</td><td>0.47851879471001413</td><td>High Residual</td></tr></tbody></table>
-<h4><code>mmlu_gpt35_residuals.meta.json</code></h4><p class="muted">439 bytes · modified 2026-04-07 20:59:09 UTC</p>
+  <h4><code>mmlu_full_residuals_error_by_subject.png</code></h4><p class="muted">99326 bytes · modified 2026-04-12 06:20:12 UTC</p>
+<p><img src="mmlu_full_residuals_error_by_subject.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>mmlu_full_residuals_profile.json</code></h4><p class="muted">7543 bytes · modified 2026-04-12 06:20:11 UTC</p>
 <pre>{
   &quot;dataset&quot;: &quot;mmlu&quot;,
   &quot;n_rows&quot;: 7851,
-  &quot;fit_mode&quot;: &quot;train_only&quot;,
-  &quot;text_col&quot;: &quot;questions&quot;,
-  &quot;error_col&quot;: &quot;is_error&quot;,
-  &quot;output&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals.csv&quot;,
+  &quot;columns&quot;: [
+    &quot;row_id&quot;,
+    &quot;questions&quot;,
+    &quot;data_y&quot;,
+    &quot;ai_preds&quot;,
+    &quot;ai_correct&quot;,
+    &quot;subject&quot;,
+    &quot;subcat&quot;,
+    &quot;cat&quot;,
+    &quot;ai_model&quot;,
+    &quot;model_raw_tail&quot;,
+    &quot;is_error&quot;,
+    &quot;expected_error&quot;,
+    &quot;residual_error&quot;,
+    &quot;group&quot;
+  ],
+  &quot;error_rate&quot;: 0.767036,
+  &quot;n_errors&quot;: 6022,
   &quot;group_counts&quot;: {
-    &quot;neutral&quot;: 3794,
-    &quot;Low Residual&quot;: 2093,
-    &quot;High Residual&quot;: 1964
+    &quot;neutral&quot;: 3924,
+    &quot;High Residual&quot;: 1964,
+    &quot;Low Residual&quot;: 1963
   },
-  &quot;mean_is_error&quot;: 0.3079862437905999
+  &quot;expected_error_mean&quot;: 0.501189,
+  &quot;residual_error_quantiles&quot;: {
+    &quot;q25&quot;: 0.417437,
+    &quot;q50&quot;: 0.504582,
+    &quot;q75&quot;: 0.505677
+  },
+  &quot;by_subject&quot;: [
+    {
+      &quot;subject&quot;: &quot;clinical_knowledge&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 111,
+      &quot;error_rate&quot;: 0.74
+    },
+    {
+      &quot;subject&quot;: &quot;astronomy&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 124,
+      &quot;error_rate&quot;: 0.8267
+    },
+    {
+      &quot;subject&quot;: &quot;college_medicine&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 120,
+      &quot;error_rate&quot;: 0.8
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_chemistry&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 125,
+      &quot;error_rate&quot;: 0.8333
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_european_history&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 116,
+      &quot;error_rate&quot;: 0.7733
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_geography&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 116,
+      &quot;error_rate&quot;: 0.7733
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_macroeconomics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 123,
+      &quot;error_rate&quot;: 0.82
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_government_and_politics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 118,
+      &quot;error_rate&quot;: 0.7867
+    },
+    {
+      &quot;subject&quot;: &quot;elementary_mathematics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 118,
+      &quot;error_rate&quot;: 0.7867
+    },
+    {
+      &quot;subject&quot;: &quot;conceptual_physics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 109,
+      &quot;error_rate&quot;: 0.7267
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_mathematics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 117,
+      &quot;error_rate&quot;: 0.78
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_biology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 124,
+      &quot;error_rate&quot;: 0.8267
+    },
+    {
+      &quot;subject&quot;: &quot;nutrition&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 124,
+      &quot;error_rate&quot;: 0.8267
+    },
+    {
+      &quot;subject&quot;: &quot;obqa&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 103,
+      &quot;error_rate&quot;: 0.6867
+    },
+    {
+      &quot;subject&quot;: &quot;philosophy&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 123,
+      &quot;error_rate&quot;: 0.82
+    },
+    {
+      &quot;subject&quot;: &quot;prehistory&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 121,
+      &quot;error_rate&quot;: 0.8067
+    },
+    {
+      &quot;subject&quot;: &quot;marketing&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 100,
+      &quot;error_rate&quot;: 0.6667
+    },
+    {
+      &quot;subject&quot;: &quot;miscellaneous&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 114,
+      &quot;error_rate&quot;: 0.76
+    },
+    {
+      &quot;subject&quot;: &quot;logical_fallacies&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 118,
+      &quot;error_rate&quot;: 0.7867
+    },
+    {
+      &quot;subject&quot;: &quot;human_aging&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 105,
+      &quot;error_rate&quot;: 0.7
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_world_history&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 99,
+      &quot;error_rate&quot;: 0.66
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_us_history&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 116,
+      &quot;error_rate&quot;: 0.7733
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_statistics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 121,
+      &quot;error_rate&quot;: 0.8067
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_psychology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 122,
+      &quot;error_rate&quot;: 0.8133
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_physics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 121,
+      &quot;error_rate&quot;: 0.8067
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_microeconomics&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 122,
+      &quot;error_rate&quot;: 0.8133
+    },
+    {
+      &quot;subject&quot;: &quot;professional_medicine&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 121,
+      &quot;error_rate&quot;: 0.8067
+    },
+    {
+      &quot;subject&quot;: &quot;professional_psychology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 123,
+      &quot;error_rate&quot;: 0.82
+    },
+    {
+      &quot;subject&quot;: &quot;security_studies&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 122,
+      &quot;error_rate&quot;: 0.8133
+    },
+    {
+      &quot;subject&quot;: &quot;sociology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 117,
+      &quot;error_rate&quot;: 0.78
+    },
+    {
+      &quot;subject&quot;: &quot;world_religions&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 103,
+      &quot;error_rate&quot;: 0.6867
+    },
+    {
+      &quot;subject&quot;: &quot;virology&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 106,
+      &quot;error_rate&quot;: 0.7067
+    },
+    {
+      &quot;subject&quot;: &quot;professional_accounting&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 117,
+      &quot;error_rate&quot;: 0.78
+    },
+    {
+      &quot;subject&quot;: &quot;professional_law&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 116,
+      &quot;error_rate&quot;: 0.7733
+    },
+    {
+      &quot;subject&quot;: &quot;moral_scenarios&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 118,
+      &quot;error_rate&quot;: 0.7867
+    },
+    {
+      &quot;subject&quot;: &quot;moral_disputes&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 110,
+      &quot;error_rate&quot;: 0.7333
+    },
+    {
+      &quot;subject&quot;: &quot;electrical_engineering&quot;,
+      &quot;n&quot;: 145,
+      &quot;errors&quot;: 109,
+      &quot;error_rate&quot;: 0.7517
+    },
+    {
+      &quot;subject&quot;: &quot;college_biology&quot;,
+      &quot;n&quot;: 144,
+      &quot;errors&quot;: 106,
+      &quot;error_rate&quot;: 0.7361
+    },
+    {
+      &quot;subject&quot;: &quot;anatomy&quot;,
+      &quot;n&quot;: 135,
+      &quot;errors&quot;: 110,
+      &quot;error_rate&quot;: 0.8148
+    },
+    {
+      &quot;subject&quot;: &quot;human_sexuality&quot;,
+      &quot;n&quot;: 131,
+      &quot;errors&quot;: 96,
+      &quot;error_rate&quot;: 0.7328
+    }
+  ],
+  &quot;by_subcat&quot;: [
+    {
+      &quot;subcat&quot;: &quot;health&quot;,
+      &quot;n&quot;: 1135,
+      &quot;errors&quot;: 869,
+      &quot;error_rate&quot;: 0.7656
+    },
+    {
+      &quot;subcat&quot;: &quot;philosophy&quot;,
+      &quot;n&quot;: 876,
+      &quot;errors&quot;: 663,
+      &quot;error_rate&quot;: 0.7568
+    },
+    {
+      &quot;subcat&quot;: &quot;math&quot;,
+      &quot;n&quot;: 650,
+      &quot;errors&quot;: 513,
+      &quot;error_rate&quot;: 0.7892
+    },
+    {
+      &quot;subcat&quot;: &quot;history&quot;,
+      &quot;n&quot;: 600,
+      &quot;errors&quot;: 452,
+      &quot;error_rate&quot;: 0.7533
+    },
+    {
+      &quot;subcat&quot;: &quot;physics&quot;,
+      &quot;n&quot;: 552,
+      &quot;errors&quot;: 433,
+      &quot;error_rate&quot;: 0.7844
+    },
+    {
+      &quot;subcat&quot;: &quot;other&quot;,
+      &quot;n&quot;: 550,
+      &quot;errors&quot;: 414,
+      &quot;error_rate&quot;: 0.7527
+    },
+    {
+      &quot;subcat&quot;: &quot;politics&quot;,
+      &quot;n&quot;: 510,
+      &quot;errors&quot;: 395,
+      &quot;error_rate&quot;: 0.7745
+    },
+    {
+      &quot;subcat&quot;: &quot;economics&quot;,
+      &quot;n&quot;: 414,
+      &quot;errors&quot;: 330,
+      &quot;error_rate&quot;: 0.7971
+    },
+    {
+      &quot;subcat&quot;: &quot;computer science&quot;,
+      &quot;n&quot;: 412,
+      &quot;errors&quot;: 296,
+      &quot;error_rate&quot;: 0.7184
+    },
+    {
+      &quot;subcat&quot;: &quot;law&quot;,
+      &quot;n&quot;: 379,
+      &quot;errors&quot;: 289,
+      &quot;error_rate&quot;: 0.7625
+    },
+    {
+      &quot;subcat&quot;: &quot;business&quot;,
+      &quot;n&quot;: 353,
+      &quot;errors&quot;: 251,
+      &quot;error_rate&quot;: 0.711
+    },
+    {
+      &quot;subcat&quot;: &quot;psychology&quot;,
+      &quot;n&quot;: 300,
+      &quot;errors&quot;: 245,
+      &quot;error_rate&quot;: 0.8167
+    },
+    {
+      &quot;subcat&quot;: &quot;biology&quot;,
+      &quot;n&quot;: 294,
+      &quot;errors&quot;: 230,
+      &quot;error_rate&quot;: 0.7823
+    },
+    {
+      &quot;subcat&quot;: &quot;culture&quot;,
+      &quot;n&quot;: 281,
+      &quot;errors&quot;: 213,
+      &quot;error_rate&quot;: 0.758
+    },
+    {
+      &quot;subcat&quot;: &quot;chemistry&quot;,
+      &quot;n&quot;: 250,
+      &quot;errors&quot;: 204,
+      &quot;error_rate&quot;: 0.816
+    },
+    {
+      &quot;subcat&quot;: &quot;geography&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 116,
+      &quot;error_rate&quot;: 0.7733
+    },
+    {
+      &quot;subcat&quot;: &quot;engineering&quot;,
+      &quot;n&quot;: 145,
+      &quot;errors&quot;: 109,
+      &quot;error_rate&quot;: 0.7517
+    }
+  ],
+  &quot;by_cat&quot;: [
+    {
+      &quot;cat&quot;: &quot;STEM&quot;,
+      &quot;n&quot;: 2303,
+      &quot;errors&quot;: 1785,
+      &quot;error_rate&quot;: 0.7751
+    },
+    {
+      &quot;cat&quot;: &quot;other (business, health, misc.)&quot;,
+      &quot;n&quot;: 1888,
+      &quot;errors&quot;: 1431,
+      &quot;error_rate&quot;: 0.7579
+    },
+    {
+      &quot;cat&quot;: &quot;humanities&quot;,
+      &quot;n&quot;: 1855,
+      &quot;errors&quot;: 1404,
+      &quot;error_rate&quot;: 0.7569
+    },
+    {
+      &quot;cat&quot;: &quot;social sciences&quot;,
+      &quot;n&quot;: 1655,
+      &quot;errors&quot;: 1299,
+      &quot;error_rate&quot;: 0.7849
+    },
+    {
+      &quot;cat&quot;: &quot;other&quot;,
+      &quot;n&quot;: 150,
+      &quot;errors&quot;: 103,
+      &quot;error_rate&quot;: 0.6867
+    }
+  ]
 }</pre>
-<h4><code>mmlu_gpt35_residuals_error_by_subject.png</code></h4><p class="muted">99323 bytes · modified 2026-04-07 20:59:09 UTC</p>
-<p><img src="mmlu_gpt35_residuals_error_by_subject.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
-<h4><code>mmlu_gpt35_residuals_profile.json</code></h4><p class="muted">7559 bytes · modified 2026-04-07 20:59:09 UTC</p>
+<h4><code>mmlu_full_residuals.meta.json</code></h4><p class="muted">385 bytes · modified 2026-04-12 06:20:11 UTC</p>
+<pre>{
+  &quot;source_predictions&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gemma_predictions_merged.csv&quot;,
+  &quot;n_rows&quot;: 7851,
+  &quot;fit_mode&quot;: &quot;train_only&quot;,
+  &quot;group_counts&quot;: {
+    &quot;neutral&quot;: 3924,
+    &quot;High Residual&quot;: 1964,
+    &quot;Low Residual&quot;: 1963
+  },
+  &quot;mean_is_error&quot;: 0.7670360463635205
+}</pre>
+<h4><code>mmlu_full_residuals.csv</code></h4><p class="muted">3416554 bytes · modified 2026-04-12 06:20:11 UTC</p>
+<p class="muted">Hiding 2 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
+<table class="data"><thead><tr><th>row_id</th><th>questions</th><th>ai_correct</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_model</th><th>model_raw_tail</th><th>is_error</th><th>expected_error</th><th>residual_error</th><th>group</th></tr></thead><tbody><tr><td>0</td><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Answer:  A. Statement 1 is true and statement 2</td><td>1</td><td>0.5200113630676955</td><td>0.47998863693230454</td><td>neutral</td></tr><tr><td>1</td><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true.  B. Both</td><td>1</td><td>0.5977222217435032</td><td>0.4022777782564968</td><td>Low Residual</td></tr><tr><td>2</td><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true and statement 2 is</td><td>0</td><td>0.5169232951049992</td><td>-0.5169232951049992</td><td>Low Residual</td></tr><tr><td>3</td><td>Find the generator for the finite field Z_7.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> C, or D. Do not write anything else after the letter.  Find the generator for the finite field Z_7.  Answer:  Find the generator for the finite field Z_11</td><td>0</td><td>0.50614792731149</td><td>-0.50614792731149</td><td>Low Residual</td></tr><tr><td>4</td><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Find the number of elements in the indicated cyclic group:</td><td>1</td><td>0.5175221643576259</td><td>0.4824778356423741</td><td>neutral</td></tr><tr><td>5</td><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>2)) over Q.  Answer:  Find the degree for the given field extension Q(sqrt</td><td>1</td><td>0.5060480120553589</td><td>0.4939519879446411</td><td>neutral</td></tr><tr><td>6</td><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>Answer with only one letter: A, B, C, or D. Do not write anything else after the letter.  Find the maximum possible order for an element of S_n for n = 10.  Answer:  Find the maximum possible order for an element of S_</td><td>1</td><td>0.5059480963161332</td><td>0.49405190368386676</td><td>neutral</td></tr><tr><td>7</td><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Statement 1 is true and Statement 2</td><td>1</td><td>0.47182048020802336</td><td>0.5281795197919766</td><td>High Residual</td></tr><tr><td>8</td><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true.  B. Both</td><td>0</td><td>0.5406678571832799</td><td>-0.5406678571832799</td><td>Low Residual</td></tr><tr><td>9</td><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> a/an  Answer:  A. Group  B. Ring  C. Field</td><td>1</td><td>0.4939346782084036</td><td>0.5060653217915965</td><td>High Residual</td></tr><tr><td>10</td><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> isomorphic to D_p.  Answer:  A. Both statements are true.  B. Both</td><td>0</td><td>0.5164363742029144</td><td>-0.5164363742029144</td><td>Low Residual</td></tr><tr><td>11</td><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Statement 1 is true and Statement 2</td><td>0</td><td>0.5045281085886333</td><td>-0.5045281085886333</td><td>Low Residual</td></tr></tbody></table>
+<h4><code>mmlu_gemma_predictions_merged.meta.json</code></h4><p class="muted">419 bytes · modified 2026-04-12 06:19:26 UTC</p>
+<pre>{
+  &quot;model&quot;: &quot;google/gemma-2-9b&quot;,
+  &quot;n_rows_written&quot;: 7851,
+  &quot;n_correct&quot;: 1829,
+  &quot;accuracy&quot;: 0.23296395363647943,
+  &quot;n_parsed_empty&quot;: 11,
+  &quot;n_gold_unrecognized&quot;: 0,
+  &quot;output_csv&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gemma_predictions_merged.csv&quot;,
+  &quot;row_start&quot;: null,
+  &quot;row_end&quot;: null,
+  &quot;resume&quot;: false
+}</pre>
+<h4><code>mmlu_gemma_predictions_merged.csv</code></h4><p class="muted">3013755 bytes · modified 2026-04-12 06:19:26 UTC</p>
+<p class="muted">Hiding 2 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
+<table class="data"><thead><tr><th>row_id</th><th>questions</th><th>ai_correct</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_model</th><th>model_raw_tail</th></tr></thead><tbody><tr><td>0</td><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Answer:  A. Statement 1 is true and statement 2</td></tr><tr><td>1</td><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true.  B. Both</td></tr><tr><td>2</td><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true and statement 2 is</td></tr><tr><td>3</td><td>Find the generator for the finite field Z_7.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> C, or D. Do not write anything else after the letter.  Find the generator for the finite field Z_7.  Answer:  Find the generator for the finite field Z_11</td></tr><tr><td>4</td><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Find the number of elements in the indicated cyclic group:</td></tr><tr><td>5</td><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>2)) over Q.  Answer:  Find the degree for the given field extension Q(sqrt</td></tr><tr><td>6</td><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>Answer with only one letter: A, B, C, or D. Do not write anything else after the letter.  Find the maximum possible order for an element of S_n for n = 10.  Answer:  Find the maximum possible order for an element of S_</td></tr><tr><td>7</td><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Statement 1 is true and Statement 2</td></tr><tr><td>8</td><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true.  B. Both</td></tr><tr><td>9</td><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> a/an  Answer:  A. Group  B. Ring  C. Field</td></tr><tr><td>10</td><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> isomorphic to D_p.  Answer:  A. Both statements are true.  B. Both</td></tr><tr><td>11</td><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>True</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Statement 1 is true and Statement 2</td></tr></tbody></table>
+<h4><code>mmlu_gemma_predictions_merged_pre_gold.csv</code></h4><p class="muted">3017076 bytes · modified 2026-04-12 05:40:28 UTC</p>
+<p class="muted">Hiding 2 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
+<table class="data"><thead><tr><th>row_id</th><th>questions</th><th>ai_correct</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_model</th><th>model_raw_tail</th></tr></thead><tbody><tr><td>0</td><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Answer:  A. Statement 1 is true and statement 2</td></tr><tr><td>1</td><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true.  B. Both</td></tr><tr><td>2</td><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true and statement 2 is</td></tr><tr><td>3</td><td>Find the generator for the finite field Z_7.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> C, or D. Do not write anything else after the letter.  Find the generator for the finite field Z_7.  Answer:  Find the generator for the finite field Z_11</td></tr><tr><td>4</td><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Find the number of elements in the indicated cyclic group:</td></tr><tr><td>5</td><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>2)) over Q.  Answer:  Find the degree for the given field extension Q(sqrt</td></tr><tr><td>6</td><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>Answer with only one letter: A, B, C, or D. Do not write anything else after the letter.  Find the maximum possible order for an element of S_n for n = 10.  Answer:  Find the maximum possible order for an element of S_</td></tr><tr><td>7</td><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Statement 1 is true and Statement 2</td></tr><tr><td>8</td><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Statement 1 | Every group of order 15</td></tr><tr><td>9</td><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> a/an  Answer:  A. Group  B. Ring  C. Field</td></tr><tr><td>10</td><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> isomorphic to D_p.  Answer:  A. Both statements are true.  B. Both</td></tr><tr><td>11</td><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true.  B. Both</td></tr></tbody></table>
+<h4><code>mmlu_full_residuals_before_gold.csv</code></h4><p class="muted">3197694 bytes · modified 2026-04-12 05:39:49 UTC</p>
+<p class="muted">Hiding 2 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
+<table class="data"><thead><tr><th>row_id</th><th>questions</th><th>ai_correct</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_model</th><th>model_raw_tail</th><th>is_error</th><th>expected_error</th><th>residual_error</th><th>group</th></tr></thead><tbody><tr><td>0</td><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Answer:  A. Statement 1 is true and statement 2</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>1</td><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true.  B. Both</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>2</td><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true and statement 2 is</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>3</td><td>Find the generator for the finite field Z_7.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> C, or D. Do not write anything else after the letter.  Find the generator for the finite field Z_7.  Answer:  Find the generator for the finite field Z_11</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>4</td><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Find the number of elements in the indicated cyclic group:</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>5</td><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>2)) over Q.  Answer:  Find the degree for the given field extension Q(sqrt</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>6</td><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>Answer with only one letter: A, B, C, or D. Do not write anything else after the letter.  Find the maximum possible order for an element of S_n for n = 10.  Answer:  Find the maximum possible order for an element of S_</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>7</td><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Statement 1 is true and Statement 2</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>8</td><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  Statement 1 | Every group of order 15</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>9</td><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> a/an  Answer:  A. Group  B. Ring  C. Field</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>10</td><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td> isomorphic to D_p.  Answer:  A. Both statements are true.  B. Both</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr><tr><td>11</td><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>False</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>google/gemma-2-9b</td><td>  A. Both statements are true.  B. Both</td><td>1</td><td>1.0</td><td>0.0</td><td>Low Residual</td></tr></tbody></table>
+<h4><code>mmlu_gpt35_residuals_profile.json</code></h4><p class="muted">7559 bytes · modified 2026-04-08 00:09:30 UTC</p>
 <pre>{
   &quot;dataset&quot;: &quot;mmlu&quot;,
   &quot;n_rows&quot;: 7851,
@@ -475,5 +906,30 @@
     }
   ]
 }</pre>
+<h4><code>mmlu_gpt35_residuals_error_by_subject.png</code></h4><p class="muted">99323 bytes · modified 2026-04-08 00:09:30 UTC</p>
+<p><img src="mmlu_gpt35_residuals_error_by_subject.png" alt="" style="max-width:100%;height:auto;border:1px solid #ccc;" /></p>
+<h4><code>mmlu_gpt35_residuals.meta.json</code></h4><p class="muted">439 bytes · modified 2026-04-08 00:09:30 UTC</p>
+<pre>{
+  &quot;dataset&quot;: &quot;mmlu&quot;,
+  &quot;n_rows&quot;: 7851,
+  &quot;fit_mode&quot;: &quot;train_only&quot;,
+  &quot;text_col&quot;: &quot;questions&quot;,
+  &quot;error_col&quot;: &quot;is_error&quot;,
+  &quot;output&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals.csv&quot;,
+  &quot;group_counts&quot;: {
+    &quot;neutral&quot;: 3794,
+    &quot;Low Residual&quot;: 2093,
+    &quot;High Residual&quot;: 1964
+  },
+  &quot;mean_is_error&quot;: 0.3079862437905999
+}</pre>
+<h4><code>mmlu_gpt35_residuals_export_200.csv</code></h4><p class="muted">2662348 bytes · modified 2026-04-07 20:59:11 UTC</p>
+<p class="muted">Hiding 8 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
+<table class="data"><thead><tr><th>questions</th><th>answers</th><th>ai_model</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_correct</th><th>is_error</th><th>expected_error</th><th>residual_error</th><th>group</th></tr></thead><tbody><tr><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5851110776837845</td><td>0.4148889223162155</td><td>High Residual</td></tr><tr><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.7985937520415127</td><td>0.2014062479584872</td><td>neutral</td></tr><tr><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5491266563679281</td><td>0.4508733436320719</td><td>High Residual</td></tr><tr><td>Find the generator for the finite field Z_7.</td><td>[&#x27;1&#x27; &#x27;2&#x27; &#x27;3&#x27; &#x27;4&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5031314967831894</td><td>0.4968685032168106</td><td>High Residual</td></tr><tr><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>[&#x27;25&#x27; &#x27;5&#x27; &#x27;6&#x27; &#x27;30&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5466061167294349</td><td>-0.5466061167294349</td><td>Low Residual</td></tr><tr><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>[&#x27;0&#x27; &#x27;2&#x27; &#x27;1&#x27; &#x27;3&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5035554543150073</td><td>-0.5035554543150073</td><td>Low Residual</td></tr><tr><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>[&#x27;6&#x27; &#x27;12&#x27; &#x27;30&#x27; &#x27;105&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5039794067341696</td><td>0.4960205932658303</td><td>High Residual</td></tr><tr><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.4461805530249526</td><td>-0.4461805530249526</td><td>neutral</td></tr><tr><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.6290013828967379</td><td>0.3709986171032621</td><td>neutral</td></tr><tr><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>[&#x27;subgroup&#x27; &#x27;finite abelian group&#x27; &#x27;infinite, non abelian group&#x27;
+ &#x27;ininite, abelian&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.4631215022000877</td><td>-0.4631215022000877</td><td>Low Residual</td></tr><tr><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5625146550241005</td><td>0.4374853449758995</td><td>High Residual</td></tr><tr><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5214812052899859</td><td>0.4785187947100141</td><td>High Residual</td></tr></tbody></table>
+<h4><code>mmlu_gpt35_residuals.csv</code></h4><p class="muted">107459805 bytes · modified 2026-04-07 20:59:09 UTC</p>
+<p class="muted">Hiding 8 wide column(s) from preview: ai_expl, ai_preds, ai_scores, data_x, data_y, expl_embs, metadata, to_shows</p>
+<table class="data"><thead><tr><th>questions</th><th>answers</th><th>ai_model</th><th>subject</th><th>subcat</th><th>cat</th><th>ai_correct</th><th>is_error</th><th>expected_error</th><th>residual_error</th><th>group</th></tr></thead><tbody><tr><td>Statement 1 | If a and b are elements of a group and a is not equal to b, then a^2 is not equal to b^2. Statement 2 | The set of rotations in a dihedral group form a cyclic subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5851110776837845</td><td>0.41488892231621555</td><td>High Residual</td></tr><tr><td>Statement 1 | For n &gt; 1, the set {1,2, ..., n-1} is a group under multiplication modulo n. Statement 2 | There is an integer x such that 63x mod 100 = 1.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.7985937520415127</td><td>0.20140624795848727</td><td>neutral</td></tr><tr><td>Statement 1 | For every positive integer n there is a cyclic group of order n. Statement 2 | Every finite cyclic group contains an element of every order that divides the order of the group.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5491266563679281</td><td>0.4508733436320719</td><td>High Residual</td></tr><tr><td>Find the generator for the finite field Z_7.</td><td>[&#x27;1&#x27; &#x27;2&#x27; &#x27;3&#x27; &#x27;4&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5031314967831894</td><td>0.49686850321681064</td><td>High Residual</td></tr><tr><td>Find the number of elements in the indicated cyclic group: The cyclic subgroup of Z_30 generated by 25.</td><td>[&#x27;25&#x27; &#x27;5&#x27; &#x27;6&#x27; &#x27;30&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5466061167294349</td><td>-0.5466061167294349</td><td>Low Residual</td></tr><tr><td>Find the degree for the given field extension Q(sqrt(2)) over Q.</td><td>[&#x27;0&#x27; &#x27;2&#x27; &#x27;1&#x27; &#x27;3&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.5035554543150073</td><td>-0.5035554543150073</td><td>Low Residual</td></tr><tr><td>Find the maximum possible order for an element of S_n for n = 10.</td><td>[&#x27;6&#x27; &#x27;12&#x27; &#x27;30&#x27; &#x27;105&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5039794067341696</td><td>0.49602059326583037</td><td>High Residual</td></tr><tr><td>Statement 1 | If H is a subgroup of G and a belongs to G then aH is a subgroup of G if and only if a is in H. Statement 2 | If H is a subgroup of G and a and b belong to G then aH = bH if and only if ab is in H.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.44618055302495263</td><td>-0.44618055302495263</td><td>neutral</td></tr><tr><td>Statement 1 | Every group of order 159 is cyclic. Statement 2 | Every group of order 102 has a nontrivial proper normal subgroup.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.6290013828967379</td><td>0.3709986171032621</td><td>neutral</td></tr><tr><td>Let G denoted the set of all n x n non-singular matrices with rational numbers as entries. Then under multiplication G is a/an</td><td>[&#x27;subgroup&#x27; &#x27;finite abelian group&#x27; &#x27;infinite, non abelian group&#x27;
+ &#x27;ininite, abelian&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>True</td><td>0</td><td>0.4631215022000877</td><td>-0.4631215022000877</td><td>Low Residual</td></tr><tr><td>Statement 1 | If H and K are subgroups of a group G, then |HK| = |H||K|/|H intersection K|. Statement 2 | A group of order 2p where p is an odd prime is cyclic or isomorphic to D_p.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5625146550241005</td><td>0.4374853449758995</td><td>High Residual</td></tr><tr><td>Statement 1 | For finite groups G and H, |G + H| = |G||H|. (G + H is the internal direct product.) Statement 2 | If r divides m and s divides n then Z_m + Z_n has a subgroup isomorphic to Z_r + Z_s.</td><td>[&#x27;True, True&#x27; &#x27;False, False&#x27; &#x27;True, False&#x27; &#x27;False, True&#x27;]</td><td>ChatGPT</td><td>abstract_algebra</td><td>math</td><td>STEM</td><td>False</td><td>1</td><td>0.5214812052899859</td><td>0.47851879471001413</td><td>High Residual</td></tr></tbody></table>
 </body>
 </html>

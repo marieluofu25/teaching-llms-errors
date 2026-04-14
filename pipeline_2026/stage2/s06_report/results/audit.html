@@ -18,7 +18,7 @@
 <body>
   <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../../../stage1/results/audit.html">Stage1 — Paper baseline</a> &middot; <a href="../../s01_residual/results/audit.html">s01_residual</a> &middot; <a href="../../s02_export/results/audit.html">s02_export</a> &middot; <a href="../../s03_sae_encode/results/audit.html">s03_sae_encode</a> &middot; <a href="../../s04_diff/results/audit.html">s04_diff</a> &middot; <a href="../../s05_eval/results/audit.html">s05_eval</a> &middot; <strong>s06_report</strong><span class="muted"> (segment 6 of 6)</span></p>
   <h1>Stage 2 — s06_report — Reporting</h1>
-  <p class="muted">Audit generated 2026-04-07 21:58:28 UTC</p>
+  <p class="muted">Audit generated 2026-04-12 06:26:08 UTC</p>
   <p class="muted">Artifacts are ordered by last-modified timestamp (newest first), then filename.</p>
   <div class="excerpt"><h3>How to read this report</h3><ul><li><strong>What this page is:</strong> an artifact inventory with quick previews, not a full analysis notebook.</li><li><strong>Order:</strong> artifacts are listed newest-first to highlight latest outputs.</li><li><strong>Repro:</strong> rerun the stage command in the stage README to regenerate these files.</li></ul><p><strong>s06 focus:</strong> final reporting bundle and release-readiness checks.</p><ul><li>Open <code>mmlu_report.html</code> for the full multi-tab report.</li><li>Use <code>release_readiness.json</code> as the compact handoff artifact.</li></ul></div>
   <div class="excerpt"># Stage 2 — s06_report — Release summary &amp; HTML reporting<br/>
@@ -29,142 +29,317 @@
 **Audit:** Open `results/audit.html` for links to Stage 1 paper baseline and other Stage 2 segments; open **`mmlu_report.html`** for the full narrative.</div>
   <p class="callout"><a href="mmlu_report.html"><strong>Full five-tab HTML report</strong></a> (open this file in a browser).</p>
   <h2>Artifacts in <code>stage2/s06_report/results</code></h2>
-  <h4><code>mmlu_report.html</code></h4><p class="muted">205618 bytes · modified 2026-04-07 20:59:49 UTC</p>
+  <h4><code>mmlu_report.html</code></h4><p class="muted">623623 bytes · modified 2026-04-12 06:26:08 UTC</p>
 <p class="muted">No inline preview for this file type.</p>
-<h4><code>release_readiness.json</code></h4><p class="muted">4129 bytes · modified 2026-04-07 20:59:48 UTC</p>
+<h4><code>release_readiness.json</code></h4><p class="muted">14209 bytes · modified 2026-04-12 06:26:06 UTC</p>
 <pre>{
   &quot;behavioral_model&quot;: {
     &quot;source&quot;: &quot;residual_csv_column_ai_model&quot;,
     &quot;unique_values&quot;: [
-      &quot;ChatGPT&quot;
+      &quot;google/gemma-2-9b&quot;
     ],
-    &quot;mode&quot;: &quot;ChatGPT&quot;
+    &quot;mode&quot;: &quot;google/gemma-2-9b&quot;
   },
   &quot;representation_model&quot;: {
     &quot;representation_type&quot;: &quot;sae_latent&quot;,
-    &quot;n_rows&quot;: 200,
-    &quot;d_in&quot;: 768,
-    &quot;d_sae&quot;: 24576,
-    &quot;sae_release&quot;: &quot;gpt2-small-res-jb&quot;,
-    &quot;sae_id&quot;: &quot;blocks.11.hook_resid_pre&quot;,
+    &quot;n_rows&quot;: 7851,
+    &quot;d_in&quot;: 3584,
+    &quot;d_sae&quot;: 16384,
+    &quot;sae_release&quot;: &quot;gemma-scope-9b-pt-res-canonical&quot;,
+    &quot;sae_id&quot;: &quot;layer_20/width_16k/canonical&quot;,
     &quot;sae_lens_note&quot;: &quot;Columns are SAE feature indices (sparse dictionary), not raw hidden dimensions.&quot;,
-    &quot;source_hidden_npz&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_hf_hidden.npz&quot;,
-    &quot;source_hidden_meta&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_hf_hidden.meta.json&quot;,
-    &quot;residual_csv&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals_export_200.csv&quot;,
-    &quot;base_model&quot;: &quot;gpt2&quot;,
-    &quot;hidden_export_layer_index&quot;: 11,
-    &quot;model&quot;: &quot;gpt2 + SAELens SAE gpt2-small-res-jb/blocks.11.hook_resid_pre (d_in=768, d_sae=24576)&quot;,
-    &quot;output_npz&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s03_sae_encode/results/mmlu_hf_sae_latents.npz&quot;,
+    &quot;source_hidden_npz&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_full_hidden.npz&quot;,
+    &quot;source_hidden_meta&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_full_hidden.meta.json&quot;,
+    &quot;residual_csv&quot;: &quot;pipeline_2026/stage2/s01_residual/results/mmlu_full_residuals.csv&quot;,
+    &quot;base_model&quot;: &quot;google/gemma-2-9b&quot;,
+    &quot;hidden_export_layer_index&quot;: -1,
+    &quot;model&quot;: &quot;google/gemma-2-9b + SAELens SAE gemma-scope-9b-pt-res-canonical/layer_20/width_16k/canonical (d_in=3584, d_sae=16384)&quot;,
+    &quot;output_npz&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s03_sae_encode/results/mmlu_full_sae_latents.npz&quot;,
     &quot;batch_size&quot;: 32,
     &quot;device&quot;: &quot;cuda&quot;,
     &quot;methodology&quot;: &quot;SAE embeddings for group-wise comparison; see Jiang et al., arXiv:2512.10092.&quot;
   },
   &quot;overall&quot;: {
-    &quot;n_instances&quot;: 200,
-    &quot;n_errors&quot;: 95,
-    &quot;error_rate&quot;: 0.475,
-    &quot;accuracy&quot;: 0.525
+    &quot;n_instances&quot;: 7851,
+    &quot;n_errors&quot;: 6022,
+    &quot;error_rate&quot;: 0.7670360463635205,
+    &quot;accuracy&quot;: 0.23296395363647948
   },
   &quot;per_subject&quot;: [
     {
-      &quot;subject&quot;: &quot;abstract_algebra&quot;,
-      &quot;n&quot;: 100,
-      &quot;error_rate&quot;: 0.62,
-      &quot;accuracy&quot;: 0.38
+      &quot;subject&quot;: &quot;high_school_chemistry&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8333333333333334,
+      &quot;accuracy&quot;: 0.16666666666666663
+    },
+    {
+      &quot;subject&quot;: &quot;astronomy&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8266666666666667,
+      &quot;accuracy&quot;: 0.17333333333333334
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_biology&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8266666666666667,
+      &quot;accuracy&quot;: 0.17333333333333334
+    },
+    {
+      &quot;subject&quot;: &quot;nutrition&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8266666666666667,
+      &quot;accuracy&quot;: 0.17333333333333334
+    },
+    {
+      &quot;subject&quot;: &quot;philosophy&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.82,
+      &quot;accuracy&quot;: 0.18000000000000005
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_macroeconomics&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.82,
+      &quot;accuracy&quot;: 0.18000000000000005
+    },
+    {
+      &quot;subject&quot;: &quot;professional_psychology&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.82,
+      &quot;accuracy&quot;: 0.18000000000000005
+    },
+    {
+      &quot;subject&quot;: &quot;management&quot;,
+      &quot;n&quot;: 103,
+      &quot;error_rate&quot;: 0.8155339805825242,
+      &quot;accuracy&quot;: 0.18446601941747576
     },
     {
       &quot;subject&quot;: &quot;anatomy&quot;,
+      &quot;n&quot;: 135,
+      &quot;error_rate&quot;: 0.8148148148148148,
+      &quot;accuracy&quot;: 0.18518518518518523
+    },
+    {
+      &quot;subject&quot;: &quot;security_studies&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8133333333333334,
+      &quot;accuracy&quot;: 0.18666666666666665
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_microeconomics&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8133333333333334,
+      &quot;accuracy&quot;: 0.18666666666666665
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_psychology&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8133333333333334,
+      &quot;accuracy&quot;: 0.18666666666666665
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_physics&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8066666666666666,
+      &quot;accuracy&quot;: 0.19333333333333336
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_statistics&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8066666666666666,
+      &quot;accuracy&quot;: 0.19333333333333336
+    },
+    {
+      &quot;subject&quot;: &quot;prehistory&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8066666666666666,
+      &quot;accuracy&quot;: 0.19333333333333336
+    },
+    {
+      &quot;subject&quot;: &quot;professional_medicine&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8066666666666666,
+      &quot;accuracy&quot;: 0.19333333333333336
+    },
+    {
+      &quot;subject&quot;: &quot;global_facts&quot;,
       &quot;n&quot;: 100,
-      &quot;error_rate&quot;: 0.33,
-      &quot;accuracy&quot;: 0.6699999999999999
-    }
-  ],
-  &quot;worst_subjects&quot;: [
+      &quot;error_rate&quot;: 0.8,
+      &quot;accuracy&quot;: 0.19999999999999996
+    },
+    {
+      &quot;subject&quot;: &quot;college_medicine&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.8,
+      &quot;accuracy&quot;: 0.19999999999999996
+    },
+    {
+      &quot;subject&quot;: &quot;college_mathematics&quot;,
+      &quot;n&quot;: 100,
+      &quot;error_rate&quot;: 0.79,
+      &quot;accuracy&quot;: 0.20999999999999996
+    },
+    {
+      &quot;subject&quot;: &quot;college_chemistry&quot;,
+      &quot;n&quot;: 100,
+      &quot;error_rate&quot;: 0.79,
+      &quot;accuracy&quot;: 0.20999999999999996
+    },
+    {
+      &quot;subject&quot;: &quot;elementary_mathematics&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7866666666666666,
+      &quot;accuracy&quot;: 0.21333333333333337
+    },
+    {
+      &quot;subject&quot;: &quot;logical_fallacies&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7866666666666666,
+      &quot;accuracy&quot;: 0.21333333333333337
+    },
+    {
+      &quot;subject&quot;: &quot;moral_scenarios&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7866666666666666,
+      &quot;accuracy&quot;: 0.21333333333333337
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_government_and_politics&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7866666666666666,
+      &quot;accuracy&quot;: 0.21333333333333337
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_mathematics&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.78,
+      &quot;accuracy&quot;: 0.21999999999999997
+    },
     {
       &quot;subject&quot;: &quot;abstract_algebra&quot;,
       &quot;n&quot;: 100,
-      &quot;error_rate&quot;: 0.62,
-      &quot;accuracy&quot;: 0.38
+      &quot;error_rate&quot;: 0.78,
+      &quot;accuracy&quot;: 0.21999999999999997
     },
     {
-      &quot;subject&quot;: &quot;anatomy&quot;,
-      &quot;n&quot;: 100,
-      &quot;error_rate&quot;: 0.33,
-      &quot;accuracy&quot;: 0.6699999999999999
-    }
-  ],
-  &quot;best_subjects&quot;: [
-    {
-      &quot;subject&quot;: &quot;anatomy&quot;,
-      &quot;n&quot;: 100,
-      &quot;error_rate&quot;: 0.33,
-      &quot;accuracy&quot;: 0.6699999999999999
+      &quot;subject&quot;: &quot;sociology&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.78,
+      &quot;accuracy&quot;: 0.21999999999999997
     },
     {
-      &quot;subject&quot;: &quot;abstract_algebra&quot;,
+      &quot;subject&quot;: &quot;professional_accounting&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.78,
+      &quot;accuracy&quot;: 0.21999999999999997
+    },
+    {
+      &quot;subject&quot;: &quot;college_physics&quot;,
+      &quot;n&quot;: 102,
+      &quot;error_rate&quot;: 0.7745098039215687,
+      &quot;accuracy&quot;: 0.22549019607843135
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_geography&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7733333333333333,
+      &quot;accuracy&quot;: 0.22666666666666668
+    },
+    {
+      &quot;subject&quot;: &quot;professional_law&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7733333333333333,
+      &quot;accuracy&quot;: 0.22666666666666668
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_us_history&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7733333333333333,
+      &quot;accuracy&quot;: 0.22666666666666668
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_european_history&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7733333333333333,
+      &quot;accuracy&quot;: 0.22666666666666668
+    },
+    {
+      &quot;subject&quot;: &quot;international_law&quot;,
+      &quot;n&quot;: 121,
+      &quot;error_rate&quot;: 0.768595041322314,
+      &quot;accuracy&quot;: 0.23140495867768596
+    },
+    {
+      &quot;subject&quot;: &quot;miscellaneous&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.76,
+      &quot;accuracy&quot;: 0.24
+    },
+    {
+      &quot;subject&quot;: &quot;public_relations&quot;,
+      &quot;n&quot;: 110,
+      &quot;error_rate&quot;: 0.7545454545454545,
+      &quot;accuracy&quot;: 0.24545454545454548
+    },
+    {
+      &quot;subject&quot;: &quot;electrical_engineering&quot;,
+      &quot;n&quot;: 145,
+      &quot;error_rate&quot;: 0.7517241379310344,
+      &quot;accuracy&quot;: 0.24827586206896557
+    },
+    {
+      &quot;subject&quot;: &quot;high_school_computer_science&quot;,
       &quot;n&quot;: 100,
-      &quot;error_rate&quot;: 0.62,
-      &quot;accuracy&quot;: 0.38
-    }
-  ],
-  &quot;gates&quot;: {
-    &quot;thresholds_used&quot;: {
-      &quot;max_error_rate_global&quot;: 0.45,
-      &quot;max_error_rate_worst_subject&quot;: 0.7,
-      &quot;min_rows_per_subject&quot;: 20
+      &quot;error_rate&quot;: 0.75,
+      &quot;accuracy&quot;: 0.25
     },
-    &quot;verdict&quot;: &quot;fail&quot;,
-    &quot;violations&quot;: [
-      {
-        &quot;gate&quot;: &quot;max_error_rate_global&quot;,
-        &quot;detail&quot;: &quot;overall error_rate 0.4750 &gt; 0.45&quot;
-      }
-    ]
-  },
-  &quot;residual_metrics_from_eval&quot;: {
-    &quot;n_instances&quot;: 200,
-    &quot;n_errors&quot;: 95,
-    &quot;error_rate&quot;: 0.475,
-    &quot;high_residual&quot;: {
-      &quot;n&quot;: 72,
-      &quot;coverage_of_errors&quot;: 0.7578947368421053,
-      &quot;concentration_in_group&quot;: 1.0
+    {
+      &quot;subject&quot;: &quot;econometrics&quot;,
+      &quot;n&quot;: 114,
+      &quot;error_rate&quot;: 0.7456140350877193,
+      &quot;accuracy&quot;: 0.2543859649122807
     },
-    &quot;low_residual&quot;: {
-      &quot;n&quot;: 63,
-      &quot;coverage_of_errors&quot;: 0.0,
-      &quot;concentration_in_group&quot;: 0.0
-    }
-  },
-  &quot;final_set_level_metrics&quot;: {
-    &quot;coverage_concentration&quot;: {
-      &quot;n_errors&quot;: 95,
-      &quot;n_covered_instances&quot;: 200,
-      &quot;n_covered_errors&quot;: 95,
-      &quot;coverage&quot;: 1.0,
-      &quot;concentration&quot;: 0.475
+    {
+      &quot;subject&quot;: &quot;jurisprudence&quot;,
+      &quot;n&quot;: 108,
+      &quot;error_rate&quot;: 0.7407407407407407,
+      &quot;accuracy&quot;: 0.2592592592592593
     },
-    &quot;predictive_utility&quot;: {
-      &quot;split_seed&quot;: 42,
-      &quot;n_features&quot;: 334,
-      &quot;auc&quot;: 0.5870535714285714,
-      &quot;f1&quot;: 0.5283018867924528
+    {
+      &quot;subject&quot;: &quot;clinical_knowledge&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.74,
+      &quot;accuracy&quot;: 0.26
     },
-    &quot;redundancy&quot;: {
-      &quot;n_patterns&quot;: 334,
-      &quot;avg_pairwise_jaccard&quot;: 0.23515450139777153,
-      &quot;max_pairwise_jaccard&quot;: 1.0
+    {
+      &quot;subject&quot;: &quot;college_biology&quot;,
+      &quot;n&quot;: 144,
+      &quot;error_rate&quot;: 0.7361111111111112,
+      &quot;accuracy&quot;: 0.26388888888888884
     },
-    &quot;stability&quot;: {
-      &quot;top_k&quot;: 25,
-      &quot;pairs_evaluated&quot;: 0,
-      &quot;overlap_at_k_mean&quot;: null
+    {
+      &quot;subject&quot;: &quot;moral_disputes&quot;,
+      &quot;n&quot;: 150,
+      &quot;error_rate&quot;: 0.7333333333333333,
+      &quot;accuracy&quot;: 0.2666666666666667
     },
-    &quot;n_patterns&quot;: 334,
-    &quot;pattern_membership_source&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_hf_latents.pattern_membership.csv&quot;,
-    &quot;pattern_catalog_source&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s04_diff/results/mmlu_hf_latents.pattern_catalog.json&quot;
-  }
-}</pre>
+    {
+      &quot;subject&quot;: &quot;human_sexuality&quot;,
+      &quot;n&quot;: 131,
+      &quot;error_rate&quot;: 0.732824427480916,
+      &quot;accuracy&quot;: 0.26717557251908397
+    },
+    {
+      &quot;subject&quot;: &quot;computer_security&quot;,
+      &quot;n&quot;: 100,
+      &quot;error_rate&quot;: 0.73,
+      &quot;accuracy&quot;: 0.27
+    },
+    {
+      &quot;subject&quot;: &quot;conceptual_physics&quot;,
+      
+… (truncated)</pre>
 <h4><code>.gitkeep</code></h4><p class="muted">0 bytes · modified 2026-04-07 19:51:50 UTC</p>
 <p class="muted">No inline preview for this file type.</p>
 </body>

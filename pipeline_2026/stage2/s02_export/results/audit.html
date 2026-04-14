@@ -18,7 +18,7 @@
 <body>
   <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../../../stage1/results/audit.html">Stage1 — Paper baseline</a> &middot; <a href="../../s01_residual/results/audit.html">s01_residual</a> &middot; <strong>s02_export</strong> &middot; <a href="../../s03_sae_encode/results/audit.html">s03_sae_encode</a> &middot; <a href="../../s04_diff/results/audit.html">s04_diff</a> &middot; <a href="../../s05_eval/results/audit.html">s05_eval</a> &middot; <a href="../../s06_report/results/audit.html">s06_report</a><span class="muted"> (segment 2 of 6)</span></p>
   <h1>Stage 2 — s02_export — Surrogate activations (HF)</h1>
-  <p class="muted">Audit generated 2026-04-07 21:58:27 UTC</p>
+  <p class="muted">Audit generated 2026-04-12 06:24:55 UTC</p>
   <p class="muted">Artifacts are ordered by last-modified timestamp (newest first), then filename.</p>
   <div class="excerpt"><h3>How to read this report</h3><ul><li><strong>What this page is:</strong> an artifact inventory with quick previews, not a full analysis notebook.</li><li><strong>Order:</strong> artifacts are listed newest-first to highlight latest outputs.</li><li><strong>Repro:</strong> rerun the stage command in the stage README to regenerate these files.</li></ul><p><strong>s02 focus:</strong> hidden-state export from the surrogate model.</p><ul><li><code>*.npz</code> holds activations; <code>*.meta.json</code> records shape/model/layer details.</li><li>Check metadata first to verify dimensions before downstream SAE/diff steps.</li></ul></div>
   <div class="excerpt"># Stage 2 — s02_export — Surrogate neural activations (Hugging Face)<br/>
@@ -29,7 +29,30 @@
 **Audit:** `results/audit.html`</div>
   
   <h2>Artifacts in <code>stage2/s02_export/results</code></h2>
-  <h4><code>mmlu_hf_hidden.meta.json</code></h4><p class="muted">729 bytes · modified 2026-04-07 20:59:22 UTC</p>
+  <h4><code>mmlu_full_hidden.meta.json</code></h4><p class="muted">581 bytes · modified 2026-04-12 06:24:54 UTC</p>
+<pre>{
+  &quot;residual_csv&quot;: &quot;pipeline_2026/stage2/s01_residual/results/mmlu_full_residuals.csv&quot;,
+  &quot;n_rows&quot;: 7851,
+  &quot;hidden_dim&quot;: 3584,
+  &quot;representation_type&quot;: &quot;hidden_pooled&quot;,
+  &quot;d_in&quot;: 3584,
+  &quot;model&quot;: &quot;google/gemma-2-9b&quot;,
+  &quot;layer_index&quot;: -1,
+  &quot;pooling&quot;: &quot;last&quot;,
+  &quot;max_length&quot;: 512,
+  &quot;batch_size&quot;: 2,
+  &quot;device&quot;: &quot;cuda&quot;,
+  &quot;dtype&quot;: &quot;float16&quot;,
+  &quot;output_npz&quot;: &quot;pipeline_2026/stage2/s02_export/results/mmlu_full_hidden.npz&quot;,
+  &quot;row_start&quot;: null,
+  &quot;row_end&quot;: null,
+  &quot;note&quot;: &quot;Activations are from the specified HF model, not from closed API models. Row order matches residual CSV.&quot;
+}</pre>
+<h4><code>mmlu_full_hidden.npz</code></h4><p class="muted">112552212 bytes · modified 2026-04-12 06:24:54 UTC</p>
+<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
+<h4><code>mmlu_hf_hidden.npz</code></h4><p class="muted">614676 bytes · modified 2026-04-08 00:09:30 UTC</p>
+<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
+<h4><code>mmlu_hf_hidden.meta.json</code></h4><p class="muted">729 bytes · modified 2026-04-08 00:09:30 UTC</p>
 <pre>{
   &quot;residual_csv&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gpt35_residuals_export_200.csv&quot;,
   &quot;n_rows&quot;: 200,
@@ -46,8 +69,6 @@
   &quot;output_npz&quot;: &quot;/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s02_export/results/mmlu_hf_hidden.npz&quot;,
   &quot;note&quot;: &quot;Activations are from the specified HF model, not from closed API models. Row order matches residual CSV.&quot;
 }</pre>
-<h4><code>mmlu_hf_hidden.npz</code></h4><p class="muted">614676 bytes · modified 2026-04-07 20:59:22 UTC</p>
-<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
 <h4><code>.gitkeep</code></h4><p class="muted">0 bytes · modified 2026-04-07 19:51:50 UTC</p>
 <p class="muted">No inline preview for this file type.</p>
 </body>

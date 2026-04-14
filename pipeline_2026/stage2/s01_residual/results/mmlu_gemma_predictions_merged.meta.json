@@ -1,0 +1,12 @@
+{
+  "model": "google/gemma-2-9b",
+  "n_rows_written": 7851,
+  "n_correct": 1829,
+  "accuracy": 0.23296395363647943,
+  "n_parsed_empty": 11,
+  "n_gold_unrecognized": 0,
+  "output_csv": "/uufs/chpc.utah.edu/common/home/u1590903/llm_finetune_demo/interpretability/teaching-llms-errors/pipeline_2026/stage2/s01_residual/results/mmlu_gemma_predictions_merged.csv",
+  "row_start": null,
+  "row_end": null,
+  "resume": false
+}

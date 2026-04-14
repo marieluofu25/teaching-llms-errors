@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom'
 import { MaterialIcon } from './MaterialIcon'
 
 const LINKS = [
+  { to: '/poster', label: 'Poster', icon: 'newspaper', color: '#0058BE' },
   { to: '/stage/residual', label: 'Residual', icon: 'analytics', color: '#3B82F6' },
   { to: '/stage/export', label: 'Export', icon: 'upload_file', color: '#6366F1' },
   { to: '/stage/sae', label: 'SAE Encode', icon: 'memory', color: '#8B5CF6' },

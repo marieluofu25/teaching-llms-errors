@@ -16,3 +16,47 @@
   background: rgba(247, 249, 251, 0.7);
   backdrop-filter: blur(12px);
 }
+
+/* Research poster: 24×36 in print target (browser PDF) */
+@media print {
+  @page {
+    size: 24in 36in;
+    margin: 0.35in;
+  }
+
+  body {
+    background: #fff !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .poster-screen-only {
+    display: none !important;
+  }
+
+  .poster-page-root {
+    min-height: auto !important;
+    background: #fff !important;
+  }
+
+  .poster-print-scope {
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  .poster-canvas {
+    max-width: none !important;
+    width: 100% !important;
+    aspect-ratio: auto !important;
+    min-height: 0 !important;
+    height: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+
+  .poster-canvas > div {
+    overflow: visible !important;
+    height: auto !important;
+  }
+}

@@ -8,6 +8,14 @@ export HF_TOKEN=
 # --- Optional: pin visible GPU on shared nodes ---
 # export CUDA_VISIBLE_DEVICES=0
 
+# --- CHPC GPU nodes (especially GH200 / aarch64) ---
+# Granite login is often x86_64; GH200 compute nodes are aarch64. A venv built on login
+# ($HOME/venvs/...) will fail with "Exec format error" on GH200 — the Slurm script drops
+# that venv from PATH on aarch64. Then load CUDA + Python from modules (names from CHPC docs):
+# export TLL_SLURM_MODULES="cuda/12.4.0 python/3.12.4"
+# Build a separate venv with that python on an aarch64 node (interactive salloc on GH200),
+# or install into a module-backed environment per CHPC instructions.
+
 # --- CHPC: primary Slurm entry is pipeline_2026/chpc/job_mmlu_gemma_pipeline.slurm ---
 # --- pipeline_2026/scripts/run_pipeline_2026.sh mmlu-real (interactive / no Slurm template) ---
 export EXPORT_DEVICE=cuda

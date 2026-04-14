@@ -1,0 +1,32 @@
+<svg width="310" height="72" viewBox="0 0 310 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="histBar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#D97706"/>
+    </linearGradient>
+  </defs>
+  <rect x="0.5" y="0.5" width="309" height="71" rx="10" fill="#FFF7ED" stroke="#FCD9A5"/>
+  <line x1="14" y1="56.5" x2="136" y2="56.5" stroke="#FDE6BF" stroke-width="1"/>
+  <line x1="14" y1="44.5" x2="136" y2="44.5" stroke="#FDE6BF" stroke-width="1"/>
+  <line x1="14" y1="32.5" x2="136" y2="32.5" stroke="#FDE6BF" stroke-width="1"/>
+  <rect x="20" y="46" width="10" height="11" rx="2" fill="url(#histBar)"/>
+  <rect x="35" y="40" width="10" height="17" rx="2" fill="url(#histBar)"/>
+  <rect x="50" y="35" width="10" height="22" rx="2" fill="url(#histBar)"/>
+  <rect x="65" y="30" width="10" height="27" rx="2" fill="url(#histBar)"/>
+  <rect x="80" y="27" width="10" height="30" rx="2" fill="url(#histBar)"/>
+  <rect x="95" y="31" width="10" height="26" rx="2" fill="url(#histBar)"/>
+  <rect x="110" y="38" width="10" height="19" rx="2" fill="url(#histBar)"/>
+  <rect x="125" y="45" width="10" height="12" rx="2" fill="url(#histBar)"/>
+  <text x="152" y="29" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#92400E">Hist</text>
+  <text x="152" y="49" font-family="Inter, Arial, sans-serif" font-size="21" font-weight="800" fill="#B45309">0.57</text>
+  <polyline points="228,50 238,44 248,46 258,39 268,34 278,37 288,29 298,22"
+    fill="none" stroke="#D97706" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="228" cy="50" r="2" fill="#D97706"/>
+  <circle cx="238" cy="44" r="2" fill="#D97706"/>
+  <circle cx="248" cy="46" r="2" fill="#D97706"/>
+  <circle cx="258" cy="39" r="2" fill="#D97706"/>
+  <circle cx="268" cy="34" r="2" fill="#D97706"/>
+  <circle cx="278" cy="37" r="2" fill="#D97706"/>
+  <circle cx="288" cy="29" r="2" fill="#D97706"/>
+  <circle cx="298" cy="22" r="2" fill="#D97706"/>
+</svg>

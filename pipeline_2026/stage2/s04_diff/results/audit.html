@@ -18,7 +18,7 @@
 <body>
   <p class="nav"><strong>pipeline_2026</strong> &mdash; <a href="../../../stage1/results/audit.html">Stage1 — Paper baseline</a> &middot; <a href="../../s01_residual/results/audit.html">s01_residual</a> &middot; <a href="../../s02_export/results/audit.html">s02_export</a> &middot; <a href="../../s03_sae_encode/results/audit.html">s03_sae_encode</a> &middot; <strong>s04_diff</strong> &middot; <a href="../../s05_eval/results/audit.html">s05_eval</a> &middot; <a href="../../s06_report/results/audit.html">s06_report</a><span class="muted"> (segment 4 of 6)</span></p>
   <h1>Stage 2 — s04_diff — Coordinate-wise group comparison</h1>
-  <p class="muted">Audit generated 2026-04-07 21:58:28 UTC</p>
+  <p class="muted">Audit generated 2026-04-12 06:25:50 UTC</p>
   <p class="muted">Artifacts are ordered by last-modified timestamp (newest first), then filename.</p>
   <div class="excerpt"><h3>How to read this report</h3><ul><li><strong>What this page is:</strong> an artifact inventory with quick previews, not a full analysis notebook.</li><li><strong>Order:</strong> artifacts are listed newest-first to highlight latest outputs.</li><li><strong>Repro:</strong> rerun the stage command in the stage README to regenerate these files.</li></ul><p><strong>s04 focus:</strong> coordinate-wise group comparison and pattern discovery.</p><ul><li>Core outputs: <code>*.csv</code> latents summary + <code>*.diagnostics.json</code>.</li><li>Pattern artifacts (<code>pattern_catalog</code>, <code>pattern_membership</code>) are consumed by evaluation.</li></ul></div>
   <div class="excerpt"># Stage 2 — s04_diff — Coordinate-wise group comparison (“SAE diffing”)<br/>
@@ -28,24 +28,383 @@
 **Outputs (in `results/`):**<br/>
 - Ranked `*.csv` (`latent_id`, statistics)<br/>
 - `*.diagnostics.json`<br/>
-- `*.pattern_membership.csv` (long-form row x pattern membership)<br/>
+- `*.pattern_membership.csv` (long-form row x pattern membership). If Welch finds no significant latents, this file is still valid **header-only** (no data rows), not a broken empty file.<br/>
 - `*.pattern_catalog.json` (pattern metadata + thresholds used for membership)<br/>
 **Audit:** `results/audit.html`</div>
   
   <h2>Artifacts in <code>stage2/s04_diff/results</code></h2>
-  <h4><code>mmlu_hf_latents.csv</code></h4><p class="muted">11413 bytes · modified 2026-04-07 20:59:45 UTC</p>
-<table class="data"><thead><tr><th>latent_id</th><th>V_prime</th><th>p_value</th><th>p_adjusted</th></tr></thead><tbody><tr><td>1679</td><td>64.4022</td><td>0.002239994417041075</td><td></td></tr><tr><td>3674</td><td>19.2952</td><td>0.005629328436372716</td><td></td></tr><tr><td>6744</td><td>16.2801</td><td>0.038414052259823216</td><td></td></tr><tr><td>2910</td><td>15.9796</td><td>0.01369260981580032</td><td></td></tr><tr><td>8733</td><td>14.3617</td><td>0.04514686175020253</td><td></td></tr><tr><td>4516</td><td>12.9718</td><td>0.030620215491244406</td><td></td></tr><tr><td>14881</td><td>12.8769</td><td>0.020410425863281012</td><td></td></tr><tr><td>7296</td><td>11.3983</td><td>0.02420811173435685</td><td></td></tr><tr><td>2176</td><td>10.757</td><td>0.028407520030809062</td><td></td></tr><tr><td>19367</td><td>10.6646</td><td>0.0242925253947056</td><td></td></tr><tr><td>2243</td><td>8.7841</td><td>0.00586318097329118</td><td></td></tr><tr><td>4892</td><td>8.051</td><td>0.030131970031506573</td><td></td></tr></tbody></table>
-<h4><code>mmlu_hf_latents.diagnostics.json</code></h4><p class="muted">179 bytes · modified 2026-04-07 20:59:45 UTC</p>
+  <h4><code>mmlu_full_latents.pattern_catalog.json</code></h4><p class="muted">140027 bytes · modified 2026-04-12 06:25:44 UTC</p>
 <pre>{
-  &quot;n_high_residual&quot;: 72,
-  &quot;n_low_residual&quot;: 63,
+  &quot;n_rows&quot;: 7851,
+  &quot;n_patterns&quot;: 779,
+  &quot;membership_quantile&quot;: 0.9,
+  &quot;patterns&quot;: [
+    {
+      &quot;pattern_id&quot;: 0,
+      &quot;latent_id&quot;: 8110,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.3159,
+      &quot;p_value&quot;: 0.0017914253142230583,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 1,
+      &quot;latent_id&quot;: 5888,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.2473,
+      &quot;p_value&quot;: 4.517662027438054e-11,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 2,
+      &quot;latent_id&quot;: 7928,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.2123,
+      &quot;p_value&quot;: 0.00545371852185866,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 3,
+      &quot;latent_id&quot;: 9544,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.2053,
+      &quot;p_value&quot;: 0.010215530917106266,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 4,
+      &quot;latent_id&quot;: 13768,
+      &quot;threshold&quot;: 7.089828014373779,
+      &quot;V_prime&quot;: 0.1989,
+      &quot;p_value&quot;: 2.5094640496914296e-09,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 5,
+      &quot;latent_id&quot;: 3303,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.198,
+      &quot;p_value&quot;: 4.3685836658184484e-07,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 6,
+      &quot;latent_id&quot;: 3899,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.197,
+      &quot;p_value&quot;: 4.282779718903354e-05,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 7,
+      &quot;latent_id&quot;: 9159,
+      &quot;threshold&quot;: 6.567199230194092,
+      &quot;V_prime&quot;: 0.1965,
+      &quot;p_value&quot;: 4.6384543732288884e-09,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 8,
+      &quot;latent_id&quot;: 8770,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1958,
+      &quot;p_value&quot;: 1.9762307712879706e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 9,
+      &quot;latent_id&quot;: 6335,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1947,
+      &quot;p_value&quot;: 0.01688071214924321,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 10,
+      &quot;latent_id&quot;: 14984,
+      &quot;threshold&quot;: 5.458354949951172,
+      &quot;V_prime&quot;: 0.1944,
+      &quot;p_value&quot;: 4.8144015446129916e-08,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 11,
+      &quot;latent_id&quot;: 7211,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1935,
+      &quot;p_value&quot;: 7.922287311152002e-07,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 12,
+      &quot;latent_id&quot;: 15040,
+      &quot;threshold&quot;: 5.463953018188477,
+      &quot;V_prime&quot;: 0.1885,
+      &quot;p_value&quot;: 1.2434077693618888e-07,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 13,
+      &quot;latent_id&quot;: 6445,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1873,
+      &quot;p_value&quot;: 0.0087441428000422,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 14,
+      &quot;latent_id&quot;: 7077,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1865,
+      &quot;p_value&quot;: 1.279519481836261e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 15,
+      &quot;latent_id&quot;: 16182,
+      &quot;threshold&quot;: 7.228341579437256,
+      &quot;V_prime&quot;: 0.1862,
+      &quot;p_value&quot;: 4.612991469454541e-08,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 16,
+      &quot;latent_id&quot;: 5486,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1855,
+      &quot;p_value&quot;: 0.0005180852577711391,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 17,
+      &quot;latent_id&quot;: 10489,
+      &quot;threshold&quot;: 9.23483943939209,
+      &quot;V_prime&quot;: 0.1837,
+      &quot;p_value&quot;: 3.461172549789926e-08,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 18,
+      &quot;latent_id&quot;: 10330,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1787,
+      &quot;p_value&quot;: 4.509266643251387e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 19,
+      &quot;latent_id&quot;: 1471,
+      &quot;threshold&quot;: 5.761472225189209,
+      &quot;V_prime&quot;: 0.1784,
+      &quot;p_value&quot;: 5.105690387109895e-07,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 20,
+      &quot;latent_id&quot;: 14841,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1771,
+      &quot;p_value&quot;: 6.73249390408376e-07,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 21,
+      &quot;latent_id&quot;: 9899,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1761,
+      &quot;p_value&quot;: 1.6515635368668796e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 22,
+      &quot;latent_id&quot;: 8543,
+      &quot;threshold&quot;: 11.60942268371582,
+      &quot;V_prime&quot;: 0.1759,
+      &quot;p_value&quot;: 5.5538432276178834e-08,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 23,
+      &quot;latent_id&quot;: 3060,
+      &quot;threshold&quot;: 8.699256896972656,
+      &quot;V_prime&quot;: 0.1758,
+      &quot;p_value&quot;: 6.506686772957504e-08,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 24,
+      &quot;latent_id&quot;: 4303,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1751,
+      &quot;p_value&quot;: 1.4509384978337538e-05,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 25,
+      &quot;latent_id&quot;: 7337,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1727,
+      &quot;p_value&quot;: 0.0031549183142311307,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 26,
+      &quot;latent_id&quot;: 8996,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1709,
+      &quot;p_value&quot;: 0.00042519530155945694,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 27,
+      &quot;latent_id&quot;: 12558,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1701,
+      &quot;p_value&quot;: 2.0040839150992625e-05,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 28,
+      &quot;latent_id&quot;: 11180,
+      &quot;threshold&quot;: 137.18453979492188,
+      &quot;V_prime&quot;: 0.1691,
+      &quot;p_value&quot;: 8.189983564396969e-09,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 29,
+      &quot;latent_id&quot;: 1721,
+      &quot;threshold&quot;: 5.856144428253174,
+      &quot;V_prime&quot;: 0.1686,
+      &quot;p_value&quot;: 1.861766410135892e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 30,
+      &quot;latent_id&quot;: 6394,
+      &quot;threshold&quot;: 5.440667152404785,
+      &quot;V_prime&quot;: 0.1659,
+      &quot;p_value&quot;: 2.2656830153810955e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 31,
+      &quot;latent_id&quot;: 10721,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1659,
+      &quot;p_value&quot;: 7.178690323961659e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 32,
+      &quot;latent_id&quot;: 11981,
+      &quot;threshold&quot;: 5.014934539794922,
+      &quot;V_prime&quot;: 0.163,
+      &quot;p_value&quot;: 4.466063607936485e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 33,
+      &quot;latent_id&quot;: 11952,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1608,
+      &quot;p_value&quot;: 0.010358091789818058,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 34,
+      &quot;latent_id&quot;: 12999,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1593,
+      &quot;p_value&quot;: 2.1182992058776787e-05,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 35,
+      &quot;latent_id&quot;: 5248,
+      &quot;threshold&quot;: 6.0672807693481445,
+      &quot;V_prime&quot;: 0.1592,
+      &quot;p_value&quot;: 2.1615088961264227e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 36,
+      &quot;latent_id&quot;: 263,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1581,
+      &quot;p_value&quot;: 0.000527596045686497,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 37,
+      &quot;latent_id&quot;: 6885,
+      &quot;threshold&quot;: 6.455090045928955,
+      &quot;V_prime&quot;: 0.1581,
+      &quot;p_value&quot;: 4.19025201272586e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 38,
+      &quot;latent_id&quot;: 8615,
+      &quot;threshold&quot;: 5.911624431610107,
+      &quot;V_prime&quot;: 0.1572,
+      &quot;p_value&quot;: 7.237267212981645e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 39,
+      &quot;latent_id&quot;: 9588,
+      &quot;threshold&quot;: 11.321392059326172,
+      &quot;V_prime&quot;: 0.157,
+      &quot;p_value&quot;: 1.5356328172067077e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 40,
+      &quot;latent_id&quot;: 14079,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1568,
+      &quot;p_value&quot;: 0.006615444449006621,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 41,
+      &quot;latent_id&quot;: 3957,
+      &quot;threshold&quot;: 0.0,
+      &quot;V_prime&quot;: 0.1562,
+      &quot;p_value&quot;: 0.028777465693142452,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 42,
+      &quot;latent_id&quot;: 12694,
+      &quot;threshold&quot;: 5.778345108032227,
+      &quot;V_prime&quot;: 0.1562,
+      &quot;p_value&quot;: 6.0006296076938124e-06,
+      &quot;p_adjusted&quot;: null
+    },
+    {
+      &quot;pattern_id&quot;: 43,
+      &quot;latent_id&quot;: 14792,
+      &quot;threshold&quot;: 8.095200538635
+… (truncated)</pre>
+<h4><code>mmlu_full_latents.pattern_membership.csv</code></h4><p class="muted">97979438 bytes · modified 2026-04-12 06:25:44 UTC</p>
+<table class="data"><thead><tr><th>row_id</th><th>pattern_id</th><th>latent_id</th><th>is_member</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>8110</td><td>1</td></tr><tr><td>0</td><td>1</td><td>5888</td><td>1</td></tr><tr><td>0</td><td>2</td><td>7928</td><td>1</td></tr><tr><td>0</td><td>3</td><td>9544</td><td>1</td></tr><tr><td>0</td><td>4</td><td>13768</td><td>0</td></tr><tr><td>0</td><td>5</td><td>3303</td><td>1</td></tr><tr><td>0</td><td>6</td><td>3899</td><td>1</td></tr><tr><td>0</td><td>7</td><td>9159</td><td>0</td></tr><tr><td>0</td><td>8</td><td>8770</td><td>1</td></tr><tr><td>0</td><td>9</td><td>6335</td><td>1</td></tr><tr><td>0</td><td>10</td><td>14984</td><td>0</td></tr><tr><td>0</td><td>11</td><td>7211</td><td>1</td></tr></tbody></table>
+<h4><code>mmlu_full_latents.diagnostics.json</code></h4><p class="muted">183 bytes · modified 2026-04-12 06:25:33 UTC</p>
+<pre>{
+  &quot;n_high_residual&quot;: 1964,
+  &quot;n_low_residual&quot;: 1963,
   &quot;min_group_size&quot;: 30,
   &quot;skipped_insufficient_n&quot;: false,
-  &quot;n_latents_tested&quot;: 24576,
-  &quot;n_passing&quot;: 334,
+  &quot;n_latents_tested&quot;: 16384,
+  &quot;n_passing&quot;: 779,
   &quot;use_fdr&quot;: false
 }</pre>
-<h4><code>mmlu_hf_latents.pattern_catalog.json</code></h4><p class="muted">61906 bytes · modified 2026-04-07 20:59:45 UTC</p>
+<h4><code>mmlu_full_latents.csv</code></h4><p class="muted">26684 bytes · modified 2026-04-12 06:25:33 UTC</p>
+<table class="data"><thead><tr><th>latent_id</th><th>V_prime</th><th>p_value</th><th>p_adjusted</th></tr></thead><tbody><tr><td>8110</td><td>0.3159</td><td>0.0017914253142230583</td><td></td></tr><tr><td>5888</td><td>0.2473</td><td>4.517662027438054e-11</td><td></td></tr><tr><td>7928</td><td>0.2123</td><td>0.00545371852185866</td><td></td></tr><tr><td>9544</td><td>0.2053</td><td>0.010215530917106266</td><td></td></tr><tr><td>13768</td><td>0.1989</td><td>2.5094640496914296e-09</td><td></td></tr><tr><td>3303</td><td>0.198</td><td>4.3685836658184484e-07</td><td></td></tr><tr><td>3899</td><td>0.197</td><td>4.282779718903354e-05</td><td></td></tr><tr><td>9159</td><td>0.1965</td><td>4.6384543732288884e-09</td><td></td></tr><tr><td>8770</td><td>0.1958</td><td>1.9762307712879706e-06</td><td></td></tr><tr><td>6335</td><td>0.1947</td><td>0.01688071214924321</td><td></td></tr><tr><td>14984</td><td>0.1944</td><td>4.8144015446129916e-08</td><td></td></tr><tr><td>7211</td><td>0.1935</td><td>7.922287311152002e-07</td><td></td></tr></tbody></table>
+<h4><code>mmlu_hf_latents.pattern_membership.csv</code></h4><p class="muted">980698 bytes · modified 2026-04-08 00:09:30 UTC</p>
+<table class="data"><thead><tr><th>row_id</th><th>pattern_id</th><th>latent_id</th><th>is_member</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>1679</td><td>0</td></tr><tr><td>0</td><td>1</td><td>3674</td><td>1</td></tr><tr><td>0</td><td>2</td><td>6744</td><td>1</td></tr><tr><td>0</td><td>3</td><td>2910</td><td>0</td></tr><tr><td>0</td><td>4</td><td>8733</td><td>1</td></tr><tr><td>0</td><td>5</td><td>4516</td><td>1</td></tr><tr><td>0</td><td>6</td><td>14881</td><td>1</td></tr><tr><td>0</td><td>7</td><td>7296</td><td>1</td></tr><tr><td>0</td><td>8</td><td>2176</td><td>1</td></tr><tr><td>0</td><td>9</td><td>19367</td><td>1</td></tr><tr><td>0</td><td>10</td><td>2243</td><td>1</td></tr><tr><td>0</td><td>11</td><td>4892</td><td>1</td></tr></tbody></table>
+<h4><code>mmlu_hf_latents.pattern_catalog.json</code></h4><p class="muted">61906 bytes · modified 2026-04-08 00:09:30 UTC</p>
 <pre>{
   &quot;n_rows&quot;: 200,
   &quot;n_patterns&quot;: 334,
@@ -407,23 +766,18 @@
       &quot;pattern_id&quot;: 44,
     
 … (truncated)</pre>
-<h4><code>mmlu_hf_latents.pattern_membership.csv</code></h4><p class="muted">980698 bytes · modified 2026-04-07 20:59:45 UTC</p>
-<table class="data"><thead><tr><th>row_id</th><th>pattern_id</th><th>latent_id</th><th>is_member</th></tr></thead><tbody><tr><td>0</td><td>0</td><td>1679</td><td>0</td></tr><tr><td>0</td><td>1</td><td>3674</td><td>1</td></tr><tr><td>0</td><td>2</td><td>6744</td><td>1</td></tr><tr><td>0</td><td>3</td><td>2910</td><td>0</td></tr><tr><td>0</td><td>4</td><td>8733</td><td>1</td></tr><tr><td>0</td><td>5</td><td>4516</td><td>1</td></tr><tr><td>0</td><td>6</td><td>14881</td><td>1</td></tr><tr><td>0</td><td>7</td><td>7296</td><td>1</td></tr><tr><td>0</td><td>8</td><td>2176</td><td>1</td></tr><tr><td>0</td><td>9</td><td>19367</td><td>1</td></tr><tr><td>0</td><td>10</td><td>2243</td><td>1</td></tr><tr><td>0</td><td>11</td><td>4892</td><td>1</td></tr></tbody></table>
-<h4><code>.gitkeep</code></h4><p class="muted">0 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<p class="muted">No inline preview for this file type.</p>
-<h4><code>smoke_activations.meta.json</code></h4><p class="muted">356 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<h4><code>mmlu_hf_latents.diagnostics.json</code></h4><p class="muted">179 bytes · modified 2026-04-08 00:09:30 UTC</p>
 <pre>{
-  &quot;representation_type&quot;: &quot;synthetic_demo&quot;,
-  &quot;n_rows&quot;: 6,
-  &quot;d_in&quot;: 16,
-  &quot;model&quot;: &quot;random Gaussian (demo only; not HF or SAE)&quot;,
-  &quot;residual_csv&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/config/fixtures/tiny_residual.csv&quot;,
-  &quot;note&quot;: &quot;Smoke/demo vectors; do not cite as neural or SAE features.&quot;
+  &quot;n_high_residual&quot;: 72,
+  &quot;n_low_residual&quot;: 63,
+  &quot;min_group_size&quot;: 30,
+  &quot;skipped_insufficient_n&quot;: false,
+  &quot;n_latents_tested&quot;: 24576,
+  &quot;n_passing&quot;: 334,
+  &quot;use_fdr&quot;: false
 }</pre>
-<h4><code>smoke_activations.npz</code></h4><p class="muted">660 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
-<h4><code>smoke_latents.csv</code></h4><p class="muted">128 bytes · modified 2026-04-07 19:51:50 UTC</p>
-<table class="data"><thead><tr><th>latent_id</th><th>V_prime</th><th>p_value</th><th>p_adjusted</th></tr></thead><tbody><tr><td>1</td><td>10.6903</td><td>0.046080884360921434</td><td></td></tr><tr><td>5</td><td>3.8957</td><td>0.11907171674111633</td><td></td></tr><tr><td>0</td><td>3.4402</td><td>0.1654756347960112</td><td></td></tr></tbody></table>
+<h4><code>mmlu_hf_latents.csv</code></h4><p class="muted">11413 bytes · modified 2026-04-08 00:09:30 UTC</p>
+<table class="data"><thead><tr><th>latent_id</th><th>V_prime</th><th>p_value</th><th>p_adjusted</th></tr></thead><tbody><tr><td>1679</td><td>64.4022</td><td>0.002239994417041075</td><td></td></tr><tr><td>3674</td><td>19.2952</td><td>0.005629328436372716</td><td></td></tr><tr><td>6744</td><td>16.2801</td><td>0.038414052259823216</td><td></td></tr><tr><td>2910</td><td>15.9796</td><td>0.01369260981580032</td><td></td></tr><tr><td>8733</td><td>14.3617</td><td>0.04514686175020253</td><td></td></tr><tr><td>4516</td><td>12.9718</td><td>0.030620215491244406</td><td></td></tr><tr><td>14881</td><td>12.8769</td><td>0.020410425863281012</td><td></td></tr><tr><td>7296</td><td>11.3983</td><td>0.02420811173435685</td><td></td></tr><tr><td>2176</td><td>10.757</td><td>0.028407520030809062</td><td></td></tr><tr><td>19367</td><td>10.6646</td><td>0.0242925253947056</td><td></td></tr><tr><td>2243</td><td>8.7841</td><td>0.00586318097329118</td><td></td></tr><tr><td>4892</td><td>8.051</td><td>0.030131970031506573</td><td></td></tr></tbody></table>
 <h4><code>smoke_latents.diagnostics.json</code></h4><p class="muted">171 bytes · modified 2026-04-07 19:51:50 UTC</p>
 <pre>{
   &quot;n_high_residual&quot;: 3,
@@ -434,5 +788,20 @@
   &quot;n_passing&quot;: 3,
   &quot;use_fdr&quot;: false
 }</pre>
+<h4><code>smoke_latents.csv</code></h4><p class="muted">128 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<table class="data"><thead><tr><th>latent_id</th><th>V_prime</th><th>p_value</th><th>p_adjusted</th></tr></thead><tbody><tr><td>1</td><td>10.6903</td><td>0.046080884360921434</td><td></td></tr><tr><td>5</td><td>3.8957</td><td>0.11907171674111633</td><td></td></tr><tr><td>0</td><td>3.4402</td><td>0.1654756347960112</td><td></td></tr></tbody></table>
+<h4><code>smoke_activations.npz</code></h4><p class="muted">660 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<p class="muted">NumPy archive (binary). Load in Python: <code>np.load(path)[&quot;activations&quot;]</code>.</p>
+<h4><code>smoke_activations.meta.json</code></h4><p class="muted">356 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<pre>{
+  &quot;representation_type&quot;: &quot;synthetic_demo&quot;,
+  &quot;n_rows&quot;: 6,
+  &quot;d_in&quot;: 16,
+  &quot;model&quot;: &quot;random Gaussian (demo only; not HF or SAE)&quot;,
+  &quot;residual_csv&quot;: &quot;/Users/ivanandhika/Projects/UofU/Interpretability LLM/Projects/teaching-llms-errors/pipeline_2026/config/fixtures/tiny_residual.csv&quot;,
+  &quot;note&quot;: &quot;Smoke/demo vectors; do not cite as neural or SAE features.&quot;
+}</pre>
+<h4><code>.gitkeep</code></h4><p class="muted">0 bytes · modified 2026-04-07 19:51:50 UTC</p>
+<p class="muted">No inline preview for this file type.</p>
 </body>
 </html>
